@@ -1,0 +1,30 @@
+{
+  "version.label": {
+    "message": "下一篇",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.cifa-files": {
+    "message": "联盟文件",
+    "description": "The label for category cifa-files in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.cifa-files.link.generated-index.description": {
+    "message": "5 minutes to learn the most important Docusaurus concepts.",
+    "description": "The generated-index page description for category cifa-files in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.cifa-guidelines": {
+    "message": "技术导则",
+    "description": "The label for category cifa-guidelines in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.cifa-guidelines.link.generated-index.description": {
+    "message": "5 minutes to learn the most important Docusaurus concepts.",
+    "description": "The generated-index page description for category cifa-guidelines in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.lca-database-guideline": {
+    "message": "LCA/碳足迹数据库构建导则",
+    "description": "The label for category lca-database-guideline in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.lca-database-guideline.link.generated-index.description": {
+    "message": "5 minutes to learn the most important Docusaurus concepts.",
+    "description": "The generated-index page description for category lca-database-guideline in sidebar tutorialSidebar"
+  }
+}
