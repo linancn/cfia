@@ -5,8 +5,8 @@ import type * as Preset from "@docusaurus/preset-classic";
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: "碳足迹产业技术创新联盟",
-  tagline: "促进产业协同，推动技术创新，支撑国家战略",
+  title: "Carbon Footprint Industry Alliance",
+  tagline: "Cooperation, Innovation, and Openness",
   favicon: "img/favicon.png",
 
   // Set the production url of your site here
@@ -28,7 +28,7 @@ const config: Config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: "zh-CN",
-    locales: ["zh-CN", "en"],
+    locales: ["zh-CN","en"],
   },
 
   presets: [
@@ -68,69 +68,73 @@ const config: Config = {
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
     navbar: {
-      title: "碳足迹产业技术创新联盟",
+      title: "Carbon Footprint Industry Alliance",
       logo: {
         alt: "CIFA Logo",
         src: "img/logo.png",
       },
       items: [
-        { to: "/blog", label: "新闻动态", position: "left" },
+        { to: "/blog", label: "News", position: "left" },
         {
           type: "docSidebar",
           sidebarId: "tutorialSidebar",
           position: "left",
-          label: "开放知识中心",
-        }
+          label: "Open Knowledge Center",
+        },
+        {
+          type: 'localeDropdown',
+          position: 'right',
+        },
       ],
     },
     footer: {
       style: "dark",
       links: [
         {
-          title: "联盟开源体系",
+          title: "Open-source Ecosystem",
           items: [
             {
-              label: "天工数据平台",
+              label: "TianGong Data Platform",
               href: "https://lca.tiangong.earth",
             },
             {
-              label: "开放知识中心",
+              label: "Open Knowledge Center",
               to: "/docs/intro",
             },
             // {
-            //   label: "开源LCA数据结构",
+            //   label: "Open-source LCA Data Structure",
             //   to: "/docs/intro",
             // },
           ],
         },
         {
-          title: "联盟机构",
+          title: "Organizations",
           items: [
             {
-              label: "清华大学碳中和研究院（秘书处）",
+              label: "ICON Tsinghua University",
               href: "https://www.icon.tsinghua.edu.cn/",
             },
             {
-              label: "天工智库中心",
+              label: "TianGong Think Tank",
               href: "https://discordapp.com/invite/docusaurus",
             }
           ],
         },
         {
-          title: "开放社区",
+          title: "Community",
           items: [
             {
-              label: "新闻动态",
+              label: "News",
               to: "/blog",
             },
             {
-              label: "联合共创平台",
+              label: "Cooperation Platform",
               href: "https://github.com/linancn/cfia",
             },
           ],
         },
       ],
-      copyright: `版权所有 © ${new Date().getFullYear()} 碳足迹产业技术创新联盟，基于Docusaurus开发。`,
+      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
