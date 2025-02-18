@@ -2,4 +2,4 @@
 sidebar_position: 1
 ---
 
-# Rules
+# 联盟章程
