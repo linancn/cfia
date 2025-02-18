@@ -145,7 +145,7 @@ const config: Config = {
       appId: 'SDTUE4LQLS',
 
       // Public API key: it is safe to commit it
-      apiKey: '3366ff59be88411ff6fb1094bc87c3a1',
+      apiKey: '0250bf46f5a6601148b8f0c4f4602684',
 
       indexName: 'carbonfootprint',
 
