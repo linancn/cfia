@@ -21,7 +21,12 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
+            开放知识中心
+          </Link>
+          <Link
+            className="button button--secondary button--lg"
+            href='https://lca.tiangong.earth'>
+            天工数据平台
           </Link>
         </div>
       </div>
