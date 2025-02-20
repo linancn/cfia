@@ -41,6 +41,8 @@ const config: Config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          remarkPlugins: [require('remark-math')],
+          rehypePlugins: [require('rehype-mathjax')],
         },
         blog: {
           showReadingTime: true,
@@ -63,7 +65,15 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
-
+  stylesheets: [
+    {
+      href: 'https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css',
+      type: 'text/css',
+      integrity:
+        'sha384-vZTG03m+PBjY6Pz5E6Q8b4yR9Gt6EZU6AWKc6Yg1EMw8sI/4l+f9ZO4ZXcCb2G0',
+      crossorigin: 'anonymous',
+    },
+  ],
   themeConfig: {
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
