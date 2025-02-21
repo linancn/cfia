@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="18.784031mm"
+   height="6.6122742mm"
+   viewBox="0 0 18.784031 6.6122742"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath2038">
+      <path
+         d="M 0,858.898 H 1207.558 V 0 H 0 Z"
+         transform="translate(-126.0428,-285.80471)"
+         id="path2038" />
+    </clipPath>
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-19.038437,-132.76872)">
+    <path
+       id="path2037"
+       d="m 0,0 -38.491,-10.344 c -3.228,-0.867 -5.814,-0.76 -7.286,0.302 -4.106,2.969 -0.347,9.282 0.09,9.989 -1.812,-1.975 -3.676,-4.04 -5.138,-6.3 -2.464,-3.845 -3.08,-7.49 -1.653,-9.757 2.089,-3.316 6.651,-3.502 13.552,-0.549 L 0.012,-0.018 Z"
+       style="fill:#232021;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       transform="matrix(0.35277776,0,0,-0.35277776,37.818235,132.76872)"
+       clip-path="url(#clipPath2038)" />
+  </g>
+</svg>
