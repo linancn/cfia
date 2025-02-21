@@ -32,7 +32,7 @@
     "description": "The label of footer link with label=icon-tsinghua linking to https://www.icon.tsinghua.edu.cn/"
   },
   "link.item.label.tiangong-lca-data-platform": {
-    "message": "天工 LCA 开放数据平台",
+    "message": "天工 LCA 数据平台",
     "description": "The label of footer link with label=tiangong-lca-data-platform linking to https://lca.tiangong.earth"
   }
 }

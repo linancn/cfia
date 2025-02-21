@@ -38,8 +38,8 @@ const FeatureList: FeatureItem[] = [
   },
   {
     img: require("@site/static/img/homepage/logo-6-cfgc.png").default,
-    height: "25px",
-    width: "160px",
+    height: "30px",
+    width: "180px",
   },
   {
     img: require("@site/static/img/homepage/logo-7-cabr.png").default,
@@ -83,7 +83,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     img: require("@site/static/img/homepage/logo-15-envision.png").default,
-    height: "35px",
+    height: "30px",
     width: "130px",
   },
   {
@@ -92,9 +92,9 @@ const FeatureList: FeatureItem[] = [
     width: "120px",
   },
   {
-    img: require("@site/static/img/homepage/logo-17-goldwine.png").default,
+    img: require("@site/static/img/homepage/logo-17-goldwind.png").default,
     height: "30px",
-    width: "120px",
+    width: "140px",
   },
   {
     img: require("@site/static/img/homepage/logo-18-hornor.png").default,
@@ -138,7 +138,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     img: require("@site/static/img/homepage/logo-26-deloittte.png").default,
-    height: "30px",
+    height: "27px",
     width: "120px",
   },
   {
@@ -159,12 +159,12 @@ const FeatureList: FeatureItem[] = [
   {
     img: require("@site/static/img/homepage/logo-30-cflp.png").default,
     height: "40px",
-    width: "160px",
+    width: "180px",
   },
   {
     img: require("@site/static/img/homepage/logo-31-cbia.png").default,
     height: "25px",
-    width: "150px",
+    width: "170px",
   },
   {
     img: require("@site/static/img/homepage/logo-32-caep.png").default,
