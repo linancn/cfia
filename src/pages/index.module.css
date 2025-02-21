@@ -22,6 +22,16 @@
   justify-content: center;
 }
 
-.buttons > * {
+.buttons>* {
   margin: 0 2rem;
+}
+
+.customBackground {
+  background-color: #f8f9fa;
+}
+
+[data-theme='dark'] {
+  .customBackground {
+    background-color: #5C5C5C;
+  }
 }

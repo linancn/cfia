@@ -7,12 +7,12 @@
     "message": "CIFA Logo",
     "description": "The alt text of navbar logo"
   },
-  "item.label.News": {
-    "message": "News",
-    "description": "Navbar item with label News"
-  },
   "item.label.open-knowledge-center": {
     "message": "Open Knowledge Center",
     "description": "Navbar item with label open-knowledge-center"
+  },
+  "item.label.tiangong-lca-data-platform": {
+    "message": "TianGong LCA Data Platform",
+    "description": "Navbar item with label tiangong-lca-data-platform"
   }
 }

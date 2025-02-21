@@ -15,9 +15,9 @@
     "message": "Community",
     "description": "The title of the footer links column with title=community in the footer"
   },
-  "link.item.label.tiangong-data-platform": {
-    "message": "TianGong Data Platform",
-    "description": "The label of footer link with label=tiangong-data-platform linking to https://lca.tiangong.earth"
+  "link.item.label.tiangong-lca-data-platform": {
+    "message": "TianGong LCA Data Platform",
+    "description": "The label of footer link with label=tiangong-lca-data-platform linking to https://lca.tiangong.earth"
   },
   "link.item.label.open-knowledge-center": {
     "message": "Open Knowledge Center",
@@ -26,10 +26,6 @@
   "link.item.label.tiangong-think-tank": {
     "message": "TianGong Think Tank",
     "description": "The label of footer link with label=tiangong-think-tank linking to http://www.tsinghua-riet.com/"
-  },
-  "link.item.label.news": {
-    "message": "News",
-    "description": "The label of footer link with label=news linking to /blog"
   },
   "link.item.label.cooperation-platform": {
     "message": "Cooperation Platform",
