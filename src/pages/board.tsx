@@ -60,11 +60,11 @@ export default function Home(): ReactNode {
       <main className={styles.customBackground}>
         <div className={styles.customBackgroundSection1}>
           <div className="container">
-            <p className="text--center hero__subtitle padding-vert--lg">
+          <p className={styles.heroSubtitle}>
               <Translate id="homepage.sub-title-chair">理事长</Translate>
             </p>
             <HomepageChair />
-            <p className="text--center hero__subtitle padding-vert--lg">
+            <p className={styles.heroSubtitle}>
               <Translate id="homepage.sub-title-vice-chair">副理事长</Translate>
             </p>
             <HomepageViceChair />
@@ -72,7 +72,7 @@ export default function Home(): ReactNode {
         </div>
         <div className={styles.customBackgroundSection2}>
           <div className="container">
-            <p className="text--center hero__subtitle padding-vert--lg">
+          <p className={styles.heroSubtitle}>
               <Translate id="homepage.sub-title-board-member">理事</Translate>
             </p>
             <HomepageBoardMember />

@@ -62,19 +62,19 @@ export default function Home(): ReactNode {
       <main className={styles.customBackground}>
         <div className={styles.customBackgroundSection1}>
           <div className="container">
-            <p className="text--center hero__subtitle padding-vert--lg">
+            <p className={styles.heroSubtitle}>
               <Translate id="homepage.sub-title-chair-unit">
                 理事长单位
               </Translate>
             </p>
             <HomepageChairUnit />
-            <p className="text--center hero__subtitle padding-vert--lg">
+            <p className={styles.heroSubtitle}>
               <Translate id="homepage.sub-title-vice-chair-unit">
                 副理事长单位
               </Translate>
             </p>
             <HomepageViceChairUnit />
-            <p className="text--center hero__subtitle padding-vert--lg">
+            <p className={styles.heroSubtitle}>
               <Translate id="homepage.sub-title-member-unit">
                 会员单位
               </Translate>
@@ -84,11 +84,11 @@ export default function Home(): ReactNode {
         </div>
         <div className={styles.customBackgroundSection2}>
           <div className="container">
-            <p className="text--center hero__subtitle padding-vert--lg">
+          <p className={styles.heroSubtitle}>
               <Translate id="homepage.sub-title-chair">理事长</Translate>
             </p>
             <HomepageChair />
-            <p className="text--center hero__subtitle padding-vert--lg">
+            <p className={styles.heroSubtitle}>
               <Translate id="homepage.sub-title-vice-chair">副理事长</Translate>
             </p>
             <HomepageViceChair />
@@ -96,17 +96,17 @@ export default function Home(): ReactNode {
         </div>
         <div className={styles.customBackgroundSection3}>
           <div className="container">
-            <p className="text--center hero__subtitle padding-vert--lg">
+          <p className={styles.heroSubtitle}>
               <Translate id="homepage.sub-title-secretariat">秘书处</Translate>
             </p>
             <HomepageSecretariat />
-            <p className="text--center hero__subtitle padding-vert--lg">
+            <p className={styles.heroSubtitle}>
               <Translate id="homepage.sub-title-secretariat-general">
                 秘书长
               </Translate>
             </p>
             <HomepageSecretariatGeneral />
-            <p className="text--center hero__subtitle padding-vert--lg">
+            <p className={styles.heroSubtitle}>
               <Translate id="homepage.sub-title-vice-secretariat-general">
                 副秘书长
               </Translate>
