@@ -85,6 +85,8 @@ const config: Config = {
       },
       items: [
         // { to: "/blog", label: "News", position: "left" },
+        { to: "/board", label: "board", position: "left" },
+        { to: "/secretariat", label: "secretariat", position: "left" },
         {
           type: "docSidebar",
           sidebarId: "tutorialSidebar",

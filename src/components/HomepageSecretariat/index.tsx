@@ -5,20 +5,20 @@ import styles from "./styles.module.css";
 import Translate, { translate } from "@docusaurus/Translate";
 
 type FeatureItem = {
-  Svg: React.ComponentType<React.ComponentProps<"svg">>;
+  img: string;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    Svg: require("@site/static/img/logo.svg").default,
+    img: require("@site/static/img/homepage/logo-sec-thuicon.jpg").default,
   },
 ];
 
-function Feature({ Svg }: FeatureItem) {
+function Feature({ img }: FeatureItem) {
   return (
     <div className={clsx("col col")}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        <img className={styles.featureSvg} src={img} role="img" />
       </div>
     </div>
   );

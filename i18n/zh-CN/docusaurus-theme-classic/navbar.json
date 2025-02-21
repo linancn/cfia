@@ -14,5 +14,13 @@
   "item.label.tiangong-lca-data-platform": {
     "message": "天工 LCA 数据平台",
     "description": "Navbar item with label tiangong-lca-data-platform"
+  },
+  "item.label.board": {
+    "message": "理事会",
+    "description": "Navbar item with label board"
+  },
+  "item.label.secretariat": {
+    "message": "秘书处",
+    "description": "Navbar item with label secretariat"
   }
 }

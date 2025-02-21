@@ -10,8 +10,8 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    Svg: require("@site/static/img/logo.svg").default,
-  },
+    Svg: require("@site/static/img/homepage/logo-0-thu.svg").default,
+  }
 ];
 
 function Feature({ Svg }: FeatureItem) {

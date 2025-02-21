@@ -8,6 +8,11 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  background-image: url(../../static/img/background.jpg);
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  height: 500px;
 }
 
 @media screen and (max-width: 996px) {
@@ -27,11 +32,38 @@
 }
 
 .customBackground {
+  background-color: #ffffff;
+}
+
+.customBackgroundSection1 {
+  background-color: #ffffff;
+}
+
+.customBackgroundSection2 {
   background-color: #f8f9fa;
+}
+
+.customBackgroundSection3 {
+  background-color: #ffffff;
 }
 
 [data-theme='dark'] {
   .customBackground {
-    background-color: #5C5C5C;
+    background-color: var(--ifm-background-surface-color);
   }
+
+  .customBackgroundSection1 {
+    background-color: #E6E6E6;
+    color: black;
+  }
+
+  .customBackgroundSection2 {
+    background-color: var(--ifm-background-surface-color);
+  }
+
+  .customBackgroundSection3 {
+    background-color: #ffffff;
+    color: black;
+  }
+
 }

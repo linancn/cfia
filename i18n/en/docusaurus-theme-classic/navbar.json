@@ -14,5 +14,13 @@
   "item.label.tiangong-lca-data-platform": {
     "message": "TianGong LCA Data Platform",
     "description": "Navbar item with label tiangong-lca-data-platform"
+  },
+  "item.label.board": {
+    "message": "Board",
+    "description": "Navbar item with label board"
+  },
+  "item.label.secretariat": {
+    "message": "secretariat",
+    "description": "Navbar item with label secretariat"
   }
 }

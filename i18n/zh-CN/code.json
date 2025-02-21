@@ -457,12 +457,6 @@
     "message": "碳足迹产业技术创新联盟",
     "description": "The title of the website"
   },
-  "member.thu": {
-    "message": "张三"
-  },
-  "member.thu-discription": {
-    "message": "X公司"
-  },
   "homepage.chair": {
     "message": "贺克斌"
   },
@@ -498,5 +492,395 @@
   },
   "homepage.secretariat-general-introduction": {
     "message": "清华大学碳中和讲席教授、环境学院副院长"
+  },
+  "homepage.sub-title-board-member": {
+    "message": "理事"
+  },
+  "member.gjdwyxgsdsjzx": {
+    "message": "国家电网有限公司大数据中心"
+  },
+  "member.zshsyhkyjyxgs": {
+    "message": "中石化石油化工科学研究院有限公司"
+  },
+  "member.wkxnyclhngfyxgs": {
+    "message": "五矿新能源材料（湖南）股份有限公司"
+  },
+  "member.zjtkjyxgs": {
+    "message": "中建碳科技有限公司"
+  },
+  "member.zczzdljcysyxgs": {
+    "message": "中车株洲电力机车研究所有限公司"
+  },
+  "member.zjclkxyjyxgs": {
+    "message": "中国建筑材料科学研究总院有限公司"
+  },
+  "member.zhxydkjyxgs": {
+    "message": "中航信移动科技有限公司"
+  },
+  "member.snddqzgyxgsshyffgs": {
+    "message": "施耐德电气（中国）有限公司上海研发分公司"
+  },
+  "member.zhjjnyjsxh": {
+    "message": "中国化工节能技术协会"
+  },
+  "vice-chair.wh": {
+    "message": "王海"
+  },
+  "vice-chair.wh-desc": {
+    "message": "中国中煤能源集团有限公司首席专家"
+  },
+  "vice-chair.wzw": {
+    "message": "王志伟"
+  },
+  "vice-chair.wzw-desc": {
+    "message": "同济大学环境科学与工程学院院长，教授"
+  },
+  "vice-chair.wjx": {
+    "message": "吴建雄"
+  },
+  "vice-chair.wjx-desc": {
+    "message": "上海数据集团有限公司董事长"
+  },
+  "vice-chair.sl": {
+    "message": "石磊"
+  },
+  "vice-chair.sl-desc": {
+    "message": "南昌大学资源与环境学院院长，流域碳中和研究院院长，特聘教授"
+  },
+  "vice-chair.tyj": {
+    "message": "田亚峻"
+  },
+  "vice-chair.tyj-desc": {
+    "message": "中国科学院青岛生物能源与过程研究所泛能源大数据与战略研究中心主任"
+  },
+  "vice-chair.lzz": {
+    "message": "兰珍珍"
+  },
+  "vice-chair.lzz-desc": {
+    "message": "欧莱雅北亚及中国公共事务总裁"
+  },
+  "vice-chair.lm": {
+    "message": "刘猛"
+  },
+  "vice-chair.lm-desc": {
+    "message": "大连理工大学环境学院院长，教授"
+  },
+  "vice-chair.sj": {
+    "message": "孙捷"
+  },
+  "vice-chair.sj-desc": {
+    "message": "远景科技集团首席可持续发展官，远景智能副总裁"
+  },
+  "vice-chair.yg": {
+    "message": "严刚"
+  },
+  "vice-chair.yg-desc": {
+    "message": "生态环境部环境规划院副院长，研究员"
+  },
+  "vice-chair.lr": {
+    "message": "梁锐"
+  },
+  "vice-chair.lr-desc": {
+    "message": "欣旺达电子股份有限公司副总裁兼首席可持续发展官"
+  },
+  "vice-chair.lzh": {
+    "message": "李振华"
+  },
+  "vice-chair.lzh-desc": {
+    "message": "蚂蚁科技集团股份有限公司集团研究院院长"
+  },
+  "vice-chair.ygd": {
+    "message": "杨国栋"
+  },
+  "vice-chair.ygd-desc": {
+    "message": "中国物流与采购联合会副会长"
+  },
+  "vice-chair.zb": {
+    "message": "张波"
+  },
+  "vice-chair.zb-desc": {
+    "message": "中信控股有限责任公司执行董事兼总经理"
+  },
+  "vice-chair.zmh": {
+    "message": "张孟衡"
+  },
+  "vice-chair.zmh-desc": {
+    "message": "中国环境科学研究院总工程师"
+  },
+  "vice-chair.dyb": {
+    "message": "党彦宝"
+  },
+  "vice-chair.dyb-desc": {
+    "message": "宁夏宝丰集团有限公司董事长"
+  },
+  "vice-chair.xm": {
+    "message": "徐明"
+  },
+  "vice-chair.xm-desc": {
+    "message": "清华大学碳中和讲席教授，环境学院副院长"
+  },
+  "vice-chair.xzy": {
+    "message": "徐智煜"
+  },
+  "vice-chair.xzy-desc": {
+    "message": "荣耀终端股份有限公司高级副总裁"
+  },
+  "vice-chair.cy": {
+    "message": "常远"
+  },
+  "vice-chair.cy-desc": {
+    "message": "耐克体育（中国）有限公司副总裁"
+  },
+  "vice-chair.jl": {
+    "message": "蒋理"
+  },
+  "vice-chair.jl-desc": {
+    "message": "宁德时代新能源科技股份有限公司副总经理兼董事会秘书，可持续发展委员会主席"
+  },
+  "vice-chair.cyq": {
+    "message": "蔡永强"
+  },
+  "vice-chair.cyq-desc": {
+    "message": "华能长江环保科技公司董事长"
+  },
+  "vice-secgeneral.wyt": {
+    "message": "王玉涛"
+  },
+  "vice-secgeneral.wyt-desc": {
+    "message": "复旦大学环境与工程系教授, 上海能源与碳中和战略研究院副院长"
+  },
+  "vice-secgeneral.wsw": {
+    "message": "王姝文"
+  },
+  "vice-secgeneral.wsw-desc": {
+    "message": "中信集团中信控股公司, 首席战略官、战略管理部总经理"
+  },
+  "vice-secgeneral.wzs": {
+    "message": "王稚晟"
+  },
+  "vice-secgeneral.wzs-desc": {
+    "message": "欧盟中国商会副会长, 中国欧盟协会理事, 中国碳中和五十人论坛秘书长"
+  },
+  "vice-secgeneral.tjp": {
+    "message": "田金平"
+  },
+  "vice-secgeneral.tjp-desc": {
+    "message": "清华大学环境学院研究员"
+  },
+  "vice-secgeneral.qjc": {
+    "message": "齐剑川"
+  },
+  "vice-secgeneral.qjc-desc": {
+    "message": "清华大学环境学院助理研究员"
+  },
+  "vice-secgeneral.lzy": {
+    "message": "李中阳"
+  },
+  "vice-secgeneral.lzy-desc": {
+    "message": "清华大学天津电子信息研究院能源电子中心主任"
+  },
+  "vice-secgeneral.ql": {
+    "message": "邱林"
+  },
+  "vice-secgeneral.ql-desc": {
+    "message": "远景智能零碳卓越中心全球负责人"
+  },
+  "vice-secgeneral.cwq": {
+    "message": "陈伟强"
+  },
+  "vice-secgeneral.cwq-desc": {
+    "message": "中国科学院城市环境研究所研究员"
+  },
+  "vice-secgeneral.sz": {
+    "message": "施正"
+  },
+  "vice-secgeneral.sz-desc": {
+    "message": "北京两区办开放政策研究院研究员"
+  },
+  "board-member.dn": {
+    "message": "丁宁"
+  },
+  "board-member.dn-desc": {
+    "message": "中国科学院生态环境研究中心副研究员"
+  },
+  "board-member.wyt": {
+    "message": "王玉涛"
+  },
+  "board-member.wyt-desc": {
+    "message": "复旦大学环境科学与工程系教授，上海能源与碳中和战略研究院副院长"
+  },
+  "board-member.whm": {
+    "message": "王鹤鸣"
+  },
+  "board-member.whm-desc": {
+    "message": "东北大学冶金学院教授"
+  },
+  "board-member.fk": {
+    "message": "方恺"
+  },
+  "board-member.fk-desc": {
+    "message": "浙江大学公共管理学院长聘教授，国家高端智库副主任"
+  },
+  "board-member.lh": {
+    "message": "刘华"
+  },
+  "board-member.lh-desc": {
+    "message": "中国华电集团有限公司市场营销部副总监"
+  },
+  "board-member.lgy": {
+    "message": "刘耕源"
+  },
+  "board-member.lgy-desc": {
+    "message": "北京师范大学环境学院副院长，教授"
+  },
+  "board-member.sy": {
+    "message": "孙悦"
+  },
+  "board-member.sy-desc": {
+    "message": "北京金风零碳能源有限公司副总经理"
+  },
+  "board-member.sl2": {
+    "message": "孙露"
+  },
+  "board-member.sl2-desc": {
+    "message": "西安交通大学人居环境与建筑工程学院副教授"
+  },
+  "board-member.lsb": {
+    "message": "李少斌"
+  },
+  "board-member.lsb-desc": {
+    "message": "厦门大学环境与生态学院副教授"
+  },
+  "board-member.ljs": {
+    "message": "李佳硕"
+  },
+  "board-member.ljs-desc": {
+    "message": "山东大学威海前沿交叉科学研究院教授"
+  },
+  "board-member.xzx": {
+    "message": "肖忠湘"
+  },
+  "board-member.xzx-desc": {
+    "message": "惠州亿纬锂能股份有限公司ESG双碳部总经理"
+  },
+  "board-member.wy": {
+    "message": "吴莹"
+  },
+  "board-member.wy-desc": {
+    "message": "隆基绿能科技股份有限公司中国地区部副总裁"
+  },
+  "board-member.sjn": {
+    "message": "宋俊年"
+  },
+  "board-member.sjn-desc": {
+    "message": "吉林大学新能源与环境学院教授"
+  },
+  "board-member.zyl": {
+    "message": "张玉莲"
+  },
+  "board-member.zyl-desc": {
+    "message": "梅赛德斯—奔驰（中国）投资有限公司产品可持续发展高级经理"
+  },
+  "board-member.cy": {
+    "message": "陈一"
+  },
+  "board-member.cy-desc": {
+    "message": "重庆大学环境与生态学院副院长，教授"
+  },
+  "board-member.ct": {
+    "message": "陈坦"
+  },
+  "board-member.ct-desc": {
+    "message": "中央民族大学生命与环境科学学院副院长，副教授"
+  },
+  "board-member.ct2": {
+    "message": "陈霆"
+  },
+  "board-member.ct2-desc": {
+    "message": "小米通讯技术有限公司总监"
+  },
+  "board-member.cwq": {
+    "message": "陈伟强"
+  },
+  "board-member.cwq-desc": {
+    "message": "中国科学院城市环境研究所研究员"
+  },
+  "board-member.wyb": {
+    "message": "武延兵"
+  },
+  "board-member.wyb-desc": {
+    "message": "京东方科技集团股份有限公司MNT SBU副总经理"
+  },
+  "board-member.my": {
+    "message": "孟毅"
+  },
+  "board-member.my-desc": {
+    "message": "内蒙古伊利实业集团股份有限公司低碳发展总监"
+  },
+  "board-member.mdh": {
+    "message": "孟大海"
+  },
+  "board-member.mdh-desc": {
+    "message": "蔚来控股有限公司产品环保及可持续团队负责人，总监"
+  },
+  "board-member.dhb": {
+    "message": "段华波"
+  },
+  "board-member.dhb-desc": {
+    "message": "华中科技大学环境科学与工程学院副教授"
+  },
+  "board-member.yss": {
+    "message": "袁闪闪"
+  },
+  "board-member.yss-desc": {
+    "message": "中国建筑科学研究院有限公司建科环境科技有限公司副总经理"
+  },
+  "board-member.xcq": {
+    "message": "徐常青"
+  },
+  "board-member.xcq-desc": {
+    "message": "北京理工大学经济学院副教授"
+  },
+  "board-member.cz": {
+    "message": "曹植"
+  },
+  "board-member.cz-desc": {
+    "message": "南开大学环境科学与工程学院教授"
+  },
+  "board-member.gxz": {
+    "message": "龚先政"
+  },
+  "board-member.gxz-desc": {
+    "message": "北京工业大学材料学院教授"
+  },
+  "board-member.czj": {
+    "message": "程占军"
+  },
+  "board-member.czj-desc": {
+    "message": "天津大学环境科学与工程学院副院长，教授"
+  },
+  "board-member.dy": {
+    "message": "窦燕"
+  },
+  "board-member.dy-desc": {
+    "message": "TCL华星光电技术有限公司副总裁"
+  },
+  "board-member.xdq": {
+    "message": "薛丁琪"
+  },
+  "board-member.xdq-desc": {
+    "message": "中联重科股份有限公司焊接技术研究所所长"
+  },
+  "vice-chair.wjx2": {
+    "message": "王建新"
+  },
+  "vice-chair.wjx2-desc": {
+    "message": "中国电池工业协会副会长"
+  },
+  "vice-chair.lr2": {
+    "message": "李然"
+  },
+  "vice-chair.lr2-desc": {
+    "message": "阿里集团副总裁、淘天集团副总裁、阿里资产总裁"
   }
 }

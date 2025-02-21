@@ -3,11 +3,9 @@ import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
-import HomepageChairUnit from "@site/src/components/HomepageChairUnit";
-import HomepageViceChairUnit from "@site/src/components/HomepageViceChairUnit";
-import HomepageMemberUnit from "@site/src/components/HomepageMemberUnit";
 import HomepageChair from "@site/src/components/HomepageChair";
 import HomepageViceChair from "../components/HomepageViceChair";
+import HomepageBoardMember from "../components/HomepageBoardMember";
 import HomepageSecretariat from "@site/src/components/HomepageSecretariat";
 import HomepageSecretariatGeneral from "@site/src/components/HomepageSecretariatGeneral";
 import HomepageViceSecretariatGeneral from "@site/src/components/HomepageViceSecretariatGeneral";
@@ -60,46 +58,16 @@ export default function Home(): ReactNode {
     >
       <HomepageHeader />
       <main className={styles.customBackground}>
-        <div className={styles.customBackgroundSection1}>
-          <div className="container">
-            <p className="text--center hero__subtitle padding-vert--lg">
-              <Translate id="homepage.sub-title-chair-unit">
-                理事长单位
-              </Translate>
-            </p>
-            <HomepageChairUnit />
-            <p className="text--center hero__subtitle padding-vert--lg">
-              <Translate id="homepage.sub-title-vice-chair-unit">
-                副理事长单位
-              </Translate>
-            </p>
-            <HomepageViceChairUnit />
-            <p className="text--center hero__subtitle padding-vert--lg">
-              <Translate id="homepage.sub-title-member-unit">
-                会员单位
-              </Translate>
-            </p>
-            <HomepageMemberUnit />
-          </div>
-        </div>
-        <div className={styles.customBackgroundSection2}>
-          <div className="container">
-            <p className="text--center hero__subtitle padding-vert--lg">
-              <Translate id="homepage.sub-title-chair">理事长</Translate>
-            </p>
-            <HomepageChair />
-            <p className="text--center hero__subtitle padding-vert--lg">
-              <Translate id="homepage.sub-title-vice-chair">副理事长</Translate>
-            </p>
-            <HomepageViceChair />
-          </div>
-        </div>
         <div className={styles.customBackgroundSection3}>
           <div className="container">
             <p className="text--center hero__subtitle padding-vert--lg">
               <Translate id="homepage.sub-title-secretariat">秘书处</Translate>
             </p>
             <HomepageSecretariat />
+          </div>
+        </div>
+        <div className={styles.customBackgroundSection2}>
+          <div className="container">
             <p className="text--center hero__subtitle padding-vert--lg">
               <Translate id="homepage.sub-title-secretariat-general">
                 秘书长
