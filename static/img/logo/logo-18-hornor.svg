@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="28.408697mm"
+   height="5.5001569mm"
+   viewBox="0 0 28.408697 5.5001569"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath889">
+      <path
+         d="M 0,858.898 H 1207.558 V 0 H 0 Z"
+         transform="translate(-485.77261,-433.62101)"
+         id="path889" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath891">
+      <path
+         d="M 0,858.898 H 1207.558 V 0 H 0 Z"
+         transform="translate(-471.61721,-446.30821)"
+         id="path891" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath893">
+      <path
+         d="M 0,858.898 H 1207.558 V 0 H 0 Z"
+         transform="translate(-505.95021,-446.30821)"
+         id="path893" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath895">
+      <path
+         d="M 0,858.898 H 1207.558 V 0 H 0 Z"
+         transform="translate(-534.26181,-439.12581)"
+         id="path895" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath897">
+      <path
+         d="M 0,858.898 H 1207.558 V 0 H 0 Z"
+         transform="translate(-520.10652,-433.62101)"
+         id="path897" />
+    </clipPath>
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-156.64945,-76.076873)">
+    <path
+       id="path888"
+       d="m 0,0 c -2.811,0 -5.09,2.279 -5.09,5.089 0,2.811 2.279,5.09 5.09,5.09 2.81,0 5.089,-2.279 5.089,-5.09 C 5.089,2.279 2.81,0 0,0 m 0,12.885 c -4.305,0 -7.796,-3.49 -7.796,-7.796 0,-4.305 3.491,-7.795 7.796,-7.795 4.305,0 7.795,3.49 7.795,7.795 0,4.306 -3.49,7.796 -7.795,7.796"
+       style="fill:#0d0d0d;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       transform="matrix(0.35277776,0,0,-0.35277776,164.72291,80.622412)"
+       clip-path="url(#clipPath889)" />
+    <path
+       id="path890"
+       d="M 0,0 V -6.159 H -6.022 V 0 H -8.73 v -15.195 h 2.708 v 6.329 H 0 v -6.329 H 2.706 V 0 Z"
+       style="fill:#0d0d0d;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       transform="matrix(0.35277776,0,0,-0.35277776,159.7292,76.146652)"
+       clip-path="url(#clipPath891)" />
+    <path
+       id="path892"
+       d="M 0,0 V -9.482 L -6.571,0 h -2.158 v -15.195 h 2.707 v 9.529 l 6.603,-9.529 H 2.706 V 0 Z"
+       style="fill:#0d0d0d;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       transform="matrix(0.35277776,0,0,-0.35277776,171.84112,76.146652)"
+       clip-path="url(#clipPath893)" />
+    <path
+       id="path894"
+       d="M 0,0 V 4.475 H 3.013 C 4.248,4.475 5.25,3.474 5.25,2.238 5.25,1.002 4.248,0 3.013,0 Z m 4.536,-2.473 c 1.996,0.636 3.441,2.504 3.441,4.711 0,2.725 -2.206,4.936 -4.93,4.944 v 0 H -2.708 V -8.012 H 0 v 6.761 l 5.638,-6.761 h 3.516 z"
+       style="fill:#0d0d0d;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       transform="matrix(0.35277776,0,0,-0.35277776,181.82882,78.680442)"
+       clip-path="url(#clipPath895)" />
+    <path
+       id="path896"
+       d="m 0,0 c -2.811,0 -5.09,2.279 -5.09,5.089 0,2.811 2.279,5.09 5.09,5.09 2.81,0 5.089,-2.279 5.089,-5.09 C 5.089,2.279 2.81,0 0,0 m 0,12.885 c -4.305,0 -7.796,-3.49 -7.796,-7.796 0,-4.305 3.491,-7.795 7.796,-7.795 4.305,0 7.795,3.49 7.795,7.795 0,4.306 -3.49,7.796 -7.795,7.796"
+       style="fill:#0d0d0d;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       transform="matrix(0.35277776,0,0,-0.35277776,176.83515,80.622412)"
+       clip-path="url(#clipPath897)" />
+  </g>
+</svg>
