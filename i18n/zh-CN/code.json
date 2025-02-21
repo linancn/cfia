@@ -317,7 +317,7 @@
     "message": "开放知识中心"
   },
   "homepage.button2": {
-    "message": "天工数据平台"
+    "message": "天工 LCA 数据平台"
   },
   "homepage.tagline": {
     "message": "促进产业协同，推动技术创新，支撑国家战略"
@@ -456,5 +456,47 @@
   "web-title": {
     "message": "碳足迹产业技术创新联盟",
     "description": "The title of the website"
+  },
+  "member.thu": {
+    "message": "张三"
+  },
+  "member.thu-discription": {
+    "message": "X公司"
+  },
+  "homepage.chair": {
+    "message": "贺克斌"
+  },
+  "homepage.chair-introduction": {
+    "message": "清华大学碳中和研究院院长、环境学院教授，中国工程院院士"
+  },
+  "homepage.sub-title-chair-unit": {
+    "message": "理事长单位"
+  },
+  "homepage.sub-title-vice-chair-unit": {
+    "message": "副理事长单位"
+  },
+  "homepage.sub-title-member-unit": {
+    "message": "会员单位"
+  },
+  "homepage.sub-title-chair": {
+    "message": "理事长"
+  },
+  "homepage.sub-title-vice-chair": {
+    "message": "副理事长"
+  },
+  "homepage.sub-title-secretariat": {
+    "message": "秘书处"
+  },
+  "homepage.sub-title-secretariat-general": {
+    "message": "秘书长"
+  },
+  "homepage.sub-title-vice-secretariat-general": {
+    "message": "副秘书长"
+  },
+  "homepage.secretariat-general": {
+    "message": "徐明"
+  },
+  "homepage.secretariat-general-introduction": {
+    "message": "清华大学碳中和讲席教授、环境学院副院长"
   }
 }

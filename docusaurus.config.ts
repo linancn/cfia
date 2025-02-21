@@ -84,27 +84,27 @@ const config: Config = {
         src: "img/logo.png",
       },
       items: [
-        { to: "/blog", label: "News", position: "left" },
+        // { to: "/blog", label: "News", position: "left" },
         {
           type: "docSidebar",
           sidebarId: "tutorialSidebar",
           position: "left",
           label: "open-knowledge-center",
         },
-        {
-          type: 'localeDropdown',
-          position: 'right',
-        },
+        { to: "https://lca.tiangong.earth", label: "tiangong-lca-data-platform", position: "left" },
+        // {
+        //   type: 'localeDropdown',
+        //   position: 'right',
+        // },
       ],
     },
     footer: {
-      style: "dark",
       links: [
         {
           title: "open-source-ecosystem",
           items: [
             {
-              label: "tiangong-data-platform",
+              label: "tiangong-lca-data-platform",
               href: "https://lca.tiangong.earth",
             },
             {
@@ -133,10 +133,10 @@ const config: Config = {
         {
           title: "community",
           items: [
-            {
-              label: "news",
-              to: "/blog",
-            },
+            // {
+            //   label: "news",
+            //   to: "/blog",
+            // },
             {
               label: "cooperation-platform",
               href: "https://github.com/linancn/cfia",
