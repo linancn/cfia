@@ -1,8 +1,8 @@
 ---
-sidebar_position: 6
+sidebar_position: 7
 ---
 
-# 6. 附录
+# 第六章 附录
 
 ## 数据结构
 

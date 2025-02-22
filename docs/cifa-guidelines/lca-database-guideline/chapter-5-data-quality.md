@@ -1,8 +1,8 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 ---
 
-# 5. 数据质量评价方法
+# 第五章 数据质量评价方法
 
 本章节内容参考 ILCD 系列指南、EF 合规数据集导则、ecoinvent 数据库技术文档和 GaBi 数据库技术文档研制。
 
