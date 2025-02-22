@@ -28,7 +28,7 @@ const config: Config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: "zh-CN",
-    locales: ["zh-CN","en"],
+    locales: ["zh-CN", "en"],
   },
 
   presets: [
@@ -41,8 +41,8 @@ const config: Config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
-          remarkPlugins: [require('remark-math')],
-          rehypePlugins: [require('rehype-mathjax')],
+          remarkPlugins: [require("remark-math")],
+          rehypePlugins: [require("rehype-mathjax")],
         },
         blog: {
           showReadingTime: true,
@@ -67,11 +67,11 @@ const config: Config = {
   ],
   stylesheets: [
     {
-      href: 'https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css',
-      type: 'text/css',
+      href: "https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css",
+      type: "text/css",
       integrity:
-        'sha384-vZTG03m+PBjY6Pz5E6Q8b4yR9Gt6EZU6AWKc6Yg1EMw8sI/4l+f9ZO4ZXcCb2G0',
-      crossorigin: 'anonymous',
+        "sha384-vZTG03m+PBjY6Pz5E6Q8b4yR9Gt6EZU6AWKc6Yg1EMw8sI/4l+f9ZO4ZXcCb2G0",
+      crossorigin: "anonymous",
     },
   ],
   themeConfig: {
@@ -93,7 +93,17 @@ const config: Config = {
           position: "left",
           label: "open-knowledge-center",
         },
-        { to: "https://lca.tiangong.earth", label: "tiangong-lca-data-platform", position: "left" },
+        {
+          to: "https://lca.tiangong.earth",
+          label: "tiangong-lca-data-platform",
+          position: "left",
+        },
+        {
+          href: "https://github.com/linancn/cfia",
+          label: "联合共创平台",
+          // className: "header-github-link",
+          position: "right",
+        },
         // {
         //   type: 'localeDropdown',
         //   position: 'right',
@@ -129,7 +139,7 @@ const config: Config = {
             {
               label: "tiangong-think-tank",
               href: "http://www.tsinghua-riet.com/",
-            }
+            },
           ],
         },
         {
@@ -154,12 +164,12 @@ const config: Config = {
     },
     algolia: {
       // The application ID provided by Algolia
-      appId: 'SDTUE4LQLS',
+      appId: "SDTUE4LQLS",
 
       // Public API key: it is safe to commit it
-      apiKey: '0250bf46f5a6601148b8f0c4f4602684',
+      apiKey: "0250bf46f5a6601148b8f0c4f4602684",
 
-      indexName: 'carbonfootprint',
+      indexName: "carbonfootprint",
 
       // Optional: see doc section below
       contextualSearch: true,
