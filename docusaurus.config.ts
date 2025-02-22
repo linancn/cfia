@@ -153,6 +153,10 @@ const config: Config = {
               label: "cooperation-platform",
               href: "https://github.com/linancn/cfia",
             },
+            {
+              label: "contact-email",
+              href: "mailto:contact@carbonfootprint.network",
+            },
           ],
         },
       ],
