@@ -2,46 +2,26 @@
 sidebar_position: 1
 ---
 
-# 介绍
+# 联盟介绍
 
-Let's discover **Docusaurus in less than 5 minutes**.
+**碳足迹产业技术创新联盟**（英文名称：Carbon Footprint Industry Alliance，简称：CFIA）是由清华大学牵头，联合50余家重点行业龙头企业、行业组织、高校和科研机构共同发起成立的非营利性联盟。联盟于2025年1月7日正式宣布成立，致力于通过协同创新和产业合作，为碳足迹相关领域的技术发展和标准体系建设注入新动能，加速实现绿色低碳发展，助力国家“双碳”目标的实现。
 
-## Getting Started
+## 联盟宗旨
 
-Get started by **creating a new site**.
+面向国家碳达峰碳中和目标，紧密围绕国家重大需求、关键科学问题和现实产业痛点，在政府相关政策和实施方案指引下，充分发挥各方优势资源，建设我国碳足迹管理体系，推动我国绿色低碳发展和高水平对外开放。构建国际互通和认可的碳足迹核算规则和数据体系、开展国际政策研究、搭建国际合作和交流平台、参与国际对话与磋商，深度融入全球碳足迹管理体系，构建我国的国际话语权。通过推动前沿技术在碳足迹数据、核算、认证、标签等场景的创新应用，引领碳足迹相关领域的新概念、新模式、新业态，引领全球碳足迹产业和技术发展。
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+## 组织架构
 
-### What you'll need
+联盟设立会员大会、理事会和秘书处。
+- 联盟全体成员组成会员大会，会员大会是联盟的最高权力机构。
+- 理事会由联盟会员大会选举理事组成，是会员大会的执行机构，在会员大会闭会期间领导联盟开展日常工作，对会员大会负责。
+- 秘书处，作为联盟理事会执行机构，实行理事长领导下的秘书长负责制。
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+## 联系我们
+如需了解更多关于**碳足迹产业技术创新联盟**（CFIA）的信息，或对联盟的工作有任何问题和建议，欢迎随时与我们联系。
 
-## Generate a new site
+- **秘书处地址**：清华大学碳中和研究院  
+- **邮箱**：xhlu@tsinghua.edu.cn 
+- **官网**：https://carbonfootprint.network
 
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+我们期待您的来信与咨询，共同推动绿色低碳发展，助力实现“双碳”目标！
