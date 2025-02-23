@@ -1,8 +1,8 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
-# 3. 数据收集
+# 第三章 数据收集
 
 本章节内容遵循 ISO 系列标准的框架，参考 ILCD 和 ecoinvent 数据库构建导则。
 
