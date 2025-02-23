@@ -21,7 +21,6 @@ sidebar_position: 1
 如需了解更多关于**碳足迹产业技术创新联盟**（CFIA）的信息，或对联盟的工作有任何问题和建议，欢迎随时与我们联系。
 
 - **秘书处地址**：清华大学碳中和研究院  
-- **邮箱**：xhlu@tsinghua.edu.cn 
-- **官网**：https://carbonfootprint.network
+- **邮箱**：contact@carbonfootprint.network
 
 我们期待您的来信与咨询，共同推动绿色低碳发展，助力实现“双碳”目标！

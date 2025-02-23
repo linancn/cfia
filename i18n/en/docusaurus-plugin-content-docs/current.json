@@ -7,24 +7,12 @@
     "message": "Files",
     "description": "The label for category cifa-files in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.cifa-files.link.generated-index.description": {
-    "message": "5 minutes to learn the most important Docusaurus concepts.",
-    "description": "The generated-index page description for category cifa-files in sidebar tutorialSidebar"
-  },
   "sidebar.tutorialSidebar.category.cifa-guidelines": {
     "message": "Guidelines",
     "description": "The label for category cifa-guidelines in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.cifa-guidelines.link.generated-index.description": {
-    "message": "5 minutes to learn the most important Docusaurus concepts.",
-    "description": "The generated-index page description for category cifa-guidelines in sidebar tutorialSidebar"
-  },
   "sidebar.tutorialSidebar.category.lca-database-guideline": {
     "message": "LCA Database Guideline",
     "description": "The label for category lca-database-guideline in sidebar tutorialSidebar"
-  },
-  "sidebar.tutorialSidebar.category.lca-database-guideline.link.generated-index.description": {
-    "message": "5 minutes to learn the most important Docusaurus concepts.",
-    "description": "The generated-index page description for category lca-database-guideline in sidebar tutorialSidebar"
   }
 }
