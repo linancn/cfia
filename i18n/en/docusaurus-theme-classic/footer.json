@@ -34,5 +34,9 @@
   "link.item.label.icon-tsinghua": {
     "message": "ICON, Tsinghua University",
     "description": "The label of footer link with label=icon-tsinghua linking to https://www.icon.tsinghua.edu.cn/"
+  },
+  "link.item.label.contact-email": {
+    "message": "Contact us",
+    "description": "The label of footer link with label=contact-email linking to mailto:contact@carbonfootprint.network"
   }
 }

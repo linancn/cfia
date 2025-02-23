@@ -22,5 +22,9 @@
   "item.label.secretariat": {
     "message": "秘书处",
     "description": "Navbar item with label secretariat"
+  },
+  "item.label.联合共创平台": {
+    "message": "联合共创平台",
+    "description": "Navbar item with label 联合共创平台"
   }
 }
