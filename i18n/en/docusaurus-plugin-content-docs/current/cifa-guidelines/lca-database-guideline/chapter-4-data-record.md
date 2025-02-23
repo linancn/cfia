@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 ---
 
-# 4. 数据记录
+# 第四章 数据记录
 
 本章节根据 ILCD 系列指南和 EF 合规数据集导则编制，并在其基础上进行细化。
 
