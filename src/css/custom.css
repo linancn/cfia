@@ -16,12 +16,12 @@
   --docusaurus-highlighted-code-line-bg: rgba(247, 243, 243, 0.1);
 
   /* Custom heading font sizes */
-  --heading-font-size-h1: 2.25rem; /* 一级标题字体大小 */
-  --heading-font-size-h2: 2rem;   /* 二级标题字体大小 */
-  --heading-font-size-h3: 1.75rem; /* 三级标题字体大小 */
-  --heading-font-size-h4: 1.5rem;  /* 四级标题字体大小 */
-  --heading-font-size-h5: 1.25rem; /* 五级标题字体大小 */
-  --heading-font-size-h6: 1rem;    /* 六级标题字体大小 */
+  --heading-font-size-h1: 2.25rem;
+  --heading-font-size-h2: 2rem;
+  --heading-font-size-h3: 1.75rem;
+  --heading-font-size-h4: 1.5rem;
+  --heading-font-size-h5: 1.25rem;
+  --heading-font-size-h6: 1rem;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
