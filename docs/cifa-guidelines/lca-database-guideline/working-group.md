@@ -4,11 +4,11 @@ sidebar_position: 1
 
 # 编制工作组成员名单
 
-### 一、组长
+## 一、组长
 
 - **徐　明** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;清华大学
 
-### 二、组员（按姓氏笔画排序）
+## 二、组员（按姓氏笔画排序）
 
 - **马逍天** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;山东大学  
 
