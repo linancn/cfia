@@ -9,13 +9,14 @@ sidebar_position: 1
 - **徐　明** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;清华大学
 
 ### 二、组员（按姓氏笔画排序）
+
 - **马逍天** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;山东大学  
 
 - **王洪涛** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同济大学  
 
-- **成　嘉** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;国家电投集团综合智慧能源有限公司 
+- **成　嘉** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;国家电投集团综合智慧能源有限公司
 
-- **华未未** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上海远景科创智能科技有限公司 
+- **华未未** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上海远景科创智能科技有限公司
 
 - **刘程曦** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;欣旺达电子股份有限公司  
 
