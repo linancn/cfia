@@ -12,47 +12,43 @@ LCA 数据包组成应规范且完整，以 ZIP 压缩包为形式分发，包�
 
 【必须】使用参考数据包，内含所有基本流及流属性等相关信息。
 
-【必须】各类数据的 XML 文件符合标准数据结构各项要求（见 6.1）。
+【必须】各类数据的 JSON 文件符合标准数据结构各项要求（见 6.1）。
 
 ### **联系人（contacts）**
 
-联系人（Contacts）文件，记录数据库内所有相关机构、人员等利益相关方的信息，以 XML 类型文件存储。
+联系人（Contacts）文件，记录数据库内所有相关机构、人员等利益相关方的信息，以 JSON 类型文件存储。
 
 ### **流（flows）**
 
-流（Flows）文件，包含基本流、产品流、废物流和其他流的文件，以 XML 类型文件存储。
+流（Flows）文件，包含基本流、产品流、废物流和其他流的文件，以 JSON 类型文件存储。
 
 ### **流属性（flow properties）**
 
-流属性（Flow Properties）文件，包含与流相关联的流属性的文件，以 XML 类型文件存储。
+流属性（Flow Properties）文件，包含与流相关联的流属性的文件，以 JSON 类型文件存储。
 
 ### **生命周期环境影响评价方法（lciamethods）**
 
-生命周期环境影响评价方法（LCIA Methods）文件，包含 EF 每个环境影响类别特征因子列表的文件，以 XML 类型文件存储。
+生命周期环境影响评价方法（LCIA Methods）文件，包含 EF 每个环境影响类别特征因子列表的文件，以 JSON 类型文件存储。
 
 ### **过程（processes）**
 
-过程（Processes）文件，以 XML 类型文件存储。
+过程（Processes）文件，以 JSON 类型文件存储。
 
 ### **来源（sources）**
 
-来源（Sources）文件，以 XML 类型文件存储。
+来源（Sources）文件，以 JSON 类型文件存储。
 
 ### **单位组（unitgroups）**
 
-单位组（Unit Groups）文件，包含从默认单位到其他单位的换算系数，以 XML 类型文件存储。
+单位组（Unit Groups）文件，包含从默认单位到其他单位的换算系数，以 JSON 类型文件存储。
 
 ### **生命周期建模（life cycle model）**
 
-生命周期建模（life cycle model）文件，以 XML 类型文件存储。
+生命周期建模（life cycle model）文件，以 JSON 类型文件存储。
 
 ### **外部文件（external_docs）**
 
-所有 XML 文件中引用的非 XML 类型文件，如 PDF 类型的报告文件、JPG 类型的图像文件等。
-
-### **数据包信息清单（META-INF）**
-
-META-INF 包含 MAINFEST.MF 文件，技术文档。
+所有文件中引用的外部文件，如 PDF 类型的报告文件、JPG 类型的图像文件等。
 
 ### **其它（Other）**
 
@@ -60,11 +56,7 @@ META-INF 包含 MAINFEST.MF 文件，技术文档。
 
 ### **架构文件（Schemas）**
 
-包含符合数据结构 XML 架构的 XSD 文件。
-
-### **样式表（Stylesheets）**
-
-样式表包含定义应用于 XML 数据样式的 XSL 文件。
+JSON Schema。
 
 ## **关键组成部分**
 
