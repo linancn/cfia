@@ -314,10 +314,10 @@
     "description": "The title of the tag list page"
   },
   "homepage.button1": {
-    "message": "开放知识中心"
+    "message": "📚　开放知识中心"
   },
   "homepage.button2": {
-    "message": "天工 LCA 数据平台"
+    "message": "🌐　天工 LCA 数据平台"
   },
   "homepage.tagline": {
     "message": "促进产业协同，推动技术创新，支撑国家战略"
