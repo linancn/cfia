@@ -90,6 +90,13 @@ h1, h2, h3, h4, h5, h6 {
 .footer__items {
   padding-left: 0;
 }
+
+.markdown img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
 /* You can override the default Infima variables here. */
 /* :root {
   --ifm-color-primary: #2e8555;
