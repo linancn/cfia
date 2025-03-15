@@ -13,6 +13,7 @@ sidebar_position: 4
 - 点击右上角的"Fork"按钮
 - 选择您的GitHub账户作为目标
 
+![Fork位置](../static/img/collaborative-community/git-fork.png)
 
 ## 2. 克隆仓库
 
@@ -22,6 +23,7 @@ git clone https://github.com/YOUR-USERNAME/cfia.git
 
 您可以根据您的情况选择HTTPS或者SSH。如果您使用SSH，您需要在您的GitHub账户中添加SSH密钥。
 
+![Clone位置](../static/img/collaborative-community/git-clone.png)
 
 ## 3. 进行修改
 
