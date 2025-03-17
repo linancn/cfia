@@ -142,7 +142,7 @@ const config: Config = {
             },
             {
               label: "tiangong-think-tank",
-              href: "http://www.tsinghua-riet.com/",
+              href: "http://www.tsinghua-riet.com/page/aicenter2/index.php",
             },
           ],
         },

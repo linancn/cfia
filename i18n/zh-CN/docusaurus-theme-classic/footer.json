@@ -21,7 +21,7 @@
   },
   "link.item.label.tiangong-think-tank": {
     "message": "天工智库中心",
-    "description": "The label of footer link with label=tiangong-think-tank linking to http://www.tsinghua-riet.com/"
+    "description": "The label of footer link with label=tiangong-think-tank linking to http://www.tsinghua-riet.com/page/aicenter2/index.php"
   },
   "link.item.label.cooperation-platform": {
     "message": "联合共创平台",
