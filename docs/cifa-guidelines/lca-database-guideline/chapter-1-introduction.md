@@ -17,7 +17,7 @@ sidebar_position: 2
 涉及的标准导则包括但不限于：
 
 - ISO 14040 / 14044 / 14064 / 14067 等国际标准
-- GB/T 24040-2008 / 24044-2028 / 43620-2023 / 24067-2024 等国家标准
+- GB/T 24040-2008 / 24044-2008 / 43620-2023 / 24067-2024 等国家标准
 - 联合国环境署全球生命周期评价数据库指导原则（Global Guidance Principles for Life Cycle Assessment Databases）
 - 欧盟国际生命周期数据系统（International Reference Life Cycle Data System， ILCD）系列指南
 - 欧盟环境足迹（Environmental Footprint v3.1）合规数据集导则
