@@ -219,7 +219,7 @@ JSON Schema。
 
 过程按行业或产品性质被分为 7 大类，66 小类，如表 1。
 
-【必须】单元过程和生命周期清单的分类必须基于已有分类体系（参考来源：[产品总分类（CPC）](docs/cifa-guidelines/lca-database-guideline/chapter-6appendix.md#####产品流分类）)选择。
+【必须】单元过程和生命周期清单的分类必须基于已有分类体系（参考来源：[产品总分类（CPC）](docs/cifa-guidelines/lca-database-guideline/chapter-6-appendix.md#####产品流分类）)选择。
 
 表 1 过程分类清单
 

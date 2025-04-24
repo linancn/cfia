@@ -94,6 +94,11 @@ const config: Config = {
           label: "open-knowledge-center",
         },
         {
+          to: "https://tidas.tiangong.earth/docs/intro",
+          label: "tidas",
+          position: "left",
+        },
+        {
           to: "https://lca.tiangong.earth",
           label: "tiangong-lca-data-platform",
           position: "left",

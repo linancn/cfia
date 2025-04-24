@@ -38,9 +38,15 @@ function HomepageHeader() {
           </Link>
           <Link
             className="button button--secondary button--lg"
+            to="https://tidas.tiangong.earth/docs/intro"
+          >
+            <Translate id="homepage.button2">天工LCA数据平台（TIDAS）</Translate>
+          </Link>
+          <Link
+            className="button button--secondary button--lg"
             href="https://lca.tiangong.earth"
           >
-            <Translate id="homepage.button2">天工 LCA 数据平台</Translate>
+            <Translate id="homepage.button3">天工 LCA 数据平台</Translate>
           </Link>
         </div>
       </div>

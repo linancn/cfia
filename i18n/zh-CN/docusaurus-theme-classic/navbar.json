@@ -11,6 +11,10 @@
     "message": "开放知识中心",
     "description": "Navbar item with label open-knowledge-center"
   },
+  "item.label.tidas": {
+    "message": "天工LCA数据系统（TIDAS）",
+    "description": "Navbar item with label tidas"
+  },
   "item.label.tiangong-lca-data-platform": {
     "message": "天工 LCA 数据平台",
     "description": "Navbar item with label tiangong-lca-data-platform"
