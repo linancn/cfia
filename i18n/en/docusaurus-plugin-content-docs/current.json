@@ -14,5 +14,9 @@
   "sidebar.tutorialSidebar.category.lca-database-guideline": {
     "message": "LCA Database Guideline",
     "description": "The label for category lca-database-guideline in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.tidas": {
+    "message": "tidas",
+    "description": "The label for category tidas in sidebar tutorialSidebar"
   }
 }

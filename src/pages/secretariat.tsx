@@ -36,9 +36,17 @@ function HomepageHeader() {
           </Link>
           <Link
             className="button button--secondary button--lg"
+            to="https://tidas.tiangong.earth/docs/intro"
+          >
+            <Translate id="homepage.button2">
+              天工LCA数据平台（TIDAS）
+            </Translate>
+          </Link>
+          <Link
+            className="button button--secondary button--lg"
             href="https://lca.tiangong.earth"
           >
-            <Translate id="homepage.button2">天工 LCA 数据平台</Translate>
+            <Translate id="homepage.button3">天工 LCA 数据平台</Translate>
           </Link>
         </div>
       </div>
@@ -60,7 +68,7 @@ export default function Home(): ReactNode {
       <main className={styles.customBackground}>
         <div className={styles.customBackgroundSection3}>
           <div className="container">
-          <p className={styles.heroSubtitle}>
+            <p className={styles.heroSubtitle}>
               <Translate id="homepage.sub-title-secretariat">秘书处</Translate>
             </p>
             <HomepageSecretariat />
@@ -68,7 +76,7 @@ export default function Home(): ReactNode {
         </div>
         <div className={styles.customBackgroundSection2}>
           <div className="container">
-          <p className={styles.heroSubtitle}>
+            <p className={styles.heroSubtitle}>
               <Translate id="homepage.sub-title-secretariat-general">
                 秘书长
               </Translate>

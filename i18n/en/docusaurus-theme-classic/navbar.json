@@ -26,5 +26,9 @@
   "item.label.联合共创平台": {
     "message": "联合共创平台",
     "description": "Navbar item with label 联合共创平台"
+  },
+  "item.label.tidas": {
+    "message": "tidas",
+    "description": "Navbar item with label tidas"
   }
 }

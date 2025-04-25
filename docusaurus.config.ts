@@ -125,17 +125,17 @@ const config: Config = {
           title: "open-source-ecosystem",
           items: [
             {
-              label: "tiangong-lca-data-platform",
-              href: "https://lca.tiangong.earth",
-            },
-            {
               label: "open-knowledge-center",
               to: "/docs/intro",
             },
-            // {
-            //   label: "Open-source LCA Data Structure",
-            //   to: "/docs/intro",
-            // },
+            {
+              label: "tidas",
+              to: "https://tidas.tiangong.earth/docs/intro",
+            },
+            {
+              label: "tiangong-lca-data-platform",
+              href: "https://lca.tiangong.earth",
+            },
           ],
         },
         {
