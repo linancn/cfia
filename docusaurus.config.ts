@@ -5,7 +5,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: "CFIA",
+  title: "CFA",
   tagline: "subtitle",
   favicon: "img/favicon.png",
 
@@ -17,8 +17,8 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "CFIA", // Usually your GitHub org/user name.
-  projectName: "CIFA", // Usually your repo name.
+  organizationName: "CFA", // Usually your GitHub org/user name.
+  projectName: "CFA", // Usually your repo name.
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -78,7 +78,7 @@ const config: Config = {
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
     navbar: {
-      title: "cifa",
+      title: "cfa",
       logo: {
         alt: "CIFA Logo",
         src: "img/logo.png",
@@ -88,6 +88,7 @@ const config: Config = {
           label: "organization-management",
           position: "left",
           items: [
+            { to: "/docs/category/cifa-files", label: "rules" },
             { to: "/board", label: "board" },
             { to: "/secretariat", label: "secretariat" },
           ],
@@ -111,6 +112,7 @@ const config: Config = {
             },
           ],
         },
+        { to: "/forum", label: "tian-gong-forum", position: "left" },
         {
           href: "https://github.com/linancn/cfia",
           label: "联合共创平台",

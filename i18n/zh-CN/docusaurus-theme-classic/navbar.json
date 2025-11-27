@@ -27,6 +27,10 @@
     "message": "秘书处",
     "description": "Navbar item with label secretariat"
   },
+  "item.label.rules": {
+    "message": "规章制度",
+    "description": "Navbar item with label rules"
+  },
   "item.label.organization-management": {
     "message": "组织管理",
     "description": "Navbar item with label organization-management"
@@ -34,6 +38,10 @@
   "item.label.alliance-open-source-system": {
     "message": "联盟开源体系",
     "description": "Navbar item with label alliance-open-source-system"
+  },
+  "item.label.tian-gong-forum": {
+    "message": "天工论坛",
+    "description": "Navbar item with label tian-gong-forum"
   },
   "item.label.联合共创平台": {
     "message": "联合共创平台",
