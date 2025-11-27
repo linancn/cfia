@@ -23,6 +23,14 @@
     "message": "secretariat",
     "description": "Navbar item with label secretariat"
   },
+  "item.label.organization-management": {
+    "message": "Organization Management",
+    "description": "Navbar item with label organization-management"
+  },
+  "item.label.alliance-open-source-system": {
+    "message": "Alliance Open Source System",
+    "description": "Navbar item with label alliance-open-source-system"
+  },
   "item.label.联合共创平台": {
     "message": "联合共创平台",
     "description": "Navbar item with label 联合共创平台"

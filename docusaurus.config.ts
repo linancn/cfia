@@ -84,24 +84,32 @@ const config: Config = {
         src: "img/logo.png",
       },
       items: [
-        // { to: "/blog", label: "News", position: "left" },
-        { to: "/board", label: "board", position: "left" },
-        { to: "/secretariat", label: "secretariat", position: "left" },
         {
-          type: "docSidebar",
-          sidebarId: "tutorialSidebar",
+          label: "organization-management",
           position: "left",
-          label: "open-knowledge-center",
+          items: [
+            { to: "/board", label: "board" },
+            { to: "/secretariat", label: "secretariat" },
+          ],
         },
         {
-          to: "https://tidas.tiangong.earth/docs/intro",
-          label: "tidas",
+          label: "alliance-open-source-system",
           position: "left",
-        },
-        {
-          to: "https://lca.tiangong.earth",
-          label: "tiangong-lca-data-platform",
-          position: "left",
+          items: [
+            {
+              type: "docSidebar",
+              sidebarId: "tutorialSidebar",
+              label: "open-knowledge-center",
+            },
+            {
+              to: "https://tidas.tiangong.earth/docs/intro",
+              label: "tidas",
+            },
+            {
+              to: "https://lca.tiangong.earth",
+              label: "tiangong-lca-data-platform",
+            },
+          ],
         },
         {
           href: "https://github.com/linancn/cfia",

@@ -27,6 +27,14 @@
     "message": "秘书处",
     "description": "Navbar item with label secretariat"
   },
+  "item.label.organization-management": {
+    "message": "组织管理",
+    "description": "Navbar item with label organization-management"
+  },
+  "item.label.alliance-open-source-system": {
+    "message": "联盟开源体系",
+    "description": "Navbar item with label alliance-open-source-system"
+  },
   "item.label.联合共创平台": {
     "message": "联合共创平台",
     "description": "Navbar item with label 联合共创平台"

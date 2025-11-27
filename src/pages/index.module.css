@@ -32,10 +32,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 .buttons>* {
-  margin: 0 2rem;
+  margin: 0;
+  min-width: 220px;
+}
+
+@media screen and (max-width: 640px) {
+  .buttons>* {
+    width: 100%;
+  }
 }
 
 .customBackground {
