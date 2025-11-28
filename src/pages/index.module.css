@@ -65,23 +65,24 @@
   background-color: #ffffff;
 }
 
-[data-theme='dark'] {
-  .customBackground {
-    background-color: var(--ifm-footer-background-color);
-  }
+[data-theme='dark'] .customBackground {
+  background:
+    radial-gradient(120% 90% at 20% 0%, rgba(126, 99, 225, 0.2), rgba(16, 10, 32, 0)),
+    linear-gradient(180deg, #1d1534 0%, #130e25 100%);
+  color: var(--ifm-font-color-base);
+}
 
-  .customBackgroundSection1 {
-    background-color: #E6E6E6;
-    color: black;
-  }
+[data-theme='dark'] .customBackgroundSection1 {
+  background: linear-gradient(150deg, rgba(194, 131, 255, 0.3), rgba(70, 48, 110, 0.75));
+  color: var(--ifm-font-color-base);
+}
 
-  .customBackgroundSection2 {
-    background-color: var(--ifm-footer-background-color);
-  }
+[data-theme='dark'] .customBackgroundSection2 {
+  background: linear-gradient(180deg, #1a1233 0%, #120d25 100%);
+  color: var(--ifm-font-color-base);
+}
 
-  .customBackgroundSection3 {
-    background-color: #ffffff;
-    color: black;
-  }
-
+[data-theme='dark'] .customBackgroundSection3 {
+  background: radial-gradient(85% 75% at 50% 0%, rgba(194, 131, 255, 0.25), rgba(27, 19, 46, 0.08)), #1a1434;
+  color: var(--ifm-font-color-base);
 }
