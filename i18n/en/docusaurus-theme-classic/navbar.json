@@ -1,10 +1,10 @@
 {
   "title": {
-    "message": "Carbon Footprint Industry Alliance",
+    "message": "Carbon Footprint Alliance",
     "description": "The title in the navbar"
   },
   "logo.alt": {
-    "message": "CIFA Logo",
+    "message": "CFA Logo",
     "description": "The alt text of navbar logo"
   },
   "item.label.open-knowledge-center": {
@@ -12,7 +12,7 @@
     "description": "Navbar item with label open-knowledge-center"
   },
   "item.label.tiangong-lca-data-platform": {
-    "message": "TianGong LCA Data Platform",
+    "message": "TianGong LCA Platform",
     "description": "Navbar item with label tiangong-lca-data-platform"
   },
   "item.label.board": {
@@ -20,19 +20,19 @@
     "description": "Navbar item with label board"
   },
   "item.label.secretariat": {
-    "message": "secretariat",
+    "message": "Secretariat",
     "description": "Navbar item with label secretariat"
   },
   "item.label.rules": {
-    "message": "Rules & Governance",
+    "message": "Rules",
     "description": "Navbar item with label rules"
   },
   "item.label.organization-management": {
-    "message": "Organization Management",
+    "message": "Governance",
     "description": "Navbar item with label organization-management"
   },
   "item.label.alliance-open-source-system": {
-    "message": "Alliance Open Source System",
+    "message": "Open Source System",
     "description": "Navbar item with label alliance-open-source-system"
   },
   "item.label.tian-gong-forum": {
@@ -40,11 +40,11 @@
     "description": "Navbar item with label tian-gong-forum"
   },
   "item.label.联合共创平台": {
-    "message": "联合共创平台",
+    "message": "Git Repo",
     "description": "Navbar item with label 联合共创平台"
   },
   "item.label.tidas": {
-    "message": "tidas",
+    "message": "TianGong LCA Data System (TIDAS)",
     "description": "Navbar item with label tidas"
   }
 }

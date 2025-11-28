@@ -311,13 +311,13 @@
     "description": "The title of the tag list page"
   },
   "homepage.title": {
-    "message": "Carbon Footprint Industry Alliance"
+    "message": "Carbon Footprint Alliance"
   },
   "homepage.button1": {
     "message": "Open Knowledge"
   },
   "homepage.button2": {
-    "message": "TianGong LCA Data Platform"
+    "message": "TianGong LCA Data System (TIDAS)"
   },
   "homepage.tagline": {
     "message": "Cooperation, Innovation, and Openness"
@@ -454,436 +454,568 @@
     "description": "The placeholder of the input of the DocSearch pop-up modal"
   },
   "web-title": {
-    "message": "Carbon Footprint Industry Alliance",
+    "message": "Carbon Footprint Alliance",
     "description": "The title of the website"
   },
   "homepage.chair": {
-    "message": "徐明"
+    "message": "Prof. Kebin He"
   },
   "homepage.chair-introduction": {
-    "message": "清华大学碳中和讲席教授，环境学院副院长"
+    "message": "Member, Chinese Academy of Engineering\nDean, Institute for Carbon Neutrality, Tsinghua University\nProfessor, School of Environment, Tsinghua University"
   },
   "homepage.sub-title-chair-unit": {
-    "message": "理事长单位"
+    "message": "Chair Organization"
   },
   "homepage.sub-title-vice-chair-unit": {
-    "message": "副理事长单位"
+    "message": "Vice Chair Organizations"
   },
   "homepage.sub-title-member-unit": {
-    "message": "会员单位"
+    "message": "Member Organizations"
   },
   "homepage.sub-title-chair": {
-    "message": "理事长"
+    "message": "Chair"
   },
   "homepage.sub-title-vice-chair": {
-    "message": "副理事长"
+    "message": "Vice Chairs"
   },
   "homepage.sub-title-secretariat": {
-    "message": "秘书处"
+    "message": "Secretariat"
   },
   "homepage.sub-title-secretariat-general": {
-    "message": "秘书长"
+    "message": "Secretary-General"
   },
   "homepage.sub-title-vice-secretariat-general": {
-    "message": "副秘书长"
+    "message": "Deputy Secretary-General"
   },
   "homepage.secretariat-general": {
-    "message": "徐明"
+    "message": "Xu Ming"
   },
   "homepage.secretariat-general-introduction": {
-    "message": "清华大学碳中和讲席教授，环境学院副院长"
+    "message": "Professor of Carbon Neutrality, Tsinghua University\nAssociate Dean, School of Environment, Tsinghua University"
   },
   "homepage.sub-title-board-member": {
-    "message": "理事"
+    "message": "Board Members"
   },
   "vice-chair.wh": {
-    "message": "王海"
+    "message": "Wang Hai"
   },
   "vice-chair.wh-desc": {
-    "message": "中国中煤能源集团有限公司首席专家"
+    "message": "Chief Expert, China National Coal Group"
   },
   "vice-chair.wzw": {
-    "message": "王志伟"
+    "message": "Wang Zhiwei"
   },
   "vice-chair.wzw-desc": {
-    "message": "同济大学环境科学与工程学院院长，教授"
+    "message": "Dean and Professor, School of Environmental Science and Engineering, Tongji University"
   },
   "vice-chair.wjx": {
-    "message": "吴建雄"
+    "message": "Wu Jianxiong"
   },
   "vice-chair.wjx-desc": {
-    "message": "上海数据集团有限公司董事长"
+    "message": "Chairman, Shanghai Data Group"
   },
   "vice-chair.sl": {
-    "message": "石磊"
+    "message": "Shi Lei"
   },
   "vice-chair.sl-desc": {
-    "message": "南昌大学资源与环境学院院长，流域碳中和研究院院长，特聘教授"
+    "message": "Dean, School of Resources and Environment, Nanchang University; Director, Basin Carbon Neutrality Institute; Distinguished Professor"
   },
   "vice-chair.tyj": {
-    "message": "田亚峻"
+    "message": "Tian Yajun"
   },
   "vice-chair.tyj-desc": {
-    "message": "中国科学院青岛生物能源与过程研究所泛能源大数据与战略研究中心主任"
+    "message": "Director, Big Data and Strategy Center, CAS Qingdao Institute of Bioenergy and Bioprocess Technology"
   },
   "vice-chair.lzz": {
-    "message": "兰珍珍"
+    "message": "Lan Zhenzhen"
   },
   "vice-chair.lzz-desc": {
-    "message": "欧莱雅北亚及中国公共事务总裁"
+    "message": "President of Public Affairs, L'Oreal North Asia and China"
   },
   "vice-chair.lm": {
-    "message": "刘猛"
+    "message": "Liu Meng"
   },
   "vice-chair.lm-desc": {
-    "message": "大连理工大学环境学院院长，教授"
+    "message": "Dean and Professor, School of Environment, Dalian University of Technology"
   },
   "vice-chair.sj": {
-    "message": "孙捷"
+    "message": "Sun Jie"
   },
   "vice-chair.sj-desc": {
-    "message": "远景科技集团首席可持续发展官，远景智能副总裁"
+    "message": "Chief Sustainability Officer, Envision Group; Vice President, Envision Digital"
   },
   "vice-chair.yg": {
-    "message": "严刚"
+    "message": "Yan Gang"
   },
   "vice-chair.yg-desc": {
-    "message": "生态环境部环境规划院副院长，研究员"
+    "message": "Deputy Director, Chinese Academy for Environmental Planning"
   },
   "vice-chair.lr": {
-    "message": "梁锐"
+    "message": "Liang Rui"
   },
   "vice-chair.lr-desc": {
-    "message": "欣旺达电子股份有限公司副总裁兼首席可持续发展官"
+    "message": "Vice President and Chief Sustainability Officer, Sunwoda Electronic"
   },
   "vice-chair.lzh": {
-    "message": "李振华"
+    "message": "Li Zhenhua"
   },
   "vice-chair.lzh-desc": {
-    "message": "蚂蚁科技集团股份有限公司集团研究院院长"
+    "message": "Head, Research Institute, Ant Group"
   },
   "vice-chair.ygd": {
-    "message": "杨国栋"
+    "message": "Yang Guodong"
   },
   "vice-chair.ygd-desc": {
-    "message": "中国物流与采购联合会副会长"
+    "message": "Vice President, China Federation of Logistics and Purchasing"
   },
   "vice-chair.zb": {
-    "message": "张波"
+    "message": "Zhang Bo"
   },
   "vice-chair.zb-desc": {
-    "message": "中信控股有限责任公司执行董事兼总经理"
+    "message": "Executive Director and General Manager, CITIC Holdings"
   },
   "vice-chair.zmh": {
-    "message": "张孟衡"
+    "message": "Zhang Mengheng"
   },
   "vice-chair.zmh-desc": {
-    "message": "中国环境科学研究院总工程师"
+    "message": "Chief Engineer, Chinese Research Academy of Environmental Sciences"
   },
   "vice-chair.dyb": {
-    "message": "党彦宝"
+    "message": "Dang Yanbao"
   },
   "vice-chair.dyb-desc": {
-    "message": "宁夏宝丰集团有限公司董事长"
+    "message": "Chairman, Ningxia Baofeng Group"
   },
   "vice-chair.xm": {
-    "message": "徐明"
+    "message": "Xu Ming"
   },
   "vice-chair.xm-desc": {
-    "message": "清华大学碳中和讲席教授，环境学院副院长"
+    "message": "Professor of Carbon Neutrality and Associate Dean, School of Environment, Tsinghua University"
   },
   "vice-chair.xzy": {
-    "message": "徐智煜"
+    "message": "Xu Zhiyu"
   },
   "vice-chair.xzy-desc": {
-    "message": "荣耀终端股份有限公司高级副总裁"
+    "message": "Senior Vice President, Honor Device Co., Ltd."
   },
   "vice-chair.cy": {
-    "message": "常远"
+    "message": "Chang Yuan"
   },
   "vice-chair.cy-desc": {
-    "message": "耐克体育（中国）有限公司副总裁"
+    "message": "Vice President, Nike China"
   },
   "vice-chair.jl": {
-    "message": "蒋理"
+    "message": "Jiang Li"
   },
   "vice-chair.jl-desc": {
-    "message": "宁德时代新能源科技股份有限公司副总经理兼董事会秘书，可持续发展委员会主席"
+    "message": "Deputy General Manager and Board Secretary, CATL; Chair, Sustainability Committee"
   },
   "vice-chair.cyq": {
-    "message": "蔡永强"
+    "message": "Cai Yongqiang"
   },
   "vice-chair.cyq-desc": {
-    "message": "华能长江环保科技公司董事长"
+    "message": "Chairman, Huaneng Yangtze Environmental Protection Technology"
   },
   "vice-secgeneral.wyt": {
-    "message": "王玉涛"
+    "message": "Wang Yutao"
   },
   "vice-secgeneral.wyt-desc": {
-    "message": "复旦大学环境与工程系教授, 上海能源与碳中和战略研究院副院长"
+    "message": "Professor, Fudan University; Deputy Director, Shanghai Institute for Energy and Carbon Neutrality Strategy"
   },
   "vice-secgeneral.wsw": {
-    "message": "王姝文"
+    "message": "Wang Shuwen"
   },
   "vice-secgeneral.wsw-desc": {
-    "message": "中信集团中信控股公司, 首席战略官、战略管理部总经理"
+    "message": "Chief Strategy Officer and General Manager of Strategy Management, CITIC Holdings"
   },
   "vice-secgeneral.wzs": {
-    "message": "王稚晟"
+    "message": "Wang Zhisheng"
   },
   "vice-secgeneral.wzs-desc": {
-    "message": "欧盟中国商会副会长, 中国欧盟协会理事, 中国碳中和五十人论坛秘书长"
+    "message": "Vice President, China Chamber of Commerce to the EU; Council Member, China-EU Association; Secretary-General, China Carbon Neutrality 50 Forum"
   },
   "vice-secgeneral.tjp": {
-    "message": "田金平"
+    "message": "Tian Jinping"
   },
   "vice-secgeneral.tjp-desc": {
-    "message": "清华大学环境学院研究员"
+    "message": "Researcher, School of Environment, Tsinghua University"
   },
   "vice-secgeneral.qjc": {
-    "message": "齐剑川"
+    "message": "Qi Jianchuan"
   },
   "vice-secgeneral.qjc-desc": {
-    "message": "清华大学环境学院助理研究员"
+    "message": "Assistant Researcher, School of Environment, Tsinghua University"
   },
   "vice-secgeneral.lzy": {
-    "message": "李中阳"
+    "message": "Li Zhongyang"
   },
   "vice-secgeneral.lzy-desc": {
-    "message": "清华大学天津电子信息研究院能源电子中心主任"
+    "message": "Director, Energy Electronics Center, Tsinghua Institute of Electronics (Tianjin)"
   },
   "vice-secgeneral.ql": {
-    "message": "邱林"
+    "message": "Qiu Lin"
   },
   "vice-secgeneral.ql-desc": {
-    "message": "远景智能零碳卓越中心全球负责人"
+    "message": "Global Head, Zero-Carbon Excellence Center, Envision Digital"
   },
   "vice-secgeneral.cwq": {
-    "message": "陈伟强"
+    "message": "Chen Weiqiang"
   },
   "vice-secgeneral.cwq-desc": {
-    "message": "中国科学院城市环境研究所研究员"
+    "message": "Researcher, Institute of Urban Environment, Chinese Academy of Sciences"
   },
   "vice-secgeneral.sz": {
-    "message": "施正"
+    "message": "Shi Zheng"
   },
   "vice-secgeneral.sz-desc": {
-    "message": "北京两区办开放政策研究院研究员"
+    "message": "Researcher, Beijing Dual-Zone Policy Research Institute"
   },
   "member.gjdwyxgsdsjzx": {
-    "message": "国家电网有限公司大数据中心"
+    "message": "State Grid Big Data Center"
   },
   "member.zshsyhkyjyxgs": {
-    "message": "中石化石油化工科学研究院有限公司"
+    "message": "Sinopec Research Institute of Petroleum and Petrochemicals"
   },
   "member.wkxnyclhngfyxgs": {
-    "message": "五矿新能源材料（湖南）股份有限公司"
+    "message": "Minmetals New Energy Materials (Hunan) Co., Ltd."
   },
   "member.zjtkjyxgs": {
-    "message": "中建碳科技有限公司"
+    "message": "China State Construction Carbon Technology Co., Ltd."
   },
   "member.zczzdljcysyxgs": {
-    "message": "中车株洲电力机车研究所有限公司"
+    "message": "CRRC Zhuzhou Electric Locomotive Research Institute Co., Ltd."
   },
   "member.zjclkxyjyxgs": {
-    "message": "中国建筑材料科学研究总院有限公司"
+    "message": "China Building Materials Academy Co., Ltd."
   },
   "member.zhxydkjyxgs": {
-    "message": "中航信移动科技有限公司"
+    "message": "China Aviation Information Mobile Technology Co., Ltd."
   },
   "member.snddqzgyxgsshyffgs": {
-    "message": "施耐德电气（中国）有限公司上海研发分公司"
+    "message": "Schneider Electric (China) Shanghai R&D Branch"
   },
   "member.zhjjnyjsxh": {
-    "message": "中国化工节能技术协会"
+    "message": "China Chemical Energy Conservation Technology Association"
   },
   "board-member.dn": {
-    "message": "丁宁"
+    "message": "Ding Ning"
   },
   "board-member.dn-desc": {
-    "message": "中国科学院生态环境研究中心副研究员"
+    "message": "Associate Researcher, Research Center for Eco-Environmental Sciences, CAS"
   },
   "board-member.wyt": {
-    "message": "王玉涛"
+    "message": "Wang Yutao"
   },
   "board-member.wyt-desc": {
-    "message": "复旦大学环境科学与工程系教授，上海能源与碳中和战略研究院副院长"
+    "message": "Professor, Fudan University; Deputy Director, Shanghai Institute for Energy and Carbon Neutrality Strategy"
   },
   "board-member.whm": {
-    "message": "王鹤鸣"
+    "message": "Wang Heming"
   },
   "board-member.whm-desc": {
-    "message": "东北大学冶金学院教授"
+    "message": "Professor, School of Metallurgy, Northeastern University"
   },
   "board-member.fk": {
-    "message": "方恺"
+    "message": "Fang Kai"
   },
   "board-member.fk-desc": {
-    "message": "浙江大学公共管理学院长聘教授，国家高端智库副主任"
+    "message": "Tenured Professor, School of Public Administration, Zhejiang University; Deputy Director, National High-End Think Tank"
   },
   "board-member.lh": {
-    "message": "刘华"
+    "message": "Liu Hua"
   },
   "board-member.lh-desc": {
-    "message": "中国华电集团有限公司市场营销部副总监"
+    "message": "Deputy Director, Marketing Department, China Huadian Corporation"
   },
   "board-member.lgy": {
-    "message": "刘耕源"
+    "message": "Liu Gengyuan"
   },
   "board-member.lgy-desc": {
-    "message": "北京师范大学环境学院副院长，教授"
+    "message": "Associate Dean and Professor, School of Environment, Beijing Normal University"
   },
   "board-member.sy": {
-    "message": "孙悦"
+    "message": "Sun Yue"
   },
   "board-member.sy-desc": {
-    "message": "北京金风零碳能源有限公司副总经理"
+    "message": "Deputy General Manager, Beijing Goldwind Zero-Carbon Energy"
   },
   "board-member.sl2": {
-    "message": "孙露"
+    "message": "Sun Lu"
   },
   "board-member.sl2-desc": {
-    "message": "西安交通大学人居环境与建筑工程学院副教授"
+    "message": "Associate Professor, School of Human Settlements and Civil Engineering, Xi'an Jiaotong University"
   },
   "board-member.lsb": {
-    "message": "李少斌"
+    "message": "Li Shaobin"
   },
   "board-member.lsb-desc": {
-    "message": "厦门大学环境与生态学院副教授"
+    "message": "Associate Professor, College of Environment and Ecology, Xiamen University"
   },
   "board-member.ljs": {
-    "message": "李佳硕"
+    "message": "Li Jiashuo"
   },
   "board-member.ljs-desc": {
-    "message": "山东大学威海前沿交叉科学研究院教授"
+    "message": "Professor, Frontier Interdisciplinary Sciences Institute, Shandong University (Weihai)"
   },
   "board-member.xzx": {
-    "message": "肖忠湘"
+    "message": "Xiao Zhongxiang"
   },
   "board-member.xzx-desc": {
-    "message": "惠州亿纬锂能股份有限公司ESG双碳部总经理"
+    "message": "General Manager, ESG Dual-Carbon Department, EVE Energy"
   },
   "board-member.wy": {
-    "message": "吴莹"
+    "message": "Wu Ying"
   },
   "board-member.wy-desc": {
-    "message": "隆基绿能科技股份有限公司中国地区部副总裁"
+    "message": "Vice President, China Region, LONGi Green Energy"
   },
   "board-member.sjn": {
-    "message": "宋俊年"
+    "message": "Song Junnian"
   },
   "board-member.sjn-desc": {
-    "message": "吉林大学新能源与环境学院教授"
+    "message": "Professor, College of New Energy and Environment, Jilin University"
   },
   "board-member.zyl": {
-    "message": "张玉莲"
+    "message": "Zhang Yulian"
   },
   "board-member.zyl-desc": {
-    "message": "梅赛德斯—奔驰（中国）投资有限公司产品可持续发展高级经理"
+    "message": "Senior Manager, Product Sustainability, Mercedes-Benz (China)"
   },
   "board-member.cy": {
-    "message": "陈一"
+    "message": "Chen Yi"
   },
   "board-member.cy-desc": {
-    "message": "重庆大学环境与生态学院副院长，教授"
+    "message": "Associate Dean and Professor, School of Environment and Ecology, Chongqing University"
   },
   "board-member.ct": {
-    "message": "陈坦"
+    "message": "Chen Tan"
   },
   "board-member.ct-desc": {
-    "message": "中央民族大学生命与环境科学学院副院长，副教授"
+    "message": "Associate Dean and Associate Professor, College of Life and Environmental Sciences, Minzu University of China"
   },
   "board-member.ct2": {
-    "message": "陈霆"
+    "message": "Chen Ting"
   },
   "board-member.ct2-desc": {
-    "message": "小米通讯技术有限公司总监"
+    "message": "Director, Xiaomi Communications Technology Co., Ltd."
   },
   "board-member.cwq": {
-    "message": "陈伟强"
+    "message": "Chen Weiqiang"
   },
   "board-member.cwq-desc": {
-    "message": "中国科学院城市环境研究所研究员"
+    "message": "Researcher, Institute of Urban Environment, Chinese Academy of Sciences"
   },
   "board-member.wyb": {
-    "message": "武延兵"
+    "message": "Wu Yanbing"
   },
   "board-member.wyb-desc": {
-    "message": "京东方科技集团股份有限公司MNT SBU副总经理"
+    "message": "Deputy General Manager, MNT SBU, BOE Technology Group"
   },
   "board-member.my": {
-    "message": "孟毅"
+    "message": "Meng Yi"
   },
   "board-member.my-desc": {
-    "message": "内蒙古伊利实业集团股份有限公司低碳发展总监"
+    "message": "Director of Low-Carbon Development, Yili Group"
   },
   "board-member.mdh": {
-    "message": "孟大海"
+    "message": "Meng Dahai"
   },
   "board-member.mdh-desc": {
-    "message": "蔚来控股有限公司产品环保及可持续团队负责人，总监"
+    "message": "Director, Product Environmental and Sustainability Team, NIO Holdings"
   },
   "board-member.dhb": {
-    "message": "段华波"
+    "message": "Duan Huabo"
   },
   "board-member.dhb-desc": {
-    "message": "华中科技大学环境科学与工程学院副教授"
+    "message": "Associate Professor, School of Environmental Science and Engineering, Huazhong University of Science and Technology"
   },
   "board-member.yss": {
-    "message": "袁闪闪"
+    "message": "Yuan Shanshan"
   },
   "board-member.yss-desc": {
-    "message": "中国建筑科学研究院有限公司建科环境科技有限公司副总经理"
+    "message": "Deputy General Manager, CCEED, China Academy of Building Research"
   },
   "board-member.xcq": {
-    "message": "徐常青"
+    "message": "Xu Changqing"
   },
   "board-member.xcq-desc": {
-    "message": "北京理工大学经济学院副教授"
+    "message": "Associate Professor, School of Economics, Beijing Institute of Technology"
   },
   "board-member.cz": {
-    "message": "曹植"
+    "message": "Cao Zhi"
   },
   "board-member.cz-desc": {
-    "message": "南开大学环境科学与工程学院教授"
+    "message": "Professor, School of Environmental Science and Engineering, Nankai University"
   },
   "board-member.gxz": {
-    "message": "龚先政"
+    "message": "Gong Xianzheng"
   },
   "board-member.gxz-desc": {
-    "message": "北京工业大学材料学院教授"
+    "message": "Professor, School of Materials, Beijing University of Technology"
   },
   "board-member.czj": {
-    "message": "程占军"
+    "message": "Cheng Zhanjun"
   },
   "board-member.czj-desc": {
-    "message": "天津大学环境科学与工程学院副院长，教授"
+    "message": "Associate Dean and Professor, School of Environmental Science and Engineering, Tianjin University"
   },
   "board-member.dy": {
-    "message": "窦燕"
+    "message": "Dou Yan"
   },
   "board-member.dy-desc": {
-    "message": "TCL华星光电技术有限公司副总裁"
+    "message": "Vice President, TCL China Star Optoelectronics"
   },
   "board-member.xdq": {
-    "message": "薛丁琪"
+    "message": "Xue Dingqi"
   },
   "board-member.xdq-desc": {
-    "message": "中联重科股份有限公司焊接技术研究所所长"
+    "message": "Director, Welding Technology Institute, Zoomlion Heavy Industry"
   },
   "vice-chair.wjx2": {
-    "message": "王建新"
+    "message": "Wang Jianxin"
   },
   "vice-chair.wjx2-desc": {
-    "message": "中国电池工业协会副会长"
+    "message": "Vice President, China Battery Industry Association"
   },
   "vice-chair.lr2": {
-    "message": "李然"
+    "message": "Li Ran"
   },
   "vice-chair.lr2-desc": {
-    "message": "阿里集团副总裁、淘天集团副总裁、阿里资产总裁"
+    "message": "Vice President, Alibaba Group; Vice President, Taotian Group; President, Alibaba Assets"
   },
   "homepage.button3": {
-    "message": "天工 LCA 数据平台"
+    "message": "TianGong LCA Platform"
+  },
+  "forum.cta.upcoming": {
+    "message": "This Year's Agenda"
+  },
+  "forum.cta.highlights": {
+    "message": "Past Highlights"
+  },
+  "forum.section.highlights": {
+    "message": "Past Highlights"
+  },
+  "forum.section.highlights.desc": {
+    "message": "A quick recap of previous TianGong Forum."
+  },
+  "forum.page.title": {
+    "message": "TianGong Forum"
+  },
+  "forum.page.description": {
+    "message": "TianGong Forum: the Alliance's flagship international conference"
+  },
+  "forum.currentEdition.title": {
+    "message": "2026 · TianGong Forum"
+  },
+  "forum.currentEdition.theme": {
+    "message": "Global Interconnection, Interoperability, and Mutual Trust for LCA and Carbon Footprint Systems"
+  },
+  "forum.currentEdition.date": {
+    "message": "March 25-26, 2026 · Nanjing, Jiangsu, China"
+  },
+  "forum.modules.generalAssembly.title": {
+    "message": "Alliance General Assembly"
+  },
+  "forum.modules.generalAssembly.note": {
+    "message": "Review annual work and set plans."
+  },
+  "forum.modules.developerConference.title": {
+    "message": "LCA Developer Conference"
+  },
+  "forum.modules.developerConference.note": {
+    "message": "Cutting-edge LCA toolchains, data ecosystem."
+  },
+  "forum.modules.subForums.title": {
+    "message": "Parallel Forums"
+  },
+  "forum.modules.subForums.note": {
+    "message": "Forums on specialized topics."
+  },
+  "forum.modules.specialEvents.title": {
+    "message": "Special Events"
+  },
+  "forum.modules.specialEvents.note": {
+    "message": "Open/Closed-door roundtables, workshops, and special events."
+  },
+  "forum.section.mainActivities": {
+    "message": "Key Activities"
+  },
+  "forum.section.mainActivities.desc": {
+    "message": "Agenda will keep updating."
+  },
+  "forum.section.coCreation": {
+    "message": "Join the Forum"
+  },
+  "forum.section.coCreation.desc": {
+    "message": "Build an interconnected LCA and carbon footprint ecosystem with the LCA community."
+  },
+  "forum.coop.hosting.title": {
+    "message": "Parallel forum organization"
+  },
+  "forum.coop.hosting.desc": {
+    "message": "Let's plan and organize together."
+  },
+  "forum.coop.specialEvents.title": {
+    "message": "Special Events"
+  },
+  "forum.coop.specialEvents.desc": {
+    "message": "Let's think of something exciting."
+  },
+  "forum.coop.sponsorship.title": {
+    "message": "Sponsorship"
+  },
+  "forum.coop.sponsorship.desc": {
+    "message": "Tiered brand exposure and media amplification."
+  },
+  "forum.coop.media.title": {
+    "message": "Media & Outreach"
+  },
+  "forum.coop.media.desc": {
+    "message": "Co-build the publicity matrix and share channels and resources."
+  },
+  "forum.section.sponsors": {
+    "message": "Partners"
+  },
+  "forum.section.sponsors.desc": {
+    "message": "Get in touch with the us for partnerships and sponsorship opportunities."
+  },
+  "forum.sponsor.efChina": {
+    "message": "Energy Foundation"
+  },
+  "forum.highlights.2025.date": {
+    "message": "2025"
+  },
+  "forum.highlights.2025.title": {
+    "message": "Established the Carbon Footprint Alliance"
+  },
+  "forum.highlights.2025.focus": {
+    "message": "January 2025 · Beijing"
+  },
+  "forum.highlights.2025.tag.allianceLaunch": {
+    "message": "Alliance Launch"
+  },
+  "forum.highlights.2025.tag.industryCoBuild": {
+    "message": "Cooperation and coordination"
+  },
+  "forum.highlights.2025.theme": {
+    "message": "Collaboration to build a product carbon footprint system"
+  },
+  "forum.highlights.2023.date": {
+    "message": "2023"
+  },
+  "forum.highlights.2023.title": {
+    "message": "Released the TianGong Database"
+  },
+  "forum.highlights.2023.focus": {
+    "message": "November 2023 · Beijing"
+  },
+  "forum.highlights.2023.tag.database": {
+    "message": "Database"
+  },
+  "forum.highlights.2023.tag.openTransparent": {
+    "message": "Open & Transparent"
+  },
+  "forum.highlights.2023.theme": {
+    "message": "Launched the collaborative research initiative and the open LCA database."
   }
 }

@@ -18,7 +18,7 @@ function Feature({ img }: FeatureItem) {
   return (
     <div className={clsx("col col")}>
       <div className="text--center">
-      <img className={styles.featureSvg} src={img} role="img" />
+        <img className={styles.featureSvg} src={img} role="img" />
       </div>
     </div>
   );

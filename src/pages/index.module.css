@@ -54,7 +54,7 @@
 }
 
 .customBackgroundSection1 {
-  background-color: #ffffff;
+  background-color: #f8f9fa;
 }
 
 .customBackgroundSection2 {
@@ -62,7 +62,16 @@
 }
 
 .customBackgroundSection3 {
-  background-color: #ffffff;
+  background-color: #f8f9fa;
+}
+
+.logoPanel {
+  background: #f6f7fb;
+  border: 1px solid #e3e9f2;
+  border-radius: 18px;
+  padding: 1.5rem 1.25rem;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+  margin: 1rem 0 2rem;
 }
 
 [data-theme='dark'] .customBackground {
@@ -72,8 +81,26 @@
   color: var(--ifm-font-color-base);
 }
 
+[data-theme='dark'] .logoPanel {
+  background: #f6f7fb;
+  border: 1px solid #e3e9f2;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.logoPanelSecretariat {
+  background: #ffffff;
+  border: 1px solid #e3e9f2;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+[data-theme='dark'] .logoPanelSecretariat {
+  background: #ffffff;
+  border: 1px solid #e3e9f2;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+}
+
 [data-theme='dark'] .customBackgroundSection1 {
-  background: linear-gradient(150deg, rgba(194, 131, 255, 0.3), rgba(70, 48, 110, 0.75));
+  background: linear-gradient(180deg, #1a1233 0%, #120d25 100%);
   color: var(--ifm-font-color-base);
 }
 
@@ -83,6 +110,6 @@
 }
 
 [data-theme='dark'] .customBackgroundSection3 {
-  background: radial-gradient(85% 75% at 50% 0%, rgba(194, 131, 255, 0.25), rgba(27, 19, 46, 0.08)), #1a1434;
+  background: linear-gradient(180deg, #1a1233 0%, #120d25 100%);
   color: var(--ifm-font-color-base);
 }

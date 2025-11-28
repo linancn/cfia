@@ -29,6 +29,10 @@ const config: Config = {
   i18n: {
     defaultLocale: "zh-CN",
     locales: ["zh-CN", "en"],
+    localeConfigs: {
+      "zh-CN": { label: "中文" },
+      en: { label: "English" },
+    },
   },
 
   presets: [
@@ -114,15 +118,16 @@ const config: Config = {
         },
         { to: "/forum", label: "tian-gong-forum", position: "left" },
         {
+          type: "custom-docs-only",
           href: "https://github.com/linancn/cfia",
           label: "联合共创平台",
           // className: "header-github-link",
           position: "right",
         },
-        // {
-        //   type: 'localeDropdown',
-        //   position: 'right',
-        // },
+        {
+          type: "localeDropdown",
+          position: "right",
+        },
       ],
     },
     tableOfContents: {

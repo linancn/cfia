@@ -69,31 +69,35 @@ export default function Home(): ReactNode {
         <div className={styles.customBackgroundSection1}>
           <div className="container">
             <p className={styles.heroSubtitle}>
-              <Translate id="homepage.sub-title-chair-unit">
-                理事长单位
-              </Translate>
-            </p>
-            <HomepageChairUnit />
-            <p className={styles.heroSubtitle}>
-              <Translate id="homepage.sub-title-vice-chair-unit">
-                副理事长单位
-              </Translate>
-            </p>
-            <HomepageViceChairUnit />
-            <p className={styles.heroSubtitle}>
-              <Translate id="homepage.sub-title-member-unit">
-                会员单位
-              </Translate>
+          <Translate id="homepage.sub-title-chair-unit">
+            理事长单位
+          </Translate>
+        </p>
+        <div className={styles.logoPanel}>
+          <HomepageChairUnit />
+        </div>
+        <p className={styles.heroSubtitle}>
+          <Translate id="homepage.sub-title-vice-chair-unit">
+            副理事长单位
+          </Translate>
+        </p>
+        <div className={styles.logoPanel}>
+          <HomepageViceChairUnit />
+        </div>
+        <p className={styles.heroSubtitle}>
+          <Translate id="homepage.sub-title-member-unit">
+            会员单位
+          </Translate>
             </p>
             <HomepageMemberUnit />
           </div>
         </div>
         <div className={styles.customBackgroundSection2}>
-          <div className="container">
-          <p className={styles.heroSubtitle}>
-              <Translate id="homepage.sub-title-chair">理事长</Translate>
-            </p>
-            <HomepageChair />
+        <div className="container">
+        <p className={styles.heroSubtitle}>
+            <Translate id="homepage.sub-title-chair">理事长</Translate>
+          </p>
+          <HomepageChair />
             <p className={styles.heroSubtitle}>
               <Translate id="homepage.sub-title-vice-chair">副理事长</Translate>
             </p>
@@ -101,11 +105,13 @@ export default function Home(): ReactNode {
           </div>
         </div>
         <div className={styles.customBackgroundSection3}>
-          <div className="container">
-          <p className={styles.heroSubtitle}>
-              <Translate id="homepage.sub-title-secretariat">秘书处</Translate>
-            </p>
-            <HomepageSecretariat />
+        <div className="container">
+        <p className={styles.heroSubtitle}>
+          <Translate id="homepage.sub-title-secretariat">秘书处</Translate>
+          </p>
+            <div className={clsx(styles.logoPanel, styles.logoPanelSecretariat)}>
+              <HomepageSecretariat />
+            </div>
             <p className={styles.heroSubtitle}>
               <Translate id="homepage.sub-title-secretariat-general">
                 秘书长

@@ -32,7 +32,7 @@ function Feature({ title, img, description }: FeatureItem) {
       </div>
       <div className="text--center padding-horiz--md">
         <Heading as="h5">{title}</Heading>
-        <p>{description}</p>
+        <p className={styles.description}>{description}</p>
       </div>
     </div>
   );
