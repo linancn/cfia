@@ -393,8 +393,29 @@ export default function Forum(): ReactNode {
             <div className={styles.sponsorGrid}>
               <div className={clsx(styles.card, styles.sponsorCard)}>
                 <img
-                  src="img/tg-forum/partner-logo/EF_China_logo.png"
+                  src="img/tg-forum/partner-logo/CNEST.png"
+                  alt={translate({ id: "forum.sponsor.cnest", message: "CNEST" })}
+                  className={styles.sponsorLogo}
+                />
+              </div>
+              <div className={clsx(styles.card, styles.sponsorCard)}>
+                <img
+                  src="img/tg-forum/partner-logo/dcv.png"
+                  alt={translate({ id: "forum.sponsor.dcv", message: "国际数碳谷" })}
+                  className={styles.sponsorLogo}
+                />
+              </div>
+              <div className={clsx(styles.card, styles.sponsorCard)}>
+                <img
+                  src="img/tg-forum/partner-logo/EF_China.png"
                   alt={translate({ id: "forum.sponsor.efChina", message: "能源基金会" })}
+                  className={styles.sponsorLogo}
+                />
+              </div>
+              <div className={clsx(styles.card, styles.sponsorCard)}>
+                <img
+                  src="img/tg-forum/partner-logo/ijmcccn.png"
+                  alt={translate({ id: "forum.sponsor.ijmcccn", message: "ijmcccn" })}
                   className={styles.sponsorLogo}
                 />
               </div>

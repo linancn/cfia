@@ -354,7 +354,7 @@
 .sponsorGrid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .sponsorCard {
@@ -365,7 +365,7 @@
 }
 
 .sponsorLogo {
-  height: 120px;
+  height: 150px;
   width: auto;
   max-width: 100%;
   object-fit: contain;
@@ -442,5 +442,19 @@
 
   .heroSubtitle {
     font-size: 1.05rem;
+  }
+
+  .sponsorGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sponsorCard {
+    min-height: 160px;
+  }
+}
+
+@media (max-width: 520px) {
+  .sponsorGrid {
+    grid-template-columns: 1fr;
   }
 }
