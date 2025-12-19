@@ -6,8 +6,8 @@ import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
   title: "CFA",
-  tagline: "subtitle",
-  favicon: "img/favicon.png",
+  tagline: "Carbon Footprint Alliance",
+  favicon: "img/favicon.ico",
 
   // Set the production url of your site here
   url: "https://www.carbonfootprint.network",

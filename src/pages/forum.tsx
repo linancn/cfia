@@ -412,16 +412,25 @@ export default function Forum(): ReactNode {
                   className={styles.sponsorLogo}
                 />
               </div>
-              <div className={clsx(styles.card, styles.sponsorCard)}>
-                <img
-                  src="img/tg-forum/partner-logo/ijmcccn.png"
-                  alt={translate({ id: "forum.sponsor.ijmcccn", message: "ijmcccn" })}
-                  className={styles.sponsorLogo}
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+	              <div className={clsx(styles.card, styles.sponsorCard)}>
+	                <a
+	                  href="https://jointmission.lib.tsinghua.edu.cn/"
+	                  target="_blank"
+	                  rel="noopener noreferrer"
+	                >
+	                  <img
+	                    src="img/tg-forum/partner-logo/ijmcccn.png"
+	                    alt={translate({
+	                      id: "forum.sponsor.ijmcccn",
+	                      message: "ijmcccn",
+	                    })}
+	                    className={styles.sponsorLogo}
+	                  />
+	                </a>
+	              </div>
+	            </div>
+	          </div>
+	        </section>
 
         <section id="highlights" className={styles.section}>
           <div className="container">
