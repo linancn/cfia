@@ -1017,5 +1017,197 @@
   },
   "forum.highlights.2023.theme": {
     "message": "Launched the collaborative research initiative and the open LCA database."
+  },
+  "cooperation.page.title": {
+    "message": "Open Projects"
+  },
+  "cooperation.page.description": {
+    "message": "Project release page for industry collaboration and open funding"
+  },
+  "cooperation.hero.eyebrow": {
+    "message": "Promoting high-quality cross-domain, cross-industry collaboration"
+  },
+  "cooperation.hero.title": {
+    "message": "Open Projects"
+  },
+  "cooperation.hero.lead": {
+    "message": "Work openly and collaboratively to build high-quality outcomes."
+  },
+  "cooperation.hero.primaryCta": {
+    "message": "View open projects"
+  },
+  "cooperation.hero.secondaryCta": {
+    "message": "Discuss cooperation intent"
+  },
+  "cooperation.hero.cardTitle": {
+    "message": "Principles"
+  },
+  "cooperation.hero.cardItem1": {
+    "message": "Open call · Merit-based selection"
+  },
+  "cooperation.hero.cardItem2": {
+    "message": "Task-based bidding · Clear responsibilities"
+  },
+  "cooperation.hero.cardItem3": {
+    "message": "Encourage openness · Global sharing"
+  },
+  "cooperation.hero.cardFootnote": {
+    "message": "Email: project@carbonfootprint.network"
+  },
+  "cooperation.section.tracks.title": {
+    "message": "Project Types"
+  },
+  "cooperation.section.tracks.lead": {
+    "message": "Focus on research, open source, events, and international cooperation to promote exchange and co-building."
+  },
+  "cooperation.tracks.research.title": {
+    "message": "Research Projects"
+  },
+  "cooperation.tracks.research.desc": {
+    "message": "Joint research on product carbon footprint standards, methods, databases, tools, and pilot validation."
+  },
+  "cooperation.tracks.opensource.title": {
+    "message": "Open Source Community"
+  },
+  "cooperation.tracks.opensource.desc": {
+    "message": "Build open-source code, data, models, and governance mechanisms."
+  },
+  "cooperation.tracks.events.title": {
+    "message": "Event Projects"
+  },
+  "cooperation.tracks.events.desc": {
+    "message": "Organize workshops, training, releases, competitions, and outreach."
+  },
+  "cooperation.tracks.international.title": {
+    "message": "International Cooperation"
+  },
+  "cooperation.tracks.international.desc": {
+    "message": "International research, pilots, standards, and platform development."
+  },
+  "cooperation.section.projects.title": {
+    "message": "Projects Open for Funding"
+  },
+  "cooperation.section.projects.lead": {
+    "message": "Projects are open to the alliance and the public. We welcome your cooperation intent."
+  },
+  "cooperation.section.projects.fundingLabel": {
+    "message": "Funding Details"
+  },
+  "cooperation.section.projects.benefitLabel": {
+    "message": "Potential Benefits"
+  },
+  "cooperation.section.projects.deadlineLabel": {
+    "message": "Deadline"
+  },
+  "cooperation.section.projects.cta": {
+    "message": "Express interests →"
+  },
+  "cooperation.section.projects.footnote": {
+    "message": "Projects are released and reviewed openly; scope and deliverables follow the task brief."
+  },
+  "cooperation.projects.tiangong3.title": {
+    "message": "3rd TianGong Forum Cooperation"
+  },
+  "cooperation.projects.tiangong3.type": {
+    "message": "Event Project"
+  },
+  "cooperation.projects.tiangong3.focus": {
+    "message": "Participate as a sponsor in organizing the alliance's flagship international forum."
+  },
+  "cooperation.projects.tiangong3.funding": {
+    "message": "Sponsorship tiers: Diamond 500k / Platinum 300k / Gold 100k RMB."
+  },
+  "cooperation.projects.tiangong3.benefit": {
+    "message": "Brand exposure, industry influence, and access to key speakers."
+  },
+  "cooperation.projects.tiangong3.deadline": {
+    "message": "2025-03-10"
+  },
+  "cooperation.projects.tiangong3.status": {
+    "message": "Open"
+  },
+  "cooperation.projects.opensource.title": {
+    "message": "TianGong Open Source System"
+  },
+  "cooperation.projects.opensource.type": {
+    "message": "Open Source Community"
+  },
+  "cooperation.projects.opensource.focus": {
+    "message": "Open-source tool development and ecosystem building for the TianGong system."
+  },
+  "cooperation.projects.opensource.funding": {
+    "message": "Donation support"
+  },
+  "cooperation.projects.opensource.benefit": {
+    "message": "Open-source acknowledgements, technical influence, and expanded collaboration network."
+  },
+  "cooperation.projects.opensource.deadline": {
+    "message": "Ongoing"
+  },
+  "cooperation.projects.opensource.status": {
+    "message": "Open"
+  },
+  "cooperation.section.process.title": {
+    "message": "Cooperation Process"
+  },
+  "cooperation.process.submit.title": {
+    "message": "Submit Intent"
+  },
+  "cooperation.process.submit.desc": {
+    "message": "Share your cooperation intent and project concept to align goals and resources."
+  },
+  "cooperation.process.review.title": {
+    "message": "Review & Match"
+  },
+  "cooperation.process.review.desc": {
+    "message": "Evaluation and discussions to confirm the collaboration model and openness requirements."
+  },
+  "cooperation.process.sign.title": {
+    "message": "Sign & Launch"
+  },
+  "cooperation.process.sign.desc": {
+    "message": "Sign task briefs or agreements and start execution and delivery."
+  },
+  "cooperation.process.manage.title": {
+    "message": "Process Management"
+  },
+  "cooperation.process.manage.desc": {
+    "message": "Disclose milestones and progress, with mid-term reviews when needed."
+  },
+  "cooperation.process.deliver.title": {
+    "message": "Closure & Release"
+  },
+  "cooperation.process.deliver.desc": {
+    "message": "Produce high-impact outcomes, complete acceptance, and publish globally."
+  },
+  "cooperation.section.compliance.title": {
+    "message": "Management Principles"
+  },
+  "cooperation.section.compliance.open.title": {
+    "message": "Open & Transparent"
+  },
+  "cooperation.section.compliance.open.desc": {
+    "message": "Open calls, merit-based selection, and outcome sharing for traceable collaboration."
+  },
+  "cooperation.section.compliance.legal.title": {
+    "message": "Lawful & Compliant"
+  },
+  "cooperation.section.compliance.legal.desc": {
+    "message": "Funding and IP follow project agreements with clear publication and rights arrangements."
+  },
+  "cooperation.section.compliance.results.title": {
+    "message": "Encourage Openness"
+  },
+  "cooperation.section.compliance.results.desc": {
+    "message": "Encourage open-source licenses and public release to enhance research significance and social value."
+  },
+  "cooperation.section.cta.title": {
+    "message": "Join the open collaboration network"
+  },
+  "cooperation.section.cta.desc": {
+    "message": "Send your intent or proposal, and we'll follow up after evaluation."
+  },
+  "cooperation.section.cta.email": {
+    "message": "project@carbonfootprint.network"
   }
 }

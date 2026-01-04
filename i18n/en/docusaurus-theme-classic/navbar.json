@@ -39,6 +39,10 @@
     "message": "TianGong Forum",
     "description": "Navbar item with label tian-gong-forum"
   },
+  "item.label.open-cooperation": {
+    "message": "Open Cooperation",
+    "description": "Navbar item with label open-cooperation"
+  },
   "item.label.联合共创平台": {
     "message": "Git Repo",
     "description": "Navbar item with label 联合共创平台"

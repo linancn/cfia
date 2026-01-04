@@ -885,5 +885,197 @@
   },
   "homepage.button3": {
     "message": "🌐　天工 LCA 数据平台"
+  },
+  "cooperation.page.title": {
+    "message": "开放合作项目"
+  },
+  "cooperation.page.description": {
+    "message": "面向产业合作与开放资助的项目发布页"
+  },
+  "cooperation.hero.eyebrow": {
+    "message": "促进跨领域、跨行业高质量协同与合作"
+  },
+  "cooperation.hero.title": {
+    "message": "开放合作项目"
+  },
+  "cooperation.hero.lead": {
+    "message": "以公开透明、协同共享的方式，汇聚伙伴力量，形成高质量成果。"
+  },
+  "cooperation.hero.primaryCta": {
+    "message": "查看开放项目"
+  },
+  "cooperation.hero.secondaryCta": {
+    "message": "探讨合作意向"
+  },
+  "cooperation.hero.cardTitle": {
+    "message": "合作聚焦"
+  },
+  "cooperation.hero.cardItem1": {
+    "message": "开放征集 · 择优遴选"
+  },
+  "cooperation.hero.cardItem2": {
+    "message": "揭榜挂帅 · 权责清晰"
+  },
+  "cooperation.hero.cardItem3": {
+    "message": "鼓励开放 · 全球共享"
+  },
+  "cooperation.hero.cardFootnote": {
+    "message": "邮箱：project@carbonfootprint.network"
+  },
+  "cooperation.section.tracks.title": {
+    "message": "项目类型"
+  },
+  "cooperation.section.tracks.lead": {
+    "message": "重点支持研究、开源、活动与国际合作四类项目，推动交流协同、共建共享。"
+  },
+  "cooperation.tracks.research.title": {
+    "message": "研究项目"
+  },
+  "cooperation.tracks.research.desc": {
+    "message": "聚焦产品碳足迹标准、方法、数据库、工具与试点验证等方向的联合研究。"
+  },
+  "cooperation.tracks.opensource.title": {
+    "message": "开源社区"
+  },
+  "cooperation.tracks.opensource.desc": {
+    "message": "建设开源代码、数据、模型与治理机制。"
+  },
+  "cooperation.tracks.events.title": {
+    "message": "活动项目"
+  },
+  "cooperation.tracks.events.desc": {
+    "message": "组织研讨、培训、发布会、竞赛与传播推广。"
+  },
+  "cooperation.tracks.international.title": {
+    "message": "国际合作"
+  },
+  "cooperation.tracks.international.desc": {
+    "message": "开展国际合作研究、试点、标准与平台建设。"
+  },
+  "cooperation.section.projects.title": {
+    "message": "当前开放的资助项目"
+  },
+  "cooperation.section.projects.lead": {
+    "message": "以下项目面向联盟与社会公开征集，欢迎提交合作意向。"
+  },
+  "cooperation.section.projects.fundingLabel": {
+    "message": "资助信息"
+  },
+  "cooperation.section.projects.benefitLabel": {
+    "message": "潜在收益"
+  },
+  "cooperation.section.projects.deadlineLabel": {
+    "message": "截止时间"
+  },
+  "cooperation.section.projects.cta": {
+    "message": "表达合作意向 →"
+  },
+  "cooperation.section.projects.footnote": {
+    "message": "项目以公开透明方式发布与评审，合作范围与成果要求以具体任务书为准。"
+  },
+  "cooperation.projects.tiangong3.title": {
+    "message": "第三届“天工论坛”合作"
+  },
+  "cooperation.projects.tiangong3.type": {
+    "message": "活动项目"
+  },
+  "cooperation.projects.tiangong3.focus": {
+    "message": "作为赞助商参与论坛筹办联盟国际化品牌会议。"
+  },
+  "cooperation.projects.tiangong3.funding": {
+    "message": "赞助级别：钻石 50 万 / 铂金 30 万 / 黄金 10 万。"
+  },
+  "cooperation.projects.tiangong3.benefit": {
+    "message": "品牌曝光、行业影响力与嘉宾资源链接。"
+  },
+  "cooperation.projects.tiangong3.deadline": {
+    "message": "2025-03-10"
+  },
+  "cooperation.projects.tiangong3.status": {
+    "message": "开放"
+  },
+  "cooperation.projects.opensource.title": {
+    "message": "天工开源体系"
+  },
+  "cooperation.projects.opensource.type": {
+    "message": "开源社区"
+  },
+  "cooperation.projects.opensource.focus": {
+    "message": "天工体系开源工具开发和生态建设。"
+  },
+  "cooperation.projects.opensource.funding": {
+    "message": "捐款支持"
+  },
+  "cooperation.projects.opensource.benefit": {
+    "message": "开源项目致谢、技术影响力与合作网络扩展。"
+  },
+  "cooperation.projects.opensource.deadline": {
+    "message": "持续开放"
+  },
+  "cooperation.projects.opensource.status": {
+    "message": "开放"
+  },
+  "cooperation.section.process.title": {
+    "message": "合作流程"
+  },
+  "cooperation.process.submit.title": {
+    "message": "提交意向"
+  },
+  "cooperation.process.submit.desc": {
+    "message": "提交合作意向与项目设想，明确目标与资源匹配。"
+  },
+  "cooperation.process.review.title": {
+    "message": "评估对接"
+  },
+  "cooperation.process.review.desc": {
+    "message": "组织评审与沟通，确认合作模式与开放要求。"
+  },
+  "cooperation.process.sign.title": {
+    "message": "签署启动"
+  },
+  "cooperation.process.sign.desc": {
+    "message": "签署任务书/协议，启动执行与成果交付。"
+  },
+  "cooperation.process.manage.title": {
+    "message": "过程管理"
+  },
+  "cooperation.process.manage.desc": {
+    "message": "阶段成果与进展披露，必要时开展中期评估。"
+  },
+  "cooperation.process.deliver.title": {
+    "message": "结题发布"
+  },
+  "cooperation.process.deliver.desc": {
+    "message": "形成高影响力成果，完成验收并全球发布。"
+  },
+  "cooperation.section.compliance.title": {
+    "message": "管理原则"
+  },
+  "cooperation.section.compliance.open.title": {
+    "message": "公开透明"
+  },
+  "cooperation.section.compliance.open.desc": {
+    "message": "项目坚持公开征集、择优遴选与成果共享，确保合作过程可追溯。"
+  },
+  "cooperation.section.compliance.legal.title": {
+    "message": "合法合规"
+  },
+  "cooperation.section.compliance.legal.desc": {
+    "message": "经费与知识产权依据项目协议执行，确保成果发布与权益安排清晰。"
+  },
+  "cooperation.section.compliance.results.title": {
+    "message": "鼓励开放"
+  },
+  "cooperation.section.compliance.results.desc": {
+    "message": "鼓励开源协议与成果公开发布，提升项目的研究意义和社会价值。"
+  },
+  "cooperation.section.cta.title": {
+    "message": "欢迎加入开放合作网络"
+  },
+  "cooperation.section.cta.desc": {
+    "message": "请发送合作意向或项目构想，我们将在评估后与您对接。"
+  },
+  "cooperation.section.cta.email": {
+    "message": "project@carbonfootprint.network"
   }
 }

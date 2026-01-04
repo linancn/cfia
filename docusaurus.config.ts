@@ -116,6 +116,7 @@ const config: Config = {
             },
           ],
         },
+        { to: "/cooperation", label: "open-cooperation", position: "left" },
         { to: "/forum", label: "tian-gong-forum", position: "left" },
         {
           type: "custom-docs-only",
@@ -173,6 +174,10 @@ const config: Config = {
             //   label: "news",
             //   to: "/blog",
             // },
+            {
+              label: "cooperation-projects",
+              href: "/cooperation",
+            },
             {
               label: "cooperation-platform",
               href: "https://github.com/linancn/cfia",

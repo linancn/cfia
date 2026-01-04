@@ -35,6 +35,10 @@
     "message": "天工 LCA 数据平台",
     "description": "The label of footer link with label=tiangong-lca-data-platform linking to https://lca.tiangong.earth"
   },
+  "link.item.label.cooperation-projects": {
+    "message": "开放合作项目",
+    "description": "The label of footer link with label=cooperation-projects linking to /cooperation"
+  },
   "link.item.label.contact-email": {
     "message": "联系我们",
     "description": "The label of footer link with label=contact-email linking to mailto:contact@carbonfootprint.network"
