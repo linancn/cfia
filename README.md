@@ -46,6 +46,6 @@ npx docusaurus write-translations --locale zh-CN
 ```bash
 git tag
 
-git tag v0.0.1
-git push origin v0.0.1
+git tag v0.0.2
+git push origin v0.0.2
 ```
