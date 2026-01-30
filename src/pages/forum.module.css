@@ -9,6 +9,11 @@
   }
 }
 
+.page {
+  color: inherit;
+  background: transparent;
+}
+
 .hero {
   position: relative;
   padding: 5rem 0 3rem;
@@ -67,28 +72,6 @@
   font-weight: 700;
 }
 
-.heroSupport {
-  margin: 0;
-  color: #d5e8ff;
-}
-
-.heroSubtitle {
-  font-size: 1.2rem;
-  line-height: 1.8rem;
-  color: #d5e8ff;
-}
-
-.heroActions {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.heroActions a {
-  min-width: 200px;
-}
-
 .section {
   padding: 3rem 0;
 }
@@ -132,29 +115,538 @@
   height: 18px;
 }
 
-.statGrid {
+.agendaIntro {
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
-.statCard {
+.agendaIntroCopy {
+  padding: 1.4rem 1.6rem;
   background: #ffffff;
-  border: 1px solid #e5eef5;
+  border-radius: 16px;
+  border: 1px solid #e6edf5;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+}
+
+.agendaIntroTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.agendaIntroText {
+  margin: 0;
+  color: #4d6070;
+  line-height: 1.7;
+}
+
+.agendaNotice {
+  padding: 1.4rem 1.6rem;
+  border-radius: 16px;
+  border: 1px dashed rgba(16, 112, 202, 0.35);
+  background: #f6f7fb;
+  display: grid;
+  gap: 0.5rem;
+  align-content: center;
+}
+
+.noticeTag {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(16, 112, 202, 0.1);
+  color: #106fca;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.noticeText {
+  margin: 0;
+  color: #4d6070;
+  line-height: 1.6;
+}
+
+.agendaLayout {
+  display: grid;
+  gap: 2.2rem;
+}
+
+.venueBlock {
+  margin-top: 2.5rem;
+}
+
+.venueCard {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  min-height: clamp(220px, 32vw, 320px);
+  padding: 2rem;
+  display: grid;
+  align-items: center;
+  color: #ffffff;
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 18px 40px rgba(12, 18, 30, 0.18);
+}
+
+.venueOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(8, 15, 28, 0.78), rgba(8, 15, 28, 0.32));
+}
+
+.venueContent {
+  position: relative;
+  display: grid;
+  gap: 0.5rem;
+  max-width: 520px;
+  justify-items: center;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.venueTag {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 0.25rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.4px;
+  backdrop-filter: blur(6px);
+}
+
+.venueTitle {
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.venueAddress {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.92;
+  text-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+.venueLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+  justify-content: center;
+}
+
+.venueLink {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(15, 23, 42, 0.35);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.venueLink:hover,
+.venueLink:visited,
+.venueLink:active {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.venueLink:hover {
+  transform: translateY(-1px);
+}
+
+.venueLink:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 2px;
+}
+
+.agendaGroup {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 1.6rem;
+  border: 1px solid #e6edf5;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+}
+
+.agendaGroupWide {
+  background: #f6f7fb;
+}
+
+.agendaGroupHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.groupTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.groupDesc {
+  color: #4d6070;
+  line-height: 1.6;
+}
+
+.groupCount {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(16, 112, 202, 0.1);
+  color: #106fca;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.agendaGrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.agendaGridWide {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.agendaGridSpecial {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.singlePanel {
+  border: 1px solid #e6edf5;
   border-radius: 12px;
-  padding: 1.4rem;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.04);
+  padding: 1.2rem 1.4rem;
+  background: #ffffff;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.singlePanelHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.singlePanelTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.agendaGridSubForum {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.agendaCard {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e6edf5;
+  padding: 1.2rem 1.3rem 1.35rem;
+  display: grid;
+  gap: 0.9rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.agendaCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #5c246a, rgba(156, 91, 253, 0.2));
+}
+
+.agendaCardHeader {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.agendaCardHeaderText {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.agendaCardTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.agendaCardLead {
+  color: #5a6775;
+  font-size: 0.92rem;
+}
+
+.specialCard {
+  padding: 1.2rem 1.3rem;
+}
+
+.specialWide {
+  grid-column: 1 / -1;
+}
+
+.specialHeader {
+  display: grid;
+  grid-template-columns: 50% minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+}
+
+.specialLogoWrap {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  border-radius: 14px;
+  border: 1px solid #e6edf5;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem;
+}
+
+.specialLogo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.eventHostLogoWidePad {
+  padding: 0 10%;
+  box-sizing: border-box;
+}
+
+.specialWide .specialLogoWrap {
+  aspect-ratio: auto;
+  height: clamp(90px, 18vw, 160px);
+}
+
+.specialText {
+  display: grid;
+  gap: 0.35rem;
+}
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(16, 112, 202, 0.1);
+  color: #106fca;
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background: #f1f5f9;
+  color: #3c4a5a;
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.logoWallHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.4rem;
+}
+
+.logoWallTitle {
+  font-weight: 700;
+  color: #1a2a33;
+}
+
+.logoWallNote {
+  font-size: 0.85rem;
+  color: #5a6775;
+}
+
+.logoWall {
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.logoWallFive {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.logoSlot {
+  aspect-ratio: 3 / 2;
+  border-radius: 10px;
+  border: 1px dashed #e6edf5;
+  background: #f7f9fb;
+}
+
+.logoItem {
+  aspect-ratio: 3 / 2;
+  border-radius: 10px;
+  border: 1px solid #e6edf5;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem;
   text-align: center;
 }
 
-.statValue {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--ifm-color-primary);
+.logoItem img {
+  max-width: 100%;
+  max-height: 100%;
+  padding: 0 5%;
+  box-sizing: border-box;
+  object-fit: contain;
 }
 
-.statLabel {
-  margin-top: 0.35rem;
+.logoItemPlaceholder {
+  border-style: dashed;
+  border-color: #e1e7ef;
+  background: #f8fafc;
+}
+
+.logoPlaceholderStack {
+  display: grid;
+  gap: 0.2rem;
+  place-items: center;
+}
+
+.logoPlaceholderMark {
+  color: #a3aebb;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.logoPlaceholderText {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.logoPlaceholder {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #5a6775;
+  padding: 0 5%;
+}
+
+.eventHost {
+  margin-top: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.eventHostLabel {
+  font-size: 0.85rem;
+  color: #5a6775;
+  font-weight: 600;
+}
+
+.eventHostLogoWrap {
+  width: 120px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #e6edf5;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem;
+}
+
+.eventHostLogo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.groupLogoWall {
+  margin-top: 1rem;
+}
+
+.detailGrid {
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.detailItem {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 12px;
+  border: 1px dashed #e6edf5;
+  background: #f7f9fb;
+}
+
+.detailLabel {
+  font-size: 0.78rem;
+  color: #5a6775;
+}
+
+.detailValue {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1a2a33;
+}
+
+.agenda {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.agendaList {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.agendaItem {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  background: #f7f9fb;
+  border: 1px solid #e6edf5;
+}
+
+.agendaTitle {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.agendaNote {
   color: #4d6070;
 }
 
@@ -229,12 +721,6 @@
   color: #5a6775;
 }
 
-.divider {
-  height: 1px;
-  background: linear-gradient(90deg, rgba(16, 111, 202, 0), rgba(16, 111, 202, 0.25), rgba(16, 111, 202, 0));
-  margin: 0.7rem 0;
-}
-
 .badgeRow {
   display: flex;
   flex-wrap: wrap;
@@ -248,55 +734,6 @@
   border-radius: 999px;
   padding: 0.25rem 0.75rem;
   font-size: 0.85rem;
-}
-
-.agenda {
-  display: grid;
-  gap: 1.5rem;
-}
-
-.agendaList {
-  display: grid;
-  gap: 0.75rem;
-}
-
-.agendaItem {
-  display: grid;
-  gap: 0.35rem;
-  padding: 0.9rem 1rem;
-  border-radius: 12px;
-  background: #f7f9fb;
-  border: 1px solid #e6edf5;
-}
-
-.agendaTitle {
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.agendaNote {
-  color: #4d6070;
-}
-
-.moduleGrid {
-  display: grid;
-  gap: 0.75rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.moduleCard {
-  border: 1px solid #e6edf5;
-  border-radius: 12px;
-  padding: 1rem 1.1rem;
-  background: #ffffff;
-  display: grid;
-  gap: 0.35rem;
-}
-
-@media (max-width: 768px) {
-  .moduleGrid {
-    grid-template-columns: 1fr;
-  }
 }
 
 .coopGrid {
@@ -314,31 +751,67 @@
   gap: 0.35rem;
 }
 
-.mutedSection {
-  background: #f5f7fa;
-}
-
-.cta {
-  background: #0d2840;
-  color: #ffffff;
-  border-radius: 16px;
-  padding: 2rem;
+.peopleGrid {
   display: grid;
   gap: 1rem;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.personCard {
+  border: 1px solid #e6edf5;
+  border-radius: 12px;
+  padding: 1rem;
+  background: #ffffff;
+  display: grid;
+  gap: 0.6rem;
   text-align: center;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
 }
 
-.cta h3 {
-  margin: 0;
-  font-size: 1.5rem;
+.personPhoto {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f1f5f9;
 }
 
-.ctaActions {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+.personPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.personName {
+  font-weight: 700;
+  color: #1a2a33;
+}
+
+.personTitle {
+  font-size: 0.9rem;
+  color: #5a6775;
+}
+
+.personCardPlaceholder {
+  position: relative;
+  border-style: dashed;
+  border-color: #e1e7ef;
+  background: #f8fafc;
+  box-shadow: none;
+}
+
+.personPlaceholderPhoto {
+  display: grid;
+  place-items: center;
+  background: #f2f5f9;
+  border: 1px dashed #e1e7ef;
+}
+
+.personPlaceholderMark {
+  color: #a3aebb;
+  font-size: 1.6rem;
+  font-weight: 500;
 }
 
 .lightSection {
@@ -376,7 +849,9 @@
 }
 
 [data-theme='dark'] .card,
-[data-theme='dark'] .moduleCard,
+[data-theme='dark'] .agendaGroup,
+[data-theme='dark'] .agendaCard,
+[data-theme='dark'] .singlePanel,
 [data-theme='dark'] .coopCard,
 [data-theme='dark'] .agendaItem {
   background: var(--ifm-background-surface-color);
@@ -386,7 +861,9 @@
 
 [data-theme='dark'] .cardMeta,
 [data-theme='dark'] .agendaNote,
-[data-theme='dark'] .statLabel {
+[data-theme='dark'] .detailLabel,
+[data-theme='dark'] .agendaCardLead,
+[data-theme='dark'] .groupDesc {
   color: #c0cedf;
 }
 
@@ -398,21 +875,56 @@
   color: #d0d9e8;
 }
 
-[data-theme='dark'] .pill {
+[data-theme='dark'] .pill,
+[data-theme='dark'] .groupCount,
+[data-theme='dark'] .statusPill {
   background: rgba(174, 94, 253, 0.12);
   color: #c9dbff;
 }
 
-[data-theme='dark'] .badge {
+[data-theme='dark'] .badge,
+[data-theme='dark'] .tag {
   background: rgba(216, 227, 242, 0.08);
   color: #d8e3f2;
 }
 
-[data-theme='dark'] .card.sponsorCard,
-[data-theme='dark'] .sponsorCard {
-  background: #ffffff;
-  border-color: #eef1f5;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+[data-theme='dark'] .venueCard {
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 46px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme='dark'] .logoSlot {
+  background: rgba(216, 227, 242, 0.05);
+  border-color: rgba(216, 227, 242, 0.18);
+}
+
+[data-theme='dark'] .logoItem {
+  background: var(--ifm-background-surface-color);
+  border-color: rgba(216, 227, 242, 0.18);
+}
+
+[data-theme='dark'] .logoItemPlaceholder {
+  background: rgba(15, 23, 42, 0.35);
+  border-color: rgba(216, 227, 242, 0.22);
+}
+
+[data-theme='dark'] .logoPlaceholderText,
+[data-theme='dark'] .logoPlaceholderMark {
+  color: #a7b4c6;
+}
+
+[data-theme='dark'] .specialLogoWrap {
+  background: var(--ifm-background-surface-color);
+  border-color: rgba(216, 227, 242, 0.18);
+}
+
+[data-theme='dark'] .eventHostLogoWrap {
+  background: var(--ifm-background-surface-color);
+  border-color: rgba(216, 227, 242, 0.18);
+}
+
+[data-theme='dark'] .logoWallNote {
+  color: #c0cedf;
 }
 
 [data-theme='dark'] .lightSection,
@@ -422,13 +934,53 @@
   border-bottom-color: rgba(216, 227, 242, 0.08);
 }
 
-[data-theme='dark'] .cta {
-  background: linear-gradient(145deg, rgba(174, 94, 253, 0.3), rgba(255, 122, 223, 0.16));
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
-}
-
 [data-theme='dark'] .heroGlow {
   background: radial-gradient(65% 60% at 50% 40%, rgba(174, 94, 253, 0.18), rgba(18, 12, 36, 0));
+}
+
+[data-theme='dark'] .personCardPlaceholder {
+  border-color: #cfd8e5;
+  background: #f6f8fb;
+}
+
+[data-theme='dark'] .personPlaceholderPhoto {
+  border-color: #cfd8e5;
+}
+
+[data-theme='dark'] .personPlaceholderMark {
+  color: #8f9bac;
+}
+
+[data-theme='dark'] .agendaIntroCopy,
+[data-theme='dark'] .agendaNotice,
+[data-theme='dark'] .detailItem {
+  background: var(--ifm-background-surface-color);
+  border-color: rgba(216, 227, 242, 0.14);
+}
+
+[data-theme='dark'] .card.sponsorCard,
+[data-theme='dark'] .sponsorCard {
+  background: #ffffff;
+  border-color: #eef1f5;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 960px) {
+  .agendaIntro {
+    grid-template-columns: 1fr;
+  }
+
+  .peopleGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .logoWall {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .logoWallFive {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
@@ -440,10 +992,6 @@
     font-size: 2rem;
   }
 
-  .heroSubtitle {
-    font-size: 1.05rem;
-  }
-
   .sponsorGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -451,10 +999,79 @@
   .sponsorCard {
     min-height: 160px;
   }
+
+  .agendaCardHeader {
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+  }
+
+  .statusPill {
+    justify-self: flex-start;
+  }
+
+  .detailGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .agendaGridSubForum {
+    grid-template-columns: 1fr;
+  }
+
+  .agendaGridSpecial {
+    grid-template-columns: 1fr;
+  }
+
+  .venueCard {
+    padding: 1.5rem;
+  }
+
+  .venueContent {
+    max-width: 100%;
+  }
+
+  .specialWide {
+    grid-column: auto;
+  }
+
+  .specialHeader {
+    grid-template-columns: 1fr;
+  }
+
+  .specialLogoWrap {
+    max-width: 260px;
+  }
+
+  .peopleGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .logoWall {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .logoWallFive {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 520px) {
   .sponsorGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .venueCard {
+    min-height: 200px;
+  }
+
+  .peopleGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .logoWall {
+    grid-template-columns: 1fr;
+  }
+
+  .logoWallFive {
     grid-template-columns: 1fr;
   }
 }

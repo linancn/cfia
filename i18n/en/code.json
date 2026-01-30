@@ -896,13 +896,13 @@
     "message": "Past Highlights"
   },
   "forum.section.highlights.desc": {
-    "message": "A quick recap of previous TianGong Forum."
+    "message": "A quick recap of featured topics, releases, and collaboration cases."
   },
   "forum.page.title": {
     "message": "TianGong Forum"
   },
   "forum.page.description": {
-    "message": "TianGong Forum: the Alliance's flagship international conference"
+    "message": "TianGong Forum: page for the Alliance's flagship international conference"
   },
   "forum.currentEdition.title": {
     "message": "2026 · TianGong Forum"
@@ -938,55 +938,184 @@
     "message": "Open/Closed-door roundtables, workshops, and special events."
   },
   "forum.section.mainActivities": {
-    "message": "Key Activities"
+    "message": "Main Activities"
   },
   "forum.section.mainActivities.desc": {
-    "message": "Agenda will keep updating."
+    "message": "Agenda, activities, and sub-forum information will be updated continuously."
+  },
+  "forum.venue.tag": {
+    "message": "Venue"
+  },
+  "forum.venue.name": {
+    "message": "The Purple Palace"
+  },
+  "forum.venue.address": {
+    "message": "No.18 Huanling Road, Nanjing, Jiangsu, China"
+  },
+  "forum.venue.googleMaps": {
+    "message": "Google Maps"
+  },
+  "forum.venue.baiduMaps": {
+    "message": "Baidu Maps"
+  },
+  "forum.section.people": {
+    "message": "Featured Guests"
+  },
+  "forum.section.people.desc": {
+    "message": "Sorted by surname; updated as participation is confirmed."
+  },
+  "forum.section.sessions": {
+    "message": " session(s)"
+  },
+  "forum.agenda.mainForum.title": {
+    "message": "Main Forum"
+  },
+  "forum.agenda.mainForum.desc": {
+    "message": "High-level keynotes and major outcome announcements."
+  },
+  "forum.agenda.subForums.title": {
+    "message": "Sub-forums"
+  },
+  "forum.agenda.subForums.desc": {
+    "message": "Deep dives into industry topics and data system co-building; updates released separately."
+  },
+  "forum.agenda.subForums.petroleum": {
+    "message": "Petrochemicals"
+  },
+  "forum.agenda.subForums.petroleum.lead": {
+    "message": "Product carbon footprints driving green, low-carbon development in the petrochemical sector."
+  },
+  "forum.agenda.subForums.battery": {
+    "message": "Batteries"
+  },
+  "forum.agenda.subForums.battery.lead": {
+    "message": "Practice and outlook for product carbon footprints across the battery supply chain."
+  },
+  "forum.agenda.subForums.electronics": {
+    "message": "Electronics & Appliances"
+  },
+  "forum.agenda.subForums.electronics.lead": {
+    "message": "Deep decarbonization across electronics and appliance supply chains."
+  },
+  "forum.agenda.subForums.audit": {
+    "message": "LCA & Carbon Footprint Data (English)"
+  },
+  "forum.agenda.subForums.audit.lead": {
+    "message": "Bringing together global LCA and carbon footprint data practices to discuss key topics such as data quality."
+  },
+  "forum.agenda.tag.subForum": {
+    "message": "Sub-forum"
+  },
+  "forum.agenda.developer.title": {
+    "message": "LCA Developer Conference"
+  },
+  "forum.agenda.developer.desc": {
+    "message": "A developer-focused track on toolchains, data ecosystems, and practice."
+  },
+  "forum.agenda.developer.item": {
+    "message": "LCA Developer Conference"
+  },
+  "forum.agenda.developer.lead": {
+    "message": "Agenda in progress; topics and cases are welcome."
+  },
+  "forum.agenda.special.title": {
+    "message": "Special Events"
+  },
+  "forum.agenda.special.desc": {
+    "message": "Joint activities across institutions and global collaboration sessions; updated in real time."
+  },
+  "forum.agenda.special.assembly": {
+    "message": "Alliance General Assembly"
+  },
+  "forum.agenda.special.assembly.lead": {
+    "message": "Review annual work and release yearly plans and milestone outcomes."
+  },
+  "forum.agenda.tag.special": {
+    "message": "Special Event"
+  },
+  "forum.agenda.special.unep": {
+    "message": "Global LCA Platform Workshop"
+  },
+  "forum.agenda.special.unep.lead": {
+    "message": "UNEP Global LCA Platform working group meeting."
+  },
+  "forum.agenda.special.climate": {
+    "message": "International Cooperation on Climate Change and Carbon Neutrality"
+  },
+  "forum.agenda.special.climate.lead": {
+    "message": "Program and agenda to be confirmed."
+  },
+  "forum.agenda.partners": {
+    "message": "Participating Organizations"
+  },
+  "forum.agenda.partners.note": {
+    "message": "Logos to be updated."
+  },
+  "forum.eventHost.label": {
+    "message": "Organizer"
+  },
+  "forum.eventHost.cfa": {
+    "message": "Carbon Footprint Alliance (CFA)"
+  },
+  "forum.eventHost.unep": {
+    "message": "UNEP Life Cycle Initiative"
+  },
+  "forum.eventHost.ijmcccn": {
+    "message": "IJMCCCN"
   },
   "forum.section.coCreation": {
-    "message": "Join the Forum"
+    "message": "Co-create Topics"
   },
   "forum.section.coCreation.desc": {
-    "message": "Build an interconnected LCA and carbon footprint ecosystem with the LCA community."
+    "message": "Build an interconnected LCA and carbon footprint ecosystem together."
   },
   "forum.coop.hosting.title": {
-    "message": "Parallel forum organization"
+    "message": "Sub-forum Hosting"
   },
   "forum.coop.hosting.desc": {
-    "message": "Let's plan and organize together."
+    "message": "Co-create topics; speakers and formats updated as collaboration progresses."
   },
   "forum.coop.specialEvents.title": {
     "message": "Special Events"
   },
   "forum.coop.specialEvents.desc": {
-    "message": "Let's think of something exciting."
+    "message": "Closed-door roundtables, standards and guideline workshops, and tailored exchanges."
   },
   "forum.coop.sponsorship.title": {
     "message": "Sponsorship"
   },
   "forum.coop.sponsorship.desc": {
-    "message": "Tiered brand exposure and media amplification."
+    "message": "Tiered brand exposure, speaking slots, and media visibility."
   },
   "forum.coop.media.title": {
     "message": "Media & Outreach"
   },
   "forum.coop.media.desc": {
-    "message": "Co-build the publicity matrix and share channels and resources."
+    "message": "Co-build the outreach matrix and share channels and resources."
   },
   "forum.section.sponsors": {
-    "message": "Partners"
+    "message": "Partner Organizations"
   },
   "forum.section.sponsors.desc": {
-    "message": "Get in touch with the us for partnerships and sponsorship opportunities."
+    "message": "Contact the secretariat for partnership and sponsorship opportunities."
+  },
+  "forum.sponsor.cnest": {
+    "message": "CNEST"
+  },
+  "forum.sponsor.dcv": {
+    "message": "International Digital Carbon Valley"
   },
   "forum.sponsor.efChina": {
-    "message": "Energy Foundation"
+    "message": "Energy Foundation China"
+  },
+  "forum.sponsor.ijmcccn": {
+    "message": "IJMCCCN"
   },
   "forum.highlights.2025.date": {
-    "message": "2025"
+    "message": "2025 · 2nd Edition"
   },
   "forum.highlights.2025.title": {
-    "message": "Established the Carbon Footprint Alliance"
+    "message": "Initiated the Carbon Footprint Industry Technology Innovation Alliance"
   },
   "forum.highlights.2025.focus": {
     "message": "January 2025 · Beijing"
@@ -995,16 +1124,16 @@
     "message": "Alliance Launch"
   },
   "forum.highlights.2025.tag.industryCoBuild": {
-    "message": "Cooperation and coordination"
+    "message": "Industry Co-building"
   },
   "forum.highlights.2025.theme": {
-    "message": "Collaboration to build a product carbon footprint system"
+    "message": "Cross-sector collaboration to build a product carbon footprint management system"
   },
   "forum.highlights.2023.date": {
-    "message": "2023"
+    "message": "2023 · 1st Edition"
   },
   "forum.highlights.2023.title": {
-    "message": "Released the TianGong Database"
+    "message": "Released the open and transparent TianGong Database"
   },
   "forum.highlights.2023.focus": {
     "message": "November 2023 · Beijing"
@@ -1016,7 +1145,7 @@
     "message": "Open & Transparent"
   },
   "forum.highlights.2023.theme": {
-    "message": "Launched the collaborative research initiative and the open LCA database."
+    "message": "Launched a joint research initiative on open sharing and collaborative governance of LCA data."
   },
   "cooperation.page.title": {
     "message": "Open Projects"
