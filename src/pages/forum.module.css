@@ -448,6 +448,12 @@
   display: grid;
   gap: 0.35rem;
 }
+
+/* No logo: let text span the full card instead of staying in the first grid column. */
+.specialHeader > .specialText:only-child {
+  grid-column: 1 / -1;
+}
+
 .statusPill {
   display: inline-flex;
   align-items: center;

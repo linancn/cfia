@@ -1039,6 +1039,18 @@
   "forum.agenda.special.unep.lead": {
     "message": "UNEP Global LCA Platform working group meeting."
   },
+  "forum.agenda.special.factorDatabase": {
+    "message": "Special Forum: China Carbon Footprint Database Development"
+  },
+  "forum.agenda.special.factorDatabase.lead": {
+    "message": "Program and agenda to be confirmed."
+  },
+  "forum.agenda.special.powerWorkshop": {
+    "message": "Power Sector Workshop"
+  },
+  "forum.agenda.special.powerWorkshop.lead": {
+    "message": "Program and agenda to be confirmed."
+  },
   "forum.agenda.special.climate": {
     "message": "International Cooperation on Climate Change and Carbon Neutrality"
   },
@@ -1094,7 +1106,7 @@
     "message": "Co-build the outreach matrix and share channels and resources."
   },
   "forum.section.sponsors": {
-    "message": "Partner Organizations"
+    "message": "Sponsors"
   },
   "forum.section.sponsors.desc": {
     "message": "Contact the secretariat for partnership and sponsorship opportunities."

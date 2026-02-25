@@ -286,12 +286,32 @@ const people: {
   image?: string;
 }[] = [
   {
+    key: "tiago-braga",
+    nameEn: "Tiago Braga",
+    nameZh: "Tiago Braga",
+    titleZh: <>巴西科学与技术信息研究所（Ibict）所长</>,
+    titleEn: (
+      <>
+        Director of the Brazilian Institute of Information in Science and Technology (Ibict)
+      </>
+    ),
+    image: "img/tg-forum/people/TiagoB-ibict.JPG",
+  },
+  {
     key: "andreas-ciroth",
     nameEn: "Andreas Ciroth",
     nameZh: "Andreas Ciroth",
     titleZh: <>GreenDelta CEO<br />（openLCA）</>,
     titleEn: <>CEO, GreenDelta</>,
     image: "img/tg-forum/people/AndreasC-greendelta.jpg",
+  },
+  {
+    key: "natasha-das",
+    nameEn: "Natasha Das",
+    nameZh: "Natasha Das",
+    titleZh: <>AECOM 高级碳咨询顾问</>,
+    titleEn: <>Senior Carbon Consultant, AECOM</>,
+    image: "img/tg-forum/people/NatashaD-AECOM.jpg",
   },
   {
     key: "archana-datta",
@@ -338,6 +358,22 @@ const people: {
     image: "img/tg-forum/people/RamzyK-pucp.jpg",
   },
   {
+    key: "mo-li",
+    nameEn: "Mo Li",
+    nameZh: "Mo Li",
+    titleZh: <>Watershed/Cornerstone 环境科学家</>,
+    titleEn: <>Environmental Scientist at Watershed/Cornerstone</>,
+    image: "img/tg-forum/people/MoL-watershed.png",
+  },
+  {
+    key: "alessandro-manzardo",
+    nameEn: "Alessandro Manzardo",
+    nameZh: "Alessandro Manzardo",
+    titleZh: <>帕多瓦大学副教授</>,
+    titleEn: <>Associate Professor, Università degli Studi di Padova</>,
+    image: "img/tg-forum/people/AlessandroM-upd.jpg",
+  },
+  {
     key: "llorenc-mila-i-canals",
     nameEn: "Llorenç Milà i Canals",
     nameZh: "Llorenç Milà i Canals",
@@ -360,6 +396,20 @@ const people: {
     titleZh: <>Carbon Minds<br />联合创始人、总经理</>,
     titleEn: <>Co-Founder and Managing Director, Carbon Minds</>,
     image: "img/tg-forum/people/RaoulM-carbonminds.jpg",
+  },
+  {
+    key: "jitti-mungkalasiri",
+    nameEn: "Jitti Mungkalasiri",
+    nameZh: "Jitti Mungkalasiri",
+    titleZh: <>泰国国家科学技术发展署（NSTDA）</>,
+    titleEn: (
+      <>
+        National Science and Technology
+        <br />
+        Development Agency (NSTDA), Thailand
+      </>
+    ),
+    image: "img/tg-forum/people/JittiM-nstda.jpg",
   },
   {
     key: "chris-mutel",
@@ -386,6 +436,14 @@ const people: {
     image: "img/tg-forum/people/SangwonS-thu.jpg",
   },
   {
+    key: "ian-vazquez-rowe",
+    nameEn: "Ian Vázquez-Rowe",
+    nameZh: "Ian Vázquez-Rowe",
+    titleZh: <>秘鲁天主教大学（PUCP）工程系正教授</>,
+    titleEn: <>Full professor at the Department of Engineering at PUCP.</>,
+    image: "img/tg-forum/people/IanVR-pucp.jpg",
+  },
+  {
     key: "ming-xu",
     nameEn: "Ming Xu",
     nameZh: "徐明",
@@ -403,9 +461,19 @@ const devConfLogos: { key: string; name: string; src?: string }[] = [
     src: "img/tg-forum/orgnizations/lca_dev_conf/carbonminds.png",
   },
   {
+    key: "cornerstone",
+    name: "Cornerstone",
+    src: "img/tg-forum/orgnizations/lca_dev_conf/cornerstone.png",
+  },
+  {
     key: "dds",
     name: "Départ de Sentier",
     src: "img/tg-forum/orgnizations/lca_dev_conf/dds.png",
+  },
+  {
+    key: "envision",
+    name: "Envision",
+    src: "img/tg-forum/orgnizations/lca_dev_conf/envision.png",
   },
   {
     key: "greendelta",
@@ -431,6 +499,11 @@ const devConfLogos: { key: string; name: string; src?: string }[] = [
     key: "tiangong",
     name: "TianGong",
     src: "img/tg-forum/orgnizations/lca_dev_conf/tiangong.png",
+  },
+  {
+    key: "watershed",
+    name: "Watershed",
+    src: "img/tg-forum/orgnizations/lca_dev_conf/watershed.png",
   },
 ];
 
@@ -538,7 +611,7 @@ const agendaGroups: AgendaGroup[] = [
         跨机构联合活动与全球合作专场，信息实时更新。
       </Translate>
     ),
-    count: "3",
+    count: "4",
     layout: "specialEvents",
     items: [
       {
@@ -560,25 +633,6 @@ const agendaGroups: AgendaGroup[] = [
         }),
       },
       {
-        key: "climate-cooperation",
-        title: (
-          <Translate id="forum.agenda.special.climate">
-            联合行动主题活动
-          </Translate>
-        ),
-        lead: (
-          <Translate id="forum.agenda.special.climate.lead">
-            活动内容和议程确认中。
-          </Translate>
-        ),
-        icon: "spark",
-        hostLogo: "img/tg-forum/orgnizations/events/ijmcccn.png",
-        hostAlt: translate({
-          id: "forum.eventHost.ijmcccn",
-          message: "IJMCCCN",
-        }),
-      },
-      {
         key: "unep-workshop",
         title: (
           <Translate id="forum.agenda.special.unep">
@@ -597,7 +651,34 @@ const agendaGroups: AgendaGroup[] = [
           message: "UNEP 生命周期倡议",
         }),
         hostLogoClassName: styles.eventHostLogoWidePad,
-        wide: true,
+      },
+      {
+        key: "national-factor-database-forum",
+        title: (
+          <Translate id="forum.agenda.special.factorDatabase">
+            国家碳足迹因子库建设专题论坛
+          </Translate>
+        ),
+        lead: (
+          <Translate id="forum.agenda.special.factorDatabase.lead">
+            活动内容和议程确认中。
+          </Translate>
+        ),
+        icon: "spark",
+      },
+      {
+        key: "power-workshop",
+        title: (
+          <Translate id="forum.agenda.special.powerWorkshop">
+            电力专题研讨会
+          </Translate>
+        ),
+        lead: (
+          <Translate id="forum.agenda.special.powerWorkshop.lead">
+            活动内容和议程确认中。
+          </Translate>
+        ),
+        icon: "spark",
       },
     ],
   },
@@ -606,6 +687,7 @@ const agendaGroups: AgendaGroup[] = [
 export default function Forum(): ReactNode {
   const { i18n } = useDocusaurusContext();
   const isZh = i18n.currentLocale.startsWith("zh");
+  const heroImage = useBaseUrl("img/tg-forum/kv.jpg");
   const venueImage = useBaseUrl("img/tg-forum/venue.png");
 
   return (
@@ -617,7 +699,15 @@ export default function Forum(): ReactNode {
       })}
     >
       <div className={styles.page}>
-        <div className={styles.hero}>
+        <div
+          className={styles.hero}
+          style={{
+            backgroundImage: `linear-gradient(120deg, rgba(8, 12, 24, 0.58), rgba(8, 12, 24, 0.36)), url(${heroImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
           <div className={styles.heroGlow} />
           <div className="container">
             <div className={styles.heroContent}>
@@ -681,7 +771,7 @@ export default function Forum(): ReactNode {
             <div className="container">
               <div className={styles.sectionHeader}>
                 <p className={styles.sectionTitle}>
-                  <Translate id="forum.section.sponsors">赞助合作伙伴</Translate>
+                  <Translate id="forum.section.sponsors">合作伙伴</Translate>
                 </p>
                 <p className={styles.sectionHint}>
                   <Translate id="forum.section.sponsors.desc">
@@ -776,7 +866,7 @@ export default function Forum(): ReactNode {
                               <>
                                 <div className={styles.logoWallHeader}>
                                   <span className={styles.logoWallTitle}>
-                                    <Translate id="forum.agenda.partners">已确认参加的机构</Translate>
+                                    <Translate id="forum.agenda.partners">开发者阵容</Translate>
                                   </span>
                                 </div>
                                 <div className={clsx(styles.logoWall, styles.logoWallFive)}>
