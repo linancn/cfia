@@ -175,6 +175,1202 @@
   gap: 2.2rem;
 }
 
+.agendaSubsectionHeader {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.2rem 0 -0.6rem;
+  justify-items: center;
+  text-align: center;
+}
+
+.agendaSubsectionTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a2a33;
+}
+
+.agendaSubsectionDesc {
+  color: #5a6775;
+  line-height: 1.6;
+  max-width: 44rem;
+}
+
+.masterAgenda {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.masterAgendaHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.dayTabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.dayTab {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dbe6f2;
+  background: #ffffff;
+  color: #334155;
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.dayTab:hover {
+  transform: translateY(-1px);
+  border-color: #c9d7e8;
+}
+
+.dayTab:focus-visible {
+  outline: 2px solid rgba(16, 112, 202, 0.55);
+  outline-offset: 2px;
+}
+
+.dayTabActive {
+  border-color: rgba(16, 112, 202, 0.28);
+  background: rgba(16, 112, 202, 0.1);
+  color: #106fca;
+}
+
+.masterGrid {
+  display: grid;
+  grid-template-columns: minmax(118px, 140px) repeat(4, minmax(0, 1fr));
+  border: 1px solid #e6edf5;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.masterGridDesktop {
+  display: grid;
+}
+
+.masterGridRow {
+  display: contents;
+}
+
+.masterTrackHeader {
+  background: #f3f6fb;
+  border-bottom: 1px solid #e6edf5;
+  padding: 0.8rem 0.85rem;
+  font-weight: 700;
+  color: #334155;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+}
+
+.masterGridTimeCol {
+  border-right: 1px solid #e6edf5;
+}
+
+.masterTimeCell {
+  padding: 0.85rem 0.85rem;
+  background: #fbfcfe;
+  border-bottom: 1px solid #edf2f8;
+  display: grid;
+  gap: 0.05rem;
+  align-content: start;
+  font-weight: 700;
+  color: #1f2f3d;
+}
+
+.masterTimeRange {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #6b7a8c;
+}
+
+.masterTrackCell {
+  padding: 0.65rem;
+  border-bottom: 1px solid #edf2f8;
+  border-right: 1px solid #edf2f8;
+  min-height: 84px;
+  background: #ffffff;
+}
+
+.masterTrackCell:nth-child(5n) {
+  border-right: none;
+}
+
+.masterSlotStack {
+  display: grid;
+  gap: 0.45rem;
+  align-content: start;
+  height: 100%;
+}
+
+.masterSlot {
+  width: 100%;
+  text-align: left;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: #f7f9fc;
+  color: inherit;
+  padding: 0.6rem 0.7rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.masterSlotClickable {
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.masterSlotClickable:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08);
+}
+
+.masterSlotClickable:focus-visible {
+  outline: 2px solid rgba(16, 112, 202, 0.55);
+  outline-offset: 2px;
+}
+
+.masterSlotPublished {
+  background: rgba(16, 112, 202, 0.06);
+  border-color: rgba(16, 112, 202, 0.14);
+}
+
+.masterSlotUpdating {
+  background: rgba(234, 136, 0, 0.08);
+  border-color: rgba(234, 136, 0, 0.2);
+}
+
+.masterSlotPending {
+  background: rgba(100, 116, 139, 0.07);
+  border-color: rgba(100, 116, 139, 0.16);
+}
+
+.masterSlotTime {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.masterSlotTitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1f2f3d;
+  line-height: 1.35;
+}
+
+.masterSlotStatus {
+  justify-self: flex-start;
+  margin-top: 0.05rem;
+}
+
+.masterSlotEmpty {
+  height: 100%;
+  min-height: 40px;
+  border: 1px dashed #e6edf5;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  color: #a0aec0;
+  background: #fbfcfe;
+}
+
+.masterAgendaMobileList {
+  display: none;
+  gap: 0.75rem;
+}
+
+.masterPeriodGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.masterPeriodCard {
+  border: 1px solid #e6edf5;
+  border-radius: 14px;
+  background: #ffffff;
+  padding: 0.95rem;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.masterPeriodHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.masterPeriodHeaderMain {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.masterPeriodTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2f3d;
+}
+
+.masterPeriodRange {
+  color: #5a6775;
+  font-size: 0.86rem;
+}
+
+.masterPeriodCount {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  background: #eef4fb;
+  color: #35516b;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.masterPeriodList {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.masterPeriodItem {
+  width: 100%;
+  text-align: left;
+  border: 1px solid #e6edf5;
+  border-radius: 12px;
+  background: #f8fbff;
+  padding: 0.7rem 0.8rem;
+  display: grid;
+  gap: 0.4rem;
+  color: inherit;
+}
+
+.masterPeriodItemTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.masterPeriodTrackTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  background: #eef4fb;
+  color: #35516b;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.masterPeriodItemTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1f2f3d;
+  line-height: 1.35;
+}
+
+.masterTimeline {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.masterCalendarDesktop {
+  --forum-agenda-half-row-height: 2.75rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.masterCalendarDay {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.masterCalendarDayHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding: 0 0.2rem;
+}
+
+.masterCalendarDayTitle {
+  font-size: 1.02rem;
+  font-weight: 800;
+  color: #1f2f3d;
+}
+
+.masterCalendarDayCount {
+  font-size: 0.82rem;
+  color: #5a6775;
+  font-weight: 700;
+}
+
+.masterCalendarClusters {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.masterCalendarCluster {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.masterCalendarAxis {
+  border: 1px solid #e6edf5;
+  border-radius: 14px;
+  background: #f7f9fc;
+  overflow: hidden;
+  display: grid;
+  min-width: 0;
+}
+
+.masterCalendarAxisCell {
+  padding: 0.28rem 0.6rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border-top: 1px solid #eaf0f7;
+}
+
+.masterCalendarAxisCell:first-child {
+  border-top: 0;
+}
+
+.masterCalendarAxisCellHour {
+  background: rgba(238, 244, 251, 0.7);
+}
+
+.masterCalendarAxisLabel {
+  font-size: 0.8rem;
+  line-height: 1.1;
+  font-weight: 700;
+  color: #5a6775;
+}
+
+.masterCalendarGridFrame {
+  min-width: 0;
+}
+
+.masterCalendarGrid {
+  display: grid;
+  gap: 0.6rem;
+  align-items: stretch;
+}
+
+.masterCalendarGridRow {
+  border: 1px solid #e6edf5;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.masterCalendarGridRowHour {
+  border-color: #dce8f4;
+}
+
+.masterCalendarEvent {
+  --agenda-event-bg: #f3f4f6;
+  --agenda-event-border: #e3e7ee;
+  --agenda-event-accent: #7b8794;
+  --agenda-tag-bg: rgba(100, 116, 139, 0.1);
+  --agenda-tag-color: #475569;
+  position: relative;
+  z-index: 1;
+  align-self: stretch;
+  height: 100%;
+  padding: 0.65rem 0.7rem;
+  gap: 0.35rem;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--agenda-event-border);
+  border-left-color: var(--agenda-event-border);
+  background: var(--agenda-event-bg);
+  box-shadow: none;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  align-content: stretch;
+  justify-items: stretch;
+  text-align: left;
+  gap: 0.2rem;
+  isolation: isolate;
+}
+
+.masterCalendarEvent::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--agenda-event-accent);
+  border-radius: 8px 0 0 8px;
+  z-index: 0;
+}
+
+.masterCalendarEvent .masterPeriodTrackTag {
+  background: var(--agenda-tag-bg);
+  color: var(--agenda-tag-color);
+  padding: 0.12rem 0.5rem;
+  font-size: 0.72rem;
+  border-radius: 999px;
+  position: relative;
+  z-index: 1;
+}
+
+.masterCalendarEvent .masterTimelineItemTitle {
+  font-size: 0.88rem;
+  line-height: 1.22;
+  color: #22303d;
+  text-align: center;
+  font-weight: 700;
+  align-self: center;
+  justify-self: center;
+  max-width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.masterCalendarEvent .masterTimelineItemTop {
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 0;
+}
+
+.masterCalendarEvent .masterGanttItemRange {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #687789;
+}
+
+.masterCalendarDesktop {
+  --forum-agenda-half-row-height: 2.75rem;
+  --forum-agenda-grid-line: #eef3f8;
+  --forum-agenda-grid-line-strong: #e7edf5;
+  --forum-agenda-grid-line-soft: #f3f6fa;
+  --forum-agenda-board-bg: #ffffff;
+  --forum-agenda-edge-padding: 0.45rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.masterCalendarBoardHeader {
+  display: grid;
+  grid-template-columns: 84px minmax(88px, 0.34fr) repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.masterCalendarBoardHeaderAxis,
+.masterCalendarBoardHeaderDay {
+  min-height: 2.4rem;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  color: #2b3a4a;
+  letter-spacing: 0.01em;
+}
+
+.masterCalendarBoardHeaderAxis {
+  justify-content: center;
+  padding-right: 0;
+  font-size: 0.78rem;
+  color: #6a7684;
+}
+
+.masterCalendarBoardHeaderDay {
+  justify-content: center;
+  padding: 0 0.45rem;
+  border-radius: 10px;
+  border: 1px solid var(--forum-agenda-grid-line-strong);
+  background: #fbfcfe;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.masterCalendarBoardBody {
+  display: grid;
+  grid-template-columns: 84px minmax(88px, 0.34fr) repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+  align-items: start;
+}
+
+.masterCalendarBoardHeaderPrep {
+  justify-content: center;
+  padding: 0 0.35rem;
+  font-size: 0.82rem;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.masterCalendarBoardAxis {
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--forum-agenda-grid-line-strong);
+  border-radius: 12px;
+  background: var(--forum-agenda-board-bg);
+  overflow: visible;
+  padding-top: var(--forum-agenda-edge-padding);
+  padding-bottom: var(--forum-agenda-edge-padding);
+}
+
+.masterCalendarBoardAxisCell {
+  border: 0;
+  border-top: 1px solid var(--forum-agenda-grid-line);
+  background: transparent;
+  padding: 0.3rem 0.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.masterCalendarBoardAxisCell:first-child {
+  border-top: 0;
+}
+
+.masterCalendarBoardAxisCellHour {
+  background: transparent;
+  border-top-color: var(--forum-agenda-grid-line-strong);
+}
+
+.masterCalendarBoardAxisCell:not(.masterCalendarBoardAxisCellHour) {
+  background: transparent;
+  border-top-color: var(--forum-agenda-grid-line-soft);
+}
+
+.masterCalendarBoardAxisLabel {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #6a7684;
+  line-height: 1.05;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 0.22rem;
+  background: var(--forum-agenda-board-bg);
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.masterCalendarBoardAxisLabelTop {
+  top: 0;
+  transform: translate(-50%, -50%);
+}
+
+.masterCalendarBoardAxisLabelBottom {
+  bottom: 0;
+  transform: translate(-50%, 50%);
+}
+
+.masterCalendarBoardDayFrame {
+  min-width: 0;
+}
+
+.masterCalendarBoardDayGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  position: relative;
+  align-items: stretch;
+  border: 1px solid var(--forum-agenda-grid-line-strong);
+  border-radius: 12px;
+  background: var(--forum-agenda-board-bg);
+  overflow: hidden;
+  padding-top: var(--forum-agenda-edge-padding);
+  padding-bottom: var(--forum-agenda-edge-padding);
+}
+
+.masterCalendarBoardRow {
+  border: 0;
+  border-top: 1px solid var(--forum-agenda-grid-line);
+  border-radius: 0;
+  background: transparent;
+}
+
+.masterCalendarBoardRow:first-child {
+  border-top: 0;
+}
+
+.masterCalendarBoardRow.masterCalendarGridRowHour {
+  border-top-color: var(--forum-agenda-grid-line-strong);
+}
+
+.masterCalendarBoardRow:not(.masterCalendarGridRowHour) {
+  border-top-color: var(--forum-agenda-grid-line-soft);
+}
+
+.masterCalendarClusterLayer {
+  grid-column: 1;
+  min-width: 0;
+  z-index: 1;
+  padding: 0 0.45rem;
+}
+
+.masterCalendarClusterGrid {
+  display: grid;
+  row-gap: 0;
+  column-gap: 0.45rem;
+  height: 100%;
+  align-items: stretch;
+}
+
+.masterCalendarPrepEvent {
+  position: relative;
+  z-index: 1;
+  margin: 0.32rem 0.22rem;
+  border-radius: 8px;
+  border: 1px solid #dfe7ee;
+  background: #f7fafc;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  padding: 0.45rem 0.25rem;
+}
+
+.masterCalendarPrepEventLabel {
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #425c70;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.masterCalendarPrepEventDay {
+  margin: 0.22rem 0.28rem;
+  background: #f8fafc;
+}
+
+.masterCalendarPrepEventLabelHorizontal {
+  writing-mode: horizontal-tb;
+  text-orientation: mixed;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.masterCalendarEvent.masterSlotClickable:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.masterCalendarEventShell {
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  padding-top: 0.22rem;
+  padding-bottom: 0.22rem;
+}
+
+.masterTrackMain {
+  --agenda-event-bg: #edf5ff;
+  --agenda-event-border: #dbe9fb;
+  --agenda-event-accent: #4f8fd4;
+  --agenda-tag-bg: rgba(79, 143, 212, 0.12);
+  --agenda-tag-color: #2d5f96;
+}
+
+.masterTrackSubforums {
+  --agenda-event-bg: #eef8f2;
+  --agenda-event-border: #dbefe3;
+  --agenda-event-accent: #4eab76;
+  --agenda-tag-bg: rgba(78, 171, 118, 0.12);
+  --agenda-tag-color: #2f6f4a;
+}
+
+.masterTrackSpecial {
+  --agenda-event-bg: #f4efff;
+  --agenda-event-border: #e7dcfb;
+  --agenda-event-accent: #8b6ad6;
+  --agenda-tag-bg: rgba(139, 106, 214, 0.13);
+  --agenda-tag-color: #5d44a4;
+}
+
+.masterTrackDeveloper {
+  --agenda-event-bg: #fff4e8;
+  --agenda-event-border: #f8e1c6;
+  --agenda-event-accent: #d88a2f;
+  --agenda-tag-bg: rgba(216, 138, 47, 0.14);
+  --agenda-tag-color: #925818;
+}
+
+.masterTimelineMobile {
+  display: none;
+}
+
+.masterGantt {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.masterGanttBlock {
+  display: grid;
+  grid-template-columns: minmax(160px, 220px) minmax(0, 1fr);
+  gap: 0.9rem;
+  align-items: stretch;
+}
+
+.masterGanttAxisGrid {
+  display: grid;
+  gap: 0.9rem;
+  min-width: 0;
+}
+
+.masterGanttAxisCell {
+  border: 1px solid #e6edf5;
+  border-radius: 14px;
+  background: #f7f9fc;
+  padding: 0.85rem 0.9rem;
+  display: grid;
+  gap: 0.25rem;
+  align-content: start;
+}
+
+.masterGanttContentFrame {
+  min-width: 0;
+}
+
+.masterGanttContentGrid {
+  display: grid;
+  gap: 0.7rem;
+  position: relative;
+  align-items: stretch;
+}
+
+.masterGanttRowBackground {
+  border: 1px solid #e6edf5;
+  border-radius: 14px;
+  background: #ffffff;
+  min-width: 0;
+}
+
+.masterGanttItem {
+  align-self: stretch;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.masterGanttItemRange {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #5a6775;
+  white-space: nowrap;
+}
+
+.masterTimelineRow {
+  display: grid;
+  grid-template-columns: minmax(160px, 220px) minmax(0, 1fr);
+  gap: 0.9rem;
+  align-items: stretch;
+}
+
+.masterTimelineAxis {
+  border: 1px solid #e6edf5;
+  border-radius: 14px;
+  background: #f7f9fc;
+  padding: 0.85rem 0.9rem;
+  display: grid;
+  gap: 0.25rem;
+  align-content: start;
+}
+
+.masterTimelineDate {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1f2f3d;
+}
+
+.masterTimelinePeriod {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #35516b;
+}
+
+.masterTimelineRange {
+  font-size: 0.86rem;
+  color: #5a6775;
+}
+
+.masterTimelineContent {
+  min-width: 0;
+  border: 1px solid #e6edf5;
+  border-radius: 14px;
+  background: #ffffff;
+  padding: 0.75rem;
+  display: grid;
+  align-content: start;
+}
+
+.masterTimelineSlots {
+  display: grid;
+  gap: 0.7rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  align-content: start;
+}
+
+.masterTimelineSlotsTwoByTwo {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.masterTimelineItem {
+  width: 100%;
+  text-align: left;
+  border: 1px solid #e6edf5;
+  border-radius: 12px;
+  background: #f8fbff;
+  padding: 0.75rem 0.8rem;
+  display: grid;
+  gap: 0.45rem;
+  color: inherit;
+}
+
+/* Re-apply typed colors for calendar events because .masterTimelineItem shares the same element. */
+.masterCalendarEvent {
+  background: var(--agenda-event-bg);
+  border-color: var(--agenda-event-border);
+  border-left-color: var(--agenda-event-border);
+}
+
+.masterTimelineItemTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.masterTimelineItemTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #1f2f3d;
+}
+
+.masterSlotMobile {
+  gap: 0.45rem;
+}
+
+.masterSlotMobileTop {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.55rem;
+  align-items: center;
+}
+
+.masterSlotTrack {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  background: #eef4fb;
+  color: #35516b;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.singlePanelAction {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.singlePanelAction:focus-visible {
+  outline: 2px solid rgba(16, 112, 202, 0.5);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+.directoryCardButton {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  text-align: left;
+  display: grid;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.directoryCardButton:focus-visible {
+  outline: 2px solid rgba(16, 112, 202, 0.5);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+.specialTitleRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.statusPublished {
+  background: rgba(16, 112, 202, 0.1);
+  color: #106fca;
+}
+
+.statusUpdating {
+  background: rgba(234, 136, 0, 0.12);
+  color: #b96b00;
+}
+
+.statusPending {
+  background: rgba(100, 116, 139, 0.12);
+  color: #56657a;
+}
+
+.agendaPanels {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.agendaPanel {
+  border: 1px solid #e6edf5;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+  overflow: hidden;
+}
+
+.agendaPanelHeader {
+  margin: 0;
+}
+
+.agendaPanelToggle {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 1rem 1.1rem;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 0.35rem 0.8rem;
+  align-items: start;
+}
+
+.agendaPanelToggle:hover {
+  background: rgba(148, 163, 184, 0.04);
+}
+
+.agendaPanelToggle:focus-visible {
+  outline: 2px solid rgba(16, 112, 202, 0.5);
+  outline-offset: -2px;
+}
+
+.agendaPanelToggleMain {
+  grid-column: 1 / 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.agendaPanelToggleTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1a2a33;
+}
+
+.agendaPanelToggleTitlePromoted {
+  font-size: 1.3rem;
+}
+
+.agendaPanelToggleMeta {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.4rem 0.45rem;
+  color: #5a6775;
+  font-size: 0.88rem;
+  justify-self: end;
+  align-self: center;
+  min-width: 0;
+}
+
+.agendaPanelMetaTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid #e6edf5;
+  background: #f8fafc;
+  color: #4f6072;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.agendaPanelChevron {
+  grid-column: 3 / 4;
+  grid-row: 1 / span 2;
+  align-self: center;
+  color: #5a6775;
+  transition: transform 0.2s ease;
+}
+
+.agendaPanelChevronExpanded {
+  transform: rotate(180deg);
+}
+
+.agendaPanelBody {
+  border-top: 1px solid #edf2f8;
+  padding: 1rem 1.1rem 1.15rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.agendaPanelSummary {
+  border-radius: 12px;
+  border: 1px solid #e6edf5;
+  background: #f8fafd;
+  padding: 0.75rem 0.85rem;
+  color: #4d6070;
+  line-height: 1.65;
+}
+
+.agendaPanelSummaryLead {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.agendaPanelSummaryLeadRaw {
+  white-space: pre-line;
+}
+
+.agendaPanelSummaryLeadInline {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.agendaPanelSummaryLeadLabel {
+  font-weight: 700;
+  color: #334155;
+}
+
+.agendaPanelSummaryLeadHead {
+  line-height: 1.4;
+}
+
+.agendaPanelSummaryLeadList {
+  margin: 0;
+  padding-left: 1.05rem;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.agendaPanelSummaryLeadItem {
+  line-height: 1.6;
+}
+
+.agendaPanelSummaryNote {
+  color: #5a6775;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.agendaPanelDayHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.agendaPanelDayHeaderCompact {
+  justify-content: flex-end;
+}
+
+.agendaPanelDayCount {
+  color: #5a6775;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.sessionMetaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.55rem;
+}
+
+.sessionTime {
+  font-weight: 700;
+  color: #334155;
+  font-size: 0.86rem;
+}
+
+.sessionTypeTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  background: #eef4fb;
+  color: #35516b;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.eventHostName {
+  color: #334155;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+@keyframes panelHighlightPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 112, 202, 0.24);
+    border-color: rgba(16, 112, 202, 0.34);
+  }
+  100% {
+    box-shadow: 0 0 0 8px rgba(16, 112, 202, 0);
+    border-color: #e6edf5;
+  }
+}
+
+.agendaPanelHighlight {
+  animation: panelHighlightPulse 1.8s ease;
+}
+
 .venueBlock {
   margin-top: 2.5rem;
 }
@@ -508,6 +1704,12 @@
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
+.organizerLogoWall {
+  grid-template-columns: repeat(2, minmax(0, 240px));
+  justify-content: center;
+  gap: 0.9rem;
+}
+
 .logoSlot {
   aspect-ratio: 3 / 2;
   border-radius: 10px;
@@ -638,6 +1840,56 @@
   gap: 0.75rem;
 }
 
+.agendaListPlain {
+  gap: 0;
+}
+
+.agendaPhaseList {
+  display: grid;
+  gap: 0;
+}
+
+.agendaPhase {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0.7rem 0.1rem;
+  border-bottom: 1px solid #edf2f8;
+}
+
+.agendaPhase:last-child {
+  border-bottom: 0;
+  padding-bottom: 0.1rem;
+}
+
+.agendaPhaseTitle {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #1a2a33;
+  line-height: 1.35;
+}
+
+.agendaPhaseLead {
+  color: #4d6070;
+  line-height: 1.55;
+  padding: 0.05rem 0.1rem 0;
+}
+
+.agendaPhaseItems {
+  display: grid;
+  gap: 0;
+  margin-left: 0.1rem;
+  padding-left: 0.8rem;
+  border-left: 2px solid #eef3f8;
+}
+
+.agendaPhaseItemsCards {
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+  margin-left: 0;
+  padding-left: 0;
+  border-left: 0;
+}
+
 .agendaItem {
   display: grid;
   gap: 0.35rem;
@@ -647,6 +1899,181 @@
   border: 1px solid #e6edf5;
 }
 
+.agendaItemPlain {
+  gap: 0.25rem;
+  padding: 0.65rem 0.1rem;
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #edf2f8;
+}
+
+.agendaItemPlain:last-child {
+  border-bottom: 0;
+  padding-bottom: 0.15rem;
+}
+
+.agendaItemPlain .sessionMetaRow {
+  gap: 0.35rem 0.5rem;
+}
+
+.agendaItemPlain .agendaTitle {
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.agendaItemPlain .agendaNote {
+  line-height: 1.5;
+}
+
+.agendaItemHasTalkTitle {
+  gap: 0.22rem;
+}
+
+.agendaTalkTitle {
+  display: grid;
+  gap: 0.1rem;
+  margin-bottom: 0;
+}
+
+.agendaTalkTitleZh {
+  font-size: 0.95rem;
+  line-height: 1.28;
+  font-weight: 700;
+  color: #334155;
+  letter-spacing: 0.005em;
+}
+
+.agendaTalkTitleEn {
+  font-size: 0.82rem;
+  line-height: 1.38;
+  font-weight: 600;
+  color: #5c6b7b;
+}
+
+.agendaItemHasTalkTitle .agendaTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #334155;
+  line-height: 1.28;
+  margin-top: 0;
+}
+
+.agendaKeynoteCard {
+  padding: 0.9rem 0.95rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  gap: 0.58rem;
+  min-height: 100%;
+}
+
+.agendaKeynoteCardTop {
+  padding: 0.58rem 0.68rem 0.62rem;
+  border: 1px solid #edf2f8;
+  border-radius: 10px;
+  background: #fbfcfe;
+  min-width: 0;
+}
+
+.agendaKeynoteCardBottom {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr);
+  column-gap: 0.82rem;
+  align-items: center;
+  min-width: 0;
+  min-height: 4.2rem;
+}
+
+.agendaKeynoteCardPhoto {
+  align-self: center;
+  justify-self: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.agendaKeynoteCardMain {
+  display: grid;
+  align-content: center;
+  gap: 0.18rem;
+  min-width: 0;
+  min-height: 4.2rem;
+}
+
+.agendaKeynoteCard .agendaSpeakerPhotoSlot {
+  width: 3.55rem;
+  height: 3.55rem;
+}
+
+.agendaKeynoteCard .agendaTitle {
+  line-height: 1.28;
+}
+
+.agendaKeynoteCard .agendaNote {
+  font-size: 0.82rem;
+  line-height: 1.38;
+  color: #5c6b7b;
+}
+
+.agendaPhaseItem {
+  padding-left: 0.35rem;
+  padding-right: 0;
+}
+
+.agendaPhaseItem:last-child {
+  border-bottom: 0;
+  padding-bottom: 0.1rem;
+}
+
+.agendaItemSpeaker {
+  grid-template-columns: minmax(0, 1fr) 84px;
+  column-gap: 0.9rem;
+  align-items: center;
+}
+
+.agendaItemSpeaker > * {
+  grid-column: 1;
+}
+
+.agendaItemAside {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  align-self: center;
+  justify-self: end;
+  display: grid;
+  place-items: center;
+}
+
+.agendaSpeakerPhotoSlot {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  border: 1px dashed #d8e2ee;
+  background: #f8fafc;
+  color: #94a3b8;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.agendaSpeakerPhotoSlot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.agendaSpeakerPhotoPlaceholder {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
 .agendaTitle {
   font-size: 1rem;
   font-weight: 600;
@@ -654,6 +2081,90 @@
 
 .agendaNote {
   color: #4d6070;
+}
+
+.devAgendaList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.devAgendaCard {
+  display: grid;
+  gap: 0.4rem;
+  padding: 0.85rem 0.95rem;
+  border-radius: 12px;
+  border: 1px solid #e6edf5;
+  background: #fbfcfe;
+}
+
+.devAgendaCardBody {
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: center;
+  min-height: 100%;
+}
+
+.devAgendaLogoSlot {
+  height: 56px;
+  border-radius: 10px;
+  border: 1px solid #e6edf5;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.5rem;
+  overflow: hidden;
+}
+
+.devAgendaLogoSlot img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.devAgendaLogoFallback {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #64748b;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.devAgendaCardContent {
+  min-width: 0;
+  display: grid;
+  gap: 0.1rem;
+}
+
+.devAgendaCard .agendaTitle,
+.devAgendaCardUnit {
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.devAgendaCardName {
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #334155;
+}
+
+.devAgendaCardRole {
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.devAgendaCard .agendaNote {
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.devAgendaCardNote {
+  white-space: pre-line;
 }
 
 .cardGrid {
@@ -760,7 +2271,7 @@
 .peopleGrid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .personCard {
@@ -836,6 +2347,78 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.partnerGroupGrid {
+  --partner-logo-box-height: clamp(180px, 13vw, 300px);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.partnerGroupCard {
+  padding: 1rem;
+  gap: 0.8rem;
+  align-content: start;
+}
+
+.partnerGroupCardWide {
+  grid-column: 1 / -1;
+}
+
+.partnerGroupLabel {
+  margin: 0;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #1a2a33;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+
+.partnerGroupBody {
+  display: grid;
+  align-items: center;
+  min-height: 0;
+}
+
+.partnerLogoItem {
+  width: 100%;
+  height: var(--partner-logo-box-height);
+  min-height: 0;
+  aspect-ratio: auto;
+  padding: 0.6rem 0.75rem;
+}
+
+.partnerHostLogoItem img {
+  max-width: 80%;
+  max-height: 80%;
+  padding: 0;
+}
+
+.partnerCoHostLogoItem img {
+  max-width: 54%;
+  max-height: 72%;
+  padding: 0;
+}
+
+.partnerSupportGrid {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.partnerSupportGrid .partnerLogoItem {
+  height: var(--partner-logo-box-height);
+  min-height: 0;
+  padding: 0.55rem 0.65rem;
+}
+
+.partnerLogoLink {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
 .sponsorCard {
   display: flex;
   align-items: center;
@@ -863,6 +2446,73 @@
   background: var(--ifm-background-surface-color);
   border-color: rgba(216, 227, 242, 0.14);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.32);
+}
+
+[data-theme='dark'] .agendaItemPlain {
+  background: transparent;
+  box-shadow: none;
+  border-bottom-color: rgba(216, 227, 242, 0.1);
+}
+
+[data-theme='dark'] .agendaPhase {
+  border-bottom-color: rgba(216, 227, 242, 0.1);
+}
+
+[data-theme='dark'] .agendaPhaseTitle {
+  color: #dbe6f5;
+}
+
+[data-theme='dark'] .agendaPhaseLead {
+  color: #c0cedf;
+}
+
+[data-theme='dark'] .agendaPhaseItems {
+  border-left-color: rgba(216, 227, 242, 0.12);
+}
+
+[data-theme='dark'] .agendaKeynoteCardTop {
+  border-color: rgba(216, 227, 242, 0.12);
+  background: rgba(216, 227, 242, 0.03);
+}
+
+[data-theme='dark'] .agendaTalkTitleZh {
+  color: #c8d4e4;
+}
+
+[data-theme='dark'] .agendaTalkTitleEn {
+  color: #b8c7d9;
+}
+
+[data-theme='dark'] .agendaItemHasTalkTitle .agendaTitle {
+  color: #c8d4e4;
+}
+
+[data-theme='dark'] .agendaKeynoteCard .agendaNote {
+  color: #b8c7d9;
+}
+
+[data-theme='dark'] .devAgendaCardName {
+  color: #d0d9e8;
+}
+
+[data-theme='dark'] .agendaSpeakerPhotoSlot {
+  background: rgba(216, 227, 242, 0.03);
+  border-color: rgba(216, 227, 242, 0.18);
+  color: #aebcd0;
+}
+
+[data-theme='dark'] .devAgendaCard {
+  background: rgba(216, 227, 242, 0.03);
+  border-color: rgba(216, 227, 242, 0.12);
+}
+
+[data-theme='dark'] .devAgendaLogoSlot {
+  background: #ffffff;
+  border-color: #e6edf5;
+}
+
+[data-theme='dark'] .devAgendaLogoFallback {
+  color: #7b8794;
 }
 
 [data-theme='dark'] .cardMeta,
@@ -907,6 +2557,13 @@
 [data-theme='dark'] .logoItem {
   background: var(--ifm-background-surface-color);
   border-color: rgba(216, 227, 242, 0.18);
+}
+
+[data-theme='dark'] .partnerGroupGrid .logoItem,
+[data-theme='dark'] .partnerGroupGrid .partnerLogoItem {
+  background: #ffffff;
+  border-color: #e6edf5;
+  box-shadow: none;
 }
 
 [data-theme='dark'] .logoItemPlaceholder {
@@ -971,13 +2628,354 @@
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
+[data-theme='dark'] .agendaSubsectionTitle,
+[data-theme='dark'] .sectionTitle,
+[data-theme='dark'] .partnerGroupLabel,
+[data-theme='dark'] .logoWallTitle,
+[data-theme='dark'] .cardTitle,
+[data-theme='dark'] .personName,
+[data-theme='dark'] .detailValue,
+[data-theme='dark'] .agendaPanelToggleTitle,
+[data-theme='dark'] .eventHostName,
+[data-theme='dark'] .masterSlotTitle,
+[data-theme='dark'] .sessionTime,
+[data-theme='dark'] .masterTrackHeader,
+[data-theme='dark'] .masterTimeCell {
+  color: #dbe6f5;
+}
+
+[data-theme='dark'] .agendaSubsectionDesc,
+[data-theme='dark'] .agendaPanelToggleMeta,
+[data-theme='dark'] .agendaPanelDayCount,
+[data-theme='dark'] .masterTimeRange,
+[data-theme='dark'] .personTitle,
+[data-theme='dark'] .logoPlaceholder {
+  color: #b8c7d9;
+}
+
+[data-theme='dark'] .agendaPanelMetaTag {
+  background: rgba(216, 227, 242, 0.05);
+  border-color: rgba(216, 227, 242, 0.16);
+  color: #c8d4e4;
+}
+
+[data-theme='dark'] .personCard .personName {
+  color: #1a2a33;
+}
+
+[data-theme='dark'] .personCard .personTitle {
+  color: #5a6775;
+}
+
+[data-theme='dark'] .dayTab {
+  background: var(--ifm-background-surface-color);
+  border-color: rgba(216, 227, 242, 0.16);
+  color: #d8e3f2;
+}
+
+[data-theme='dark'] .dayTabActive {
+  background: rgba(174, 94, 253, 0.12);
+  border-color: rgba(174, 94, 253, 0.26);
+  color: #d6e5ff;
+}
+
+[data-theme='dark'] .masterGrid,
+[data-theme='dark'] .masterTrackCell,
+[data-theme='dark'] .masterTrackHeader,
+[data-theme='dark'] .masterTimeCell,
+[data-theme='dark'] .agendaPanel,
+[data-theme='dark'] .agendaPanelSummary {
+  background: var(--ifm-background-surface-color);
+  border-color: rgba(216, 227, 242, 0.14);
+}
+
+[data-theme='dark'] .agendaPanelSummary,
+[data-theme='dark'] .agendaPanelSummaryLeadHead,
+[data-theme='dark'] .agendaPanelSummaryLeadItem {
+  color: #c0cedf;
+}
+
+[data-theme='dark'] .agendaPanelSummaryLeadLabel {
+  color: #e0e8f5;
+}
+
+[data-theme='dark'] .agendaPanelSummaryNote {
+  color: #b8c7d9;
+}
+
+[data-theme='dark'] .masterTrackHeader {
+  background: rgba(216, 227, 242, 0.04);
+}
+
+[data-theme='dark'] .masterTimeCell {
+  background: rgba(216, 227, 242, 0.03);
+}
+
+[data-theme='dark'] .masterSlot {
+  color: #dbe6f5;
+}
+
+[data-theme='dark'] .masterSlotPublished {
+  background: rgba(16, 112, 202, 0.12);
+  border-color: rgba(16, 112, 202, 0.28);
+}
+
+[data-theme='dark'] .masterSlotUpdating {
+  background: rgba(234, 136, 0, 0.12);
+  border-color: rgba(234, 136, 0, 0.22);
+}
+
+[data-theme='dark'] .masterSlotPending {
+  background: rgba(100, 116, 139, 0.12);
+  border-color: rgba(148, 163, 184, 0.22);
+}
+
+[data-theme='dark'] .masterSlotTrack,
+[data-theme='dark'] .masterPeriodTrackTag,
+[data-theme='dark'] .masterPeriodCount,
+[data-theme='dark'] .sessionTypeTag {
+  background: rgba(216, 227, 242, 0.08);
+  color: #d8e3f2;
+}
+
+[data-theme='dark'] .masterPeriodCard,
+[data-theme='dark'] .masterPeriodItem {
+  background: var(--ifm-background-surface-color);
+  border-color: rgba(216, 227, 242, 0.14);
+}
+
+[data-theme='dark'] .masterCalendarDesktop {
+  --forum-agenda-grid-line: rgba(216, 227, 242, 0.1);
+  --forum-agenda-grid-line-strong: rgba(216, 227, 242, 0.18);
+  --forum-agenda-board-bg: var(--ifm-background-surface-color);
+}
+
+[data-theme='dark'] .masterPeriodTitle,
+[data-theme='dark'] .masterPeriodItemTitle,
+[data-theme='dark'] .masterCalendarDayTitle,
+[data-theme='dark'] .masterCalendarBoardHeaderAxis,
+[data-theme='dark'] .masterCalendarBoardHeaderDay,
+[data-theme='dark'] .masterTimelineDate,
+[data-theme='dark'] .masterTimelineItemTitle {
+  color: #dbe6f5;
+}
+
+[data-theme='dark'] .masterPeriodRange,
+[data-theme='dark'] .masterTimelineRange,
+[data-theme='dark'] .masterGanttItemRange {
+  color: #b8c7d9;
+}
+
+[data-theme='dark'] .masterCalendarDayCount,
+[data-theme='dark'] .masterCalendarAxisLabel,
+[data-theme='dark'] .masterCalendarBoardAxisLabel {
+  color: #b8c7d9;
+}
+
+[data-theme='dark'] .masterTimelineAxis,
+[data-theme='dark'] .masterCalendarAxis,
+[data-theme='dark'] .masterCalendarAxisCellHour,
+[data-theme='dark'] .masterGanttAxisCell,
+[data-theme='dark'] .masterCalendarBoardAxisCell,
+[data-theme='dark'] .masterCalendarBoardAxisCellHour,
+[data-theme='dark'] .masterCalendarBoardHeaderAxis,
+[data-theme='dark'] .masterCalendarBoardHeaderDay,
+[data-theme='dark'] .masterTimelineContent,
+[data-theme='dark'] .masterTimelineItem,
+[data-theme='dark'] .masterCalendarPrepEvent,
+[data-theme='dark'] .masterCalendarBoardRow,
+[data-theme='dark'] .masterCalendarGridRow,
+[data-theme='dark'] .masterGanttRowBackground {
+  background: var(--ifm-background-surface-color);
+  border-color: rgba(216, 227, 242, 0.14);
+}
+
+[data-theme='dark'] .masterCalendarPrepEvent {
+  background: rgba(216, 227, 242, 0.04);
+  border-color: rgba(173, 196, 214, 0.2);
+}
+
+[data-theme='dark'] .masterCalendarPrepEventLabel {
+  color: #c9d7e4;
+}
+
+[data-theme='dark'] .masterCalendarAxisCell {
+  border-top-color: rgba(216, 227, 242, 0.1);
+}
+
+[data-theme='dark'] .masterCalendarGridRowHour {
+  border-color: rgba(216, 227, 242, 0.2);
+}
+
+[data-theme='dark'] .masterCalendarEvent .masterPeriodTrackTag {
+  background: rgba(216, 227, 242, 0.08);
+  color: #dbe6f5;
+}
+
+[data-theme='dark'] .masterTrackMain {
+  background: #2c4561;
+  border-color: #4a7aa9;
+}
+
+[data-theme='dark'] .masterTrackSubforums {
+  background: #2f4a3a;
+  border-color: #4b8a65;
+}
+
+[data-theme='dark'] .masterTrackSpecial {
+  background: #473f60;
+  border-color: #7764b0;
+}
+
+[data-theme='dark'] .masterTrackDeveloper {
+  background: #5a452b;
+  border-color: #b67a38;
+}
+
+[data-theme='dark'] .masterTimelinePeriod {
+  color: #c9dbff;
+}
+
+[data-theme='dark'] .masterSlotEmpty {
+  background: rgba(216, 227, 242, 0.02);
+  border-color: rgba(216, 227, 242, 0.16);
+  color: #99abc1;
+}
+
+[data-theme='dark'] .statusPublished {
+  background: rgba(16, 112, 202, 0.16);
+  color: #b8d7ff;
+}
+
+[data-theme='dark'] .statusUpdating {
+  background: rgba(234, 136, 0, 0.16);
+  color: #ffd18a;
+}
+
+[data-theme='dark'] .statusPending {
+  background: rgba(148, 163, 184, 0.15);
+  color: #d1dae7;
+}
+
+[data-theme='dark'] .agendaPanelToggle:hover {
+  background: rgba(216, 227, 242, 0.04);
+}
+
+[data-theme='dark'] .agendaPanelBody {
+  border-top-color: rgba(216, 227, 242, 0.14);
+}
+
 @media (max-width: 960px) {
   .agendaIntro {
     grid-template-columns: 1fr;
   }
 
+  .masterPeriodGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .masterTimelineRow {
+    grid-template-columns: 150px minmax(0, 1fr);
+  }
+
+  .masterCalendarDesktop {
+    --forum-agenda-half-row-height: 2.45rem;
+  }
+
+  .masterCalendarBoardHeader,
+  .masterCalendarBoardBody {
+    grid-template-columns: 72px minmax(74px, 0.3fr) repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .masterCalendarBoardHeaderDay {
+    font-size: 0.88rem;
+  }
+
+  .masterCalendarBoardHeaderPrep {
+    font-size: 0.78rem;
+    padding: 0 0.2rem;
+  }
+
+  .masterCalendarBoardAxisCell {
+    padding-left: 0.35rem;
+    padding-right: 0.35rem;
+  }
+
+  .masterCalendarEvent {
+    padding: 0.6rem 0.65rem;
+  }
+
+  .masterCalendarPrepEvent {
+    margin-left: 0.15rem;
+    margin-right: 0.15rem;
+  }
+
+  .masterCalendarPrepEventDay {
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+  }
+
+  .masterCalendarCluster {
+    grid-template-columns: 78px minmax(0, 1fr);
+    gap: 0.65rem;
+  }
+
+  .masterCalendarAxisCell {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .masterGanttBlock {
+    grid-template-columns: 150px minmax(0, 1fr);
+  }
+
+  .masterTimelineSlots {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .masterTimelineSlotsTwoByTwo {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .masterPeriodCard {
+    padding: 0.9rem;
+  }
+
+  .masterPeriodItem {
+    padding: 0.65rem 0.75rem;
+  }
+
+  .masterGrid {
+    grid-template-columns: 110px repeat(4, minmax(0, 1fr));
+  }
+
+  .masterTrackHeader,
+  .masterTimeCell,
+  .masterTrackCell {
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+  }
+
+  .masterSlot {
+    padding: 0.55rem 0.6rem;
+  }
+
   .peopleGrid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .partnerGroupGrid {
+    --partner-logo-box-height: clamp(150px, 18vw, 220px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .partnerGroupCardWide {
+    grid-column: 1 / -1;
+  }
+
+  .partnerSupportGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .logoWall {
@@ -1002,6 +3000,22 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .partnerGroupGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .partnerGroupCardWide {
+    grid-column: auto;
+  }
+
+  .partnerGroupGrid {
+    --partner-logo-box-height: 150px;
+  }
+
+  .partnerSupportGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .sponsorCard {
     min-height: 160px;
   }
@@ -1011,12 +3025,175 @@
     align-items: flex-start;
   }
 
+  .masterAgendaHeader {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .dayTabs {
+    width: 100%;
+  }
+
+  .dayTab {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  .masterGridDesktop {
+    display: none;
+  }
+
+  .masterAgendaMobileList {
+    display: grid;
+  }
+
+  .masterPeriodHeader {
+    align-items: flex-start;
+  }
+
+  .masterPeriodItemTop {
+    align-items: flex-start;
+  }
+
+  .masterTimelineRow {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .masterGantt {
+    display: none;
+  }
+
+  .masterCalendarDesktop {
+    display: none;
+  }
+
+  .masterTimelineMobile {
+    display: block;
+  }
+
+  .masterTimelineAxis {
+    padding: 0.75rem 0.85rem;
+    gap: 0.2rem;
+  }
+
+  .masterTimelineSlots {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .masterTimelineSlotsTwoByTwo {
+    grid-template-columns: 1fr;
+  }
+
+  .masterTimelineItem {
+    padding: 0.7rem 0.75rem;
+  }
+
+  .masterTimelineItemTop {
+    align-items: flex-start;
+  }
+
   .statusPill {
     justify-self: flex-start;
   }
 
   .detailGrid {
     grid-template-columns: 1fr;
+  }
+
+  .agendaSubsectionHeader {
+    margin-bottom: -0.2rem;
+  }
+
+  .agendaPanelToggle {
+    grid-template-columns: 1fr auto;
+    padding: 0.9rem 1rem;
+  }
+
+  .agendaPanelToggleMain {
+    display: grid;
+    gap: 0.45rem;
+    align-items: flex-start;
+  }
+
+  .agendaPanelToggleMeta {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    justify-self: start;
+    justify-content: flex-start;
+    gap: 0.4rem 0.55rem;
+  }
+
+  .agendaPanelMetaTag {
+    font-size: 0.75rem;
+  }
+
+  .agendaPanelBody {
+    padding: 0.9rem 1rem 1rem;
+  }
+
+  .agendaPanelDayHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .agendaPhase {
+    gap: 0.5rem;
+  }
+
+  .agendaPhaseTitle {
+    font-size: 1rem;
+  }
+
+  .agendaPhaseItems {
+    margin-left: 0;
+    padding-left: 0.55rem;
+  }
+
+  .agendaPhaseItemsCards {
+    grid-template-columns: 1fr;
+    padding-left: 0;
+  }
+
+  .agendaKeynoteCardPhoto {
+    display: none;
+  }
+
+  .agendaKeynoteCardBottom {
+    grid-template-columns: 1fr;
+  }
+
+  .agendaItemSpeaker {
+    grid-template-columns: 1fr;
+  }
+
+  .agendaItemAside {
+    display: none;
+  }
+
+  .devAgendaList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .devAgendaCardBody {
+    grid-template-columns: 74px minmax(0, 1fr);
+    gap: 0.7rem;
+  }
+
+  .devAgendaLogoSlot {
+    height: 48px;
+    padding: 0.3rem 0.4rem;
+  }
+
+  .devAgendaCard {
+    padding: 0.8rem 0.85rem;
+  }
+
+  .eventHost {
+    align-items: flex-start;
+    flex-wrap: wrap;
   }
 
   .agendaGridSubForum {
@@ -1043,6 +3220,10 @@
     grid-template-columns: 1fr;
   }
 
+  .specialTitleRow {
+    align-items: flex-start;
+  }
+
   .specialLogoWrap {
     max-width: 260px;
   }
@@ -1058,11 +3239,27 @@
   .logoWallFive {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .organizerLogoWall {
+    grid-template-columns: repeat(2, minmax(0, 220px));
+  }
 }
 
 @media (max-width: 520px) {
+  .devAgendaList {
+    grid-template-columns: 1fr;
+  }
+
   .sponsorGrid {
     grid-template-columns: 1fr;
+  }
+
+  .partnerSupportGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .partnerGroupGrid {
+    --partner-logo-box-height: 132px;
   }
 
   .venueCard {
@@ -1079,5 +3276,28 @@
 
   .logoWallFive {
     grid-template-columns: 1fr;
+  }
+
+  .organizerLogoWall {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dayTab,
+  .masterSlotClickable,
+  .agendaPanelChevron,
+  .venueLink {
+    transition: none;
+  }
+
+  .masterSlotClickable:hover {
+    transform: none;
+  }
+
+  .agendaPanelHighlight {
+    animation: none;
+    border-color: rgba(16, 112, 202, 0.34);
+    box-shadow: 0 0 0 2px rgba(16, 112, 202, 0.14);
   }
 }

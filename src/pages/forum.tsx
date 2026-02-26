@@ -1,10 +1,22 @@
-import type { ReactNode } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import Layout from "@theme/Layout";
 import Translate, { translate } from "@docusaurus/Translate";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import clsx from "clsx";
 
+import {
+  activityAgendaDetails,
+  agendaTrackOrder,
+  masterAgendaSlots,
+  type AgendaDayKey,
+  type AgendaStatus,
+  type AgendaText,
+  type AgendaTrackKey,
+  type ActivityAgendaDetail,
+  type ActivitySession,
+  type MasterAgendaSlot,
+} from "../data/forumAgenda";
 import styles from "./forum.module.css";
 
 const icons = {
@@ -366,12 +378,28 @@ const people: {
     image: "img/tg-forum/people/MoL-watershed.png",
   },
   {
+    key: "nan-li",
+    nameEn: "Nan Li",
+    nameZh: "李楠",
+    titleZh: <>清华大学环境学院副研究员</>,
+    titleEn: <>Associate Researcher, School of Environment, Tsinghua University</>,
+    image: "img/tg-forum/people/NanL-thu.jpeg",
+  },
+  {
     key: "alessandro-manzardo",
     nameEn: "Alessandro Manzardo",
     nameZh: "Alessandro Manzardo",
     titleZh: <>帕多瓦大学副教授</>,
     titleEn: <>Associate Professor, Università degli Studi di Padova</>,
     image: "img/tg-forum/people/AlessandroM-upd.jpg",
+  },
+  {
+    key: "patrick-mcmaster",
+    nameEn: "Patrick McMaster",
+    nameZh: "Patrick McMaster（廖利财）",
+    titleZh: <>国际能源署（IEA）能效与包容性转型中心中国负责人</>,
+    titleEn: <>China Lead, IEA Office of Energy Efficiency and Inclusive Transitions</>,
+    image: "img/tg-forum/people/PatrickM-iea.jpg",
   },
   {
     key: "llorenc-mila-i-canals",
@@ -436,6 +464,14 @@ const people: {
     image: "img/tg-forum/people/SangwonS-thu.jpg",
   },
   {
+    key: "jinping-tian",
+    nameEn: "Jinping Tian",
+    nameZh: "田金平",
+    titleZh: <>清华大学环境学院研究员</>,
+    titleEn: <>Researcher, School of Environment, Tsinghua University</>,
+    image: "img/tg-forum/people/JinpingT-thu.JPG",
+  },
+  {
     key: "ian-vazquez-rowe",
     nameEn: "Ian Vázquez-Rowe",
     nameZh: "Ian Vázquez-Rowe",
@@ -451,9 +487,29 @@ const people: {
     titleEn: <>Chair Professor, Tsinghua University</>,
     image: "img/tg-forum/people/MingX-thu.jpg",
   },
+  {
+    key: "jingjie-zhang",
+    nameEn: "Jingjie Zhang",
+    nameZh: "张晶杰",
+    titleZh: <>中国电力企业联合会规划发展部（低碳研究部）副主任</>,
+    titleEn: (
+      <>
+        Deputy Director, Planning and Development Department (Low-Carbon Research
+        Department), China Electricity Council
+      </>
+    ),
+    image: "img/tg-forum/people/JingjieZ-zdl.jpg",
+  },
+  {
+    key: "ying-zheng",
+    nameEn: "Ying Zheng",
+    nameZh: "郑颖",
+    titleZh: <>电链科技/天工智库 总监/研究员</>,
+    titleEn: <>Dianlian Tech / TianGong Think Tank, Director / Researcher</>,
+    image: "img/tg-forum/people/YingZ-tg.jpg",
+  },
 ];
 
-const logoSlots = Array.from({ length: 6 }, (_, index) => index);
 const devConfLogos: { key: string; name: string; src?: string }[] = [
   {
     key: "carbonminds",
@@ -472,7 +528,7 @@ const devConfLogos: { key: string; name: string; src?: string }[] = [
   },
   {
     key: "envision",
-    name: "Envision",
+    name: "Univers",
     src: "img/tg-forum/orgnizations/lca_dev_conf/envision.png",
   },
   {
@@ -504,6 +560,50 @@ const devConfLogos: { key: string; name: string; src?: string }[] = [
     key: "watershed",
     name: "Watershed",
     src: "img/tg-forum/orgnizations/lca_dev_conf/watershed.png",
+  },
+];
+
+const devConfLogoByKey = new Map(devConfLogos.map((logo) => [logo.key, logo]));
+
+const organizerLogos: { key: string; name: string; src: string }[] = [
+  {
+    key: "cfa",
+    name: "CFA",
+    src: "img/tg-forum/orgnizations/events/cfa.png",
+  },
+  {
+    key: "cses",
+    name: "CSES",
+    src: "img/tg-forum/partner-logo/cses.png",
+  },
+];
+
+const supportInstitutionLogos: {
+  key: string;
+  name: string;
+  src: string;
+  href?: string;
+}[] = [
+  {
+    key: "cnest",
+    name: "CNEST",
+    src: "img/tg-forum/partner-logo/CNEST.png",
+  },
+  {
+    key: "dcv",
+    name: "国际数碳谷",
+    src: "img/tg-forum/partner-logo/dcv.png",
+  },
+  {
+    key: "ef-china",
+    name: "能源基金会",
+    src: "img/tg-forum/partner-logo/EF_China.png",
+  },
+  {
+    key: "ijmcccn",
+    name: "ijmcccn",
+    src: "img/tg-forum/partner-logo/ijmcccn.png",
+    href: "https://jointmission.lib.tsinghua.edu.cn/",
   },
 ];
 
@@ -684,11 +784,1450 @@ const agendaGroups: AgendaGroup[] = [
   },
 ];
 
+type MasterAgendaTimelineRow = {
+  key: string;
+  day: AgendaDayKey;
+  start: string;
+  end: string;
+  activeSlots: MasterAgendaSlot[];
+};
+
+type MasterAgendaCalendarPlacement = {
+  slot: MasterAgendaSlot;
+  laneIndex: number;
+  rowStart: number;
+  rowSpan: number;
+};
+
+type MasterAgendaCalendarCluster = {
+  key: string;
+  day: AgendaDayKey;
+  startMinutes: number;
+  endMinutes: number;
+  halfHourRows: number;
+  placements: MasterAgendaCalendarPlacement[];
+  laneCount: number;
+};
+
+type MasterAgendaCalendarDay = {
+  key: string;
+  day: AgendaDayKey;
+  clusters: MasterAgendaCalendarCluster[];
+};
+
+const agendaDayOrder: AgendaDayKey[] = ["day1", "day2"];
+
+const dayLabels: Record<AgendaDayKey, AgendaText> = {
+  day1: { zh: "3 月 25 日（Day 1）", en: "Mar 25 (Day 1)" },
+  day2: { zh: "3 月 26 日（Day 2）", en: "Mar 26 (Day 2)" },
+};
+
+const timelineDayLabels: Record<AgendaDayKey, AgendaText> = {
+  day1: { zh: "3 月 25 日（周三）", en: "Mar 25 (Wed)" },
+  day2: { zh: "3 月 26 日（周四）", en: "Mar 26 (Thu)" },
+};
+
+const trackLabels: Record<AgendaTrackKey, AgendaText> = {
+  main: { zh: "主论坛", en: "Main Forum" },
+  subforums: { zh: "分论坛", en: "Sub-forums" },
+  special: { zh: "专项活动", en: "Special Events" },
+  developer: { zh: "开发者大会", en: "Developer" },
+};
+
+const keynoteSpeakerPhotoBySessionId: Record<string, string> = {
+  "mf-d2-keynote-he": "img/tg-forum/people/KebinH-thu.png",
+  "mf-d2-keynote-llorenc": "img/tg-forum/people/LlorencM-unep.jpg",
+  "mf-d2-keynote-xu": "img/tg-forum/people/MingX-thu.jpg",
+  "mf-d2-keynote-finkbeiner": "img/tg-forum/people/MatthiasF-tub.jpg",
+  "mf-d2-keynote-mieras": "img/tg-forum/people/EricMieras-1clicklca-pre.jpg",
+};
+
+function getAgendaText(text: AgendaText | undefined, isZh: boolean): string {
+  if (!text) {
+    return "";
+  }
+  return isZh ? text.zh : (text.en ?? text.zh);
+}
+
+function getCompactTimeRangeLabel(timeRange: string | undefined): string {
+  if (!timeRange) {
+    return "";
+  }
+  return timeRange.replace(/^Day\s*\d+\s*/i, "").trim();
+}
+
+function getDayNumberFromTimeRange(timeRange: string | undefined): number | undefined {
+  if (!timeRange) {
+    return undefined;
+  }
+  const match = timeRange.match(/\bDay\s*(\d+)\b/i);
+  if (!match) {
+    return undefined;
+  }
+  const value = Number(match[1]);
+  return Number.isFinite(value) ? value : undefined;
+}
+
+function getDateLabelWithDaySuffix(
+  dateLabel: AgendaText | undefined,
+  timeRange: string | undefined,
+  isZh: boolean
+): string {
+  const base = getAgendaText(dateLabel, isZh);
+  if (!base) {
+    return "";
+  }
+
+  const dayNumber = getDayNumberFromTimeRange(timeRange);
+  if (!dayNumber) {
+    return base;
+  }
+
+  if (isZh) {
+    if (/第\s*\d+\s*天/.test(base)) {
+      return base;
+    }
+    return `${base}（第 ${dayNumber} 天）`;
+  }
+
+  if (/\bDay\s*\d+\b/i.test(base)) {
+    return base;
+  }
+  return `${base} (Day ${dayNumber})`;
+}
+
+function parseTimeToMinutes(time: string): number {
+  const [hour, minute] = time.split(":").map((part) => Number(part));
+  return hour * 60 + minute;
+}
+
+function sortSessions(a: ActivitySession, b: ActivitySession): number {
+  const aHasTime = Boolean(a.start && a.end);
+  const bHasTime = Boolean(b.start && b.end);
+
+  if (!aHasTime || !bHasTime) {
+    if (aHasTime && !bHasTime) {
+      return -1;
+    }
+    if (!aHasTime && bHasTime) {
+      return 1;
+    }
+    return 0;
+  }
+
+  return (
+    parseTimeToMinutes(a.start as string) - parseTimeToMinutes(b.start as string) ||
+    parseTimeToMinutes(a.end as string) - parseTimeToMinutes(b.end as string) ||
+    a.id.localeCompare(b.id)
+  );
+}
+
+function groupSlotsForTimeline(slots: MasterAgendaSlot[]): MasterAgendaTimelineRow[] {
+  const trackIndexMap = new Map(agendaTrackOrder.map((track, index) => [track, index]));
+  const dayIndexMap = new Map(agendaDayOrder.map((day, index) => [day, index]));
+  const slotOrderMap = new Map(slots.map((slot, index) => [slot.id, index]));
+  const slotsByDay = new Map<AgendaDayKey, MasterAgendaSlot[]>();
+
+  slots.forEach((slot) => {
+    const daySlots = slotsByDay.get(slot.day);
+    if (daySlots) {
+      daySlots.push(slot);
+      return;
+    }
+    slotsByDay.set(slot.day, [slot]);
+  });
+
+  const rows: MasterAgendaTimelineRow[] = [];
+
+  agendaDayOrder.forEach((day) => {
+    const daySlots = slotsByDay.get(day);
+    if (!daySlots || daySlots.length === 0) {
+      return;
+    }
+
+    const boundarySet = new Set<string>();
+    let crossesNoon = false;
+
+    daySlots.forEach((slot) => {
+      boundarySet.add(slot.start);
+      boundarySet.add(slot.end);
+
+      if (
+        parseTimeToMinutes(slot.start) < 12 * 60 &&
+        parseTimeToMinutes(slot.end) > 12 * 60
+      ) {
+        crossesNoon = true;
+      }
+    });
+
+    if (crossesNoon) {
+      boundarySet.add("12:00");
+    }
+
+    const boundaries = Array.from(boundarySet).sort(
+      (a, b) => parseTimeToMinutes(a) - parseTimeToMinutes(b)
+    );
+
+    for (let index = 0; index < boundaries.length - 1; index += 1) {
+      const start = boundaries[index];
+      const end = boundaries[index + 1];
+      const rowStartMinutes = parseTimeToMinutes(start);
+      const rowEndMinutes = parseTimeToMinutes(end);
+
+      if (rowStartMinutes >= rowEndMinutes) {
+        continue;
+      }
+
+      const activeSlots = daySlots
+        .filter((slot) => {
+          const slotStartMinutes = parseTimeToMinutes(slot.start);
+          const slotEndMinutes = parseTimeToMinutes(slot.end);
+          return slotStartMinutes < rowEndMinutes && slotEndMinutes > rowStartMinutes;
+        })
+        .sort((a, b) => {
+          return (
+            (trackIndexMap.get(a.track) ?? 99) - (trackIndexMap.get(b.track) ?? 99) ||
+            (slotOrderMap.get(a.id) ?? 999) - (slotOrderMap.get(b.id) ?? 999) ||
+            a.id.localeCompare(b.id)
+          );
+        });
+
+      if (activeSlots.length === 0) {
+        continue;
+      }
+
+      rows.push({
+        key: `${day}-${start}-${end}`,
+        day,
+        start,
+        end,
+        activeSlots,
+      });
+    }
+  });
+
+  return rows.sort((a, b) => {
+    return (
+      (dayIndexMap.get(a.day) ?? 99) - (dayIndexMap.get(b.day) ?? 99) ||
+      parseTimeToMinutes(a.start) - parseTimeToMinutes(b.start) ||
+      parseTimeToMinutes(a.end) - parseTimeToMinutes(b.end)
+    );
+  });
+}
+
+function floorToHalfHour(minutes: number): number {
+  return Math.floor(minutes / 30) * 30;
+}
+
+function ceilToHalfHour(minutes: number): number {
+  return Math.ceil(minutes / 30) * 30;
+}
+
+function formatMinutesToTime(minutes: number): string {
+  const hour = Math.floor(minutes / 60)
+    .toString()
+    .padStart(2, "0");
+  const minute = (minutes % 60).toString().padStart(2, "0");
+  return `${hour}:${minute}`;
+}
+
+function buildDayCalendarLayouts(slots: MasterAgendaSlot[]): MasterAgendaCalendarDay[] {
+  const trackIndexMap = new Map(agendaTrackOrder.map((track, index) => [track, index]));
+  const slotOrderMap = new Map(slots.map((slot, index) => [slot.id, index]));
+  const slotsByDay = new Map<AgendaDayKey, MasterAgendaSlot[]>();
+
+  slots.forEach((slot) => {
+    const daySlots = slotsByDay.get(slot.day);
+    if (daySlots) {
+      daySlots.push(slot);
+      return;
+    }
+    slotsByDay.set(slot.day, [slot]);
+  });
+
+  return agendaDayOrder.flatMap((day) => {
+    const daySlots = slotsByDay.get(day);
+    if (!daySlots || daySlots.length === 0) {
+      return [];
+    }
+
+    const sortedSlots = [...daySlots].sort((a, b) => {
+      return (
+        parseTimeToMinutes(a.start) - parseTimeToMinutes(b.start) ||
+        parseTimeToMinutes(a.end) - parseTimeToMinutes(b.end) ||
+        (trackIndexMap.get(a.track) ?? 99) - (trackIndexMap.get(b.track) ?? 99) ||
+        (slotOrderMap.get(a.id) ?? 999) - (slotOrderMap.get(b.id) ?? 999) ||
+        a.id.localeCompare(b.id)
+      );
+    });
+
+    const clusters: MasterAgendaSlot[][] = [];
+    let currentCluster: MasterAgendaSlot[] = [];
+    let currentClusterEndMinutes = -1;
+
+    sortedSlots.forEach((slot) => {
+      const slotStartMinutes = parseTimeToMinutes(slot.start);
+      const slotEndMinutes = parseTimeToMinutes(slot.end);
+
+      if (currentCluster.length === 0) {
+        currentCluster = [slot];
+        currentClusterEndMinutes = slotEndMinutes;
+        return;
+      }
+
+      if (slotStartMinutes > currentClusterEndMinutes) {
+        clusters.push(currentCluster);
+        currentCluster = [slot];
+        currentClusterEndMinutes = slotEndMinutes;
+        return;
+      }
+
+      currentCluster.push(slot);
+      currentClusterEndMinutes = Math.max(currentClusterEndMinutes, slotEndMinutes);
+    });
+
+    if (currentCluster.length > 0) {
+      clusters.push(currentCluster);
+    }
+
+    const layoutClusters = clusters.map((clusterSlots, clusterIndex) => {
+      const clusterStartMinutes = floorToHalfHour(
+        Math.min(...clusterSlots.map((slot) => parseTimeToMinutes(slot.start)))
+      );
+      const clusterEndMinutes = ceilToHalfHour(
+        Math.max(...clusterSlots.map((slot) => parseTimeToMinutes(slot.end)))
+      );
+      const laneEndMinutes: number[] = [];
+      const placements: MasterAgendaCalendarPlacement[] = [];
+
+      clusterSlots.forEach((slot) => {
+        const slotStartMinutes = parseTimeToMinutes(slot.start);
+        const slotEndMinutes = parseTimeToMinutes(slot.end);
+        let laneIndex = laneEndMinutes.findIndex((endMinutes) => endMinutes <= slotStartMinutes);
+
+        if (laneIndex < 0) {
+          laneIndex = laneEndMinutes.length;
+          laneEndMinutes.push(slotEndMinutes);
+        } else {
+          laneEndMinutes[laneIndex] = slotEndMinutes;
+        }
+
+        const rowStart = Math.max(
+          0,
+          Math.floor((slotStartMinutes - clusterStartMinutes) / 30)
+        );
+        const rowEnd = Math.max(
+          rowStart + 1,
+          Math.ceil((slotEndMinutes - clusterStartMinutes) / 30)
+        );
+
+        placements.push({
+          slot,
+          laneIndex,
+          rowStart,
+          rowSpan: rowEnd - rowStart,
+        });
+      });
+
+      return {
+        key: `${day}-cluster-${clusterIndex}-${formatMinutesToTime(clusterStartMinutes)}-${formatMinutesToTime(clusterEndMinutes)}`,
+        day,
+        startMinutes: clusterStartMinutes,
+        endMinutes: clusterEndMinutes,
+        halfHourRows: Math.max(1, (clusterEndMinutes - clusterStartMinutes) / 30),
+        placements,
+        laneCount: Math.max(1, laneEndMinutes.length),
+      } satisfies MasterAgendaCalendarCluster;
+    });
+
+    return [
+      {
+        key: `calendar-${day}`,
+        day,
+        clusters: layoutClusters,
+      } satisfies MasterAgendaCalendarDay,
+    ];
+  });
+}
+
 export default function Forum(): ReactNode {
   const { i18n } = useDocusaurusContext();
   const isZh = i18n.currentLocale.startsWith("zh");
   const heroImage = useBaseUrl("img/tg-forum/kv.jpg");
   const venueImage = useBaseUrl("img/tg-forum/venue.png");
+  const [expandedActivityKeys, setExpandedActivityKeys] = useState<string[]>([
+    "main-forum",
+    "developer-conference",
+  ]);
+  const [highlightedActivityKey, setHighlightedActivityKey] = useState<string | null>(null);
+  const activityPanelRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const highlightTimeoutRef = useRef<number | null>(null);
+
+  const activityDetailsByKey = Object.fromEntries(
+    activityAgendaDetails.map((detail) => [detail.activityKey, detail])
+  ) as Record<string, ActivityAgendaDetail>;
+
+  const getActivityDetailByKey = (activityKey: string): ActivityAgendaDetail | undefined => {
+    return activityDetailsByKey[activityKey];
+  };
+
+  const getDayLabel = (day: AgendaDayKey): string => getAgendaText(dayLabels[day], isZh);
+  const getTrackLabel = (track: AgendaTrackKey): string => getAgendaText(trackLabels[track], isZh);
+
+  const getMasterSlotClassName = (status: AgendaStatus): string => {
+    if (status === "published") return styles.masterSlotPublished;
+    if (status === "updating") return styles.masterSlotUpdating;
+    return styles.masterSlotPending;
+  };
+
+  const getMasterTrackClassName = (track: AgendaTrackKey): string => {
+    if (track === "main") return styles.masterTrackMain;
+    if (track === "subforums") return styles.masterTrackSubforums;
+    if (track === "special") return styles.masterTrackSpecial;
+    return styles.masterTrackDeveloper;
+  };
+
+  const renderStatusPill = (_status: AgendaStatus, _className?: string): ReactNode => null;
+
+  const setActivityPanelRef = (activityKey: string, node: HTMLDivElement | null): void => {
+    activityPanelRefs.current[activityKey] = node;
+  };
+
+  const ensureExpanded = (activityKey: string): void => {
+    setExpandedActivityKeys((prev) => {
+      if (prev.includes(activityKey)) {
+        return prev;
+      }
+      return [...prev, activityKey];
+    });
+  };
+
+  const toggleActivityExpanded = (activityKey: string): void => {
+    setExpandedActivityKeys((prev) => {
+      if (prev.includes(activityKey)) {
+        return prev.filter((key) => key !== activityKey);
+      }
+      return [...prev, activityKey];
+    });
+  };
+
+  const triggerPanelHighlight = (activityKey: string): void => {
+    setHighlightedActivityKey(activityKey);
+
+    if (typeof window !== "undefined") {
+      if (highlightTimeoutRef.current !== null) {
+        window.clearTimeout(highlightTimeoutRef.current);
+      }
+      highlightTimeoutRef.current = window.setTimeout(() => {
+        setHighlightedActivityKey((current) => (current === activityKey ? null : current));
+      }, 1800);
+    }
+  };
+
+  const openAndScrollToActivity = (
+    activityKey: string,
+    options?: { smooth?: boolean; updateHash?: boolean }
+  ): void => {
+    if (!getActivityDetailByKey(activityKey)) {
+      return;
+    }
+
+    ensureExpanded(activityKey);
+    triggerPanelHighlight(activityKey);
+
+    if (typeof window !== "undefined" && options?.updateHash !== false) {
+      const hash = `#agenda-${activityKey}`;
+      if (window.history?.replaceState) {
+        window.history.replaceState(null, "", hash);
+      } else {
+        window.location.hash = hash;
+      }
+    }
+
+    if (typeof window !== "undefined") {
+      window.requestAnimationFrame(() => {
+        activityPanelRefs.current[activityKey]?.scrollIntoView({
+          behavior: options?.smooth === false ? "auto" : "smooth",
+          block: "start",
+        });
+      });
+    }
+  };
+
+  const renderAgendaSubsectionHeader = (
+    title: ReactNode,
+    desc?: ReactNode
+  ): ReactNode => (
+    <div className={styles.agendaSubsectionHeader}>
+      <div className={styles.agendaSubsectionTitle}>{title}</div>
+      {desc && <div className={styles.agendaSubsectionDesc}>{desc}</div>}
+    </div>
+  );
+
+  const renderTalkTitle = (talkTitle: ActivitySession["talkTitle"]): ReactNode => {
+    if (!talkTitle) {
+      return null;
+    }
+
+    const zhTitle = talkTitle.zh?.trim();
+    const enTitle = talkTitle.en?.trim();
+    const hasDistinctEnTitle = Boolean(enTitle && enTitle !== zhTitle);
+    const enOnlyTitle = enTitle ?? zhTitle;
+
+    if (!isZh) {
+      return enOnlyTitle ? (
+        <div className={styles.agendaTalkTitle}>
+          <div className={styles.agendaTalkTitleEn}>{enOnlyTitle}</div>
+        </div>
+      ) : null;
+    }
+
+    return (
+      <div className={styles.agendaTalkTitle}>
+        {zhTitle && <div className={styles.agendaTalkTitleZh}>{zhTitle}</div>}
+        {hasDistinctEnTitle && <div className={styles.agendaTalkTitleEn}>{enTitle}</div>}
+      </div>
+    );
+  };
+
+  const renderSummaryLeadBlock = (summaryLead: AgendaText | undefined): ReactNode => {
+    if (!summaryLead) {
+      return null;
+    }
+
+    const text = getAgendaText(summaryLead, isZh).trim();
+    if (!text) {
+      return null;
+    }
+
+    if (!isZh) {
+      return (
+        <div className={clsx(styles.agendaPanelSummary, styles.agendaPanelSummaryLeadRaw)}>
+          {text}
+        </div>
+      );
+    }
+
+    const lines = text
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter(Boolean);
+
+    if (lines.length === 0) {
+      return null;
+    }
+
+    if (lines.length === 1) {
+      const inlineMatch = lines[0].match(/^([^：:]+)[：:]\s*(.+)$/);
+      if (inlineMatch) {
+        const [, inlineLabel, inlineValue] = inlineMatch;
+        return (
+          <div
+            className={clsx(
+              styles.agendaPanelSummary,
+              styles.agendaPanelSummaryLead,
+              styles.agendaPanelSummaryLeadInline
+            )}
+          >
+            <span className={styles.agendaPanelSummaryLeadLabel}>{inlineLabel}：</span>
+            <span>{inlineValue}</span>
+          </div>
+        );
+      }
+    }
+
+    const [labelLine, ...items] = lines;
+    const label = labelLine.replace(/[：:]$/, "");
+
+    if (items.length <= 1) {
+      return (
+        <div
+          className={clsx(
+            styles.agendaPanelSummary,
+            styles.agendaPanelSummaryLead,
+            styles.agendaPanelSummaryLeadInline
+          )}
+        >
+          <span className={styles.agendaPanelSummaryLeadLabel}>{label}：</span>
+          {items[0] && <span>{items[0]}</span>}
+        </div>
+      );
+    }
+
+    return (
+      <div className={clsx(styles.agendaPanelSummary, styles.agendaPanelSummaryLead)}>
+        <div className={styles.agendaPanelSummaryLeadHead}>
+          <span className={styles.agendaPanelSummaryLeadLabel}>{label}：</span>
+        </div>
+        <ul className={styles.agendaPanelSummaryLeadList}>
+          {items.map((item) => (
+            <li key={item} className={styles.agendaPanelSummaryLeadItem}>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+
+  const renderDeveloperConferenceAgendaList = (sessions: ActivitySession[]): ReactNode => (
+    <div className={styles.devAgendaList}>
+      {sessions.map((session) => {
+        const logo = session.orgLogoKey ? devConfLogoByKey.get(session.orgLogoKey) : undefined;
+        const logoLabel =
+          session.sessionType
+            ? getAgendaText(session.sessionType, isZh)
+            : getAgendaText(session.title, isZh).slice(0, 8);
+
+        return (
+          <div key={session.id} className={styles.devAgendaCard}>
+            <div className={styles.devAgendaCardBody}>
+              <div className={styles.devAgendaLogoSlot} aria-hidden="true">
+                {logo?.src ? (
+                  <img src={logo.src} alt={logo.name} loading="lazy" />
+                ) : (
+                  <span className={styles.devAgendaLogoFallback}>
+                    {logoLabel || (isZh ? "环节" : "Session")}
+                  </span>
+                )}
+              </div>
+
+              <div className={styles.devAgendaCardContent}>
+                <div className={clsx(styles.agendaTitle, styles.devAgendaCardUnit)}>
+                  {getAgendaText(session.title, isZh)}
+                </div>
+                {session.speakers && (
+                  <div className={styles.devAgendaCardName}>
+                    {getAgendaText(session.speakers, isZh)}
+                  </div>
+                )}
+                {session.note && (
+                  <div className={clsx(styles.agendaNote, styles.devAgendaCardRole, styles.devAgendaCardNote)}>
+                    {getAgendaText(session.note, isZh)}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+
+  const renderDeveloperConferencePhaseList = (sessions: ActivitySession[]): ReactNode => {
+    const reportSessions = sessions
+      .filter((session) => session.sessionType?.zh === "报告" || session.sessionType?.en === "Talk")
+      .sort((a, b) => {
+        const aPinned = a.orgLogoKey === "tiangong" ? 0 : 1;
+        const bPinned = b.orgLogoKey === "tiangong" ? 0 : 1;
+
+        return (
+          aPinned - bPinned ||
+          (a.title.en ?? a.title.zh).localeCompare(b.title.en ?? b.title.zh, "en", {
+            sensitivity: "base",
+          })
+        );
+      });
+    const openingSessions = sessions.filter((session) => session.id === "dev-opening");
+    const panelSessions = sessions.filter((session) => session.id === "dev-panel");
+    const networkingSessions = sessions.filter((session) => session.id === "dev-networking");
+
+    const phases = [
+      {
+        key: "dev-phase-opening",
+        title: isZh ? "开场" : "Opening",
+        items: openingSessions,
+        mode: "opening",
+      },
+      {
+        key: "dev-phase-showcase",
+        title: isZh ? "展示报告" : "Showcase Talks",
+        items: reportSessions,
+        mode: "cards",
+      },
+      {
+        key: "dev-phase-panel",
+        title: isZh ? "圆桌讨论" : "Panel Discussion",
+        items: panelSessions,
+        mode: "title-only",
+      },
+      {
+        key: "dev-phase-networking",
+        title: isZh ? "交流与自由讨论" : "Networking & Open Discussion",
+        items: networkingSessions,
+        mode: "title-only",
+      },
+    ] satisfies Array<{
+      key: string;
+      title: string;
+      items: ActivitySession[];
+      mode: "opening" | "cards" | "title-only";
+    }>;
+
+    return (
+      <div className={styles.agendaPhaseList}>
+        {phases.filter((phase) => phase.items.length > 0).map((phase) => (
+          <div key={phase.key} className={styles.agendaPhase}>
+            <div className={styles.agendaPhaseTitle}>{phase.title}</div>
+            {phase.mode === "cards" && renderDeveloperConferenceAgendaList(phase.items)}
+            {phase.mode === "opening" && phase.items[0]?.speakers && (
+              <div className={styles.agendaPhaseLead}>
+                {isZh ? "主持人：" : "Host: "}
+                {getAgendaText(phase.items[0].speakers, isZh)}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  const renderMasterAgendaOverview = (): ReactNode => {
+    const timelineRows = groupSlotsForTimeline(masterAgendaSlots);
+    const calendarDays = buildDayCalendarLayouts(masterAgendaSlots);
+    const dayLayoutMap = new Map(calendarDays.map((layout) => [layout.day, layout]));
+    const boardStartMinutes = 8 * 60;
+    const boardEndMinutes = 18 * 60;
+    const prepRegistrationStartMinutes = 14 * 60;
+    const boardHalfHourRows = Math.max(1, (boardEndMinutes - boardStartMinutes) / 30);
+    const boardRowTemplate = `repeat(${boardHalfHourRows}, var(--forum-agenda-half-row-height, 2.75rem))`;
+    const boardRowsStyle: CSSProperties = { gridTemplateRows: boardRowTemplate };
+    const boardRowMarks = Array.from(
+      { length: boardHalfHourRows },
+      (_, index) => boardStartMinutes + index * 30
+    );
+
+    const getTimelineDayLabel = (day: AgendaDayKey): string => {
+      return getAgendaText(timelineDayLabels[day], isZh);
+    };
+    const registrationDayLabel = isZh ? "3 月 24 日（周二）" : "Mar 24 (Tue)";
+    const registrationLabel = isZh ? "注册" : "Registration";
+    const prepRegistrationRowStart =
+      Math.max(0, Math.floor((prepRegistrationStartMinutes - boardStartMinutes) / 30)) + 1;
+    const prepRegistrationRowSpan = Math.max(
+      1,
+      boardHalfHourRows - (prepRegistrationRowStart - 1)
+    );
+
+    const getPeriodLabel = (start: string): string => {
+      return parseTimeToMinutes(start) < 12 * 60
+        ? (isZh ? "上午" : "Morning")
+        : (isZh ? "下午" : "Afternoon");
+    };
+
+    return (
+      <div className={clsx(styles.agendaGroup, styles.agendaGroupWide, styles.masterAgenda)}>
+        <div className={styles.masterCalendarDesktop}>
+          <div className={styles.masterCalendarBoardHeader}>
+            <div className={styles.masterCalendarBoardHeaderAxis}>
+              {isZh ? "时间" : "Time"}
+            </div>
+            <div
+              className={clsx(
+                styles.masterCalendarBoardHeaderDay,
+                styles.masterCalendarBoardHeaderPrep
+              )}
+            >
+              {registrationDayLabel}
+            </div>
+            {agendaDayOrder.map((day) => (
+              <div key={`header-${day}`} className={styles.masterCalendarBoardHeaderDay}>
+                {getTimelineDayLabel(day)}
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.masterCalendarBoardBody}>
+            <div className={styles.masterCalendarBoardAxis} style={boardRowsStyle}>
+              {boardRowMarks.map((minutes, rowIndex) => {
+                const isHourRow = minutes % 60 === 0;
+                const isLastRow = rowIndex === boardRowMarks.length - 1;
+                return (
+                  <div
+                    key={`axis-${minutes}`}
+                    className={clsx(
+                      styles.masterCalendarBoardAxisCell,
+                      isHourRow && styles.masterCalendarBoardAxisCellHour
+                    )}
+                    style={{ gridRow: `${rowIndex + 1}` }}
+                  >
+                    {isHourRow && (
+                      <span
+                        className={clsx(
+                          styles.masterCalendarBoardAxisLabel,
+                          styles.masterCalendarBoardAxisLabelTop
+                        )}
+                      >
+                        {formatMinutesToTime(minutes)}
+                      </span>
+                    )}
+                    {isLastRow && (
+                      <span
+                        className={clsx(
+                          styles.masterCalendarBoardAxisLabel,
+                          styles.masterCalendarBoardAxisLabelBottom
+                        )}
+                      >
+                        {formatMinutesToTime(boardEndMinutes)}
+                      </span>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            <div
+              className={clsx(
+                styles.masterCalendarBoardDayFrame,
+                styles.masterCalendarBoardDayFramePrep
+              )}
+            >
+              <div className={styles.masterCalendarBoardDayGrid} style={boardRowsStyle}>
+                {boardRowMarks.map((minutes, rowIndex) => (
+                  <div
+                    key={`prep-row-${minutes}`}
+                    className={clsx(
+                      styles.masterCalendarGridRow,
+                      styles.masterCalendarBoardRow,
+                      minutes % 60 === 0 && styles.masterCalendarGridRowHour
+                    )}
+                    style={{ gridColumn: "1", gridRow: `${rowIndex + 1}` }}
+                    aria-hidden="true"
+                  />
+                ))}
+
+                <div
+                  className={styles.masterCalendarPrepEvent}
+                  style={{
+                    gridColumn: "1",
+                    gridRow: `${prepRegistrationRowStart} / span ${prepRegistrationRowSpan}`,
+                  }}
+                >
+                  <span
+                    className={clsx(
+                      styles.masterCalendarPrepEventLabel,
+                      styles.masterCalendarPrepEventLabelHorizontal
+                    )}
+                  >
+                    {registrationLabel}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {agendaDayOrder.map((day) => {
+              const dayLayout = dayLayoutMap.get(day);
+              const showDayRegistration = day === "day1" || day === "day2";
+              return (
+                <div key={`col-${day}`} className={styles.masterCalendarBoardDayFrame}>
+                  <div className={styles.masterCalendarBoardDayGrid} style={boardRowsStyle}>
+                    {boardRowMarks.map((minutes, rowIndex) => (
+                      <div
+                        key={`${day}-row-${minutes}`}
+                        className={clsx(
+                          styles.masterCalendarGridRow,
+                          styles.masterCalendarBoardRow,
+                          minutes % 60 === 0 && styles.masterCalendarGridRowHour
+                        )}
+                        style={{ gridColumn: "1", gridRow: `${rowIndex + 1}` }}
+                        aria-hidden="true"
+                      />
+                    ))}
+
+                    {showDayRegistration && (
+                      <div
+                        className={clsx(
+                          styles.masterCalendarPrepEvent,
+                          styles.masterCalendarPrepEventDay
+                        )}
+                        style={{ gridColumn: "1", gridRow: "1 / span 2" }}
+                      >
+                        <span
+                          className={clsx(
+                            styles.masterCalendarPrepEventLabel,
+                            styles.masterCalendarPrepEventLabelHorizontal
+                          )}
+                        >
+                          {registrationLabel}
+                        </span>
+                      </div>
+                    )}
+
+                    {dayLayout?.clusters.map((cluster) => {
+                      const clusterRowStart = Math.max(
+                        0,
+                        Math.floor((cluster.startMinutes - boardStartMinutes) / 30)
+                      );
+                      const clusterGridStyle: CSSProperties = {
+                        gridTemplateRows: `repeat(${cluster.halfHourRows}, var(--forum-agenda-half-row-height, 2.75rem))`,
+                        gridTemplateColumns: `repeat(${cluster.laneCount}, minmax(0, 1fr))`,
+                      };
+
+                      return (
+                        <div
+                          key={cluster.key}
+                          className={styles.masterCalendarClusterLayer}
+                          style={{
+                            gridColumn: "1",
+                            gridRow: `${clusterRowStart + 1} / span ${cluster.halfHourRows}`,
+                          }}
+                        >
+                          <div className={styles.masterCalendarClusterGrid} style={clusterGridStyle}>
+                            {cluster.placements.map((placement) => {
+                              return (
+                                <div
+                                  key={placement.slot.id}
+                                  className={clsx(
+                                    styles.masterCalendarEventShell
+                                  )}
+                                  style={{
+                                    gridColumn: `${placement.laneIndex + 1}`,
+                                    gridRow: `${placement.rowStart + 1} / span ${placement.rowSpan}`,
+                                  }}
+                                >
+                                  <button
+                                    type="button"
+                                    className={clsx(
+                                      styles.masterTimelineItem,
+                                      styles.masterCalendarEvent,
+                                      styles.masterSlotClickable,
+                                      getMasterTrackClassName(placement.slot.track)
+                                    )}
+                                    onClick={() => openAndScrollToActivity(placement.slot.activityKey)}
+                                  >
+                                    <div className={styles.masterTimelineItemTop}>
+                                      <span className={styles.masterPeriodTrackTag}>
+                                        {getTrackLabel(placement.slot.track)}
+                                      </span>
+                                    </div>
+                                    <div className={styles.masterTimelineItemTitle}>
+                                      {getAgendaText(placement.slot.shortTitle, isZh)}
+                                    </div>
+                                  </button>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className={styles.masterTimelineMobile}>
+          <div className={styles.masterTimeline}>
+            {timelineRows.map((row) => (
+              <div key={row.key} className={styles.masterTimelineRow}>
+                <div className={styles.masterTimelineAxis}>
+                  <div className={styles.masterTimelineDate}>{getTimelineDayLabel(row.day)}</div>
+                  <div className={styles.masterTimelinePeriod}>{getPeriodLabel(row.start)}</div>
+                  <div className={styles.masterTimelineRange}>
+                    {row.start} - {row.end}
+                  </div>
+                </div>
+                <div className={styles.masterTimelineContent}>
+                  <div
+                    className={clsx(
+                      styles.masterTimelineSlots,
+                      row.activeSlots.length === 4 && styles.masterTimelineSlotsTwoByTwo
+                    )}
+                  >
+                    {row.activeSlots.map((slot) => (
+                      <button
+                        key={slot.id}
+                        type="button"
+                        className={clsx(
+                          styles.masterTimelineItem,
+                          styles.masterSlotClickable,
+                          getMasterSlotClassName(slot.status)
+                        )}
+                        onClick={() => openAndScrollToActivity(slot.activityKey)}
+                      >
+                        <div className={styles.masterTimelineItemTop}>
+                          <span className={styles.masterPeriodTrackTag}>
+                            {getTrackLabel(slot.track)}
+                          </span>
+                        </div>
+                        <div className={styles.masterTimelineItemTitle}>
+                          {getAgendaText(slot.shortTitle, isZh)}
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const renderActivityAgendaPanels = (): ReactNode => (
+    <>
+      {renderAgendaSubsectionHeader(
+        <Translate id="forum.detailAgenda.title">活动详细议程</Translate>
+      )}
+      {agendaGroups.map((group) => {
+        const groupDetails = activityAgendaDetails.filter((detail) => detail.groupKey === group.key);
+        const showGroupHeader = groupDetails.length > 1;
+        const showGroupCount =
+          group.key !== "sub-forums" && group.key !== "special-events";
+
+        if (groupDetails.length === 0) {
+          return null;
+        }
+
+        return (
+          <div
+            key={`detail-${group.key}`}
+            className={clsx(styles.agendaGroup, group.wide && styles.agendaGroupWide)}
+          >
+            {showGroupHeader && (
+              <div className={styles.agendaGroupHeader}>
+                <div>
+                  <div className={styles.groupTitle}>{group.title}</div>
+                  <div className={styles.groupDesc}>
+                    {isZh ? "按活动查看详细环节安排，议程将持续更新。" : "Detailed sessions by activity. Agenda is continuously updated."}
+                  </div>
+                </div>
+                {showGroupCount && (
+                  <span className={styles.groupCount}>
+                    {groupDetails.length}
+                    <Translate id="forum.section.sessions"> 场</Translate>
+                  </span>
+                )}
+              </div>
+            )}
+
+            <div className={styles.agendaPanels}>
+              {groupDetails.map((detail) => {
+                const isExpanded = expandedActivityKeys.includes(detail.activityKey);
+                const panelId = `agenda-${detail.activityKey}`;
+                const bodyId = `agenda-panel-body-${detail.activityKey}`;
+                const titleId = `agenda-panel-title-${detail.activityKey}`;
+                const sessionsByDay = agendaDayOrder
+                  .map((day) => ({
+                    day,
+                    sessions: detail.sessions
+                      .filter((session) => session.day === day)
+                      .sort(sortSessions),
+                  }))
+                  .filter((section) => section.sessions.length > 0);
+                const showSessionDayPill = sessionsByDay.length > 1;
+                const compactTimeRange = getCompactTimeRangeLabel(detail.timeRange);
+                const panelDateLabel = getDateLabelWithDaySuffix(
+                  detail.dateLabel,
+                  detail.timeRange,
+                  isZh
+                );
+                const showSummaryOnlyBody =
+                  detail.sessions.length === 0 && Boolean(detail.summary);
+
+                return (
+                  <div
+                    key={detail.activityKey}
+                    id={panelId}
+                    ref={(node) => setActivityPanelRef(detail.activityKey, node)}
+                    className={clsx(
+                      styles.agendaPanel,
+                      highlightedActivityKey === detail.activityKey && styles.agendaPanelHighlight
+                    )}
+                  >
+                    <div className={styles.agendaPanelHeader}>
+                      <button
+                        id={titleId}
+                        type="button"
+                        className={styles.agendaPanelToggle}
+                        aria-expanded={isExpanded}
+                        aria-controls={bodyId}
+                        onClick={() => toggleActivityExpanded(detail.activityKey)}
+                      >
+                        <div className={styles.agendaPanelToggleMain}>
+                          <div
+                            className={clsx(
+                              styles.agendaPanelToggleTitle,
+                              !showGroupHeader && styles.agendaPanelToggleTitlePromoted
+                            )}
+                          >
+                            {getAgendaText(detail.title, isZh)}
+                          </div>
+                          {renderStatusPill(detail.status)}
+                        </div>
+                        <div className={styles.agendaPanelToggleMeta}>
+                          {panelDateLabel && (
+                            <span className={styles.agendaPanelMetaTag}>
+                              {panelDateLabel}
+                            </span>
+                          )}
+                          {detail.timeRange && (
+                            <span className={styles.agendaPanelMetaTag}>
+                              {compactTimeRange || detail.timeRange}
+                            </span>
+                          )}
+                        </div>
+                        <span
+                          className={clsx(
+                            styles.agendaPanelChevron,
+                            isExpanded && styles.agendaPanelChevronExpanded
+                          )}
+                          aria-hidden="true"
+                        >
+                          ▾
+                        </span>
+                      </button>
+                    </div>
+
+                    {isExpanded && (
+                      <div
+                        id={bodyId}
+                        role="region"
+                        aria-labelledby={titleId}
+                        className={styles.agendaPanelBody}
+                      >
+                        {detail.activityKey === "developer-conference" &&
+                          !detail.sessions.some((session) => Boolean(session.orgLogoKey)) && (
+                          <div className={styles.groupLogoWall}>
+                            <div className={styles.logoWallHeader}>
+                              <span className={styles.logoWallTitle}>
+                                <Translate id="forum.agenda.partners">开发者阵容</Translate>
+                              </span>
+                              <span className={styles.logoWallNote}>
+                                {isZh ? "机构持续更新中" : "Organizations updating"}
+                              </span>
+                            </div>
+                            <div className={clsx(styles.logoWall, styles.logoWallFive)}>
+                              {devConfLogos.map((logo) => (
+                                <div key={logo.key} className={styles.logoItem}>
+                                  {logo.src ? (
+                                    <img src={logo.src} alt={logo.name} />
+                                  ) : (
+                                    <span className={styles.logoPlaceholder}>{logo.name}</span>
+                                  )}
+                                </div>
+                              ))}
+                              <div className={clsx(styles.logoItem, styles.logoItemPlaceholder)}>
+                                <div className={styles.logoPlaceholderStack}>
+                                  <span className={styles.logoPlaceholderMark}>+</span>
+                                  <span className={styles.logoPlaceholderText}>
+                                    {isZh ? "持续更新" : "More"}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                        {showSummaryOnlyBody ? (
+                          <>
+                            {renderSummaryLeadBlock(detail.summaryLead)}
+                            {detail.summary && (
+                              <div className={styles.agendaPanelSummary}>
+                                {getAgendaText(detail.summary, isZh)}
+                              </div>
+                            )}
+                            {!detail.hideSummaryUpdateNote && (
+                              <div className={styles.agendaPanelSummaryNote}>
+                                {isZh ? "详细日程后续更新" : "Detailed agenda to be updated"}
+                              </div>
+                            )}
+                          </>
+                        ) : (
+                        <div className={styles.agenda}>
+                          {sessionsByDay.map((section) => {
+                            const isPlainOnlySection = section.sessions.every(
+                              (session) => !(session.start && session.end)
+                            );
+                            const isDeveloperLogoCardView =
+                              detail.activityKey === "developer-conference";
+                            const isMainForumPhaseView =
+                              detail.activityKey === "main-forum" && isPlainOnlySection;
+
+                            const mainForumPhases = isMainForumPhaseView
+                              ? section.sessions.reduce<
+                                  Array<{ key: string; title: string; items: ActivitySession[] }>
+                                >((phases, session) => {
+                                  const isKeynoteSession =
+                                    session.sessionType?.zh === "主旨报告" ||
+                                    session.sessionType?.en === "Keynote";
+
+                                  if (isKeynoteSession) {
+                                    const phaseTitle = session.sessionType
+                                      ? getAgendaText(session.sessionType, isZh)
+                                      : (isZh ? "主旨报告" : "Keynote");
+                                    const lastPhase = phases[phases.length - 1];
+
+                                    if (lastPhase && lastPhase.title === phaseTitle) {
+                                      lastPhase.items.push(session);
+                                    } else {
+                                      phases.push({
+                                        key: `phase-${session.id}`,
+                                        title: phaseTitle,
+                                        items: [session],
+                                      });
+                                    }
+
+                                    return phases;
+                                  }
+
+                                  phases.push({
+                                    key: `phase-${session.id}`,
+                                    title: getAgendaText(session.title, isZh),
+                                    items: [],
+                                  });
+
+                                  return phases;
+                                }, [])
+                              : [];
+
+                            return (
+                              <div key={`${detail.activityKey}-${section.day}`}>
+                                {showSessionDayPill && (
+                                  <div className={styles.agendaPanelDayHeader}>
+                                    <span className={styles.pill}>{getDayLabel(section.day)}</span>
+                                  </div>
+                                )}
+
+                                {isDeveloperLogoCardView ? (
+                                  renderDeveloperConferencePhaseList(section.sessions)
+                                ) : isMainForumPhaseView ? (
+                                  <div className={styles.agendaPhaseList}>
+                                    {mainForumPhases.map((phase) => (
+                                      <div key={phase.key} className={styles.agendaPhase}>
+                                        <div className={styles.agendaPhaseTitle}>{phase.title}</div>
+
+                                        {phase.items.length > 0 && (
+                                          <div
+                                            className={clsx(
+                                              styles.agendaPhaseItems,
+                                              styles.agendaPhaseItemsCards
+                                            )}
+                                          >
+                                            {phase.items.map((session) => {
+                                              const speakerPhotoSrc =
+                                                keynoteSpeakerPhotoBySessionId[session.id];
+
+                                              return (
+                                                <div
+                                                  key={session.id}
+                                                  className={clsx(
+                                                    styles.agendaItem,
+                                                    styles.agendaKeynoteCard,
+                                                    session.talkTitle && styles.agendaItemHasTalkTitle
+                                                  )}
+                                                >
+                                                  <div className={styles.agendaKeynoteCardBottom}>
+                                                    <div
+                                                      className={styles.agendaKeynoteCardPhoto}
+                                                      aria-hidden="true"
+                                                    >
+                                                      <div className={styles.agendaSpeakerPhotoSlot}>
+                                                        {speakerPhotoSrc ? (
+                                                          <img
+                                                            src={speakerPhotoSrc}
+                                                            alt={getAgendaText(session.title, isZh)}
+                                                            loading="lazy"
+                                                          />
+                                                        ) : (
+                                                          <span
+                                                            className={
+                                                              styles.agendaSpeakerPhotoPlaceholder
+                                                            }
+                                                          >
+                                                            {isZh ? "待补" : "TBD"}
+                                                        </span>
+                                                      )}
+                                                    </div>
+                                                  </div>
+                                                  <div className={styles.agendaKeynoteCardMain}>
+                                                      <div className={styles.agendaTitle}>
+                                                        {getAgendaText(session.title, isZh)}
+                                                      </div>
+                                                      {session.note && (
+                                                        <div className={styles.agendaNote}>
+                                                          {getAgendaText(session.note, isZh)}
+                                                        </div>
+                                                      )}
+                                                      {session.speakers && (
+                                                        <div className={styles.agendaNote}>
+                                                          {getAgendaText(session.speakers, isZh)}
+                                                        </div>
+                                                      )}
+                                                      {session.moderator && (
+                                                        <div className={styles.agendaNote}>
+                                                          {isZh ? "主持：" : "Moderator: "}
+                                                          {getAgendaText(session.moderator, isZh)}
+                                                        </div>
+                                                      )}
+                                                    </div>
+                                                  </div>
+                                                  {session.talkTitle && (
+                                                    <div className={styles.agendaKeynoteCardTop}>
+                                                      {renderTalkTitle(session.talkTitle)}
+                                                    </div>
+                                                  )}
+                                                </div>
+                                              );
+                                            })}
+                                          </div>
+                                        )}
+                                      </div>
+                                    ))}
+                                  </div>
+                                ) : (
+                                  <div
+                                    className={clsx(
+                                      styles.agendaList,
+                                      isPlainOnlySection && styles.agendaListPlain
+                                    )}
+                                  >
+                                    {section.sessions.map((session, sessionIndex) => {
+                                      const hasSessionTime = Boolean(session.start && session.end);
+                                      const prevSession =
+                                        sessionIndex > 0 ? section.sessions[sessionIndex - 1] : null;
+                                      const sameSessionTypeAsPrevPlain =
+                                        !hasSessionTime &&
+                                        Boolean(session.sessionType) &&
+                                        Boolean(
+                                          prevSession && !(prevSession.start && prevSession.end)
+                                        ) &&
+                                        Boolean(prevSession?.sessionType) &&
+                                        session.sessionType?.zh === prevSession?.sessionType?.zh &&
+                                        (session.sessionType?.en ?? "") ===
+                                          (prevSession?.sessionType?.en ?? "");
+                                      const showSessionTypeTag =
+                                        Boolean(session.sessionType) && !sameSessionTypeAsPrevPlain;
+                                      const isKeynoteSession =
+                                        session.sessionType?.zh === "主旨报告" ||
+                                        session.sessionType?.en === "Keynote";
+                                      const showSpeakerPhotoSlot =
+                                        !hasSessionTime && isKeynoteSession;
+                                      const speakerPhotoSrc =
+                                        keynoteSpeakerPhotoBySessionId[session.id];
+                                      const showSessionMeta =
+                                        hasSessionTime ||
+                                        showSessionTypeTag ||
+                                        Boolean(session.status);
+
+                                      return (
+                                        <div
+                                          key={session.id}
+                                          className={clsx(
+                                            styles.agendaItem,
+                                            !hasSessionTime && styles.agendaItemPlain,
+                                            showSpeakerPhotoSlot && styles.agendaItemSpeaker,
+                                            session.talkTitle && styles.agendaItemHasTalkTitle
+                                          )}
+                                        >
+                                          {showSessionMeta && (
+                                            <div className={styles.sessionMetaRow}>
+                                              {hasSessionTime && (
+                                                <span className={styles.sessionTime}>
+                                                  {session.start} - {session.end}
+                                                </span>
+                                              )}
+                                              {showSessionTypeTag && session.sessionType && (
+                                                <span className={styles.sessionTypeTag}>
+                                                  {getAgendaText(session.sessionType, isZh)}
+                                                </span>
+                                              )}
+                                              {session.status && renderStatusPill(session.status)}
+                                            </div>
+                                          )}
+                                          {renderTalkTitle(session.talkTitle)}
+                                          <div className={styles.agendaTitle}>
+                                            {getAgendaText(session.title, isZh)}
+                                          </div>
+                                          {session.speakers && (
+                                            <div className={styles.agendaNote}>
+                                              {getAgendaText(session.speakers, isZh)}
+                                            </div>
+                                          )}
+                                          {session.moderator && (
+                                            <div className={styles.agendaNote}>
+                                              {isZh ? "主持：" : "Moderator: "}
+                                              {getAgendaText(session.moderator, isZh)}
+                                            </div>
+                                          )}
+                                          {session.note && (
+                                            <div className={styles.agendaNote}>
+                                              {getAgendaText(session.note, isZh)}
+                                            </div>
+                                          )}
+                                          {showSpeakerPhotoSlot && (
+                                            <div className={styles.agendaItemAside} aria-hidden="true">
+                                              <div className={styles.agendaSpeakerPhotoSlot}>
+                                                {speakerPhotoSrc ? (
+                                                  <img
+                                                    src={speakerPhotoSrc}
+                                                    alt={getAgendaText(session.title, isZh)}
+                                                    loading="lazy"
+                                                  />
+                                                ) : (
+                                                  <span
+                                                    className={styles.agendaSpeakerPhotoPlaceholder}
+                                                  >
+                                                    {isZh ? "待补" : "TBD"}
+                                                  </span>
+                                                )}
+                                              </div>
+                                            </div>
+                                          )}
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
+                                )}
+                              </div>
+                            );
+                          })}
+                        </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
+    </>
+  );
+
+  useEffect(() => {
+    return () => {
+      if (typeof window !== "undefined" && highlightTimeoutRef.current !== null) {
+        window.clearTimeout(highlightTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const rawHash = decodeURIComponent(window.location.hash);
+    if (!rawHash.startsWith("#agenda-")) {
+      return;
+    }
+
+    const activityKey = rawHash.slice("#agenda-".length);
+    if (!getActivityDetailByKey(activityKey)) {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      openAndScrollToActivity(activityKey, { smooth: false, updateHash: false });
+    }, 0);
+
+    return () => window.clearTimeout(timer);
+  }, []);
 
   return (
     <Layout
@@ -721,6 +2260,153 @@ export default function Forum(): ReactNode {
         </div>
 
         <main>
+          <section className={clsx(styles.section, styles.lightSection)}>
+            <div className="container">
+              <div className={styles.partnerGroupGrid}>
+                <div className={clsx(styles.card, styles.partnerGroupCard)}>
+                  <h2 className={styles.partnerGroupLabel}>
+                    <Translate id="forum.section.organizers">主办单位</Translate>
+                  </h2>
+                  <div className={styles.partnerGroupBody}>
+                    <div
+                      className={clsx(
+                        styles.logoItem,
+                        styles.partnerLogoItem,
+                        styles.partnerHostLogoItem,
+                      )}
+                    >
+                      <img
+                        src={organizerLogos[0].src}
+                        alt={organizerLogos[0].name}
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className={clsx(styles.card, styles.partnerGroupCard)}>
+                  <h2 className={styles.partnerGroupLabel}>
+                    <Translate id="forum.section.coOrganizers">联合主办单位</Translate>
+                  </h2>
+                  <div className={styles.partnerGroupBody}>
+                    <div
+                      className={clsx(
+                        styles.logoItem,
+                        styles.partnerLogoItem,
+                        styles.partnerCoHostLogoItem,
+                      )}
+                    >
+                      <img
+                        src={organizerLogos[1].src}
+                        alt={organizerLogos[1].name}
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className={clsx(
+                    styles.card,
+                    styles.partnerGroupCard,
+                    styles.partnerGroupCardWide,
+                  )}
+                >
+                  <h2 className={styles.partnerGroupLabel}>
+                    <Translate id="forum.section.supportingOrgs">支持机构</Translate>
+                  </h2>
+                  <div className={styles.partnerSupportGrid}>
+                    {supportInstitutionLogos.map((logo) => {
+                      const logoNode = (
+                        <div
+                          className={clsx(styles.logoItem, styles.partnerLogoItem)}
+                          key={logo.key}
+                        >
+                          <img src={logo.src} alt={logo.name} loading="lazy" />
+                        </div>
+                      );
+
+                      if (!logo.href) {
+                        return logoNode;
+                      }
+
+                      return (
+                        <a
+                          key={logo.key}
+                          href={logo.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.partnerLogoLink}
+                        >
+                          {logoNode}
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section
+            id="current"
+            className={clsx(styles.section, styles.lightSection)}
+          >
+            <div className="container">
+              <div className={styles.sectionHeader}>
+                <p className={styles.sectionTitle}>
+                  <Translate id="forum.section.mainActivities">论坛议程</Translate>
+                </p>
+                <p className={styles.sectionHint}>
+                  <Translate id="forum.section.mainActivities.desc">
+                    会议议程、各项活动与分论坛信息将持续更新。
+                  </Translate>
+                </p>
+              </div>
+              <div className={styles.agendaLayout}>
+                {renderMasterAgendaOverview()}
+                {renderActivityAgendaPanels()}
+              </div>
+              <div className={styles.venueBlock}>
+                <div
+                  className={styles.venueCard}
+                  style={{ backgroundImage: `url(${venueImage})` }}
+                >
+                  <div className={styles.venueOverlay} />
+                  <div className={styles.venueContent}>
+                    <span className={styles.venueTag}>
+                      <Translate id="forum.venue.tag">会议地点</Translate>
+                    </span>
+                    <div className={styles.venueTitle}>
+                      <Translate id="forum.venue.name">
+                        南京紫金山庄
+                      </Translate>
+                    </div>
+                    <div className={styles.venueAddress}>
+                      <Translate id="forum.venue.address">
+                        中国江苏南京环陵路18号
+                      </Translate>
+                      <div className={styles.venueLinks}>
+                        <a
+                          className={styles.venueLink}
+                          href="https://www.google.com/maps/place/Purple+Palace+Nanjing/@32.0775585,118.8739961,17z/data=!3m1!4b1!4m9!3m8!1s0x35b58c90bd752e9d:0xe4f90392f0b75149!5m2!4m1!1i2!8m2!3d32.077554!4d118.876571!16s%2Fg%2F1tc_c96s!5m1!1e4?authuser=0&entry=ttu&g_ep=EgoyMDI2MDEyNi4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <Translate id="forum.venue.googleMaps">谷歌地图</Translate>
+                        </a>
+                        <a
+                          className={styles.venueLink}
+                          href="https://maps.baidu.com/poi/%E5%8D%97%E4%BA%AC%E7%B4%AB%E9%87%91%E5%B1%B1%E5%BA%84/@13234200.503662258,3751003.1576246065,17.13z?uid=3e63684910aadee888b9881c&ugc_type=3&ugc_ver=1&device_ratio=2&compat=1&routetype=drive&sn_xy=12950335,4840853&en_uid=3e63684910aadee888b9881c&pcevaname=pc4.1&querytype=detailConInfo&da_src=shareurl"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <Translate id="forum.venue.baiduMaps">百度地图</Translate>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
           <section className={clsx(styles.section, styles.lightSection)}>
             <div className="container">
               <div className={styles.sectionHeader}>
@@ -762,231 +2448,6 @@ export default function Forum(): ReactNode {
                   </div>
                   <div className={styles.personTitle}>
                     {isZh ? "敬请关注" : "More speakers coming soon"}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <section className={clsx(styles.section, styles.lightSection)}>
-            <div className="container">
-              <div className={styles.sectionHeader}>
-                <p className={styles.sectionTitle}>
-                  <Translate id="forum.section.sponsors">合作伙伴</Translate>
-                </p>
-                <p className={styles.sectionHint}>
-                  <Translate id="forum.section.sponsors.desc">
-                    有意愿合作和提供会议赞助，欢迎联系秘书处。
-                  </Translate>
-                </p>
-              </div>
-              <div className={styles.sponsorGrid}>
-                <div className={clsx(styles.card, styles.sponsorCard)}>
-                  <img
-                    src="img/tg-forum/partner-logo/CNEST.png"
-                    alt={translate({ id: "forum.sponsor.cnest", message: "CNEST" })}
-                    className={styles.sponsorLogo}
-                  />
-                </div>
-                <div className={clsx(styles.card, styles.sponsorCard)}>
-                  <img
-                    src="img/tg-forum/partner-logo/dcv.png"
-                    alt={translate({ id: "forum.sponsor.dcv", message: "国际数碳谷" })}
-                    className={styles.sponsorLogo}
-                  />
-                </div>
-                <div className={clsx(styles.card, styles.sponsorCard)}>
-                  <img
-                    src="img/tg-forum/partner-logo/EF_China.png"
-                    alt={translate({ id: "forum.sponsor.efChina", message: "能源基金会" })}
-                    className={styles.sponsorLogo}
-                  />
-                </div>
-                <div className={clsx(styles.card, styles.sponsorCard)}>
-                  <a
-                    href="https://jointmission.lib.tsinghua.edu.cn/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src="img/tg-forum/partner-logo/ijmcccn.png"
-                      alt={translate({
-                        id: "forum.sponsor.ijmcccn",
-                        message: "ijmcccn",
-                      })}
-                      className={styles.sponsorLogo}
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </section>
-          <section
-            id="current"
-            className={clsx(styles.section, styles.lightSection)}
-          >
-            <div className="container">
-              <div className={styles.sectionHeader}>
-                <p className={styles.sectionTitle}>
-                  <Translate id="forum.section.mainActivities">主要活动</Translate>
-                </p>
-                <p className={styles.sectionHint}>
-                  <Translate id="forum.section.mainActivities.desc">
-                    会议议程、各项活动与分论坛信息将持续更新。
-                  </Translate>
-                </p>
-              </div>
-              <div className={styles.agendaLayout}>
-                {agendaGroups.map((group) => (
-                  <div
-                    key={group.key}
-                    className={clsx(styles.agendaGroup, group.wide && styles.agendaGroupWide)}
-                  >
-                    <div className={styles.agendaGroupHeader}>
-                      <div>
-                        <div className={styles.groupTitle}>{group.title}</div>
-                        <div className={styles.groupDesc}>{group.desc}</div>
-                      </div>
-                      <span className={styles.groupCount}>
-                        {group.count}
-                        <Translate id="forum.section.sessions"> 场</Translate>
-                      </span>
-                    </div>
-                    <div
-                      className={clsx(
-                        styles.agendaGrid,
-                        group.wide && styles.agendaGridWide,
-                        group.layout === "subForum" && styles.agendaGridSubForum,
-                        group.layout === "specialEvents" && styles.agendaGridSpecial
-                      )}
-                    >
-                      {group.items.map((item) =>
-                        group.singleMode === "panel" ? (
-                          <div key={item.key} className={styles.singlePanel}>
-                            {group.key === "developer" && (
-                              <>
-                                <div className={styles.logoWallHeader}>
-                                  <span className={styles.logoWallTitle}>
-                                    <Translate id="forum.agenda.partners">开发者阵容</Translate>
-                                  </span>
-                                </div>
-                                <div className={clsx(styles.logoWall, styles.logoWallFive)}>
-                                  {devConfLogos.map((logo) => (
-                                    <div key={logo.key} className={styles.logoItem}>
-                                      {logo.src ? (
-                                        <img src={logo.src} alt={logo.name} />
-                                      ) : (
-                                        <span className={styles.logoPlaceholder}>{logo.name}</span>
-                                      )}
-                                    </div>
-                                  ))}
-                                  <div
-                                    className={clsx(
-                                      styles.logoItem,
-                                      styles.logoItemPlaceholder
-                                    )}
-                                  >
-                                    <div className={styles.logoPlaceholderStack}>
-                                      <span className={styles.logoPlaceholderMark}>+</span>
-                                      <span className={styles.logoPlaceholderText}>
-                                        {isZh ? "持续更新" : "More"}
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </>
-                            )}
-                          </div>
-                        ) : (
-                          <div
-                            key={item.key}
-                            className={clsx(
-                              styles.agendaCard,
-                              group.layout === "specialEvents" && styles.specialCard,
-                              item.wide && styles.specialWide
-                            )}
-                          >
-                            {group.layout === "specialEvents" ? (
-                              <div className={styles.specialHeader}>
-                                {item.hostLogo && (
-                                <div className={styles.specialLogoWrap}>
-                                  <img
-                                    src={item.hostLogo}
-                                    alt={item.hostAlt ?? ""}
-                                    className={clsx(
-                                      styles.specialLogo,
-                                      item.hostLogoClassName
-                                    )}
-                                  />
-                                </div>
-                              )}
-                                <div className={styles.specialText}>
-                                  <div className={styles.agendaCardTitle}>{item.title}</div>
-                                  <div className={styles.agendaCardLead}>{item.lead}</div>
-                                </div>
-                              </div>
-                            ) : (
-                              <div className={styles.agendaCardHeader}>
-                                <span className={styles.iconBubble}>{icons[item.icon]}</span>
-                                <div className={styles.agendaCardHeaderText}>
-                                  <div className={styles.agendaCardTitle}>{item.title}</div>
-                                  <div className={styles.agendaCardLead}>{item.lead}</div>
-                                </div>
-                              </div>
-                            )}
-                            {/* {group.layout === "subForum" && (
-                              <>
-                                <div className={styles.logoWall}>
-                                  {logoSlots.map((slot) => (
-                                    <div key={slot} className={styles.logoSlot} />
-                                  ))}
-                                </div>
-                              </>
-                            )} */}
-                          </div>
-                        )
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className={styles.venueBlock}>
-                <div
-                  className={styles.venueCard}
-                  style={{ backgroundImage: `url(${venueImage})` }}
-                >
-                  <div className={styles.venueOverlay} />
-                  <div className={styles.venueContent}>
-                    <span className={styles.venueTag}>
-                      <Translate id="forum.venue.tag">会议地点</Translate>
-                    </span>
-                    <div className={styles.venueTitle}>
-                      <Translate id="forum.venue.name">
-                        南京紫金山庄
-                      </Translate>
-                    </div>
-                    <div className={styles.venueAddress}>
-                      <Translate id="forum.venue.address">
-                        中国江苏南京环陵路18号
-                      </Translate>
-                      <div className={styles.venueLinks}>
-                        <a
-                          className={styles.venueLink}
-                          href="https://www.google.com/maps/place/Purple+Palace+Nanjing/@32.0775585,118.8739961,17z/data=!3m1!4b1!4m9!3m8!1s0x35b58c90bd752e9d:0xe4f90392f0b75149!5m2!4m1!1i2!8m2!3d32.077554!4d118.876571!16s%2Fg%2F1tc_c96s!5m1!1e4?authuser=0&entry=ttu&g_ep=EgoyMDI2MDEyNi4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          <Translate id="forum.venue.googleMaps">谷歌地图</Translate>
-                        </a>
-                        <a
-                          className={styles.venueLink}
-                          href="https://maps.baidu.com/poi/%E5%8D%97%E4%BA%AC%E7%B4%AB%E9%87%91%E5%B1%B1%E5%BA%84/@13234200.503662258,3751003.1576246065,17.13z?uid=3e63684910aadee888b9881c&ugc_type=3&ugc_ver=1&device_ratio=2&compat=1&routetype=drive&sn_xy=12950335,4840853&en_uid=3e63684910aadee888b9881c&pcevaname=pc4.1&querytype=detailConInfo&da_src=shareurl"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          <Translate id="forum.venue.baiduMaps">百度地图</Translate>
-                        </a>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
