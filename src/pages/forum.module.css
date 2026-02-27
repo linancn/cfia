@@ -675,10 +675,34 @@
   gap: 0.7rem;
 }
 
+.masterCalendarStackedMobile {
+  --forum-agenda-half-row-height: 2.75rem;
+  --forum-agenda-grid-line: #eef3f8;
+  --forum-agenda-grid-line-strong: #e7edf5;
+  --forum-agenda-grid-line-soft: #f3f6fa;
+  --forum-agenda-board-bg: #ffffff;
+  --forum-agenda-edge-padding: 0.45rem;
+  --forum-agenda-stacked-axis-col: 84px;
+  --forum-agenda-stacked-prep-col-min: 88px;
+  --forum-agenda-stacked-prep-col-fr: 0.34fr;
+  --forum-agenda-board-gap: 0.6rem;
+  display: none;
+  gap: 0.85rem;
+}
+
+.masterCalendarStackedBoard {
+  display: grid;
+  gap: 0.55rem;
+}
+
 .masterCalendarBoardHeader {
   display: grid;
-  grid-template-columns: 84px minmax(88px, 0.34fr) repeat(2, minmax(0, 1fr));
-  gap: 0.6rem;
+  grid-template-columns:
+    84px
+    minmax(88px, 0.34fr)
+    minmax(0, var(--forum-agenda-day1-col, 1fr))
+    minmax(0, var(--forum-agenda-day2-col, 1fr));
+  gap: var(--forum-agenda-board-gap, 0.6rem);
 }
 
 .masterCalendarBoardHeaderAxis,
@@ -710,8 +734,12 @@
 
 .masterCalendarBoardBody {
   display: grid;
-  grid-template-columns: 84px minmax(88px, 0.34fr) repeat(2, minmax(0, 1fr));
-  gap: 0.6rem;
+  grid-template-columns:
+    84px
+    minmax(88px, 0.34fr)
+    minmax(0, var(--forum-agenda-day1-col, 1fr))
+    minmax(0, var(--forum-agenda-day2-col, 1fr));
+  gap: var(--forum-agenda-board-gap, 0.6rem);
   align-items: start;
 }
 
@@ -921,6 +949,104 @@
 
 .masterTimelineMobile {
   display: none;
+}
+
+.masterDayTables {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.masterDayTable {
+  border: 1px solid #e6edf5;
+  border-radius: 14px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.masterDayTableHeader {
+  padding: 0.8rem 0.95rem;
+  border-bottom: 1px solid #eaf0f7;
+  background: #fbfcfe;
+}
+
+.masterDayTableTitle {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #1f2f3d;
+}
+
+.masterDayTableColumns {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  background: #f7f9fc;
+  border-bottom: 1px solid #eaf0f7;
+}
+
+.masterDayTableColumnCell {
+  min-width: 0;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #5a6775;
+  line-height: 1.2;
+}
+
+.masterDayTableColumnCell + .masterDayTableColumnCell {
+  border-left: 1px solid #eaf0f7;
+}
+
+.masterDayTableBody {
+  display: grid;
+}
+
+.masterDayTableRow {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  align-items: stretch;
+  border-top: 1px solid #eef3f8;
+}
+
+.masterDayTableRow:first-child {
+  border-top: 0;
+}
+
+.masterDayTableTimeCell {
+  min-width: 0;
+  padding: 0.65rem 0.7rem;
+  border-right: 1px solid #eef3f8;
+  background: #f8fafd;
+  display: grid;
+  gap: 0.18rem;
+  align-content: start;
+}
+
+.masterDayTableTimePeriod {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #35516b;
+  line-height: 1.1;
+}
+
+.masterDayTableTimeRange {
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: #5a6775;
+  line-height: 1.25;
+}
+
+.masterDayTableAgendaCell {
+  min-width: 0;
+  padding: 0.55rem;
+}
+
+.masterDayTableAgendaCell .masterTimelineSlots {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.55rem;
+}
+
+.masterDayTableSlot {
+  padding: 0.65rem 0.7rem;
+  gap: 0.35rem;
 }
 
 .masterGantt {
@@ -1270,10 +1396,6 @@
 .agendaPanelSummaryLead {
   display: grid;
   gap: 0.35rem;
-}
-
-.agendaPanelSummaryLeadRaw {
-  white-space: pre-line;
 }
 
 .agendaPanelSummaryLeadInline {
@@ -2111,18 +2233,31 @@
   border-radius: 10px;
   border: 1px solid #e6edf5;
   background: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   padding: 0.35rem 0.5rem;
   overflow: hidden;
 }
 
-.devAgendaLogoSlot img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+.devAgendaLogoCanvas {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.devAgendaLogoMark {
   display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
 }
 
 .devAgendaLogoFallback {
@@ -2750,11 +2885,18 @@
   --forum-agenda-board-bg: var(--ifm-background-surface-color);
 }
 
+[data-theme='dark'] .masterCalendarStackedMobile {
+  --forum-agenda-grid-line: rgba(216, 227, 242, 0.1);
+  --forum-agenda-grid-line-strong: rgba(216, 227, 242, 0.18);
+  --forum-agenda-board-bg: var(--ifm-background-surface-color);
+}
+
 [data-theme='dark'] .masterPeriodTitle,
 [data-theme='dark'] .masterPeriodItemTitle,
 [data-theme='dark'] .masterCalendarDayTitle,
 [data-theme='dark'] .masterCalendarBoardHeaderAxis,
 [data-theme='dark'] .masterCalendarBoardHeaderDay,
+[data-theme='dark'] .masterDayTableTitle,
 [data-theme='dark'] .masterTimelineDate,
 [data-theme='dark'] .masterTimelineItemTitle {
   color: #dbe6f5;
@@ -2762,14 +2904,20 @@
 
 [data-theme='dark'] .masterPeriodRange,
 [data-theme='dark'] .masterTimelineRange,
+[data-theme='dark'] .masterDayTableTimeRange,
 [data-theme='dark'] .masterGanttItemRange {
   color: #b8c7d9;
 }
 
 [data-theme='dark'] .masterCalendarDayCount,
 [data-theme='dark'] .masterCalendarAxisLabel,
-[data-theme='dark'] .masterCalendarBoardAxisLabel {
+[data-theme='dark'] .masterCalendarBoardAxisLabel,
+[data-theme='dark'] .masterDayTableColumnCell {
   color: #b8c7d9;
+}
+
+[data-theme='dark'] .masterDayTableTimePeriod {
+  color: #b8d7ff;
 }
 
 [data-theme='dark'] .masterTimelineAxis,
@@ -2780,11 +2928,16 @@
 [data-theme='dark'] .masterCalendarBoardAxisCellHour,
 [data-theme='dark'] .masterCalendarBoardHeaderAxis,
 [data-theme='dark'] .masterCalendarBoardHeaderDay,
+[data-theme='dark'] .masterDayTable,
+[data-theme='dark'] .masterDayTableHeader,
+[data-theme='dark'] .masterDayTableColumns,
+[data-theme='dark'] .masterDayTableTimeCell,
 [data-theme='dark'] .masterTimelineContent,
 [data-theme='dark'] .masterTimelineItem,
 [data-theme='dark'] .masterCalendarPrepEvent,
 [data-theme='dark'] .masterCalendarBoardRow,
 [data-theme='dark'] .masterCalendarGridRow,
+[data-theme='dark'] .masterDayTableRow,
 [data-theme='dark'] .masterGanttRowBackground {
   background: var(--ifm-background-surface-color);
   border-color: rgba(216, 227, 242, 0.14);
@@ -2800,6 +2953,20 @@
 }
 
 [data-theme='dark'] .masterCalendarAxisCell {
+  border-top-color: rgba(216, 227, 242, 0.1);
+}
+
+[data-theme='dark'] .masterDayTableHeader,
+[data-theme='dark'] .masterDayTableColumns {
+  border-bottom-color: rgba(216, 227, 242, 0.12);
+}
+
+[data-theme='dark'] .masterDayTableColumnCell + .masterDayTableColumnCell,
+[data-theme='dark'] .masterDayTableTimeCell {
+  border-color: rgba(216, 227, 242, 0.12);
+}
+
+[data-theme='dark'] .masterDayTableRow {
   border-top-color: rgba(216, 227, 242, 0.1);
 }
 
@@ -2880,11 +3047,25 @@
 
   .masterCalendarDesktop {
     --forum-agenda-half-row-height: 2.45rem;
+    display: none;
+  }
+
+  .masterCalendarStackedMobile {
+    --forum-agenda-half-row-height: 2.45rem;
+    display: grid;
+  }
+
+  .masterTimelineMobile {
+    display: none;
   }
 
   .masterCalendarBoardHeader,
   .masterCalendarBoardBody {
-    grid-template-columns: 72px minmax(74px, 0.3fr) repeat(2, minmax(0, 1fr));
+    grid-template-columns:
+      72px
+      minmax(74px, 0.3fr)
+      minmax(0, var(--forum-agenda-day1-col, 1fr))
+      minmax(0, var(--forum-agenda-day2-col, 1fr));
     gap: 0.65rem;
   }
 
@@ -2938,6 +3119,25 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .masterDayTableColumns,
+  .masterDayTableRow {
+    grid-template-columns: 104px minmax(0, 1fr);
+  }
+
+  .masterDayTableHeader {
+    padding: 0.75rem 0.85rem;
+  }
+
+  .masterDayTableColumnCell {
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+  }
+
+  .masterDayTableTimeCell {
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+  }
+
   .masterPeriodCard {
     padding: 0.9rem;
   }
@@ -2985,39 +3185,204 @@
   .logoWallFive {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+
+  .devAgendaList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
+  }
+
+  .devAgendaCard {
+    padding: 0.8rem 0.85rem;
+    border-radius: 10px;
+    gap: 0.35rem;
+  }
+
+  .devAgendaCardBody {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 0.5rem;
+    align-items: start;
+  }
+
+  .devAgendaLogoSlot {
+    height: clamp(50px, 7vw, 64px);
+    padding: 0.3rem 0.38rem;
+    border-radius: 8px;
+  }
+
+  .devAgendaCard .agendaTitle,
+  .devAgendaCardUnit {
+    font-size: 0.9rem;
+    line-height: 1.28;
+  }
+
+  .devAgendaCardName {
+    font-size: 0.82rem;
+    line-height: 1.26;
+  }
+
+  .devAgendaCardRole,
+  .devAgendaCard .agendaNote {
+    font-size: 0.75rem;
+    line-height: 1.24;
+  }
 }
 
 @media (max-width: 768px) {
   .hero {
-    padding: 4rem 1rem 3rem;
+    padding: 3.5rem 0.9rem 2.5rem;
+  }
+
+  .heroContent {
+    gap: 1.1rem;
+  }
+
+  .heroTag {
+    font-size: 0.9rem;
+  }
+
+  .heroPill {
+    padding: 0.34rem 0.72rem;
+    font-size: 0.82rem;
   }
 
   .heroTitle {
-    font-size: 2rem;
+    font-size: 1.72rem;
+    line-height: 1.35;
+    letter-spacing: 0.2px;
+  }
+
+  .section {
+    padding: 2.35rem 0;
+  }
+
+  .sectionHeader {
+    margin-bottom: 1.35rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .sectionHint {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .agendaLayout {
+    gap: 1.7rem;
+  }
+
+  .card {
+    padding: 0.95rem 1rem;
+    border-radius: 11px;
+    gap: 0.32rem;
+  }
+
+  .agendaGroup {
+    padding: 1.2rem;
+    border-radius: 15px;
+  }
+
+  .singlePanel {
+    padding: 1rem 1.05rem;
+    border-radius: 11px;
+    gap: 0.65rem;
+  }
+
+  .agendaPanelToggle {
+    padding: 0.82rem 0.9rem;
+    gap: 0.28rem 0.55rem;
+  }
+
+  .agendaPanelToggleTitle {
+    font-size: 0.98rem;
+  }
+
+  .agendaPanelToggleTitlePromoted {
+    font-size: 1.1rem;
+  }
+
+  .agendaPanelToggleMeta {
+    font-size: 0.78rem;
+  }
+
+  .agendaPanelMetaTag {
+    font-size: 0.69rem;
+    padding: 0.14rem 0.44rem;
+  }
+
+  .agendaPanelBody {
+    padding: 0.85rem 0.9rem 0.95rem;
+    gap: 0.78rem;
+  }
+
+  .groupTitle {
+    font-size: 1.14rem;
+  }
+
+  .groupDesc {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .groupCount {
+    font-size: 0.82rem;
+    padding: 0.16rem 0.58rem;
+  }
+
+  .logoItem {
+    border-radius: 9px;
+    padding: 0.26rem;
   }
 
   .sponsorGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
   }
 
   .partnerGroupGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
   }
 
   .partnerGroupCardWide {
-    grid-column: auto;
+    grid-column: 1 / -1;
   }
 
   .partnerGroupGrid {
-    --partner-logo-box-height: 150px;
+    --partner-logo-box-height: 124px;
+  }
+
+  .partnerGroupCard {
+    padding: 0.85rem;
+    gap: 0.65rem;
+  }
+
+  .partnerGroupLabel {
+    font-size: 1.05rem;
+  }
+
+  .partnerLogoItem {
+    padding: 0.45rem 0.55rem;
   }
 
   .partnerSupportGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+
+  .partnerSupportGrid .partnerLogoItem {
+    padding: 0.42rem 0.5rem;
   }
 
   .sponsorCard {
-    min-height: 160px;
+    min-height: 142px;
+  }
+
+  .sponsorLogo {
+    height: 104px;
   }
 
   .agendaCardHeader {
@@ -3068,8 +3433,123 @@
     display: none;
   }
 
+  .masterCalendarStackedMobile {
+    --forum-agenda-half-row-height: 2.15rem;
+    --forum-agenda-edge-padding: 0.32rem;
+    --forum-agenda-stacked-axis-col: 68px;
+    --forum-agenda-stacked-prep-col-min: 68px;
+    --forum-agenda-stacked-prep-col-fr: 0.26fr;
+    --forum-agenda-board-gap: 0.42rem;
+    display: grid;
+  }
+
   .masterTimelineMobile {
-    display: block;
+    display: none;
+  }
+
+  .masterCalendarStackedBoard {
+    gap: 0.4rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarBoardHeaderAxis {
+    min-height: 2rem;
+    font-size: 0.68rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarBoardHeaderDay {
+    min-height: 2rem;
+    padding: 0 0.3rem;
+    border-radius: 8px;
+    font-size: 0.78rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarBoardHeaderPrep {
+    font-size: 0.66rem;
+    line-height: 1.1;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarBoardAxisCell {
+    padding: 0.22rem 0.2rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarBoardAxisLabel {
+    font-size: 0.62rem;
+    padding: 0 0.14rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarClusterLayer {
+    padding: 0 0.22rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarClusterGrid {
+    column-gap: 0.22rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarEventShell {
+    padding-top: 0.14rem;
+    padding-bottom: 0.14rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarEvent {
+    padding: 0.4rem 0.42rem;
+    border-radius: 7px;
+    gap: 0.12rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarEvent::before {
+    width: 2px;
+    border-radius: 7px 0 0 7px;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarEvent .masterPeriodTrackTag {
+    padding: 0.08rem 0.3rem;
+    font-size: 0.58rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarEvent .masterTimelineItemTop {
+    gap: 0.22rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarEvent .masterTimelineItemTitle {
+    font-size: 0.68rem;
+    line-height: 1.12;
+    -webkit-line-clamp: 2;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarPrepEvent {
+    margin: 0.18rem 0.12rem;
+    border-radius: 7px;
+    padding: 0.28rem 0.15rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarPrepEventDay {
+    margin: 0.14rem 0.16rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarPrepEventLabel {
+    font-size: 0.66rem;
+  }
+
+  .masterDayTableColumns,
+  .masterDayTableRow {
+    grid-template-columns: 94px minmax(0, 1fr);
+  }
+
+  .masterDayTableColumnCell {
+    padding: 0.45rem 0.55rem;
+    font-size: 0.72rem;
+  }
+
+  .masterDayTableTimeCell {
+    padding: 0.55rem 0.5rem;
+  }
+
+  .masterDayTableTimeRange {
+    font-size: 0.8rem;
+  }
+
+  .masterDayTableAgendaCell {
+    padding: 0.5rem;
   }
 
   .masterTimelineAxis {
@@ -3177,16 +3657,6 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .devAgendaCardBody {
-    grid-template-columns: 74px minmax(0, 1fr);
-    gap: 0.7rem;
-  }
-
-  .devAgendaLogoSlot {
-    height: 48px;
-    padding: 0.3rem 0.4rem;
-  }
-
   .devAgendaCard {
     padding: 0.8rem 0.85rem;
   }
@@ -3225,61 +3695,754 @@
   }
 
   .specialLogoWrap {
-    max-width: 260px;
+    max-width: 220px;
   }
 
   .peopleGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.7rem;
+  }
+
+  .personCard {
+    padding: 0.65rem;
+    gap: 0.42rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.045);
+  }
+
+  .personPhoto {
+    border-radius: 10px;
+  }
+
+  .personName {
+    font-size: 0.86rem;
+    line-height: 1.2;
+  }
+
+  .personTitle {
+    font-size: 0.74rem;
+    line-height: 1.3;
   }
 
   .logoWall {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
   }
 
   .logoWallFive {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
+  }
+
+  .logoWallTitle {
+    font-size: 0.9rem;
+  }
+
+  .logoWallNote {
+    font-size: 0.75rem;
   }
 
   .organizerLogoWall {
     grid-template-columns: repeat(2, minmax(0, 220px));
+    gap: 0.7rem;
+  }
+
+  .devAgendaList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .devAgendaCard {
+    padding: 0.7rem 0.75rem;
+    border-radius: 10px;
+    gap: 0.32rem;
+  }
+
+  .devAgendaCardBody {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 0.45rem;
+    align-items: start;
+  }
+
+  .devAgendaLogoSlot {
+    height: clamp(48px, 10vw, 64px);
+    padding: 0.28rem 0.36rem;
+    border-radius: 8px;
+  }
+
+  .devAgendaCard .agendaTitle,
+  .devAgendaCardUnit {
+    font-size: 0.86rem;
+    line-height: 1.24;
+  }
+
+  .devAgendaCardName {
+    font-size: 0.79rem;
+    line-height: 1.25;
+  }
+
+  .devAgendaCardRole,
+  .devAgendaCard .agendaNote {
+    font-size: 0.72rem;
+    line-height: 1.25;
+  }
+
+  .coopGrid {
+    gap: 0.8rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .coopCard {
+    padding: 0.85rem 0.9rem;
+    gap: 0.3rem;
+    border-radius: 10px;
+  }
+
+  .iconBubble {
+    width: 32px;
+    height: 32px;
+    border-radius: 11px;
+  }
+
+  .iconBubble svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .cardTitle {
+    font-size: 0.96rem;
+    line-height: 1.3;
+  }
+
+  .cardMeta {
+    font-size: 0.84rem;
+    line-height: 1.4;
+  }
+
+  .cardGrid {
+    gap: 0.9rem;
+  }
+
+  .cardPhoto {
+    height: 170px;
+  }
+
+  .cardPhotoLabel {
+    font-size: 0.86rem;
+  }
+
+  .pill {
+    font-size: 0.76rem;
+    padding: 0.12rem 0.6rem;
+  }
+
+  .badge {
+    font-size: 0.72rem;
+    padding: 0.18rem 0.52rem;
   }
 }
 
 @media (max-width: 520px) {
-  .devAgendaList {
-    grid-template-columns: 1fr;
+  .page {
+    --forum-mobile-fs-hero-tag: 0.72rem;
+    --forum-mobile-fs-hero-title: 1.38rem;
+    --forum-mobile-fs-hero-pill: 0.7rem;
+    --forum-mobile-fs-section-title: 1.32rem;
+    --forum-mobile-fs-section-hint: 0.82rem;
+    --forum-mobile-fs-card-title: 0.9rem;
+    --forum-mobile-fs-card-meta: 0.78rem;
+    --forum-mobile-fs-detail-body: 0.88rem;
+    --forum-mobile-fs-detail-title: 0.96rem;
+    --forum-mobile-fs-detail-meta: 0.76rem;
+    --forum-mobile-fs-micro: 0.66rem;
   }
 
-  .sponsorGrid {
-    grid-template-columns: 1fr;
+  .hero {
+    padding: 3.1rem 0.75rem 2.2rem;
   }
 
-  .partnerSupportGrid {
-    grid-template-columns: 1fr;
+  .heroContent {
+    gap: 0.9rem;
+    max-width: 100%;
+  }
+
+  .heroTag {
+    font-size: var(--forum-mobile-fs-hero-tag);
+    letter-spacing: 0.2px;
+  }
+
+  .heroTitle {
+    font-size: var(--forum-mobile-fs-hero-title);
+    letter-spacing: 0.2px;
+    line-height: 1.35;
+  }
+
+  .heroPill {
+    padding: 0.28rem 0.62rem;
+    font-size: var(--forum-mobile-fs-hero-pill);
+    gap: 0.22rem;
+  }
+
+  .section {
+    padding: 2rem 0;
+  }
+
+  .sectionHeader {
+    margin-bottom: 1.1rem;
+  }
+
+  .sectionTitle {
+    font-size: var(--forum-mobile-fs-section-title);
+    margin-bottom: 0.35rem;
+  }
+
+  .sectionHint {
+    font-size: var(--forum-mobile-fs-section-hint);
+    line-height: 1.45;
+  }
+
+  .agendaLayout {
+    gap: 1.4rem;
+  }
+
+  .card {
+    border-radius: 10px;
+    padding: 0.8rem 0.85rem;
+    gap: 0.28rem;
+  }
+
+  .agendaGroup {
+    border-radius: 14px;
+    padding: 1rem;
+  }
+
+  .singlePanel {
+    border-radius: 10px;
+    padding: 0.9rem 0.95rem;
+    gap: 0.6rem;
+  }
+
+  .agendaPanelToggle {
+    padding: 0.75rem 0.8rem;
+    gap: 0.25rem 0.5rem;
+  }
+
+  .agendaPanelToggleTitle {
+    font-size: 0.94rem;
+  }
+
+  .agendaPanelToggleTitlePromoted {
+    font-size: 1.02rem;
+  }
+
+  .agendaPanelToggleMeta {
+    font-size: 0.7rem;
+    gap: 0.25rem 0.3rem;
+  }
+
+  .agendaPanelMetaTag {
+    padding: 0.12rem 0.4rem;
+    font-size: 0.64rem;
+  }
+
+  .agendaPanelBody {
+    padding: 0.75rem 0.8rem 0.85rem;
+    gap: 0.7rem;
+  }
+
+  .groupTitle {
+    font-size: 1.08rem;
+  }
+
+  .groupDesc {
+    font-size: 0.8rem;
+    line-height: 1.45;
+  }
+
+  .groupCount {
+    font-size: 0.78rem;
+    padding: 0.15rem 0.55rem;
+  }
+
+  .logoItem {
+    border-radius: 8px;
+    padding: 0.22rem;
   }
 
   .partnerGroupGrid {
-    --partner-logo-box-height: 132px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    --partner-logo-box-height: 100px;
+    gap: 0.65rem;
   }
 
-  .venueCard {
-    min-height: 200px;
+  .partnerGroupCard {
+    padding: 0.75rem;
+    gap: 0.55rem;
+  }
+
+  .partnerGroupCardWide {
+    grid-column: 1 / -1;
+  }
+
+  .partnerGroupLabel {
+    font-size: 0.92rem;
+  }
+
+  .partnerLogoItem {
+    padding: 0.4rem 0.5rem;
+  }
+
+  .partnerSupportGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .partnerSupportGrid .partnerLogoItem {
+    padding: 0.35rem 0.45rem;
+  }
+
+  .sponsorGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .sponsorCard {
+    min-height: 126px;
+  }
+
+  .sponsorLogo {
+    height: 92px;
   }
 
   .peopleGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.55rem;
+  }
+
+  .personCard {
+    border-radius: 10px;
+    padding: 0.5rem;
+    gap: 0.35rem;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+  }
+
+  .personPhoto {
+    border-radius: 9px;
+  }
+
+  .personName {
+    font-size: 0.82rem;
+    line-height: 1.2;
+  }
+
+  .personTitle {
+    font-size: 0.7rem;
+    line-height: 1.25;
+  }
+
+  .personPlaceholderMark {
+    font-size: 1.15rem;
+  }
+
+  .devAgendaList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
+  }
+
+  .devAgendaCard {
+    border-radius: 10px;
+    padding: 0.6rem 0.65rem;
+    gap: 0.28rem;
+  }
+
+  .devAgendaCardBody {
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 0.4rem;
+    align-items: start;
+  }
+
+  .devAgendaLogoSlot {
+    height: clamp(44px, 12vw, 56px);
+    border-radius: 8px;
+    padding: 0.24rem 0.3rem;
+  }
+
+  .devAgendaCard .agendaTitle,
+  .devAgendaCardUnit {
+    font-size: 0.8rem;
+    line-height: 1.2;
+  }
+
+  .devAgendaCardName {
+    font-size: 0.74rem;
+    line-height: 1.2;
+  }
+
+  .devAgendaCardRole,
+  .devAgendaCard .agendaNote {
+    font-size: 0.68rem;
+    line-height: 1.2;
+  }
+
+  /* Mobile type hierarchy: detailed agenda body stays more readable than general hints/meta text. */
+  .agendaSubsectionTitle,
+  .singlePanelTitle {
+    font-size: 1rem;
+  }
+
+  .logoWallHeader {
+    gap: 0.45rem;
+    margin-top: 0.2rem;
+  }
+
+  .logoWallTitle {
+    font-size: 0.82rem;
+  }
+
+  .logoWallNote {
+    font-size: 0.68rem;
+  }
+
+  .agendaPanels {
+    gap: 0.65rem;
+  }
+
+  .agendaPanel {
+    border-radius: 12px;
+  }
+
+  .agendaPanelSummary {
+    border-radius: 10px;
+    padding: 0.6rem 0.7rem;
+    font-size: var(--forum-mobile-fs-detail-body);
+    line-height: 1.55;
+  }
+
+  .agendaPanelSummaryLead {
+    gap: 0.22rem;
+  }
+
+  .agendaPanelSummaryLeadHead,
+  .agendaPanelSummaryLeadItem,
+  .agendaItem .agendaNote,
+  .agendaItemPlain .agendaNote,
+  .agendaPhaseLead,
+  .eventHostName {
+    font-size: var(--forum-mobile-fs-detail-body);
+    line-height: 1.45;
+  }
+
+  .agendaPanelSummaryNote {
+    font-size: 0.84rem;
+    line-height: 1.4;
+  }
+
+  .agendaPanelDayCount {
+    font-size: var(--forum-mobile-fs-detail-meta);
+  }
+
+  .sessionMetaRow {
+    gap: 0.28rem 0.38rem;
+  }
+
+  .agendaPanelBody .sessionTime {
+    font-size: 0.82rem;
+  }
+
+  .agendaPanelBody .sessionTypeTag {
+    font-size: 0.64rem;
+    padding: 0.08rem 0.35rem;
+  }
+
+  .agendaPhase {
+    gap: 0.45rem;
+    padding: 0.55rem 0.05rem;
+  }
+
+  .agendaPhaseTitle {
+    font-size: 0.96rem;
+    line-height: 1.3;
+  }
+
+  .agendaPhaseItems {
+    padding-left: 0.55rem;
+    margin-left: 0.02rem;
+  }
+
+  .agendaItem {
+    padding: 0.65rem 0.75rem;
+    border-radius: 10px;
+    gap: 0.28rem;
+  }
+
+  .agendaItemPlain {
+    padding: 0.5rem 0.05rem;
+    gap: 0.18rem;
+  }
+
+  .agendaItem .agendaTitle,
+  .agendaItemPlain .agendaTitle,
+  .agendaKeynoteCard .agendaTitle,
+  .agendaItemHasTalkTitle .agendaTitle {
+    font-size: var(--forum-mobile-fs-detail-title);
+    line-height: 1.26;
+  }
+
+  .agendaTalkTitleZh {
+    font-size: 0.9rem;
+    line-height: 1.24;
+  }
+
+  .agendaTalkTitleEn {
+    font-size: 0.76rem;
+    line-height: 1.28;
+  }
+
+  .agendaKeynoteCard {
+    padding: 0.72rem 0.75rem;
+    gap: 0.45rem;
+  }
+
+  .agendaKeynoteCardTop {
+    padding: 0.44rem 0.5rem 0.48rem;
+    border-radius: 8px;
+  }
+
+  .agendaKeynoteCard .agendaNote {
+    font-size: 0.74rem;
+    line-height: 1.3;
+  }
+
+  /* Bottom sections: compact but stable */
+  .coopGrid {
+    gap: 0.65rem;
+    grid-template-columns: 1fr;
+  }
+
+  .coopCard {
+    padding: 0.75rem 0.8rem;
+    gap: 0.28rem;
+    border-radius: 10px;
+  }
+
+  .iconBubble {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+  }
+
+  .iconBubble svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .cardTitle {
+    font-size: var(--forum-mobile-fs-card-title);
+    line-height: 1.25;
+  }
+
+  .coopCard .agendaNote {
+    font-size: var(--forum-mobile-fs-card-meta);
+    line-height: 1.35;
+  }
+
+  .cardGrid {
+    gap: 0.75rem;
+    grid-template-columns: 1fr;
+  }
+
+  .cardPhoto {
+    height: 150px;
+    border-radius: 10px;
+  }
+
+  .cardPhotoLabel {
+    left: 8px;
+    bottom: 8px;
+    font-size: 0.78rem;
+  }
+
+  .pill {
+    padding: 0.12rem 0.55rem;
+    font-size: 0.68rem;
+  }
+
+  .cardMeta {
+    font-size: var(--forum-mobile-fs-card-meta);
+    line-height: 1.35;
+  }
+
+  .badgeRow {
+    gap: 0.32rem;
+    margin-top: 0.25rem;
+  }
+
+  .badge {
+    padding: 0.14rem 0.45rem;
+    font-size: 0.66rem;
+  }
+
+  .venueBlock {
+    margin-top: 1.4rem;
+  }
+
+  .venueCard {
+    min-height: 180px;
+    padding: 1.05rem;
+    border-radius: 14px;
+  }
+
+  .venueTag {
+    padding: 0.18rem 0.55rem;
+    font-size: 0.72rem;
+  }
+
+  .venueTitle {
+    font-size: 1.12rem;
+  }
+
+  .venueAddress {
+    font-size: 0.82rem;
+    line-height: 1.4;
+  }
+
+  .venueLinks {
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+  }
+
+  .venueLink {
+    padding: 0.18rem 0.5rem;
+    font-size: 0.7rem;
+  }
+
+  .masterCalendarStackedMobile {
+    --forum-agenda-half-row-height: 1.9rem;
+    --forum-agenda-edge-padding: 0.24rem;
+    --forum-agenda-stacked-axis-col: 58px;
+    --forum-agenda-stacked-prep-col-min: 58px;
+    --forum-agenda-stacked-prep-col-fr: 0.22fr;
+    --forum-agenda-board-gap: 0.28rem;
+    gap: 0.55rem;
+  }
+
+  .masterCalendarStackedBoard {
+    gap: 0.3rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarBoardHeaderAxis {
+    min-height: 1.8rem;
+    font-size: 0.62rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarBoardHeaderDay {
+    min-height: 1.8rem;
+    padding: 0 0.18rem;
+    border-radius: 7px;
+    font-size: 0.7rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarBoardHeaderPrep {
+    font-size: 0.58rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarBoardAxisCell {
+    padding: 0.18rem 0.12rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarBoardAxisLabel {
+    font-size: 0.56rem;
+    padding: 0 0.1rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarClusterLayer {
+    padding: 0 0.14rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarClusterGrid {
+    column-gap: 0.14rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarEventShell {
+    padding-top: 0.08rem;
+    padding-bottom: 0.08rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarEvent {
+    padding: 0.28rem 0.3rem;
+    border-radius: 6px;
+    gap: 0.08rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarEvent::before {
+    border-radius: 6px 0 0 6px;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarEvent .masterPeriodTrackTag {
+    padding: 0.05rem 0.22rem;
+    font-size: 0.52rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarEvent .masterTimelineItemTop {
+    gap: 0.15rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarEvent .masterTimelineItemTitle {
+    font-size: 0.6rem;
+    line-height: 1.08;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarPrepEvent {
+    margin: 0.12rem 0.08rem;
+    border-radius: 6px;
+    padding: 0.2rem 0.1rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarPrepEventDay {
+    margin: 0.1rem 0.12rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarPrepEventLabel {
+    font-size: 0.58rem;
+  }
+
+  .masterDayTableColumns,
+  .masterDayTableRow {
+    grid-template-columns: 86px minmax(0, 1fr);
+  }
+
+  .masterDayTableHeader {
+    padding: 0.7rem 0.75rem;
+  }
+
+  .masterDayTableTitle {
+    font-size: 0.9rem;
+  }
+
+  .masterDayTableAgendaCell .masterTimelineSlots {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .masterDayTableSlot {
+    padding: 0.6rem 0.65rem;
   }
 
   .logoWall {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.45rem;
   }
 
   .logoWallFive {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.45rem;
   }
 
   .organizerLogoWall {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 180px));
+    gap: 0.55rem;
   }
 }
 

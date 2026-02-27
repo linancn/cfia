@@ -338,7 +338,11 @@ const people: {
     nameEn: "Matthias Finkbeiner",
     nameZh: "Matthias Finkbeiner",
     titleZh: <>柏林工业大学教授</>,
-    titleEn: <>Prof. Dr., TU Berlin</>,
+    titleEn: (
+      <>
+        Prof. Dr., TU Berlin
+      </>
+    ),
     image: "img/tg-forum/people/MatthiasF-tub.jpg",
   },
   {
@@ -358,7 +362,7 @@ const people: {
     nameEn: "Zhijun Gui",
     nameZh: "桂志军",
     titleZh: <>海科数据 CEO<br />（HiQ LCD）</>,
-    titleEn: <>CEO, HiQLCD</>,
+    titleEn: <>CEO, HiQ LCD</>,
     image: "img/tg-forum/people/ZhijunG-hiq.jpg",
   },
   {
@@ -390,7 +394,7 @@ const people: {
     nameEn: "Alessandro Manzardo",
     nameZh: "Alessandro Manzardo",
     titleZh: <>帕多瓦大学副教授</>,
-    titleEn: <>Associate Professor, Università degli Studi di Padova</>,
+    titleEn: <>Associate Professor, University of Padua</>,
     image: "img/tg-forum/people/AlessandroM-upd.jpg",
   },
   {
@@ -408,6 +412,14 @@ const people: {
     titleZh: <>UNEP LCI 秘书处负责人</>,
     titleEn: <>Head of Secretariat, UNEP Life Cycle Initiative</>,
     image: "img/tg-forum/people/LlorencM-unep.jpg",
+  },
+  {
+    key: "lorie-hamelin",
+    nameEn: "Lorie Hamelin",
+    nameZh: "Lorie Hamelin",
+    titleZh: <>法国农业、食品与环境研究院（INRAE）研究员</>,
+    titleEn: <>Researcher at INRAE; Chair Professor at INSA Toulouse</>,
+    image: "img/tg-forum/people/LorieH-inrae.jpg",
   },
   {
     key: "eric-mieras",
@@ -529,7 +541,7 @@ const devConfLogos: { key: string; name: string; src?: string }[] = [
   {
     key: "envision",
     name: "Univers",
-    src: "img/tg-forum/orgnizations/lca_dev_conf/envision.png",
+    src: "img/tg-forum/orgnizations/lca_dev_conf/univers.png",
   },
   {
     key: "greendelta",
@@ -539,7 +551,7 @@ const devConfLogos: { key: string; name: string; src?: string }[] = [
   {
     key: "hiq",
     name: "HiQ",
-    src: "img/tg-forum/orgnizations/lca_dev_conf/hiq.jpg",
+    src: "img/tg-forum/orgnizations/lca_dev_conf/hiq.png",
   },
   {
     key: "minviro",
@@ -629,9 +641,24 @@ const agendaGroups: AgendaGroup[] = [
         行业议题深度讨论与数据体系共建，分论坛独立发布更新。
       </Translate>
     ),
-    count: "4",
+    count: "5",
     layout: "subForum",
     items: [
+      {
+        key: "power-workshop",
+        title: (
+          <Translate id="forum.agenda.special.powerWorkshop">
+            电力
+          </Translate>
+        ),
+        lead: (
+          <Translate id="forum.agenda.special.powerWorkshop.lead">
+            活动内容和议程确认中。
+          </Translate>
+        ),
+        icon: "forum",
+        tags: [translate({ id: "forum.agenda.tag.subForum", message: "分论坛" })],
+      },
       {
         key: "petrochemical",
         title: <Translate id="forum.agenda.subForums.petroleum">石油化工</Translate>,
@@ -668,7 +695,7 @@ const agendaGroups: AgendaGroup[] = [
       {
         key: "lca-audit",
         title: (
-          <Translate id="forum.agenda.subForums.audit">LCA 与碳足迹数据议题（英文）</Translate>
+          <Translate id="forum.agenda.subForums.audit">数据</Translate>
         ),
         lead: (
           <Translate id="forum.agenda.subForums.audit.lead">
@@ -711,7 +738,7 @@ const agendaGroups: AgendaGroup[] = [
         跨机构联合活动与全球合作专场，信息实时更新。
       </Translate>
     ),
-    count: "4",
+    count: "3",
     layout: "specialEvents",
     items: [
       {
@@ -761,20 +788,6 @@ const agendaGroups: AgendaGroup[] = [
         ),
         lead: (
           <Translate id="forum.agenda.special.factorDatabase.lead">
-            活动内容和议程确认中。
-          </Translate>
-        ),
-        icon: "spark",
-      },
-      {
-        key: "power-workshop",
-        title: (
-          <Translate id="forum.agenda.special.powerWorkshop">
-            电力专题研讨会
-          </Translate>
-        ),
-        lead: (
-          <Translate id="forum.agenda.special.powerWorkshop.lead">
             活动内容和议程确认中。
           </Translate>
         ),
@@ -839,6 +852,7 @@ const keynoteSpeakerPhotoBySessionId: Record<string, string> = {
   "mf-d2-keynote-llorenc": "img/tg-forum/people/LlorencM-unep.jpg",
   "mf-d2-keynote-xu": "img/tg-forum/people/MingX-thu.jpg",
   "mf-d2-keynote-finkbeiner": "img/tg-forum/people/MatthiasF-tub.jpg",
+  "mf-d2-keynote-hamelin": "img/tg-forum/people/LorieH-inrae.jpg",
   "mf-d2-keynote-mieras": "img/tg-forum/people/EricMieras-1clicklca-pre.jpg",
 };
 
@@ -1290,6 +1304,36 @@ export default function Forum(): ReactNode {
     );
   };
 
+  const isHostOrModeratorLabel = (label: string): boolean => {
+    const normalized = label.trim().toLowerCase();
+    return /主持人?/.test(label) || normalized.startsWith("host") || normalized.startsWith("moderator");
+  };
+
+  const renderPersonNameWithBold = (value: string): ReactNode => {
+    const text = value.trim();
+    if (!text) {
+      return "";
+    }
+
+    const separatorIndex = text.search(/[，,]/);
+    if (separatorIndex < 0) {
+      return <strong>{text}</strong>;
+    }
+
+    const namePart = text.slice(0, separatorIndex).trim();
+    const tailPart = text.slice(separatorIndex);
+    if (!namePart) {
+      return text;
+    }
+
+    return (
+      <>
+        <strong>{namePart}</strong>
+        {tailPart}
+      </>
+    );
+  };
+
   const renderSummaryLeadBlock = (summaryLead: AgendaText | undefined): ReactNode => {
     if (!summaryLead) {
       return null;
@@ -1299,14 +1343,7 @@ export default function Forum(): ReactNode {
     if (!text) {
       return null;
     }
-
-    if (!isZh) {
-      return (
-        <div className={clsx(styles.agendaPanelSummary, styles.agendaPanelSummaryLeadRaw)}>
-          {text}
-        </div>
-      );
-    }
+    const labelSuffix = isZh ? "：" : ":";
 
     const lines = text
       .split(/\r?\n/)
@@ -1321,6 +1358,7 @@ export default function Forum(): ReactNode {
       const inlineMatch = lines[0].match(/^([^：:]+)[：:]\s*(.+)$/);
       if (inlineMatch) {
         const [, inlineLabel, inlineValue] = inlineMatch;
+        const highlightName = isHostOrModeratorLabel(inlineLabel);
         return (
           <div
             className={clsx(
@@ -1329,8 +1367,11 @@ export default function Forum(): ReactNode {
               styles.agendaPanelSummaryLeadInline
             )}
           >
-            <span className={styles.agendaPanelSummaryLeadLabel}>{inlineLabel}：</span>
-            <span>{inlineValue}</span>
+            <span className={styles.agendaPanelSummaryLeadLabel}>
+              {inlineLabel}
+              {labelSuffix}
+            </span>
+            <span>{highlightName ? renderPersonNameWithBold(inlineValue) : inlineValue}</span>
           </div>
         );
       }
@@ -1338,6 +1379,7 @@ export default function Forum(): ReactNode {
 
     const [labelLine, ...items] = lines;
     const label = labelLine.replace(/[：:]$/, "");
+    const highlightName = isHostOrModeratorLabel(label);
 
     if (items.length <= 1) {
       return (
@@ -1348,8 +1390,13 @@ export default function Forum(): ReactNode {
             styles.agendaPanelSummaryLeadInline
           )}
         >
-          <span className={styles.agendaPanelSummaryLeadLabel}>{label}：</span>
-          {items[0] && <span>{items[0]}</span>}
+          <span className={styles.agendaPanelSummaryLeadLabel}>
+            {label}
+            {labelSuffix}
+          </span>
+          {items[0] && (
+            <span>{highlightName ? renderPersonNameWithBold(items[0]) : items[0]}</span>
+          )}
         </div>
       );
     }
@@ -1357,12 +1404,15 @@ export default function Forum(): ReactNode {
     return (
       <div className={clsx(styles.agendaPanelSummary, styles.agendaPanelSummaryLead)}>
         <div className={styles.agendaPanelSummaryLeadHead}>
-          <span className={styles.agendaPanelSummaryLeadLabel}>{label}：</span>
+          <span className={styles.agendaPanelSummaryLeadLabel}>
+            {label}
+            {labelSuffix}
+          </span>
         </div>
         <ul className={styles.agendaPanelSummaryLeadList}>
           {items.map((item) => (
             <li key={item} className={styles.agendaPanelSummaryLeadItem}>
-              {item}
+              {highlightName ? renderPersonNameWithBold(item) : item}
             </li>
           ))}
         </ul>
@@ -1382,9 +1432,19 @@ export default function Forum(): ReactNode {
         return (
           <div key={session.id} className={styles.devAgendaCard}>
             <div className={styles.devAgendaCardBody}>
-              <div className={styles.devAgendaLogoSlot} aria-hidden="true">
+              <div
+                className={styles.devAgendaLogoSlot}
+                aria-hidden="true"
+              >
                 {logo?.src ? (
-                  <img src={logo.src} alt={logo.name} loading="lazy" />
+                  <div className={styles.devAgendaLogoCanvas}>
+                    <img
+                      className={styles.devAgendaLogoMark}
+                      src={logo.src}
+                      alt={logo.name}
+                      loading="lazy"
+                    />
+                  </div>
                 ) : (
                   <span className={styles.devAgendaLogoFallback}>
                     {logoLabel || (isZh ? "环节" : "Session")}
@@ -1473,7 +1533,7 @@ export default function Forum(): ReactNode {
             {phase.mode === "opening" && phase.items[0]?.speakers && (
               <div className={styles.agendaPhaseLead}>
                 {isZh ? "主持人：" : "Host: "}
-                {getAgendaText(phase.items[0].speakers, isZh)}
+                {renderPersonNameWithBold(getAgendaText(phase.items[0].speakers, isZh))}
               </div>
             )}
           </div>
@@ -1492,6 +1552,10 @@ export default function Forum(): ReactNode {
     const boardHalfHourRows = Math.max(1, (boardEndMinutes - boardStartMinutes) / 30);
     const boardRowTemplate = `repeat(${boardHalfHourRows}, var(--forum-agenda-half-row-height, 2.75rem))`;
     const boardRowsStyle: CSSProperties = { gridTemplateRows: boardRowTemplate };
+    const boardDayWidthStyle = {
+      "--forum-agenda-day1-col": "0.8fr",
+      "--forum-agenda-day2-col": "1.2fr",
+    } as CSSProperties;
     const boardRowMarks = Array.from(
       { length: boardHalfHourRows },
       (_, index) => boardStartMinutes + index * 30
@@ -1508,16 +1572,211 @@ export default function Forum(): ReactNode {
       1,
       boardHalfHourRows - (prepRegistrationRowStart - 1)
     );
+    const stackedAxisColumn = "var(--forum-agenda-stacked-axis-col, 84px)";
+    const stackedPrepColumn =
+      "minmax(var(--forum-agenda-stacked-prep-col-min, 88px), var(--forum-agenda-stacked-prep-col-fr, 0.34fr))";
+    const stackedDay1BoardColumns = `${stackedAxisColumn} ${stackedPrepColumn} minmax(0, 1fr)`;
+    const stackedDay2BoardColumns = `${stackedAxisColumn} minmax(0, 1fr)`;
+    const stackedDay1BoardStyle: CSSProperties = { gridTemplateColumns: stackedDay1BoardColumns };
+    const stackedDay2BoardStyle: CSSProperties = { gridTemplateColumns: stackedDay2BoardColumns };
 
     const getPeriodLabel = (start: string): string => {
       return parseTimeToMinutes(start) < 12 * 60
         ? (isZh ? "上午" : "Morning")
         : (isZh ? "下午" : "Afternoon");
     };
+    const timelineRowsByDay = agendaDayOrder.map((day) => ({
+      day,
+      rows: timelineRows.filter((row) => row.day === day),
+    }));
+
+    const renderBoardAxis = (keyPrefix: string): ReactNode => (
+      <div key={`${keyPrefix}-axis`} className={styles.masterCalendarBoardAxis} style={boardRowsStyle}>
+        {boardRowMarks.map((minutes, rowIndex) => {
+          const isHourRow = minutes % 60 === 0;
+          const isLastRow = rowIndex === boardRowMarks.length - 1;
+          return (
+            <div
+              key={`${keyPrefix}-axis-${minutes}`}
+              className={clsx(
+                styles.masterCalendarBoardAxisCell,
+                isHourRow && styles.masterCalendarBoardAxisCellHour
+              )}
+              style={{ gridRow: `${rowIndex + 1}` }}
+            >
+              {isHourRow && (
+                <span
+                  className={clsx(
+                    styles.masterCalendarBoardAxisLabel,
+                    styles.masterCalendarBoardAxisLabelTop
+                  )}
+                >
+                  {formatMinutesToTime(minutes)}
+                </span>
+              )}
+              {isLastRow && (
+                <span
+                  className={clsx(
+                    styles.masterCalendarBoardAxisLabel,
+                    styles.masterCalendarBoardAxisLabelBottom
+                  )}
+                >
+                  {formatMinutesToTime(boardEndMinutes)}
+                </span>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    );
+
+    const renderPrepRegistrationFrame = (keyPrefix: string): ReactNode => (
+      <div
+        key={`${keyPrefix}-prep-frame`}
+        className={clsx(
+          styles.masterCalendarBoardDayFrame,
+          styles.masterCalendarBoardDayFramePrep
+        )}
+      >
+        <div className={styles.masterCalendarBoardDayGrid} style={boardRowsStyle}>
+          {boardRowMarks.map((minutes, rowIndex) => (
+            <div
+              key={`${keyPrefix}-prep-row-${minutes}`}
+              className={clsx(
+                styles.masterCalendarGridRow,
+                styles.masterCalendarBoardRow,
+                minutes % 60 === 0 && styles.masterCalendarGridRowHour
+              )}
+              style={{ gridColumn: "1", gridRow: `${rowIndex + 1}` }}
+              aria-hidden="true"
+            />
+          ))}
+
+          <div
+            className={styles.masterCalendarPrepEvent}
+            style={{
+              gridColumn: "1",
+              gridRow: `${prepRegistrationRowStart} / span ${prepRegistrationRowSpan}`,
+            }}
+          >
+            <span
+              className={clsx(
+                styles.masterCalendarPrepEventLabel,
+                styles.masterCalendarPrepEventLabelHorizontal
+              )}
+            >
+              {registrationLabel}
+            </span>
+          </div>
+        </div>
+      </div>
+    );
+
+    const renderDayBoardFrame = (day: AgendaDayKey, keyPrefix: string): ReactNode => {
+      const dayLayout = dayLayoutMap.get(day);
+      const showDayRegistration = day === "day1" || day === "day2";
+
+      return (
+        <div key={`${keyPrefix}-col-${day}`} className={styles.masterCalendarBoardDayFrame}>
+          <div className={styles.masterCalendarBoardDayGrid} style={boardRowsStyle}>
+            {boardRowMarks.map((minutes, rowIndex) => (
+              <div
+                key={`${keyPrefix}-${day}-row-${minutes}`}
+                className={clsx(
+                  styles.masterCalendarGridRow,
+                  styles.masterCalendarBoardRow,
+                  minutes % 60 === 0 && styles.masterCalendarGridRowHour
+                )}
+                style={{ gridColumn: "1", gridRow: `${rowIndex + 1}` }}
+                aria-hidden="true"
+              />
+            ))}
+
+            {showDayRegistration && (
+              <div
+                className={clsx(
+                  styles.masterCalendarPrepEvent,
+                  styles.masterCalendarPrepEventDay
+                )}
+                style={{ gridColumn: "1", gridRow: "1 / span 2" }}
+              >
+                <span
+                  className={clsx(
+                    styles.masterCalendarPrepEventLabel,
+                    styles.masterCalendarPrepEventLabelHorizontal
+                  )}
+                >
+                  {registrationLabel}
+                </span>
+              </div>
+            )}
+
+            {dayLayout?.clusters.map((cluster) => {
+              const clusterRowStart = Math.max(
+                0,
+                Math.floor((cluster.startMinutes - boardStartMinutes) / 30)
+              );
+              const clusterGridStyle: CSSProperties = {
+                gridTemplateRows: `repeat(${cluster.halfHourRows}, var(--forum-agenda-half-row-height, 2.75rem))`,
+                gridTemplateColumns: `repeat(${cluster.laneCount}, minmax(0, 1fr))`,
+              };
+
+              return (
+                <div
+                  key={`${keyPrefix}-${cluster.key}`}
+                  className={styles.masterCalendarClusterLayer}
+                  style={{
+                    gridColumn: "1",
+                    gridRow: `${clusterRowStart + 1} / span ${cluster.halfHourRows}`,
+                  }}
+                >
+                  <div className={styles.masterCalendarClusterGrid} style={clusterGridStyle}>
+                    {cluster.placements.map((placement) => {
+                      return (
+                        <div
+                          key={`${keyPrefix}-${placement.slot.id}`}
+                          className={clsx(
+                            styles.masterCalendarEventShell
+                          )}
+                          style={{
+                            gridColumn: `${placement.laneIndex + 1}`,
+                            gridRow: `${placement.rowStart + 1} / span ${placement.rowSpan}`,
+                          }}
+                        >
+                          <button
+                            type="button"
+                            className={clsx(
+                              styles.masterTimelineItem,
+                              styles.masterCalendarEvent,
+                              styles.masterSlotClickable,
+                              getMasterTrackClassName(placement.slot.track)
+                            )}
+                            onClick={() => openAndScrollToActivity(placement.slot.activityKey)}
+                          >
+                            <div className={styles.masterTimelineItemTop}>
+                              <span className={styles.masterPeriodTrackTag}>
+                                {getTrackLabel(placement.slot.track)}
+                              </span>
+                            </div>
+                            <div className={styles.masterTimelineItemTitle}>
+                              {getAgendaText(placement.slot.shortTitle, isZh)}
+                            </div>
+                          </button>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      );
+    };
 
     return (
       <div className={clsx(styles.agendaGroup, styles.agendaGroupWide, styles.masterAgenda)}>
-        <div className={styles.masterCalendarDesktop}>
+        <div className={styles.masterCalendarDesktop} style={boardDayWidthStyle}>
           <div className={styles.masterCalendarBoardHeader}>
             <div className={styles.masterCalendarBoardHeaderAxis}>
               {isZh ? "时间" : "Time"}
@@ -1538,228 +1797,117 @@ export default function Forum(): ReactNode {
           </div>
 
           <div className={styles.masterCalendarBoardBody}>
-            <div className={styles.masterCalendarBoardAxis} style={boardRowsStyle}>
-              {boardRowMarks.map((minutes, rowIndex) => {
-                const isHourRow = minutes % 60 === 0;
-                const isLastRow = rowIndex === boardRowMarks.length - 1;
-                return (
-                  <div
-                    key={`axis-${minutes}`}
-                    className={clsx(
-                      styles.masterCalendarBoardAxisCell,
-                      isHourRow && styles.masterCalendarBoardAxisCellHour
-                    )}
-                    style={{ gridRow: `${rowIndex + 1}` }}
-                  >
-                    {isHourRow && (
-                      <span
-                        className={clsx(
-                          styles.masterCalendarBoardAxisLabel,
-                          styles.masterCalendarBoardAxisLabelTop
-                        )}
-                      >
-                        {formatMinutesToTime(minutes)}
-                      </span>
-                    )}
-                    {isLastRow && (
-                      <span
-                        className={clsx(
-                          styles.masterCalendarBoardAxisLabel,
-                          styles.masterCalendarBoardAxisLabelBottom
-                        )}
-                      >
-                        {formatMinutesToTime(boardEndMinutes)}
-                      </span>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
+            {renderBoardAxis("desktop")}
+            {renderPrepRegistrationFrame("desktop")}
+            {agendaDayOrder.map((day) => renderDayBoardFrame(day, "desktop"))}
+          </div>
+        </div>
 
-            <div
-              className={clsx(
-                styles.masterCalendarBoardDayFrame,
-                styles.masterCalendarBoardDayFramePrep
-              )}
-            >
-              <div className={styles.masterCalendarBoardDayGrid} style={boardRowsStyle}>
-                {boardRowMarks.map((minutes, rowIndex) => (
-                  <div
-                    key={`prep-row-${minutes}`}
-                    className={clsx(
-                      styles.masterCalendarGridRow,
-                      styles.masterCalendarBoardRow,
-                      minutes % 60 === 0 && styles.masterCalendarGridRowHour
-                    )}
-                    style={{ gridColumn: "1", gridRow: `${rowIndex + 1}` }}
-                    aria-hidden="true"
-                  />
-                ))}
-
-                <div
-                  className={styles.masterCalendarPrepEvent}
-                  style={{
-                    gridColumn: "1",
-                    gridRow: `${prepRegistrationRowStart} / span ${prepRegistrationRowSpan}`,
-                  }}
-                >
-                  <span
-                    className={clsx(
-                      styles.masterCalendarPrepEventLabel,
-                      styles.masterCalendarPrepEventLabelHorizontal
-                    )}
-                  >
-                    {registrationLabel}
-                  </span>
-                </div>
+        <div className={styles.masterCalendarStackedMobile}>
+          <div className={styles.masterCalendarStackedBoard}>
+            <div className={styles.masterCalendarBoardHeader} style={stackedDay1BoardStyle}>
+              <div className={styles.masterCalendarBoardHeaderAxis}>
+                {isZh ? "时间" : "Time"}
+              </div>
+              <div
+                className={clsx(
+                  styles.masterCalendarBoardHeaderDay,
+                  styles.masterCalendarBoardHeaderPrep
+                )}
+              >
+                {registrationDayLabel}
+              </div>
+              <div className={styles.masterCalendarBoardHeaderDay}>
+                {getTimelineDayLabel("day1")}
               </div>
             </div>
+            <div className={styles.masterCalendarBoardBody} style={stackedDay1BoardStyle}>
+              {renderBoardAxis("stacked-day1")}
+              {renderPrepRegistrationFrame("stacked-day1")}
+              {renderDayBoardFrame("day1", "stacked-day1")}
+            </div>
+          </div>
 
-            {agendaDayOrder.map((day) => {
-              const dayLayout = dayLayoutMap.get(day);
-              const showDayRegistration = day === "day1" || day === "day2";
-              return (
-                <div key={`col-${day}`} className={styles.masterCalendarBoardDayFrame}>
-                  <div className={styles.masterCalendarBoardDayGrid} style={boardRowsStyle}>
-                    {boardRowMarks.map((minutes, rowIndex) => (
-                      <div
-                        key={`${day}-row-${minutes}`}
-                        className={clsx(
-                          styles.masterCalendarGridRow,
-                          styles.masterCalendarBoardRow,
-                          minutes % 60 === 0 && styles.masterCalendarGridRowHour
-                        )}
-                        style={{ gridColumn: "1", gridRow: `${rowIndex + 1}` }}
-                        aria-hidden="true"
-                      />
-                    ))}
-
-                    {showDayRegistration && (
-                      <div
-                        className={clsx(
-                          styles.masterCalendarPrepEvent,
-                          styles.masterCalendarPrepEventDay
-                        )}
-                        style={{ gridColumn: "1", gridRow: "1 / span 2" }}
-                      >
-                        <span
-                          className={clsx(
-                            styles.masterCalendarPrepEventLabel,
-                            styles.masterCalendarPrepEventLabelHorizontal
-                          )}
-                        >
-                          {registrationLabel}
-                        </span>
-                      </div>
-                    )}
-
-                    {dayLayout?.clusters.map((cluster) => {
-                      const clusterRowStart = Math.max(
-                        0,
-                        Math.floor((cluster.startMinutes - boardStartMinutes) / 30)
-                      );
-                      const clusterGridStyle: CSSProperties = {
-                        gridTemplateRows: `repeat(${cluster.halfHourRows}, var(--forum-agenda-half-row-height, 2.75rem))`,
-                        gridTemplateColumns: `repeat(${cluster.laneCount}, minmax(0, 1fr))`,
-                      };
-
-                      return (
-                        <div
-                          key={cluster.key}
-                          className={styles.masterCalendarClusterLayer}
-                          style={{
-                            gridColumn: "1",
-                            gridRow: `${clusterRowStart + 1} / span ${cluster.halfHourRows}`,
-                          }}
-                        >
-                          <div className={styles.masterCalendarClusterGrid} style={clusterGridStyle}>
-                            {cluster.placements.map((placement) => {
-                              return (
-                                <div
-                                  key={placement.slot.id}
-                                  className={clsx(
-                                    styles.masterCalendarEventShell
-                                  )}
-                                  style={{
-                                    gridColumn: `${placement.laneIndex + 1}`,
-                                    gridRow: `${placement.rowStart + 1} / span ${placement.rowSpan}`,
-                                  }}
-                                >
-                                  <button
-                                    type="button"
-                                    className={clsx(
-                                      styles.masterTimelineItem,
-                                      styles.masterCalendarEvent,
-                                      styles.masterSlotClickable,
-                                      getMasterTrackClassName(placement.slot.track)
-                                    )}
-                                    onClick={() => openAndScrollToActivity(placement.slot.activityKey)}
-                                  >
-                                    <div className={styles.masterTimelineItemTop}>
-                                      <span className={styles.masterPeriodTrackTag}>
-                                        {getTrackLabel(placement.slot.track)}
-                                      </span>
-                                    </div>
-                                    <div className={styles.masterTimelineItemTitle}>
-                                      {getAgendaText(placement.slot.shortTitle, isZh)}
-                                    </div>
-                                  </button>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            })}
+          <div className={styles.masterCalendarStackedBoard}>
+            <div className={styles.masterCalendarBoardHeader} style={stackedDay2BoardStyle}>
+              <div className={styles.masterCalendarBoardHeaderAxis}>
+                {isZh ? "时间" : "Time"}
+              </div>
+              <div className={styles.masterCalendarBoardHeaderDay}>
+                {getTimelineDayLabel("day2")}
+              </div>
+            </div>
+            <div className={styles.masterCalendarBoardBody} style={stackedDay2BoardStyle}>
+              {renderBoardAxis("stacked-day2")}
+              {renderDayBoardFrame("day2", "stacked-day2")}
+            </div>
           </div>
         </div>
 
         <div className={styles.masterTimelineMobile}>
-          <div className={styles.masterTimeline}>
-            {timelineRows.map((row) => (
-              <div key={row.key} className={styles.masterTimelineRow}>
-                <div className={styles.masterTimelineAxis}>
-                  <div className={styles.masterTimelineDate}>{getTimelineDayLabel(row.day)}</div>
-                  <div className={styles.masterTimelinePeriod}>{getPeriodLabel(row.start)}</div>
-                  <div className={styles.masterTimelineRange}>
-                    {row.start} - {row.end}
+          <div className={styles.masterDayTables}>
+            {timelineRowsByDay.map(({ day, rows }) => (
+              <section key={`day-table-${day}`} className={styles.masterDayTable}>
+                <div className={styles.masterDayTableHeader}>
+                  <div className={styles.masterDayTableTitle}>{getTimelineDayLabel(day)}</div>
+                </div>
+
+                <div className={styles.masterDayTableColumns} aria-hidden="true">
+                  <div className={styles.masterDayTableColumnCell}>
+                    {isZh ? "时间" : "Time"}
+                  </div>
+                  <div className={styles.masterDayTableColumnCell}>
+                    {isZh ? "日程" : "Agenda"}
                   </div>
                 </div>
-                <div className={styles.masterTimelineContent}>
-                  <div
-                    className={clsx(
-                      styles.masterTimelineSlots,
-                      row.activeSlots.length === 4 && styles.masterTimelineSlotsTwoByTwo
-                    )}
-                  >
-                    {row.activeSlots.map((slot) => (
-                      <button
-                        key={slot.id}
-                        type="button"
-                        className={clsx(
-                          styles.masterTimelineItem,
-                          styles.masterSlotClickable,
-                          getMasterSlotClassName(slot.status)
-                        )}
-                        onClick={() => openAndScrollToActivity(slot.activityKey)}
-                      >
-                        <div className={styles.masterTimelineItemTop}>
-                          <span className={styles.masterPeriodTrackTag}>
-                            {getTrackLabel(slot.track)}
-                          </span>
+
+                <div className={styles.masterDayTableBody}>
+                  {rows.map((row) => (
+                    <div key={row.key} className={styles.masterDayTableRow}>
+                      <div className={styles.masterDayTableTimeCell}>
+                        <div className={styles.masterDayTableTimePeriod}>
+                          {getPeriodLabel(row.start)}
                         </div>
-                        <div className={styles.masterTimelineItemTitle}>
-                          {getAgendaText(slot.shortTitle, isZh)}
+                        <div className={styles.masterDayTableTimeRange}>
+                          {row.start} - {row.end}
                         </div>
-                      </button>
-                    ))}
-                  </div>
+                      </div>
+
+                      <div className={styles.masterDayTableAgendaCell}>
+                        <div
+                          className={clsx(
+                            styles.masterTimelineSlots,
+                            row.activeSlots.length === 4 && styles.masterTimelineSlotsTwoByTwo
+                          )}
+                        >
+                          {row.activeSlots.map((slot) => (
+                            <button
+                              key={slot.id}
+                              type="button"
+                              className={clsx(
+                                styles.masterTimelineItem,
+                                styles.masterDayTableSlot,
+                                styles.masterSlotClickable,
+                                getMasterSlotClassName(slot.status)
+                              )}
+                              onClick={() => openAndScrollToActivity(slot.activityKey)}
+                            >
+                              <div className={styles.masterTimelineItemTop}>
+                                <span className={styles.masterPeriodTrackTag}>
+                                  {getTrackLabel(slot.track)}
+                                </span>
+                              </div>
+                              <div className={styles.masterTimelineItemTitle}>
+                                {getAgendaText(slot.shortTitle, isZh)}
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              </div>
+              </section>
             ))}
           </div>
         </div>
@@ -1773,7 +1921,14 @@ export default function Forum(): ReactNode {
         <Translate id="forum.detailAgenda.title">活动详细议程</Translate>
       )}
       {agendaGroups.map((group) => {
-        const groupDetails = activityAgendaDetails.filter((detail) => detail.groupKey === group.key);
+        const groupItemOrder = new Map(group.items.map((item, index) => [item.key, index]));
+        const groupDetails = activityAgendaDetails
+          .filter((detail) => detail.groupKey === group.key)
+          .sort((a, b) => {
+            return (
+              (groupItemOrder.get(a.activityKey) ?? 999) - (groupItemOrder.get(b.activityKey) ?? 999)
+            );
+          });
         const showGroupHeader = groupDetails.length > 1;
         const showGroupCount =
           group.key !== "sub-forums" && group.key !== "special-events";
@@ -1792,7 +1947,7 @@ export default function Forum(): ReactNode {
                 <div>
                   <div className={styles.groupTitle}>{group.title}</div>
                   <div className={styles.groupDesc}>
-                    {isZh ? "按活动查看详细环节安排，议程将持续更新。" : "Detailed sessions by activity. Agenda is continuously updated."}
+                    {isZh ? "按活动查看详细环节安排，议程将持续更新。" : "View detailed sessions by activity. The agenda is updated continuously."}
                   </div>
                 </div>
                 {showGroupCount && (
@@ -1825,6 +1980,9 @@ export default function Forum(): ReactNode {
                   detail.timeRange,
                   isZh
                 );
+                const moderatorPrefix = isZh
+                  ? "主持："
+                  : (detail.activityKey.includes("workshop") ? "Moderator: " : "Host: ");
                 const showSummaryOnlyBody =
                   detail.sessions.length === 0 && Boolean(detail.summary);
 
@@ -1897,7 +2055,7 @@ export default function Forum(): ReactNode {
                                 <Translate id="forum.agenda.partners">开发者阵容</Translate>
                               </span>
                               <span className={styles.logoWallNote}>
-                                {isZh ? "机构持续更新中" : "Organizations updating"}
+                                {isZh ? "机构持续更新中" : "Organization list in progress"}
                               </span>
                             </div>
                             <div className={clsx(styles.logoWall, styles.logoWallFive)}>
@@ -1914,7 +2072,7 @@ export default function Forum(): ReactNode {
                                 <div className={styles.logoPlaceholderStack}>
                                   <span className={styles.logoPlaceholderMark}>+</span>
                                   <span className={styles.logoPlaceholderText}>
-                                    {isZh ? "持续更新" : "More"}
+                                    {isZh ? "持续更新" : "More coming soon"}
                                   </span>
                                 </div>
                               </div>
@@ -1932,7 +2090,7 @@ export default function Forum(): ReactNode {
                             )}
                             {!detail.hideSummaryUpdateNote && (
                               <div className={styles.agendaPanelSummaryNote}>
-                                {isZh ? "详细日程后续更新" : "Detailed agenda to be updated"}
+                                {isZh ? "详细日程后续更新" : "A detailed agenda will be published soon"}
                               </div>
                             )}
                           </>
@@ -2059,8 +2217,10 @@ export default function Forum(): ReactNode {
                                                       )}
                                                       {session.moderator && (
                                                         <div className={styles.agendaNote}>
-                                                          {isZh ? "主持：" : "Moderator: "}
-                                                          {getAgendaText(session.moderator, isZh)}
+                                                          {moderatorPrefix}
+                                                          {renderPersonNameWithBold(
+                                                            getAgendaText(session.moderator, isZh)
+                                                          )}
                                                         </div>
                                                       )}
                                                     </div>
@@ -2149,8 +2309,10 @@ export default function Forum(): ReactNode {
                                           )}
                                           {session.moderator && (
                                             <div className={styles.agendaNote}>
-                                              {isZh ? "主持：" : "Moderator: "}
-                                              {getAgendaText(session.moderator, isZh)}
+                                              {moderatorPrefix}
+                                              {renderPersonNameWithBold(
+                                                getAgendaText(session.moderator, isZh)
+                                              )}
                                             </div>
                                           )}
                                           {session.note && (
@@ -2444,7 +2606,7 @@ export default function Forum(): ReactNode {
                     <span className={styles.personPlaceholderMark}>+</span>
                   </div>
                   <div className={styles.personName}>
-                    {isZh ? "持续更新中" : "Updating"}
+                    {isZh ? "持续更新中" : "More updates coming soon"}
                   </div>
                   <div className={styles.personTitle}>
                     {isZh ? "敬请关注" : "More speakers coming soon"}
