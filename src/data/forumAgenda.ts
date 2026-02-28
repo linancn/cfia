@@ -270,6 +270,16 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
         },
       },
       {
+        id: "mf-d2-keynote-naama",
+        day: "day2",
+        title: { zh: "Naama Avni-Kadosh", en: "Naama Avni-Kadosh" },
+        sessionType: { zh: "主旨报告", en: "Keynote" },
+        speakers: {
+          zh: "世界可持续发展工商理事会（WBCSD）碳透明伙伴关系（PACT）总监",
+          en: "Director of the Partnership for Carbon Transparency (PACT), WBCSD",
+        },
+      },
+      {
         id: "mf-d2-wrap",
         day: "day2",
         title: { zh: "总结", en: "Wrap-up" },

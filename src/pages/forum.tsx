@@ -425,7 +425,7 @@ const people: {
     key: "eric-mieras",
     nameEn: "Eric Mieras",
     nameZh: "Eric Mieras",
-    titleZh: <>One Click LCA 首席创新官<br />PRé 总经理<br />（SimaPro）</>,
+    titleZh: <>One Click LCA 首席创新官；PRé 总经理<br />（SimaPro）</>,
     titleEn: <>Chief Innovation Officer at One Click LCA & Managing Director at PRé</>,
     image: "img/tg-forum/people/EricMieras-1clicklca-pre.jpg",
   },
@@ -513,6 +513,22 @@ const people: {
     image: "img/tg-forum/people/JingjieZ-zdl.jpg",
   },
   {
+    key: "naama-avni-kadosh",
+    nameEn: "Naama Avni-Kadosh",
+    nameZh: "Naama Avni-Kadosh",
+    titleZh: <>世界可持续发展工商理事会（WBCSD）碳透明伙伴关系（PACT）总监</>,
+    titleEn: <>Director of the Partnership for Carbon Transparency (PACT) at WBCSD</>,
+    image: "img/tg-forum/people/NaamaA-wbcsd.jpg",
+  },
+  {
+    key: "lin-qiu",
+    nameEn: "Lin Qiu",
+    nameZh: "邱林",
+    titleZh: <>远景智能（Univers）零碳卓越中心全球负责人</>,
+    titleEn: <>Global Head of Zero Carbon Excellence Center, Univers</>,
+    image: "img/tg-forum/people/LinQ-univers.jpg",
+  },
+  {
     key: "ying-zheng",
     nameEn: "Ying Zheng",
     nameZh: "郑颖",
@@ -521,6 +537,18 @@ const people: {
     image: "img/tg-forum/people/YingZ-tg.jpg",
   },
 ];
+
+const peopleNameCollator = new Intl.Collator("en", { sensitivity: "base" });
+const getSurname = (name: string) => {
+  const nameParts = name.trim().split(/\s+/);
+  return nameParts[nameParts.length - 1] ?? "";
+};
+
+const peopleSorted = [...people].sort((left, right) => {
+  const surnameCompare = peopleNameCollator.compare(getSurname(left.nameEn), getSurname(right.nameEn));
+  if (surnameCompare !== 0) return surnameCompare;
+  return peopleNameCollator.compare(left.nameEn, right.nameEn);
+});
 
 const devConfLogos: { key: string; name: string; src?: string }[] = [
   {
@@ -854,6 +882,7 @@ const keynoteSpeakerPhotoBySessionId: Record<string, string> = {
   "mf-d2-keynote-finkbeiner": "img/tg-forum/people/MatthiasF-tub.jpg",
   "mf-d2-keynote-hamelin": "img/tg-forum/people/LorieH-inrae.jpg",
   "mf-d2-keynote-mieras": "img/tg-forum/people/EricMieras-1clicklca-pre.jpg",
+  "mf-d2-keynote-naama": "img/tg-forum/people/NaamaA-wbcsd.jpg",
 };
 
 function getAgendaText(text: AgendaText | undefined, isZh: boolean): string {
@@ -2582,7 +2611,7 @@ export default function Forum(): ReactNode {
                 </p>
               </div>
               <div className={styles.peopleGrid}>
-                {people.map((person) => (
+                {peopleSorted.map((person) => (
                   <div key={person.key} className={styles.personCard}>
                     <div className={styles.personPhoto}>
                       {person.image && (
