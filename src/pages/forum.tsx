@@ -203,7 +203,7 @@ const currentEdition = {
   }),
   date: translate({
     id: "forum.currentEdition.date",
-    message: "2026 年 3 月 25 - 26 日  江苏 · 南京",
+    message: "2026 年 3 月 24 - 26 日  江苏 · 南京",
   }),
 };
 
@@ -2111,6 +2111,7 @@ export default function Forum(): ReactNode {
 
                         {showSummaryOnlyBody ? (
                           <>
+                            {renderSummaryLeadBlock(detail.summaryLeadTop)}
                             {renderSummaryLeadBlock(detail.summaryLead)}
                             {detail.summary && (
                               <div className={styles.agendaPanelSummary}>

@@ -46,6 +46,7 @@ export type ActivityAgendaDetail = {
   activityKey: string;
   groupKey: ActivityAgendaGroupKey;
   title: AgendaText;
+  summaryLeadTop?: AgendaText;
   summaryLead?: AgendaText;
   summary?: AgendaText;
   hideSummaryUpdateNote?: boolean;
@@ -290,6 +291,10 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
     activityKey: "petrochemical",
     groupKey: "sub-forums",
     title: { zh: "石油化工", en: "Petrochemicals" },
+    summaryLeadTop: {
+      zh: "主办：\n中国化工节能技术协会",
+      en: "Organizer:\nChina Chemical Energy Conservation Technology Association",
+    },
     summaryLead: {
       zh: "主持人：\n韦志浩，中国化工节能技术协会党委书记\n李永亮，中国化工节能技术协会秘书长、中国石油和化学工业联合会科技与装备部主任",
       en: "Hosts:\nZhihao Wei, Party Secretary, China Chemical Energy Conservation Technology Association\nYongliang Li, Secretary-General, China Chemical Energy Conservation Technology Association; Director, Department of Science & Technology and Equipment, China Petroleum and Chemical Industry Federation",
@@ -590,6 +595,10 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
     activityKey: "power-workshop",
     groupKey: "sub-forums",
     title: { zh: "电力", en: "Power" },
+    summaryLeadTop: {
+      zh: "主办：\n国网江苏省电力公司\n清华苏州环境创新研究院 天工智库中心",
+      en: "Organizers:\nState Grid Jiangsu Electric Power Co., Ltd.\nTianGong Think Tank Center, Tsinghua Suzhou Institute for Environmental Innovation",
+    },
     summaryLead: {
       zh: "主持人：\n郑颖，北京电链科技有限公司双碳事业部总监/清华天工智库中心特邀研究员\n李卓，能源基金会清洁电力项目主管\n陈钰什，清华天工智库特聘研究员",
       en: "Hosts:\nYing Zheng, Director, Dual-Carbon Business Division, Beijing Dianlian Technology Co., Ltd.; Invited Research Fellow, Tsinghua TianGong Think Tank Center\nZhuo Li, Program Manager, Clean Power Program, Energy Foundation China\nYushi Chen, Distinguished Research Fellow, TianGong Think Tank",
