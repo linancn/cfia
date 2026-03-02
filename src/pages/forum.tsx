@@ -468,6 +468,14 @@ const people: {
     image: "img/tg-forum/people/RobertP-minviro.jpg",
   },
   {
+    key: "xuexing-pan",
+    nameEn: "Xuexing Pan",
+    nameZh: "潘学兴",
+    titleZh: <>宁德时代可持续发展负责人</>,
+    titleEn: <>Head of Sustainability, CATL</>,
+    image: "img/tg-forum/people/XuexingP-catl.jpg",
+  },
+  {
     key: "sangwon-suh",
     nameEn: "Sangwon Suh",
     nameZh: "Sangwon Suh",

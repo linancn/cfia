@@ -315,8 +315,8 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
     groupKey: "sub-forums",
     title: { zh: "电池", en: "Battery" },
     summaryLead: {
-      zh: "主持人：\n潘学兴，宁德时代可持续发展总监",
-      en: "Host:\nXuexing Pan, Sustainability Director, CATL",
+      zh: "主持人：\n潘学兴，宁德时代可持续发展负责人",
+      en: "Host:\nXuexing Pan, Head of Sustainability, CATL",
     },
     summary: {
       zh: "电池行业分论坛将以“报告 + 圆桌”的形式，围绕电池产业链在可持续发展与合规要求方面的最新进展展开交流。报告环节将邀请行业组织及产业链代表分享在LCA/碳足迹管理、法规与市场趋势应对（含电池法案与数字产品护照 DPP 等相关方向）、以及数据体系与能力建设方面的实践与思考。圆桌环节将聚焦“共建可用、可信的产业数据生态”，由产业链相关方围绕供应链参与机制与协作模式进行讨论，促进跨环节对接与后续合作机会形成。",
