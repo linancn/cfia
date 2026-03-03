@@ -952,6 +952,12 @@
   "forum.section.supportingOrgs": {
     "message": "Supported by"
   },
+  "forum.partner.thuicon": {
+    "message": "Institute for Carbon Neutrality, Tsinghua University"
+  },
+  "forum.partner.thuenv": {
+    "message": "School of Environment, Tsinghua University"
+  },
   "forum.venue.tag": {
     "message": "Venue"
   },

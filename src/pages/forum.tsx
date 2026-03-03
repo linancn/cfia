@@ -641,6 +641,22 @@ const supportInstitutionLogos: {
   href?: string;
 }[] = [
   {
+    key: "thuicon",
+    name: translate({
+      id: "forum.partner.thuicon",
+      message: "清华大学碳中和研究院",
+    }),
+    src: "img/tg-forum/partner-logo/thuicon.jpg",
+  },
+  {
+    key: "thuenv",
+    name: translate({
+      id: "forum.partner.thuenv",
+      message: "清华大学环境学院",
+    }),
+    src: "img/tg-forum/partner-logo/thuenv.jpg",
+  },
+  {
     key: "cnest",
     name: "CNEST",
     src: "img/tg-forum/partner-logo/CNEST.png",
@@ -2548,6 +2564,20 @@ export default function Forum(): ReactNode {
                         </a>
                       );
                     })}
+                    <div
+                      className={clsx(
+                        styles.logoItem,
+                        styles.partnerLogoItem,
+                        styles.logoItemPlaceholder,
+                      )}
+                    >
+                      <div className={styles.logoPlaceholderStack}>
+                        <span className={styles.logoPlaceholderMark}>+</span>
+                        <span className={styles.logoPlaceholderText}>
+                          {isZh ? "持续更新中" : "More updates coming soon"}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
