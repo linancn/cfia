@@ -358,6 +358,14 @@ const people: {
     image: "img/tg-forum/people/ShabbirG-kmutt.jpg",
   },
   {
+    key: "zhuohui-huang",
+    nameEn: "Zhuohui Huang",
+    nameZh: "黄卓晖",
+    titleZh: <>世界资源研究所北京代表处副研究员</>,
+    titleEn: <>Research Analyst, WRI China</>,
+    image: "img/tg-forum/people/ZhuohuiH-wri.jpg",
+  },
+  {
     key: "zhijun-gui",
     nameEn: "Zhijun Gui",
     nameZh: "桂志军",
@@ -425,7 +433,7 @@ const people: {
     key: "eric-mieras",
     nameEn: "Eric Mieras",
     nameZh: "Eric Mieras",
-    titleZh: <>One Click LCA 首席创新官；PRé 总经理<br />（SimaPro）</>,
+    titleZh: <>One Click LCA 首席创新官、PRé 总经理（SimaPro）</>,
     titleEn: <>Chief Innovation Officer at One Click LCA & Managing Director at PRé</>,
     image: "img/tg-forum/people/EricMieras-1clicklca-pre.jpg",
   },
@@ -697,7 +705,7 @@ const agendaGroups: AgendaGroup[] = [
       },
       {
         key: "petrochemical",
-        title: <Translate id="forum.agenda.subForums.petroleum">石油化工</Translate>,
+        title: <Translate id="forum.agenda.subForums.petroleum">石化化工</Translate>,
         lead: (
           <Translate id="forum.agenda.subForums.petroleum.lead">
             产品碳足迹驱动石化行业绿色低碳发展。
@@ -2601,6 +2609,65 @@ export default function Forum(): ReactNode {
                           <Translate id="forum.venue.baiduMaps">百度地图</Translate>
                         </a>
                       </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.ticketBlock}>
+                <div className={styles.ticketCard}>
+                  <div className={styles.ticketHeader}>
+                    <div className={styles.ticketTitle}>
+                      <Translate id="forum.ticket.title">会议注册费</Translate>
+                    </div>
+                  </div>
+                  <div className={styles.ticketPriceGrid}>
+                    <div className={clsx(styles.ticketPriceItem, styles.ticketPriceOnline)}>
+                      <div className={styles.ticketPriceLabel}>
+                        <Translate id="forum.ticket.online">线上注册</Translate>
+                      </div>
+                      <div className={styles.ticketPriceValue}>
+                        ¥1,500
+                        <span className={styles.ticketPriceUnit}>
+                          <Translate id="forum.ticket.unit">/ 人</Translate>
+                        </span>
+                      </div>
+                    </div>
+                    <div className={clsx(styles.ticketPriceItem, styles.ticketPriceOnsite)}>
+                      <div className={styles.ticketPriceLabel}>
+                        <Translate id="forum.ticket.onsite">现场注册</Translate>
+                      </div>
+                      <div className={styles.ticketPriceValue}>
+                        ¥2,500
+                        <span className={styles.ticketPriceUnit}>
+                          <Translate id="forum.ticket.unit">/ 人</Translate>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className={styles.ticketNotes}>
+                    <div className={clsx(styles.ticketNoteItem, styles.ticketNoteMember)}>
+                      <span className={styles.ticketNoteBullet} aria-hidden="true">•</span>
+                      <span>
+                        <Translate id="forum.ticket.member">
+                          联盟会员单位各有 1 个免费参会席位。
+                        </Translate>
+                      </span>
+                    </div>
+                    <div className={styles.ticketNoteItem}>
+                      <span className={styles.ticketNoteBullet} aria-hidden="true">•</span>
+                      <span>
+                        <Translate id="forum.ticket.usage">
+                          会议注册费用仅用于会议场地租赁、会务组织、资料制作及相关运行保障等支出。
+                        </Translate>
+                      </span>
+                    </div>
+                    <div className={styles.ticketNoteItem}>
+                      <span className={styles.ticketNoteBullet} aria-hidden="true">•</span>
+                      <span>
+                        <Translate id="forum.ticket.channel">
+                          报名渠道和支付方式请见会议通知。
+                        </Translate>
+                      </span>
                     </div>
                   </div>
                 </div>

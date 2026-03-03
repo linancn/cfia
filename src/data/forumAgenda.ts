@@ -138,7 +138,7 @@ export const masterAgendaSlots: MasterAgendaSlot[] = [
     start: "14:00",
     end: "17:30",
     activityKey: "petrochemical",
-    shortTitle: { zh: "石油化工", en: "Petrochemicals" },
+    shortTitle: { zh: "石化化工", en: "Petrochemicals" },
     status: "updating",
   },
   {
@@ -266,8 +266,8 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
         },
         sessionType: { zh: "主旨报告", en: "Keynote" },
         speakers: {
-          zh: "PRé 总经理；One Click LCA 首席创新官",
-          en: "Managing Director at PRé; Chief Innovation Officer at One Click LCA",
+          zh: "One Click LCA 首席创新官、PRé 总经理",
+          en: "Chief Innovation Officer at One Click LCA; Managing Director at PRé",
         },
       },
       {
@@ -290,7 +290,7 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
   {
     activityKey: "petrochemical",
     groupKey: "sub-forums",
-    title: { zh: "石油化工", en: "Petrochemicals" },
+    title: { zh: "石化化工", en: "Petrochemicals" },
     summaryLeadTop: {
       zh: "主办：\n中国化工节能技术协会",
       en: "Organizer:\nChina Chemical Energy Conservation Technology Association",
@@ -300,7 +300,7 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
       en: "Hosts:\nZhihao Wei, Party Secretary, China Chemical Energy Conservation Technology Association\nYongliang Li, Secretary-General, China Chemical Energy Conservation Technology Association; Director, Department of Science & Technology and Equipment, China Petroleum and Chemical Industry Federation",
     },
     summary: {
-      zh: "石油化工分论坛由中国化工节能技术协会承办，将聚焦行业在“双碳”与全球规则背景下面临的关键议题，围绕产品碳足迹政策动态、企业核算与管理平台建设实践、行业标准进展，以及大宗化工产品碳足迹核算与数据体系建设等内容展开交流。论坛设置主题演讲与圆桌讨论两个环节，旨在推动方法、数据与产业链协同机制的对接与共识形成，并为后续行业合作与能力建设提供方向。",
+      zh: "石化化工分论坛由中国化工节能技术协会承办，将聚焦行业在“双碳”与全球规则背景下面临的关键议题，围绕产品碳足迹政策动态、企业核算与管理平台建设实践、行业标准进展，以及大宗化工产品碳足迹核算与数据体系建设等内容展开交流。论坛设置主题演讲与圆桌讨论两个环节，旨在推动方法、数据与产业链协同机制的对接与共识形成，并为后续行业合作与能力建设提供方向。",
       en: "Hosted by the China Chemical Energy Conservation Technology Association, the Petrochemical Sub-forum will focus on key issues facing the industry under dual-carbon goals and evolving global rules, including policy updates on product carbon footprints, enterprise accounting and management platform practices, industry standard progress, and carbon footprint accounting and data system development for bulk chemical products. The forum will include keynote talks and a roundtable discussion to advance alignment on methods, data, and supply-chain collaboration mechanisms, and to inform follow-on industry cooperation and capacity building.",
     },
     dateLabel: { zh: "2026 年 3 月 26 日", en: "March 26, 2026" },
@@ -493,7 +493,7 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
         sessionType: { zh: "报告", en: "Talk" },
         speakers: { zh: "Eric Mieras", en: "Eric Mieras" },
         note: {
-          zh: "One Click LCA 首席创新官；PRé 总经理",
+          zh: "One Click LCA 首席创新官、PRé 总经理",
           en: "Chief Innovation Officer at One Click LCA & Managing Director at PRé",
         },
       },

@@ -967,6 +967,27 @@
   "forum.venue.baiduMaps": {
     "message": "Baidu Maps"
   },
+  "forum.ticket.title": {
+    "message": "Registration Fee"
+  },
+  "forum.ticket.online": {
+    "message": "Online Registration"
+  },
+  "forum.ticket.onsite": {
+    "message": "On-site Registration"
+  },
+  "forum.ticket.unit": {
+    "message": "/ person"
+  },
+  "forum.ticket.member": {
+    "message": "Each alliance member organization is entitled to one complimentary conference seat."
+  },
+  "forum.ticket.usage": {
+    "message": "Registration fees are used only for venue rental, event operations, material production, and related logistical support."
+  },
+  "forum.ticket.channel": {
+    "message": "Please refer to the conference notice for registration channels and payment methods."
+  },
   "forum.section.people": {
     "message": "Featured Guests"
   },
