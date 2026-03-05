@@ -1037,7 +1037,7 @@
     "message": "Deep decarbonization across electronics and appliance supply chains."
   },
   "forum.agenda.subForums.audit": {
-    "message": "Data (English)"
+    "message": "Data (EN)"
   },
   "forum.agenda.subForums.audit.lead": {
     "message": "Bringing together global LCA and carbon footprint data practices to discuss key topics such as data quality."
@@ -1097,7 +1097,7 @@
     "message": "Program and agenda to be confirmed."
   },
   "forum.agenda.partners": {
-    "message": "Participating Organizations"
+    "message": "Developer Lineup"
   },
   "forum.agenda.partners.note": {
     "message": "Logos to be updated."

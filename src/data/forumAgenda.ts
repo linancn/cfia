@@ -168,7 +168,7 @@ export const masterAgendaSlots: MasterAgendaSlot[] = [
     start: "14:00",
     end: "17:30",
     activityKey: "lca-audit",
-    shortTitle: { zh: "数据（英语）", en: "Data (EN)" },
+    shortTitle: { zh: "数据（英文）", en: "Data (EN)" },
     status: "published",
   },
 ];
@@ -179,8 +179,8 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
     groupKey: "main-forum",
     title: { zh: "主论坛", en: "Main Forum" },
     summary: {
-      zh: "聚焦全球 LCA 与产品碳足迹体系互联互通，包含领导讲话、主旨报告与总结交流。",
-      en: "Leadership remarks, keynote talks, and wrap-up discussions on global LCA and product carbon footprint interoperability.",
+      zh: "聚焦全球 LCA 与产品碳足迹体系互联互通，包含嘉宾致辞、主旨报告与总结交流。",
+      en: "Guest remarks, keynote talks, and wrap-up discussions on global LCA and product carbon footprint interoperability.",
     },
     dateLabel: { zh: "2026 年 3 月 26 日", en: "March 26, 2026" },
     timeRange: "Day 2 09:00-12:00",
@@ -200,26 +200,11 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
       {
         id: "mf-d2-remarks",
         day: "day2",
-        title: { zh: "领导讲话", en: "Leadership Remarks" },
-      },
-      {
-        id: "mf-d2-keynote-he",
-        day: "day2",
         title: { zh: "贺克斌", en: "Kebin He" },
-        sessionType: { zh: "主旨报告", en: "Keynote" },
+        sessionType: { zh: "嘉宾致辞", en: "Guest Remarks" },
         speakers: {
           zh: "清华大学碳中和研究院院长、环境学院教授，中国工程院院士",
-          en: "Academician, Chinese Academy of Engineering",
-        },
-      },
-      {
-        id: "mf-d2-keynote-llorenc",
-        day: "day2",
-        title: { zh: "Llorenç Milà i Canals", en: "Llorenc Milà i Canals" },
-        sessionType: { zh: "主旨报告", en: "Keynote" },
-        speakers: {
-          zh: "UNEP Life Cycle Initiative 秘书处负责人",
-          en: "Head of Secretariat, UNEP Life Cycle Initiative",
+          en: "Dean of the Institute for Carbon Neutrality; Professor, School of Environment, Tsinghua University; Academician, Chinese Academy of Engineering",
         },
       },
       {
@@ -230,6 +215,16 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
         speakers: {
           zh: "清华大学碳中和讲席教授、环境学院副院长",
           en: "Chair Professor of Carbon Neutrality; Deputy Dean, School of Environment, Tsinghua University",
+        },
+      },
+      {
+        id: "mf-d2-keynote-llorenc",
+        day: "day2",
+        title: { zh: "Llorenç Milà i Canals", en: "Llorenc Milà i Canals" },
+        sessionType: { zh: "主旨报告", en: "Keynote" },
+        speakers: {
+          zh: "UNEP Life Cycle Initiative 秘书处负责人",
+          en: "Head of Secretariat, UNEP Life Cycle Initiative",
         },
       },
       {
@@ -351,7 +346,7 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
   {
     activityKey: "lca-audit",
     groupKey: "sub-forums",
-    title: { zh: "数据", en: "Data (EN)" },
+    title: { zh: "数据（英文）", en: "Data (EN)" },
     summaryLead: {
       zh: "主持人：\nAlessandro Manzardo，帕多瓦大学土木、建筑与环境工程系（ICEA）环境质量研究中心（CESQA）副教授",
       en: "Host:\nAlessandro Manzardo, Associate Professor, Centre for Environmental Quality Studies (CESQA), Department of Civil, Environmental and Architectural Engineering (ICEA), University of Padua",
@@ -415,8 +410,8 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
         sessionType: { zh: "报告", en: "Talk" },
         speakers: { zh: "Raoul Meys", en: "Raoul Meys" },
         note: {
-          zh: "Carbon Minds 联合创始人、总经理",
-          en: "Co-Founder and Managing Director, Carbon Minds",
+          zh: "联合创始人、总经理",
+          en: "Co-Founder and Managing Director",
         },
       },
       {
@@ -424,13 +419,13 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
         day: "day1",
         start: "14:15",
         end: "14:35",
-        title: { zh: "Départ de Sentier（Brightway）", en: "Départ de Sentier" },
+        title: { zh: "Départ de Sentier (Brightway)", en: "Départ de Sentier" },
         orgLogoKey: "dds",
         sessionType: { zh: "报告", en: "Talk" },
         speakers: { zh: "Chris Mutel", en: "Chris Mutel" },
         note: {
-          zh: "Départ de Sentier 主席",
-          en: "President, Départ de Sentier",
+          zh: "主席",
+          en: "President",
         },
       },
       {
@@ -446,8 +441,8 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
           en: "Lin Qiu",
         },
         note: {
-          zh: "远景智能零碳卓越中心全球负责人",
-          en: "Global Head of Net Zero CoE, Univers",
+          zh: "零碳卓越中心全球负责人",
+          en: "Global Head of Net Zero CoE",
         },
       },
       {
@@ -455,11 +450,11 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
         day: "day1",
         start: "14:55",
         end: "15:15",
-        title: { zh: "GreenDelta（openLCA）", en: "GreenDelta" },
+        title: { zh: "GreenDelta (openLCA)", en: "GreenDelta" },
         orgLogoKey: "greendelta",
         sessionType: { zh: "报告", en: "Talk" },
         speakers: { zh: "Andreas Ciroth", en: "Andreas Ciroth" },
-        note: { zh: "GreenDelta CEO", en: "CEO, GreenDelta" },
+        note: { zh: "CEO", en: "CEO" },
       },
       {
         id: "dev-hiq",
@@ -470,7 +465,7 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
         orgLogoKey: "hiq",
         sessionType: { zh: "报告", en: "Talk" },
         speakers: { zh: "桂志军", en: "Zhijun Gui" },
-        note: { zh: "海科数据 CEO（HiQ LCD）", en: "CEO, HiQ LCD" },
+        note: { zh: "CEO", en: "CEO" },
       },
       {
         id: "dev-minviro",
@@ -481,20 +476,20 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
         orgLogoKey: "minviro",
         sessionType: { zh: "报告", en: "Talk" },
         speakers: { zh: "Robert Pell", en: "Robert Pell" },
-        note: { zh: "Minviro CEO", en: "CEO, Minviro" },
+        note: { zh: "CEO", en: "CEO" },
       },
       {
         id: "dev-pre",
         day: "day1",
         start: "15:55",
         end: "16:15",
-        title: { zh: "PRé（SimaPro）", en: "PRé" },
+        title: { zh: "PRé (SimaPro)", en: "PRé" },
         orgLogoKey: "pre",
         sessionType: { zh: "报告", en: "Talk" },
         speakers: { zh: "Eric Mieras", en: "Eric Mieras" },
         note: {
-          zh: "One Click LCA 首席创新官、PRé 总经理",
-          en: "Chief Innovation Officer at One Click LCA & Managing Director at PRé",
+          zh: "首席创新官、总经理",
+          en: "Chief Innovation Officer; Managing Director",
         },
       },
       {
@@ -507,8 +502,22 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
         sessionType: { zh: "报告", en: "Talk" },
         speakers: { zh: "Mo Li", en: "Mo Li" },
         note: {
-          zh: "Watershed/Cornerstone 环境科学家",
-          en: "Environmental Scientist at Watershed/Cornerstone",
+          zh: "环境科学家",
+          en: "Environmental Scientist",
+        },
+      },
+      {
+        id: "dev-ecoinvent",
+        day: "day1",
+        start: "16:35",
+        end: "16:50",
+        title: { zh: "ecoinvent", en: "ecoinvent" },
+        orgLogoKey: "ecoinvent",
+        sessionType: { zh: "报告", en: "Talk" },
+        speakers: { zh: "Carl Vadenbo", en: "Carl Vadenbo" },
+        note: {
+          zh: "数据库内容负责人",
+          en: "Database Content Lead",
         },
       },
       {

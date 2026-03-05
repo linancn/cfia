@@ -573,19 +573,14 @@ const devConfLogos: { key: string; name: string; src?: string }[] = [
     src: "img/tg-forum/orgnizations/lca_dev_conf/carbonminds.png",
   },
   {
-    key: "cornerstone",
-    name: "Cornerstone",
-    src: "img/tg-forum/orgnizations/lca_dev_conf/cornerstone.png",
-  },
-  {
     key: "dds",
     name: "Départ de Sentier",
     src: "img/tg-forum/orgnizations/lca_dev_conf/dds.png",
   },
   {
-    key: "envision",
-    name: "Univers",
-    src: "img/tg-forum/orgnizations/lca_dev_conf/univers.png",
+    key: "ecoinvent",
+    name: "ecoinvent",
+    src: "img/tg-forum/orgnizations/lca_dev_conf/ecoinvent.png",
   },
   {
     key: "greendelta",
@@ -611,6 +606,11 @@ const devConfLogos: { key: string; name: string; src?: string }[] = [
     key: "tiangong",
     name: "TianGong",
     src: "img/tg-forum/orgnizations/lca_dev_conf/tiangong.png",
+  },
+  {
+    key: "envision",
+    name: "Univers",
+    src: "img/tg-forum/orgnizations/lca_dev_conf/univers.png",
   },
   {
     key: "watershed",
@@ -755,7 +755,7 @@ const agendaGroups: AgendaGroup[] = [
       {
         key: "lca-audit",
         title: (
-          <Translate id="forum.agenda.subForums.audit">数据</Translate>
+          <Translate id="forum.agenda.subForums.audit">数据（英文）</Translate>
         ),
         lead: (
           <Translate id="forum.agenda.subForums.audit.lead">
@@ -908,7 +908,6 @@ const trackLabels: Record<AgendaTrackKey, AgendaText> = {
 };
 
 const keynoteSpeakerPhotoBySessionId: Record<string, string> = {
-  "mf-d2-keynote-he": "img/tg-forum/people/KebinH-thu.png",
   "mf-d2-keynote-llorenc": "img/tg-forum/people/LlorencM-unep.jpg",
   "mf-d2-keynote-xu": "img/tg-forum/people/MingX-thu.jpg",
   "mf-d2-keynote-finkbeiner": "img/tg-forum/people/MatthiasF-tub.jpg",
@@ -1539,15 +1538,9 @@ export default function Forum(): ReactNode {
     const reportSessions = sessions
       .filter((session) => session.sessionType?.zh === "报告" || session.sessionType?.en === "Talk")
       .sort((a, b) => {
-        const aPinned = a.orgLogoKey === "tiangong" ? 0 : 1;
-        const bPinned = b.orgLogoKey === "tiangong" ? 0 : 1;
-
-        return (
-          aPinned - bPinned ||
-          (a.title.en ?? a.title.zh).localeCompare(b.title.en ?? b.title.zh, "en", {
-            sensitivity: "base",
-          })
-        );
+        const aSortKey = (a.orgLogoKey && devConfLogoByKey.get(a.orgLogoKey)?.name) || (a.title.en ?? a.title.zh);
+        const bSortKey = (b.orgLogoKey && devConfLogoByKey.get(b.orgLogoKey)?.name) || (b.title.en ?? b.title.zh);
+        return aSortKey.localeCompare(bSortKey, "en", { sensitivity: "base" });
       });
     const openingSessions = sessions.filter((session) => session.id === "dev-opening");
     const panelSessions = sessions.filter((session) => session.id === "dev-panel");
@@ -1562,7 +1555,7 @@ export default function Forum(): ReactNode {
       },
       {
         key: "dev-phase-showcase",
-        title: isZh ? "展示报告" : "Showcase Talks",
+        title: isZh ? "报告阵容" : "Featured Talks",
         items: reportSessions,
         mode: "cards",
       },
@@ -2116,7 +2109,7 @@ export default function Forum(): ReactNode {
                                 <Translate id="forum.agenda.partners">开发者阵容</Translate>
                               </span>
                               <span className={styles.logoWallNote}>
-                                {isZh ? "机构持续更新中" : "Organization list in progress"}
+                                {isZh ? "共 10 家机构（按机构名称排序）" : "10 organizations, sorted by name"}
                               </span>
                             </div>
                             <div className={clsx(styles.logoWall, styles.logoWallFive)}>
@@ -2129,14 +2122,6 @@ export default function Forum(): ReactNode {
                                   )}
                                 </div>
                               ))}
-                              <div className={clsx(styles.logoItem, styles.logoItemPlaceholder)}>
-                                <div className={styles.logoPlaceholderStack}>
-                                  <span className={styles.logoPlaceholderMark}>+</span>
-                                  <span className={styles.logoPlaceholderText}>
-                                    {isZh ? "持续更新" : "More coming soon"}
-                                  </span>
-                                </div>
-                              </div>
                             </div>
                           </div>
                         )}
@@ -2171,14 +2156,8 @@ export default function Forum(): ReactNode {
                               ? section.sessions.reduce<
                                   Array<{ key: string; title: string; items: ActivitySession[] }>
                                 >((phases, session) => {
-                                  const isKeynoteSession =
-                                    session.sessionType?.zh === "主旨报告" ||
-                                    session.sessionType?.en === "Keynote";
-
-                                  if (isKeynoteSession) {
-                                    const phaseTitle = session.sessionType
-                                      ? getAgendaText(session.sessionType, isZh)
-                                      : (isZh ? "主旨报告" : "Keynote");
+                                  if (session.sessionType) {
+                                    const phaseTitle = getAgendaText(session.sessionType, isZh);
                                     const lastPhase = phases[phases.length - 1];
 
                                     if (lastPhase && lastPhase.title === phaseTitle) {
@@ -2228,6 +2207,9 @@ export default function Forum(): ReactNode {
                                             )}
                                           >
                                             {phase.items.map((session) => {
+                                              const isKeynoteSession =
+                                                session.sessionType?.zh === "主旨报告" ||
+                                                session.sessionType?.en === "Keynote";
                                               const speakerPhotoSrc =
                                                 keynoteSpeakerPhotoBySessionId[session.id];
 
@@ -2240,29 +2222,38 @@ export default function Forum(): ReactNode {
                                                     session.talkTitle && styles.agendaItemHasTalkTitle
                                                   )}
                                                 >
-                                                  <div className={styles.agendaKeynoteCardBottom}>
-                                                    <div
-                                                      className={styles.agendaKeynoteCardPhoto}
-                                                      aria-hidden="true"
-                                                    >
-                                                      <div className={styles.agendaSpeakerPhotoSlot}>
-                                                        {speakerPhotoSrc ? (
-                                                          <img
-                                                            src={speakerPhotoSrc}
-                                                            alt={getAgendaText(session.title, isZh)}
-                                                            loading="lazy"
-                                                          />
-                                                        ) : (
-                                                          <span
-                                                            className={
-                                                              styles.agendaSpeakerPhotoPlaceholder
-                                                            }
-                                                          >
-                                                            {isZh ? "待补" : "TBD"}
-                                                        </span>
-                                                      )}
-                                                    </div>
-                                                  </div>
+                                                  <div
+                                                    className={styles.agendaKeynoteCardBottom}
+                                                    style={
+                                                      isKeynoteSession
+                                                        ? undefined
+                                                        : { gridTemplateColumns: "1fr", minHeight: "auto" }
+                                                    }
+                                                  >
+                                                    {isKeynoteSession && (
+                                                      <div
+                                                        className={styles.agendaKeynoteCardPhoto}
+                                                        aria-hidden="true"
+                                                      >
+                                                        <div className={styles.agendaSpeakerPhotoSlot}>
+                                                          {speakerPhotoSrc ? (
+                                                            <img
+                                                              src={speakerPhotoSrc}
+                                                              alt={getAgendaText(session.title, isZh)}
+                                                              loading="lazy"
+                                                            />
+                                                          ) : (
+                                                            <span
+                                                              className={
+                                                                styles.agendaSpeakerPhotoPlaceholder
+                                                              }
+                                                            >
+                                                              {isZh ? "待补" : "TBD"}
+                                                            </span>
+                                                          )}
+                                                        </div>
+                                                      </div>
+                                                    )}
                                                   <div className={styles.agendaKeynoteCardMain}>
                                                       <div className={styles.agendaTitle}>
                                                         {getAgendaText(session.title, isZh)}
