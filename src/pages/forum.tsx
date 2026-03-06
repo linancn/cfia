@@ -529,6 +529,20 @@ const people: {
     image: "img/tg-forum/people/JingjieZ-zdl.jpg",
   },
   {
+    key: "haixiao-zhang",
+    nameEn: "Haixiao Zhang",
+    nameZh: "张海孝",
+    titleZh: <>GaBi中国区 总经理（宁波希耐科）</>,
+    titleEn: (
+      <>
+        General Manager
+        <br />
+        GaBi China & CNECO
+      </>
+    ),
+    image: "img/tg-forum/people/HaixiaoZ-gabi.jpg",
+  },
+  {
     key: "naama-avni-kadosh",
     nameEn: "Naama Avni-Kadosh",
     nameZh: "Naama Avni-Kadosh",
