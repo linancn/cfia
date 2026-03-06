@@ -208,16 +208,6 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
         },
       },
       {
-        id: "mf-d2-keynote-xu",
-        day: "day2",
-        title: { zh: "徐明", en: "Ming Xu" },
-        sessionType: { zh: "主旨报告", en: "Keynote" },
-        speakers: {
-          zh: "清华大学碳中和讲席教授、环境学院副院长",
-          en: "Chair Professor of Carbon Neutrality; Deputy Dean, School of Environment, Tsinghua University",
-        },
-      },
-      {
         id: "mf-d2-keynote-llorenc",
         day: "day2",
         title: { zh: "Llorenç Milà i Canals", en: "Llorenc Milà i Canals" },
@@ -225,6 +215,16 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
         speakers: {
           zh: "UNEP Life Cycle Initiative 秘书处负责人",
           en: "Head of Secretariat, UNEP Life Cycle Initiative",
+        },
+      },
+      {
+        id: "mf-d2-keynote-xu",
+        day: "day2",
+        title: { zh: "徐明", en: "Ming Xu" },
+        sessionType: { zh: "主旨报告", en: "Keynote" },
+        speakers: {
+          zh: "清华大学碳中和讲席教授、环境学院副院长",
+          en: "Chair Professor of Carbon Neutrality; Deputy Dean, School of Environment, Tsinghua University",
         },
       },
       {
@@ -261,8 +261,8 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
         },
         sessionType: { zh: "主旨报告", en: "Keynote" },
         speakers: {
-          zh: "One Click LCA 首席创新官、PRé 总经理",
-          en: "Chief Innovation Officer at One Click LCA; Managing Director at PRé",
+          zh: "PRé 总经理、One Click LCA 首席创新官",
+          en: "Managing Director at PRé; Chief Innovation Officer at One Click LCA",
         },
       },
       {
@@ -291,8 +291,8 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
       en: "Organizer:\nChina Chemical Energy Conservation Technology Association",
     },
     summaryLead: {
-      zh: "主持人：\n韦志浩，中国化工节能技术协会党委书记\n李永亮，中国化工节能技术协会秘书长、中国石油和化学工业联合会科技与装备部主任",
-      en: "Hosts:\nZhihao Wei, Party Secretary, China Chemical Energy Conservation Technology Association\nYongliang Li, Secretary-General, China Chemical Energy Conservation Technology Association; Director, Department of Science & Technology and Equipment, China Petroleum and Chemical Industry Federation",
+      zh: "召集人：\n韦志浩，中国化工节能技术协会党委书记\n李永亮，中国化工节能技术协会秘书长、中国石油和化学工业联合会科技与装备部主任",
+      en: "Conveners:\nZhihao Wei, Party Secretary, China Chemical Energy Conservation Technology Association\nYongliang Li, Secretary-General, China Chemical Energy Conservation Technology Association; Director, Department of Science & Technology and Equipment, China Petroleum and Chemical Industry Federation",
     },
     summary: {
       zh: "石化化工分论坛由中国化工节能技术协会承办，将聚焦行业在“双碳”与全球规则背景下面临的关键议题，围绕产品碳足迹政策动态、企业核算与管理平台建设实践、行业标准进展，以及大宗化工产品碳足迹核算与数据体系建设等内容展开交流。论坛设置主题演讲与圆桌讨论两个环节，旨在推动方法、数据与产业链协同机制的对接与共识形成，并为后续行业合作与能力建设提供方向。",
@@ -310,8 +310,8 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
     groupKey: "sub-forums",
     title: { zh: "电池", en: "Battery" },
     summaryLead: {
-      zh: "主持人：\n潘学兴，宁德时代可持续发展负责人",
-      en: "Host:\nXuexing Pan, Head of Sustainability, CATL",
+      zh: "召集人：\n潘学兴，宁德时代可持续发展负责人",
+      en: "Convener:\nXuexing Pan, Head of Sustainability, CATL",
     },
     summary: {
       zh: "电池行业分论坛将以“报告 + 圆桌”的形式，围绕电池产业链在可持续发展与合规要求方面的最新进展展开交流。报告环节将邀请行业组织及产业链代表分享在LCA/碳足迹管理、法规与市场趋势应对（含电池法案与数字产品护照 DPP 等相关方向）、以及数据体系与能力建设方面的实践与思考。圆桌环节将聚焦“共建可用、可信的产业数据生态”，由产业链相关方围绕供应链参与机制与协作模式进行讨论，促进跨环节对接与后续合作机会形成。",
@@ -329,8 +329,8 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
     groupKey: "sub-forums",
     title: { zh: "电子电器", en: "Electronics" },
     summaryLead: {
-      zh: "主持人：\n田金平，清华大学环境学院研究员",
-      en: "Host:\nJinping Tian, Researcher, School of Environment, Tsinghua University",
+      zh: "召集人：\n田金平，清华大学环境学院研究员",
+      en: "Convener:\nJinping Tian, Researcher, School of Environment, Tsinghua University",
     },
     summary: {
       zh: "电子电器行业分论坛聚焦电子电器产业链在可持续与合规方面的最新进展，围绕产品碳足迹核算与管理、延伸生产者责任（EPR）与回收合规、数字产品护照（DPP）相关要求，以及支撑上述工作的企业数据体系与治理机制展开交流。论坛设置专题报告与圆桌讨论两个环节：报告环节将从整机品牌、关键供应链环节与解决方案视角分享实践经验与挑战；圆桌环节将围绕“如何共建可用、可信的产业数据生态”展开对话，重点讨论供应链参与机制、数据质量与可审计性、数据共享与协作模式等关键议题，促进产业链上下游形成可落地的协同路径。",
@@ -348,8 +348,8 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
     groupKey: "sub-forums",
     title: { zh: "数据（英文）", en: "Data (EN)" },
     summaryLead: {
-      zh: "主持人：\nAlessandro Manzardo，帕多瓦大学土木、建筑与环境工程系（ICEA）环境质量研究中心（CESQA）副教授",
-      en: "Host:\nAlessandro Manzardo, Associate Professor, Centre for Environmental Quality Studies (CESQA), Department of Civil, Environmental and Architectural Engineering (ICEA), University of Padua",
+      zh: "召集人：\nAlessandro Manzardo，帕多瓦大学土木、建筑与环境工程系（ICEA）环境质量研究中心（CESQA）副教授",
+      en: "Convener:\nAlessandro Manzardo, Associate Professor, Centre for Environmental Quality Studies (CESQA), Department of Civil, Environmental and Architectural Engineering (ICEA), University of Padua",
     },
     summary: {
       zh: "本分论坛聚焦LCA 与碳足迹数据相关，旨在汇聚全球范围内数据库建设与数据应用的最新实践，围绕数据获取与治理、方法学一致性、数据质量管理与不确定性表达，以及第三方审验/认证与质量控制等关键问题开展交流。议程将包括若干实践分享环节，介绍不同地区与机构在数据库构建、运行维护与服务应用方面的经验，并设置圆桌讨论，围绕“如何提升数据的可用性、可信度与可比性”展开对话与互动，促进后续合作与对接。",
@@ -488,8 +488,8 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
         sessionType: { zh: "报告", en: "Talk" },
         speakers: { zh: "Eric Mieras", en: "Eric Mieras" },
         note: {
-          zh: "首席创新官、总经理",
-          en: "Chief Innovation Officer; Managing Director",
+          zh: "总经理、首席创新官",
+          en: "Managing Director; Chief Innovation Officer",
         },
       },
       {
@@ -543,10 +543,6 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
     activityKey: "general-assembly",
     groupKey: "special-events",
     title: { zh: "联盟全体会员大会", en: "CFA General Assembly" },
-    summaryLead: {
-      zh: "主持人：\n徐明，碳足迹产业技术创新联盟秘书长",
-      en: "Host:\nMing Xu, Secretary-General, Carbon Footprint Industry Technology Innovation Alliance",
-    },
     summary: {
       zh: "本次联盟全体大会将围绕联盟年度重点工作开展交流与讨论，主要包括通报联盟阶段性工作进展，审议年度工作计划和相关事项，听取成员单位意见建议，并就下一步合作方向和重点任务进行沟通协调，推动联盟各项工作有序开展。",
       en: "The CFA General Assembly will focus on the alliance’s annual priority work, including updates on phased progress, review of the annual work plan and related matters, collection of feedback and suggestions from member organizations, and coordination on next-step cooperation directions and priority tasks, in order to advance the alliance’s work in an orderly manner.",
@@ -609,8 +605,8 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
       en: "Organizers:\nState Grid Jiangsu Electric Power Co., Ltd.\nTianGong Think Tank Center, Tsinghua Suzhou Institute for Environmental Innovation",
     },
     summaryLead: {
-      zh: "主持人：\n郑颖，北京电链科技有限公司双碳事业部总监/清华天工智库中心特邀研究员\n李卓，能源基金会清洁电力项目主管\n陈钰什，清华天工智库特聘研究员",
-      en: "Hosts:\nYing Zheng, Director, Dual-Carbon Business Division, Beijing Dianlian Technology Co., Ltd.; Invited Research Fellow, Tsinghua TianGong Think Tank Center\nZhuo Li, Program Manager, Clean Power Program, Energy Foundation China\nYushi Chen, Distinguished Research Fellow, TianGong Think Tank",
+      zh: "召集人：\n郑颖，北京电链科技有限公司双碳事业部总监/清华天工智库中心特邀研究员\n李卓，能源基金会清洁电力项目主管\n陈钰什，清华天工智库特聘研究员",
+      en: "Conveners:\nYing Zheng, Director, Dual-Carbon Business Division, Beijing Dianlian Technology Co., Ltd.; Invited Research Fellow, Tsinghua TianGong Think Tank Center\nZhuo Li, Program Manager, Clean Power Program, Energy Foundation China\nYushi Chen, Distinguished Research Fellow, TianGong Think Tank",
     },
     summary: {
       zh: "电力与碳足迹分论坛将围绕电力碳足迹与电力系统碳排放议题，结合能源转型背景，邀请相关机构与企业代表进行分享与交流，讨论方法、数据与应用协同，推动电力碳数据体系建设与实践对接。",

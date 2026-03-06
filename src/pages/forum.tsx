@@ -387,7 +387,7 @@ const people: {
     nameZh: "Mo Li",
     titleZh: <>Watershed/Cornerstone 环境科学家</>,
     titleEn: <>Environmental Scientist at Watershed/Cornerstone</>,
-    image: "img/tg-forum/people/MoL-watershed.png",
+    image: "img/tg-forum/people/MoL-watershed-final-20260306.jpg",
   },
   {
     key: "nan-li",
@@ -433,8 +433,8 @@ const people: {
     key: "eric-mieras",
     nameEn: "Eric Mieras",
     nameZh: "Eric Mieras",
-    titleZh: <>One Click LCA 首席创新官、PRé 总经理（SimaPro）</>,
-    titleEn: <>Chief Innovation Officer at One Click LCA & Managing Director at PRé</>,
+    titleZh: <>PRé 总经理、One Click LCA 首席创新官（SimaPro）</>,
+    titleEn: <>Managing Director at PRé & Chief Innovation Officer at One Click LCA</>,
     image: "img/tg-forum/people/EricMieras-1clicklca-pre.jpg",
   },
   {
@@ -679,11 +679,6 @@ const supportInstitutionLogos: {
     key: "dcv",
     name: "国际数碳谷",
     src: "img/tg-forum/partner-logo/dcv.png",
-  },
-  {
-    key: "ef-china",
-    name: "能源基金会",
-    src: "img/tg-forum/partner-logo/EF_China.png",
   },
   {
     key: "ijmcccn",
@@ -1380,7 +1375,28 @@ export default function Forum(): ReactNode {
 
   const isHostOrModeratorLabel = (label: string): boolean => {
     const normalized = label.trim().toLowerCase();
-    return /主持人?/.test(label) || normalized.startsWith("host") || normalized.startsWith("moderator");
+    return (
+      /主持人?|召集人/.test(label) ||
+      normalized.startsWith("host") ||
+      normalized.startsWith("moderator") ||
+      normalized.startsWith("convener")
+    );
+  };
+
+  const getSummaryLeadLabel = (label: string, activityKey?: string): string => {
+    if (activityKey === "unep-workshop" && isHostOrModeratorLabel(label)) {
+      return isZh ? "召集人" : "Convener";
+    }
+
+    return label;
+  };
+
+  const getSessionDisplayTitle = (activityKey: string, session: ActivitySession): string => {
+    if (activityKey === "main-forum" && session.id === "mf-d2-open") {
+      return isZh ? "领导致辞" : "Leadership Remarks";
+    }
+
+    return getAgendaText(session.title, isZh);
   };
 
   const renderPersonNameWithBold = (value: string): ReactNode => {
@@ -1408,7 +1424,10 @@ export default function Forum(): ReactNode {
     );
   };
 
-  const renderSummaryLeadBlock = (summaryLead: AgendaText | undefined): ReactNode => {
+  const renderSummaryLeadBlock = (
+    summaryLead: AgendaText | undefined,
+    options?: { activityKey?: string }
+  ): ReactNode => {
     if (!summaryLead) {
       return null;
     }
@@ -1432,7 +1451,8 @@ export default function Forum(): ReactNode {
       const inlineMatch = lines[0].match(/^([^：:]+)[：:]\s*(.+)$/);
       if (inlineMatch) {
         const [, inlineLabel, inlineValue] = inlineMatch;
-        const highlightName = isHostOrModeratorLabel(inlineLabel);
+        const renderedLabel = getSummaryLeadLabel(inlineLabel, options?.activityKey);
+        const highlightName = isHostOrModeratorLabel(renderedLabel);
         return (
           <div
             className={clsx(
@@ -1442,7 +1462,7 @@ export default function Forum(): ReactNode {
             )}
           >
             <span className={styles.agendaPanelSummaryLeadLabel}>
-              {inlineLabel}
+              {renderedLabel}
               {labelSuffix}
             </span>
             <span>{highlightName ? renderPersonNameWithBold(inlineValue) : inlineValue}</span>
@@ -1452,7 +1472,7 @@ export default function Forum(): ReactNode {
     }
 
     const [labelLine, ...items] = lines;
-    const label = labelLine.replace(/[：:]$/, "");
+    const label = getSummaryLeadLabel(labelLine.replace(/[：:]$/, ""), options?.activityKey);
     const highlightName = isHostOrModeratorLabel(label);
 
     if (items.length <= 1) {
@@ -1527,14 +1547,14 @@ export default function Forum(): ReactNode {
               </div>
 
               <div className={styles.devAgendaCardContent}>
-                <div className={clsx(styles.agendaTitle, styles.devAgendaCardUnit)}>
-                  {getAgendaText(session.title, isZh)}
-                </div>
                 {session.speakers && (
                   <div className={styles.devAgendaCardName}>
                     {getAgendaText(session.speakers, isZh)}
                   </div>
                 )}
+                <div className={styles.devAgendaCardUnit}>
+                  {getAgendaText(session.title, isZh)}
+                </div>
                 {session.note && (
                   <div className={clsx(styles.agendaNote, styles.devAgendaCardRole, styles.devAgendaCardNote)}>
                     {getAgendaText(session.note, isZh)}
@@ -1559,14 +1579,11 @@ export default function Forum(): ReactNode {
     const openingSessions = sessions.filter((session) => session.id === "dev-opening");
     const panelSessions = sessions.filter((session) => session.id === "dev-panel");
     const networkingSessions = sessions.filter((session) => session.id === "dev-networking");
+    const openingSpeaker = openingSessions[0]?.speakers
+      ? getAgendaText(openingSessions[0].speakers, isZh)
+      : "";
 
     const phases = [
-      {
-        key: "dev-phase-opening",
-        title: isZh ? "开场" : "Opening",
-        items: openingSessions,
-        mode: "opening",
-      },
       {
         key: "dev-phase-showcase",
         title: isZh ? "报告阵容" : "Featured Talks",
@@ -1589,21 +1606,25 @@ export default function Forum(): ReactNode {
       key: string;
       title: string;
       items: ActivitySession[];
-      mode: "opening" | "cards" | "title-only";
+      mode: "cards" | "title-only";
     }>;
 
     return (
       <div className={styles.agendaPhaseList}>
+        {openingSpeaker && (
+          <div className={styles.agendaPhaseLead}>
+            {isZh ? (
+              <>
+                <strong>召集人</strong>：
+              </>
+            ) : "Convener: "}
+            {renderPersonNameWithBold(openingSpeaker)}
+          </div>
+        )}
         {phases.filter((phase) => phase.items.length > 0).map((phase) => (
           <div key={phase.key} className={styles.agendaPhase}>
             <div className={styles.agendaPhaseTitle}>{phase.title}</div>
             {phase.mode === "cards" && renderDeveloperConferenceAgendaList(phase.items)}
-            {phase.mode === "opening" && phase.items[0]?.speakers && (
-              <div className={styles.agendaPhaseLead}>
-                {isZh ? "主持人：" : "Host: "}
-                {renderPersonNameWithBold(getAgendaText(phase.items[0].speakers, isZh))}
-              </div>
-            )}
           </div>
         ))}
       </div>
@@ -2142,8 +2163,12 @@ export default function Forum(): ReactNode {
 
                         {showSummaryOnlyBody ? (
                           <>
-                            {renderSummaryLeadBlock(detail.summaryLeadTop)}
-                            {renderSummaryLeadBlock(detail.summaryLead)}
+                            {renderSummaryLeadBlock(detail.summaryLeadTop, {
+                              activityKey: detail.activityKey,
+                            })}
+                            {renderSummaryLeadBlock(detail.summaryLead, {
+                              activityKey: detail.activityKey,
+                            })}
                             {detail.summary && (
                               <div className={styles.agendaPanelSummary}>
                                 {getAgendaText(detail.summary, isZh)}
@@ -2189,7 +2214,7 @@ export default function Forum(): ReactNode {
 
                                   phases.push({
                                     key: `phase-${session.id}`,
-                                    title: getAgendaText(session.title, isZh),
+                                    title: getSessionDisplayTitle(detail.activityKey, session),
                                     items: [],
                                   });
 
@@ -2367,7 +2392,7 @@ export default function Forum(): ReactNode {
                                           )}
                                           {renderTalkTitle(session.talkTitle)}
                                           <div className={styles.agendaTitle}>
-                                            {getAgendaText(session.title, isZh)}
+                                            {getSessionDisplayTitle(detail.activityKey, session)}
                                           </div>
                                           {session.speakers && (
                                             <div className={styles.agendaNote}>
@@ -2569,20 +2594,6 @@ export default function Forum(): ReactNode {
                         </a>
                       );
                     })}
-                    <div
-                      className={clsx(
-                        styles.logoItem,
-                        styles.partnerLogoItem,
-                        styles.logoItemPlaceholder,
-                      )}
-                    >
-                      <div className={styles.logoPlaceholderStack}>
-                        <span className={styles.logoPlaceholderMark}>+</span>
-                        <span className={styles.logoPlaceholderText}>
-                          {isZh ? "持续更新中" : "More updates coming soon"}
-                        </span>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
