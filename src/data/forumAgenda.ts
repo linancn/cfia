@@ -291,8 +291,8 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
       en: "Organizer:\nChina Chemical Energy Conservation Technology Association",
     },
     summaryLead: {
-      zh: "召集人：\n韦志浩，中国化工节能技术协会党委书记\n李永亮，中国化工节能技术协会秘书长、中国石油和化学工业联合会科技与装备部主任",
-      en: "Conveners:\nZhihao Wei, Party Secretary, China Chemical Energy Conservation Technology Association\nYongliang Li, Secretary-General, China Chemical Energy Conservation Technology Association; Director, Department of Science & Technology and Equipment, China Petroleum and Chemical Industry Federation",
+      zh: "召集人：\n常靖，中国化工节能技术协会信息与标准部主任\n李永亮，中国化工节能技术协会秘书长、中国石油和化学工业联合会科技与装备部主任",
+      en: "Conveners:\nJing Chang, Director, Information and Standards Department, China Chemical Energy Conservation Technology Association\nYongliang Li, Secretary-General, China Chemical Energy Conservation Technology Association; Director, Department of Science & Technology and Equipment, China Petroleum and Chemical Industry Federation",
     },
     summary: {
       zh: "石化化工分论坛由中国化工节能技术协会承办，将聚焦行业在“双碳”与全球规则背景下面临的关键议题，围绕产品碳足迹政策动态、企业核算与管理平台建设实践、行业标准进展，以及大宗化工产品碳足迹核算与数据体系建设等内容展开交流。论坛设置主题演讲与圆桌讨论两个环节，旨在推动方法、数据与产业链协同机制的对接与共识形成，并为后续行业合作与能力建设提供方向。",

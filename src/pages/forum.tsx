@@ -318,6 +318,14 @@ const people: {
     image: "img/tg-forum/people/AndreasC-greendelta.jpg",
   },
   {
+    key: "jun-ki-choi",
+    nameEn: "Jun-Ki Choi",
+    nameZh: "Jun-Ki Choi",
+    titleZh: <>代顿大学教授</>,
+    titleEn: <>Professor, University of Dayton</>,
+    image: "img/tg-forum/people/ChoiJK-uod.jpg",
+  },
+  {
     key: "natasha-das",
     nameEn: "Natasha Das",
     nameZh: "Natasha Das",
@@ -387,7 +395,7 @@ const people: {
     nameZh: "Mo Li",
     titleZh: <>Watershed/Cornerstone 环境科学家</>,
     titleEn: <>Environmental Scientist at Watershed/Cornerstone</>,
-    image: "img/tg-forum/people/MoL-watershed-final-20260306.jpg",
+    image: "img/tg-forum/people/MoL-watershed.jpg",
   },
   {
     key: "nan-li",
