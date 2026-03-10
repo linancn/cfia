@@ -468,6 +468,14 @@ const people: {
     image: "img/tg-forum/people/JittiM-nstda.jpg",
   },
   {
+    key: "carl-vadenbo",
+    nameEn: "Carl Vadenbo",
+    nameZh: "Carl Vadenbo",
+    titleZh: <>ecoinvent 数据库内容负责人</>,
+    titleEn: <>Database Content Lead, ecoinvent</>,
+    image: "img/tg-forum/people/CarlV-ecoinvent.jpg",
+  },
+  {
     key: "chris-mutel",
     nameEn: "Chris Mutel",
     nameZh: "Chris Mutel",
@@ -693,6 +701,14 @@ const supportInstitutionLogos: {
     name: "ijmcccn",
     src: "img/tg-forum/partner-logo/ijmcccn.png",
     href: "https://jointmission.lib.tsinghua.edu.cn/",
+  },
+  {
+    key: "riet",
+    name: translate({
+      id: "forum.partner.riet",
+      message: "清华苏州环境创新研究院（RIET）",
+    }),
+    src: "img/tg-forum/partner-logo/riet.png",
   },
 ];
 
@@ -2602,6 +2618,20 @@ export default function Forum(): ReactNode {
                         </a>
                       );
                     })}
+                    <div
+                      className={clsx(
+                        styles.logoItem,
+                        styles.partnerLogoItem,
+                        styles.logoItemPlaceholder,
+                      )}
+                    >
+                      <div className={styles.logoPlaceholderStack}>
+                        <span className={styles.logoPlaceholderMark}>+</span>
+                        <span className={styles.logoPlaceholderText}>
+                          {isZh ? "持续更新中" : "More updates coming soon"}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

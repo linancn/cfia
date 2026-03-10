@@ -958,6 +958,9 @@
   "forum.partner.thuenv": {
     "message": "School of Environment, Tsinghua University"
   },
+  "forum.partner.riet": {
+    "message": "Tsinghua Suzhou Institute for Environment Innovation (RIET)"
+  },
   "forum.venue.tag": {
     "message": "Venue"
   },

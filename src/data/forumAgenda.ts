@@ -231,6 +231,10 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
         id: "mf-d2-keynote-finkbeiner",
         day: "day2",
         title: { zh: "Matthias Finkbeiner", en: "Matthias Finkbeiner" },
+        talkTitle: {
+          zh: "迈向碳中和的脱碳：生命周期评价视角下的挑战与解决方案",
+          en: "Decarbonization towards Carbon Neutrality - Challenges and Solutions from a Life Cycle Assessment Perspective",
+        },
         sessionType: { zh: "主旨报告", en: "Keynote" },
         speakers: {
           zh: "柏林工业大学教授，可持续工程教席负责人，环境技术研究所常务所长",

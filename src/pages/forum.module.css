@@ -2669,7 +2669,7 @@
 .partnerSupportGrid {
   display: grid;
   gap: 0.7rem;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: stretch;
   justify-items: stretch;
 }
@@ -3352,7 +3352,7 @@
   }
 
   .partnerSupportGrid {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .logoWall {
@@ -3544,7 +3544,7 @@
   }
 
   .partnerSupportGrid {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 0.5rem;
   }
 
@@ -4181,7 +4181,7 @@
   }
 
   .partnerSupportGrid {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 0.42rem;
   }
 
