@@ -326,6 +326,19 @@ const people: {
     image: "img/tg-forum/people/ChoiJK-uod.jpg",
   },
   {
+    key: "qimin-chai",
+    nameEn: "Qimin Chai",
+    nameZh: "柴麒敏",
+    titleZh: <>国家气候战略中心战略规划部主任、研究员</>,
+    titleEn: (
+      <>
+        Director and Research Fellow, Strategic Planning Department, National
+        Center for Climate Change Strategy and International Cooperation
+      </>
+    ),
+    image: "img/tg-forum/people/QiminC-ncsc.jpg",
+  },
+  {
     key: "natasha-das",
     nameEn: "Natasha Das",
     nameZh: "Natasha Das",
@@ -831,13 +844,13 @@ const agendaGroups: AgendaGroup[] = [
         跨机构联合活动与全球合作专场，信息实时更新。
       </Translate>
     ),
-    count: "3",
+    count: "4",
     layout: "specialEvents",
     items: [
       {
         key: "general-assembly",
         title: (
-          <Translate id="forum.agenda.special.assembly">联盟全体会员大会</Translate>
+          <Translate id="forum.agenda.special.assembly">{"联盟全体会员大会\n（闭门）"}</Translate>
         ),
         lead: (
           <Translate id="forum.agenda.special.assembly.lead">
@@ -856,7 +869,7 @@ const agendaGroups: AgendaGroup[] = [
         key: "unep-workshop",
         title: (
           <Translate id="forum.agenda.special.unep">
-            UNEP 全球 LCA 平台研讨会
+            {"UNEP 全球 LCA 平台研讨会\n（邀请制）"}
           </Translate>
         ),
         lead: (
@@ -886,6 +899,20 @@ const agendaGroups: AgendaGroup[] = [
         ),
         icon: "spark",
       },
+      {
+        key: "china-lca",
+        title: (
+          <Translate id="forum.agenda.special.chinaLca">
+            中国的LCA
+          </Translate>
+        ),
+        lead: (
+          <Translate id="forum.agenda.special.chinaLca.lead">
+            聚焦中国 LCA 方法体系、数据库建设与应用实践。
+          </Translate>
+        ),
+        icon: "spark",
+      },
     ],
   },
 ];
@@ -910,7 +937,7 @@ type MasterAgendaCalendarCluster = {
   day: AgendaDayKey;
   startMinutes: number;
   endMinutes: number;
-  halfHourRows: number;
+  timeRows: number;
   placements: MasterAgendaCalendarPlacement[];
   laneCount: number;
 };
@@ -921,6 +948,9 @@ type MasterAgendaCalendarDay = {
   clusters: MasterAgendaCalendarCluster[];
 };
 
+const MASTER_AGENDA_GRID_STEP_MINUTES = 15;
+const MASTER_AGENDA_GRID_ROW_HEIGHT_FALLBACK = "1.375rem";
+
 const agendaDayOrder: AgendaDayKey[] = ["day1", "day2"];
 
 const dayLabels: Record<AgendaDayKey, AgendaText> = {
@@ -929,8 +959,8 @@ const dayLabels: Record<AgendaDayKey, AgendaText> = {
 };
 
 const timelineDayLabels: Record<AgendaDayKey, AgendaText> = {
-  day1: { zh: "3 月 25 日（周三）", en: "Mar 25 (Wed)" },
-  day2: { zh: "3 月 26 日（周四）", en: "Mar 26 (Thu)" },
+  day1: { zh: "3 月 25 日", en: "Mar 25" },
+  day2: { zh: "3 月 26 日", en: "Mar 26" },
 };
 
 const trackLabels: Record<AgendaTrackKey, AgendaText> = {
@@ -1122,12 +1152,12 @@ function groupSlotsForTimeline(slots: MasterAgendaSlot[]): MasterAgendaTimelineR
   });
 }
 
-function floorToHalfHour(minutes: number): number {
-  return Math.floor(minutes / 30) * 30;
+function floorToGridStep(minutes: number): number {
+  return Math.floor(minutes / MASTER_AGENDA_GRID_STEP_MINUTES) * MASTER_AGENDA_GRID_STEP_MINUTES;
 }
 
-function ceilToHalfHour(minutes: number): number {
-  return Math.ceil(minutes / 30) * 30;
+function ceilToGridStep(minutes: number): number {
+  return Math.ceil(minutes / MASTER_AGENDA_GRID_STEP_MINUTES) * MASTER_AGENDA_GRID_STEP_MINUTES;
 }
 
 function formatMinutesToTime(minutes: number): string {
@@ -1198,10 +1228,10 @@ function buildDayCalendarLayouts(slots: MasterAgendaSlot[]): MasterAgendaCalenda
     }
 
     const layoutClusters = clusters.map((clusterSlots, clusterIndex) => {
-      const clusterStartMinutes = floorToHalfHour(
+      const clusterStartMinutes = floorToGridStep(
         Math.min(...clusterSlots.map((slot) => parseTimeToMinutes(slot.start)))
       );
-      const clusterEndMinutes = ceilToHalfHour(
+      const clusterEndMinutes = ceilToGridStep(
         Math.max(...clusterSlots.map((slot) => parseTimeToMinutes(slot.end)))
       );
       const laneEndMinutes: number[] = [];
@@ -1221,11 +1251,11 @@ function buildDayCalendarLayouts(slots: MasterAgendaSlot[]): MasterAgendaCalenda
 
         const rowStart = Math.max(
           0,
-          Math.floor((slotStartMinutes - clusterStartMinutes) / 30)
+          Math.floor((slotStartMinutes - clusterStartMinutes) / MASTER_AGENDA_GRID_STEP_MINUTES)
         );
         const rowEnd = Math.max(
           rowStart + 1,
-          Math.ceil((slotEndMinutes - clusterStartMinutes) / 30)
+          Math.ceil((slotEndMinutes - clusterStartMinutes) / MASTER_AGENDA_GRID_STEP_MINUTES)
         );
 
         placements.push({
@@ -1241,7 +1271,12 @@ function buildDayCalendarLayouts(slots: MasterAgendaSlot[]): MasterAgendaCalenda
         day,
         startMinutes: clusterStartMinutes,
         endMinutes: clusterEndMinutes,
-        halfHourRows: Math.max(1, (clusterEndMinutes - clusterStartMinutes) / 30),
+        timeRows: Math.max(
+          1,
+          Math.ceil(
+            (clusterEndMinutes - clusterStartMinutes) / MASTER_AGENDA_GRID_STEP_MINUTES
+          )
+        ),
         placements,
         laneCount: Math.max(1, laneEndMinutes.length),
       } satisfies MasterAgendaCalendarCluster;
@@ -1662,33 +1697,51 @@ export default function Forum(): ReactNode {
     const boardStartMinutes = 8 * 60;
     const boardEndMinutes = 18 * 60;
     const prepRegistrationStartMinutes = 14 * 60;
-    const boardHalfHourRows = Math.max(1, (boardEndMinutes - boardStartMinutes) / 30);
-    const boardRowTemplate = `repeat(${boardHalfHourRows}, var(--forum-agenda-half-row-height, 2.75rem))`;
+    const day2RegistrationEndMinutes = 9 * 60;
+    const boardTimeRows = Math.max(
+      1,
+      (boardEndMinutes - boardStartMinutes) / MASTER_AGENDA_GRID_STEP_MINUTES
+    );
+    const boardRowTemplate = `repeat(${boardTimeRows}, var(--forum-agenda-row-height, ${MASTER_AGENDA_GRID_ROW_HEIGHT_FALLBACK}))`;
     const boardRowsStyle: CSSProperties = { gridTemplateRows: boardRowTemplate };
     const boardDayWidthStyle = {
       "--forum-agenda-day1-col": "0.8fr",
       "--forum-agenda-day2-col": "1.2fr",
     } as CSSProperties;
     const boardRowMarks = Array.from(
-      { length: boardHalfHourRows },
-      (_, index) => boardStartMinutes + index * 30
+      { length: boardTimeRows },
+      (_, index) => boardStartMinutes + index * MASTER_AGENDA_GRID_STEP_MINUTES
     );
 
     const getTimelineDayLabel = (day: AgendaDayKey): string => {
       return getAgendaText(timelineDayLabels[day], isZh);
     };
-    const registrationDayLabel = isZh ? "3 月 24 日（周二）" : "Mar 24 (Tue)";
+    const prepRegistrationDayLabel = isZh ? "3 月 24 日" : "Mar 24";
     const registrationLabel = isZh ? "注册" : "Registration";
+    const registrationDeadlinePrep = isZh ? "至21点" : "Until 21:00";
+    const registrationDeadlineByDay: Partial<Record<AgendaDayKey, string>> = {
+      day1: isZh ? "至21点" : "Until 21:00",
+    };
     const prepRegistrationRowStart =
-      Math.max(0, Math.floor((prepRegistrationStartMinutes - boardStartMinutes) / 30)) + 1;
+      Math.max(
+        0,
+        Math.floor(
+          (prepRegistrationStartMinutes - boardStartMinutes) / MASTER_AGENDA_GRID_STEP_MINUTES
+        )
+      ) + 1;
     const prepRegistrationRowSpan = Math.max(
       1,
-      boardHalfHourRows - (prepRegistrationRowStart - 1)
+      boardTimeRows - (prepRegistrationRowStart - 1)
+    );
+    const day2RegistrationRowSpan = Math.max(
+      1,
+      Math.ceil(
+        (day2RegistrationEndMinutes - boardStartMinutes) / MASTER_AGENDA_GRID_STEP_MINUTES
+      )
     );
     const stackedAxisColumn = "var(--forum-agenda-stacked-axis-col, 84px)";
-    const stackedPrepColumn =
-      "minmax(var(--forum-agenda-stacked-prep-col-min, 88px), var(--forum-agenda-stacked-prep-col-fr, 0.34fr))";
-    const stackedDay1BoardColumns = `${stackedAxisColumn} ${stackedPrepColumn} minmax(0, 1fr)`;
+    const prepRegistrationColumn = "var(--forum-agenda-prep-col-size, 112px)";
+    const stackedDay1BoardColumns = `${stackedAxisColumn} ${prepRegistrationColumn} minmax(0, 1fr)`;
     const stackedDay2BoardColumns = `${stackedAxisColumn} minmax(0, 1fr)`;
     const stackedDay1BoardStyle: CSSProperties = { gridTemplateColumns: stackedDay1BoardColumns };
     const stackedDay2BoardStyle: CSSProperties = { gridTemplateColumns: stackedDay2BoardColumns };
@@ -1772,14 +1825,19 @@ export default function Forum(): ReactNode {
               gridRow: `${prepRegistrationRowStart} / span ${prepRegistrationRowSpan}`,
             }}
           >
-            <span
-              className={clsx(
-                styles.masterCalendarPrepEventLabel,
-                styles.masterCalendarPrepEventLabelHorizontal
-              )}
-            >
-              {registrationLabel}
-            </span>
+            <div className={styles.masterCalendarPrepEventText}>
+              <span
+                className={clsx(
+                  styles.masterCalendarPrepEventLabel,
+                  styles.masterCalendarPrepEventLabelHorizontal
+                )}
+              >
+                {registrationLabel}
+              </span>
+              <span className={styles.masterCalendarPrepEventDeadline}>
+                {registrationDeadlinePrep}
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -1787,11 +1845,16 @@ export default function Forum(): ReactNode {
 
     const renderDayBoardFrame = (day: AgendaDayKey, keyPrefix: string): ReactNode => {
       const dayLayout = dayLayoutMap.get(day);
-      const showDayRegistration = day === "day1" || day === "day2";
+      const showParallelRegistrationLane = day === "day1";
+      const showDayRegistration = day === "day2";
+      const dayRegistrationDeadline = registrationDeadlineByDay[day];
+      const dayGridStyle: CSSProperties = showParallelRegistrationLane
+        ? { ...boardRowsStyle, gridTemplateColumns: `${prepRegistrationColumn} minmax(0, 1fr)` }
+        : boardRowsStyle;
 
       return (
         <div key={`${keyPrefix}-col-${day}`} className={styles.masterCalendarBoardDayFrame}>
-          <div className={styles.masterCalendarBoardDayGrid} style={boardRowsStyle}>
+          <div className={styles.masterCalendarBoardDayGrid} style={dayGridStyle}>
             {boardRowMarks.map((minutes, rowIndex) => (
               <div
                 key={`${keyPrefix}-${day}-row-${minutes}`}
@@ -1800,10 +1863,37 @@ export default function Forum(): ReactNode {
                   styles.masterCalendarBoardRow,
                   minutes % 60 === 0 && styles.masterCalendarGridRowHour
                 )}
-                style={{ gridColumn: "1", gridRow: `${rowIndex + 1}` }}
+                style={{
+                  gridColumn: showParallelRegistrationLane ? "1 / -1" : "1",
+                  gridRow: `${rowIndex + 1}`,
+                }}
                 aria-hidden="true"
               />
             ))}
+
+            {showParallelRegistrationLane && (
+              <div
+                className={clsx(
+                  styles.masterCalendarPrepEvent,
+                  styles.masterCalendarPrepEventDay
+                )}
+                style={{ gridColumn: "1", gridRow: `1 / span ${boardTimeRows}` }}
+              >
+                <div className={styles.masterCalendarPrepEventText}>
+                  <span
+                    className={clsx(
+                      styles.masterCalendarPrepEventLabel,
+                      styles.masterCalendarPrepEventLabelHorizontal
+                    )}
+                  >
+                    {registrationLabel}
+                  </span>
+                  <span className={styles.masterCalendarPrepEventDeadline}>
+                    {registrationDeadlineByDay.day1}
+                  </span>
+                </div>
+              </div>
+            )}
 
             {showDayRegistration && (
               <div
@@ -1811,36 +1901,48 @@ export default function Forum(): ReactNode {
                   styles.masterCalendarPrepEvent,
                   styles.masterCalendarPrepEventDay
                 )}
-                style={{ gridColumn: "1", gridRow: "1 / span 2" }}
+                style={{ gridColumn: "1", gridRow: `1 / span ${day2RegistrationRowSpan}` }}
               >
-                <span
-                  className={clsx(
-                    styles.masterCalendarPrepEventLabel,
-                    styles.masterCalendarPrepEventLabelHorizontal
+                <div className={styles.masterCalendarPrepEventText}>
+                  <span
+                    className={clsx(
+                      styles.masterCalendarPrepEventLabel,
+                      styles.masterCalendarPrepEventLabelHorizontal
+                    )}
+                  >
+                    {registrationLabel}
+                  </span>
+                  {dayRegistrationDeadline && (
+                    <span className={styles.masterCalendarPrepEventDeadline}>
+                      {dayRegistrationDeadline}
+                    </span>
                   )}
-                >
-                  {registrationLabel}
-                </span>
+                </div>
               </div>
             )}
 
             {dayLayout?.clusters.map((cluster) => {
               const clusterRowStart = Math.max(
                 0,
-                Math.floor((cluster.startMinutes - boardStartMinutes) / 30)
+                Math.floor(
+                  (cluster.startMinutes - boardStartMinutes) / MASTER_AGENDA_GRID_STEP_MINUTES
+                )
               );
               const clusterGridStyle: CSSProperties = {
-                gridTemplateRows: `repeat(${cluster.halfHourRows}, var(--forum-agenda-half-row-height, 2.75rem))`,
+                gridTemplateRows: `repeat(${cluster.timeRows}, var(--forum-agenda-row-height, ${MASTER_AGENDA_GRID_ROW_HEIGHT_FALLBACK}))`,
                 gridTemplateColumns: `repeat(${cluster.laneCount}, minmax(0, 1fr))`,
               };
 
               return (
                 <div
                   key={`${keyPrefix}-${cluster.key}`}
-                  className={styles.masterCalendarClusterLayer}
+                  className={clsx(
+                    styles.masterCalendarClusterLayer,
+                    showParallelRegistrationLane && styles.masterCalendarClusterLayerParallel
+                  )}
                   style={{
-                    gridColumn: "1",
-                    gridRow: `${clusterRowStart + 1} / span ${cluster.halfHourRows}`,
+                    gridColumn: showParallelRegistrationLane ? "2" : "1",
+                    gridRow: `${clusterRowStart + 1} / span ${cluster.timeRows}`,
                   }}
                 >
                   <div className={styles.masterCalendarClusterGrid} style={clusterGridStyle}>
@@ -1900,7 +2002,7 @@ export default function Forum(): ReactNode {
                 styles.masterCalendarBoardHeaderPrep
               )}
             >
-              {registrationDayLabel}
+              {prepRegistrationDayLabel}
             </div>
             {agendaDayOrder.map((day) => (
               <div key={`header-${day}`} className={styles.masterCalendarBoardHeaderDay}>
@@ -1928,7 +2030,7 @@ export default function Forum(): ReactNode {
                   styles.masterCalendarBoardHeaderPrep
                 )}
               >
-                {registrationDayLabel}
+                {prepRegistrationDayLabel}
               </div>
               <div className={styles.masterCalendarBoardHeaderDay}>
                 {getTimelineDayLabel("day1")}

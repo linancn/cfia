@@ -75,21 +75,34 @@ export const masterAgendaSlots: MasterAgendaSlot[] = [
     start: "09:00",
     end: "12:00",
     activityKey: "unep-workshop",
-    shortTitle: { zh: "UNEP 全球 LCA 平台研讨会", en: "UNEP Global LCA Platform Workshop" },
+    shortTitle: {
+      zh: "UNEP 全球 LCA 平台研讨会\n（邀请制）",
+      en: "UNEP Global LCA Platform Workshop\n(Invitation Only)",
+    },
     status: "updating",
   },
   {
     id: "d1-special-factordb-am",
     day: "day1",
     track: "special",
-    start: "10:00",
-    end: "12:00",
+    start: "10:45",
+    end: "12:15",
     activityKey: "national-factor-database-forum",
     shortTitle: {
       zh: "碳足迹因子库建设专题研讨会",
       en: "China National Carbon Footprint Database Workshop",
     },
     status: "pending",
+  },
+  {
+    id: "d1-special-china-lca-am",
+    day: "day1",
+    track: "special",
+    start: "09:00",
+    end: "10:30",
+    activityKey: "china-lca",
+    shortTitle: { zh: "中国的LCA", en: "LCA in China" },
+    status: "updating",
   },
   {
     id: "d1-dev-pm",
@@ -108,7 +121,7 @@ export const masterAgendaSlots: MasterAgendaSlot[] = [
     start: "16:00",
     end: "17:30",
     activityKey: "general-assembly",
-    shortTitle: { zh: "联盟年度大会", en: "CFA General Assembly" },
+    shortTitle: { zh: "联盟年度大会\n（闭门）", en: "CFA General Assembly\n(Closed-Door)" },
     status: "published",
   },
   {
@@ -546,7 +559,7 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
   {
     activityKey: "general-assembly",
     groupKey: "special-events",
-    title: { zh: "联盟全体会员大会", en: "CFA General Assembly" },
+    title: { zh: "联盟全体会员大会\n（闭门）", en: "CFA General Assembly\n(Closed-Door)" },
     summary: {
       zh: "本次联盟全体大会将围绕联盟年度重点工作开展交流与讨论，主要包括通报联盟阶段性工作进展，审议年度工作计划和相关事项，听取成员单位意见建议，并就下一步合作方向和重点任务进行沟通协调，推动联盟各项工作有序开展。",
       en: "The CFA General Assembly will focus on the alliance’s annual priority work, including updates on phased progress, review of the annual work plan and related matters, collection of feedback and suggestions from member organizations, and coordination on next-step cooperation directions and priority tasks, in order to advance the alliance’s work in an orderly manner.",
@@ -564,7 +577,10 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
   {
     activityKey: "unep-workshop",
     groupKey: "special-events",
-    title: { zh: "UNEP 全球 LCA 平台研讨会", en: "UNEP Global LCA Platform Workshop" },
+    title: {
+      zh: "UNEP 全球 LCA 平台研讨会\n（邀请制）",
+      en: "UNEP Global LCA Platform Workshop\n(Invitation Only)",
+    },
     summaryLead: {
       zh: "主持人：Llorenç Milà i Canals，UNEP Life Cycle Initiative 秘书处负责人",
       en: "Moderator: Llorenç Milà i Canals, Head of Secretariat, UNEP Life Cycle Initiative",
@@ -594,10 +610,29 @@ export const activityAgendaDetails: ActivityAgendaDetail[] = [
       en: "This focused workshop will conduct technical discussions and exchanges around the Ministry of Ecology and Environment’s Guidelines for the Construction of Product Carbon Footprint Databases, targeting research institutions, technical service providers, industry associations, and enterprises involved in national and local database development. The workshop will focus on key topics for building high-quality databases, including methodologies and accounting boundaries, data structures and metadata, data resources and quality management, and supporting tools and platforms. Through thematic presentations, case sharing, and technical exchange, it aims to advance the development of a product carbon footprint data system that is broad in coverage, high in quality, sustainably updatable, and internationally influential.",
     },
     dateLabel: { zh: "2026 年 3 月 25 日", en: "March 25, 2026" },
-    timeRange: "Day 1 10:00-12:00",
+    timeRange: "Day 1 10:45-12:15",
     venue: { zh: "专项活动会场 1", en: "Special Events Room 1" },
     language: "zh",
     status: "pending",
+    sessions: [],
+  },
+  {
+    activityKey: "china-lca",
+    groupKey: "special-events",
+    title: { zh: "中国的LCA", en: "LCA in China" },
+    summaryLead: {
+      zh: "召集人：\n田亚峻，中国科学院青岛生物能源与过程研究所泛能源大数据与战略研究中心主任",
+      en: "Convener:\nYajun Tian, Director, Pan-Energy Big Data and Strategy Research Center, Qingdao Institute of Bioenergy and Bioprocess Technology, Chinese Academy of Sciences",
+    },
+    summary: {
+      zh: "本专项活动围绕中国 LCA 相关工作展开，聚焦方法体系与核算边界衔接、数据库建设与数据质量管理，以及重点行业应用场景中的实践经验。会议将结合政策与产业需求，分享近年在标准化、数字化工具和跨机构协作方面的进展，讨论如何进一步提升数据可用性、结果可比性与成果转化效率，支撑中国 LCA 体系的持续完善与国际对接。",
+      en: "This special event focuses on LCA work in China, with discussions on methodological framework alignment and system boundaries, database development and data quality management, and practical applications in priority industries. In light of policy and industrial needs, the session will share recent progress in standardization, digital tools, and cross-institution collaboration, and discuss how to further improve data usability, result comparability, and translation into practice to support the continued development of China’s LCA system and its international alignment.",
+    },
+    dateLabel: { zh: "2026 年 3 月 25 日", en: "March 25, 2026" },
+    timeRange: "Day 1 09:00-10:30",
+    venue: { zh: "专项活动会场 1", en: "Special Events Room 1" },
+    language: "zh",
+    status: "updating",
     sessions: [],
   },
   {

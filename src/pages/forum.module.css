@@ -490,7 +490,8 @@
 }
 
 .masterCalendarDesktop {
-  --forum-agenda-half-row-height: 2.75rem;
+  --forum-agenda-row-height: 1.375rem;
+  --forum-agenda-prep-col-size: 112px;
   display: grid;
   gap: 1rem;
 }
@@ -665,7 +666,8 @@
 }
 
 .masterCalendarDesktop {
-  --forum-agenda-half-row-height: 2.75rem;
+  --forum-agenda-row-height: 1.375rem;
+  --forum-agenda-prep-col-size: 112px;
   --forum-agenda-grid-line: #eef3f8;
   --forum-agenda-grid-line-strong: #e7edf5;
   --forum-agenda-grid-line-soft: #f3f6fa;
@@ -676,15 +678,14 @@
 }
 
 .masterCalendarStackedMobile {
-  --forum-agenda-half-row-height: 2.75rem;
+  --forum-agenda-row-height: 1.375rem;
+  --forum-agenda-prep-col-size: 112px;
   --forum-agenda-grid-line: #eef3f8;
   --forum-agenda-grid-line-strong: #e7edf5;
   --forum-agenda-grid-line-soft: #f3f6fa;
   --forum-agenda-board-bg: #ffffff;
   --forum-agenda-edge-padding: 0.45rem;
   --forum-agenda-stacked-axis-col: 84px;
-  --forum-agenda-stacked-prep-col-min: 88px;
-  --forum-agenda-stacked-prep-col-fr: 0.34fr;
   --forum-agenda-board-gap: 0.6rem;
   display: none;
   gap: 0.85rem;
@@ -699,7 +700,7 @@
   display: grid;
   grid-template-columns:
     84px
-    minmax(88px, 0.34fr)
+    var(--forum-agenda-prep-col-size, 112px)
     minmax(0, var(--forum-agenda-day1-col, 1fr))
     minmax(0, var(--forum-agenda-day2-col, 1fr));
   gap: var(--forum-agenda-board-gap, 0.6rem);
@@ -730,13 +731,15 @@
   background: #fbfcfe;
   font-size: 0.9rem;
   text-align: center;
+  white-space: pre-line;
+  line-height: 1.25;
 }
 
 .masterCalendarBoardBody {
   display: grid;
   grid-template-columns:
     84px
-    minmax(88px, 0.34fr)
+    var(--forum-agenda-prep-col-size, 112px)
     minmax(0, var(--forum-agenda-day1-col, 1fr))
     minmax(0, var(--forum-agenda-day2-col, 1fr));
   gap: var(--forum-agenda-board-gap, 0.6rem);
@@ -853,7 +856,11 @@
   grid-column: 1;
   min-width: 0;
   z-index: 1;
-  padding: 0 0.45rem;
+  padding: 0 0.36rem;
+}
+
+.masterCalendarClusterLayerParallel {
+  padding-left: 0.17rem;
 }
 
 .masterCalendarClusterGrid {
@@ -867,7 +874,7 @@
 .masterCalendarPrepEvent {
   position: relative;
   z-index: 1;
-  margin: 0.32rem 0.22rem;
+  margin: 0.32rem 0.28rem;
   border-radius: 8px;
   border: 1px solid #dfe7ee;
   background: #f7fafc;
@@ -878,6 +885,15 @@
   padding: 0.45rem 0.25rem;
 }
 
+.masterCalendarPrepEventText {
+  display: grid;
+  gap: 0.08rem;
+  justify-items: center;
+  align-content: center;
+  text-align: center;
+  width: 100%;
+}
+
 .masterCalendarPrepEventLabel {
   font-size: 0.86rem;
   font-weight: 800;
@@ -885,6 +901,15 @@
   color: #425c70;
   writing-mode: vertical-rl;
   text-orientation: mixed;
+}
+
+.masterCalendarPrepEventDeadline {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  color: #6a7f93;
+  white-space: nowrap;
 }
 
 .masterCalendarPrepEventDay {
@@ -973,6 +998,8 @@
   font-size: 0.95rem;
   font-weight: 800;
   color: #1f2f3d;
+  white-space: pre-line;
+  line-height: 1.25;
 }
 
 .masterDayTableColumns {
@@ -1196,6 +1223,7 @@
   font-weight: 700;
   line-height: 1.35;
   color: #1f2f3d;
+  white-space: pre-line;
 }
 
 .masterSlotMobile {
@@ -1330,6 +1358,7 @@
   font-size: 1.05rem;
   font-weight: 700;
   color: #1a2a33;
+  white-space: pre-line;
 }
 
 .agendaPanelToggleTitlePromoted {
@@ -3223,12 +3252,13 @@
   }
 
   .masterCalendarDesktop {
-    --forum-agenda-half-row-height: 2.45rem;
+    --forum-agenda-row-height: 1.225rem;
     display: none;
   }
 
   .masterCalendarStackedMobile {
-    --forum-agenda-half-row-height: 2.45rem;
+    --forum-agenda-row-height: 1.225rem;
+    --forum-agenda-prep-col-size: 74px;
     display: grid;
   }
 
@@ -3240,7 +3270,7 @@
   .masterCalendarBoardBody {
     grid-template-columns:
       72px
-      minmax(74px, 0.3fr)
+      var(--forum-agenda-prep-col-size, 74px)
       minmax(0, var(--forum-agenda-day1-col, 1fr))
       minmax(0, var(--forum-agenda-day2-col, 1fr));
     gap: 0.65rem;
@@ -3618,11 +3648,10 @@
   }
 
   .masterCalendarStackedMobile {
-    --forum-agenda-half-row-height: 2.15rem;
+    --forum-agenda-row-height: 1.075rem;
     --forum-agenda-edge-padding: 0.32rem;
     --forum-agenda-stacked-axis-col: 68px;
-    --forum-agenda-stacked-prep-col-min: 68px;
-    --forum-agenda-stacked-prep-col-fr: 0.26fr;
+    --forum-agenda-prep-col-size: 68px;
     --forum-agenda-board-gap: 0.42rem;
     display: grid;
   }
@@ -3662,7 +3691,11 @@
   }
 
   .masterCalendarStackedMobile .masterCalendarClusterLayer {
-    padding: 0 0.22rem;
+    padding: 0 0.2rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarClusterLayerParallel {
+    padding-left: 0.08rem;
   }
 
   .masterCalendarStackedMobile .masterCalendarClusterGrid {
@@ -3701,7 +3734,7 @@
   }
 
   .masterCalendarStackedMobile .masterCalendarPrepEvent {
-    margin: 0.18rem 0.12rem;
+    margin: 0.18rem 0.16rem;
     border-radius: 7px;
     padding: 0.28rem 0.15rem;
   }
@@ -3712,6 +3745,10 @@
 
   .masterCalendarStackedMobile .masterCalendarPrepEventLabel {
     font-size: 0.66rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarPrepEventDeadline {
+    font-size: 0.56rem;
   }
 
   .masterDayTableColumns,
@@ -4531,11 +4568,10 @@
   }
 
   .masterCalendarStackedMobile {
-    --forum-agenda-half-row-height: 1.9rem;
+    --forum-agenda-row-height: 0.95rem;
     --forum-agenda-edge-padding: 0.24rem;
     --forum-agenda-stacked-axis-col: 58px;
-    --forum-agenda-stacked-prep-col-min: 58px;
-    --forum-agenda-stacked-prep-col-fr: 0.22fr;
+    --forum-agenda-prep-col-size: 58px;
     --forum-agenda-board-gap: 0.28rem;
     gap: 0.55rem;
   }
@@ -4570,7 +4606,11 @@
   }
 
   .masterCalendarStackedMobile .masterCalendarClusterLayer {
-    padding: 0 0.14rem;
+    padding: 0 0.12rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarClusterLayerParallel {
+    padding-left: 0.04rem;
   }
 
   .masterCalendarStackedMobile .masterCalendarClusterGrid {
@@ -4607,7 +4647,7 @@
   }
 
   .masterCalendarStackedMobile .masterCalendarPrepEvent {
-    margin: 0.12rem 0.08rem;
+    margin: 0.12rem 0.12rem;
     border-radius: 6px;
     padding: 0.2rem 0.1rem;
   }
@@ -4618,6 +4658,10 @@
 
   .masterCalendarStackedMobile .masterCalendarPrepEventLabel {
     font-size: 0.58rem;
+  }
+
+  .masterCalendarStackedMobile .masterCalendarPrepEventDeadline {
+    font-size: 0.5rem;
   }
 
   .masterDayTableColumns,

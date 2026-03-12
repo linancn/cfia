@@ -1067,7 +1067,7 @@
     "message": "Joint activities across institutions and global collaboration sessions; updated in real time."
   },
   "forum.agenda.special.assembly": {
-    "message": "CFA General Assembly"
+    "message": "CFA General Assembly\n(Closed-Door)"
   },
   "forum.agenda.special.assembly.lead": {
     "message": "Review annual work and release yearly plans and milestone outcomes."
@@ -1076,7 +1076,7 @@
     "message": "Special Event"
   },
   "forum.agenda.special.unep": {
-    "message": "Global LCA Platform Workshop"
+    "message": "UNEP Global LCA Platform Workshop\n(Invitation Only)"
   },
   "forum.agenda.special.unep.lead": {
     "message": "UNEP Global LCA Platform working group meeting."
@@ -1092,6 +1092,12 @@
   },
   "forum.agenda.special.powerWorkshop.lead": {
     "message": "Program and agenda to be confirmed."
+  },
+  "forum.agenda.special.chinaLca": {
+    "message": "LCA in China"
+  },
+  "forum.agenda.special.chinaLca.lead": {
+    "message": "Focus on methodological frameworks, database development, and application practices for LCA in China."
   },
   "forum.agenda.special.climate": {
     "message": "International Cooperation on Climate Change and Carbon Neutrality"
