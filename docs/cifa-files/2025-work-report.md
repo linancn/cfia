@@ -1,6 +1,5 @@
 ---
 sidebar_position: 5
-sidebar_label: 碳足迹产业技术创新联盟年度工作报告
 ---
 
 # 碳足迹产业技术创新联盟年度工作报告
