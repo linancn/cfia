@@ -120,6 +120,11 @@ export type ForumHighlight = {
   image?: string;
   /** 该届的存档页地址；填了卡片就会变成可点击的链接。 */
   to?: string;
+  /**
+   * 作为「上一届」重点呈现：卡片占满整行、图文左右分栏，并带强调标签。
+   * 一届最多标一张，标多了版式会乱。
+   */
+  featured?: boolean;
 };
 
 /** 参会嘉宾。全站按 key 唯一，同一个人跨年份复用同一条记录。 */
@@ -227,23 +232,41 @@ export type ForumEditionLink = {
 export type ForumPlanningItem = {
   label: ForumText;
   value: ForumText;
-  /** 附加说明，例如「拟定，待确认」。 */
-  note?: ForumText;
 };
 
 /**
  * 筹备期说明。
  *
- * 会议方案尚未定稿、议程与报名都没开放时，页面靠这一段对外交代已经
- * 确定的基本安排。没有内容就不填，整段不渲染；会议结束后自动让位给存档提示。
+ * 会期、地点、定位这类「会议是什么、什么时候、在哪」的基本信息。
+ * 没有内容就不填，整段不渲染；会议结束后自动让位给存档提示。
  */
 export type ForumPlanning = {
   /** 导语，通常是一段定位说明。 */
   intro?: ForumText;
-  /** 基本安排（会期、地点、规模、办会模式等）。 */
+  /** 基本安排（会期、地点等）。 */
   facts?: ForumPlanningItem[];
-  /** 年度框架或主线，例如 BUILD / SHAPE / ACT。 */
-  pillars?: ForumPlanningItem[];
+};
+
+/** 年度框架的一项，例如 BUILD — 能力基础。 */
+export type ForumFrameworkItem = {
+  /** 英文标签，例如 `BUILD`。 */
+  label: ForumText;
+  /** 对应的中文落点，例如「能力基础」。 */
+  stage?: ForumText;
+  /** 这个阶段要做的事。 */
+  value: ForumText;
+};
+
+/**
+ * 年度框架，例如 BUILD — SHAPE — ACT。
+ *
+ * 按顺序渲染，三项分别取三种强调色（见 `.frameworkCard`），
+ * 所以顺序本身就是设计的一部分，不要随意调换。
+ */
+export type ForumFramework = {
+  /** 一句话说明主线逻辑。 */
+  intro?: ForumText;
+  items: ForumFrameworkItem[];
 };
 
 export type ForumEdition = {
@@ -262,8 +285,11 @@ export type ForumEdition = {
   /** 存档页的一段回顾说明，写在「会议已结束」提示下面。 */
   summary?: ForumText;
 
-  /** 筹备期说明：会期、地点、定位与年度框架。定稿页可以不填。 */
+  /** 筹备期说明：会期、地点与定位。定稿页可以不填。 */
   planning?: ForumPlanning;
+
+  /** 年度框架，例如 BUILD — SHAPE — ACT。 */
+  framework?: ForumFramework;
 
   /**
    * 首屏以外的届次内容。以下字段名与渲染逻辑一致，便于整体传入。

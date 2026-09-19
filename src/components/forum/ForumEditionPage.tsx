@@ -20,6 +20,7 @@ import {
   type ActivityAgendaDetail,
   type ActivitySession,
   type ForumEdition,
+  type ForumHighlight,
   type ForumPerson,
   type ForumText,
   type MasterAgendaSlot,
@@ -638,6 +639,7 @@ export default function ForumEditionPage({
     venue,
     registration,
     planning,
+    framework,
     highlights = [],
     people = [],
     devConfLogos = [],
@@ -662,6 +664,9 @@ export default function ForumEditionPage({
     devConfLogos.length > 0;
   const hasPeople = people.length > 0;
   const hasHighlights = highlights.length > 0;
+  // 标了 featured 的整行呈现（「上一届」），其余按网格平铺。
+  const featuredHighlights = highlights.filter((item) => item.featured);
+  const restHighlights = highlights.filter((item) => !item.featured);
 
   const { i18n } = useDocusaurusContext();
   // 年份数据里的图片都是相对 static 的路径（`img/...`）。存档页在
@@ -673,7 +678,71 @@ export default function ForumEditionPage({
   const venueImage = withBaseUrl(venue?.image ?? "");
 
   /**
-   * 筹备期说明。只在会议尚未结束时出现，内容为空则整段不渲染。
+   * 历届论坛的一张卡片。标了 `featured` 的那张走整行图文分栏，并带「上一届」标记。
+   * 有存档页地址的整块可点，没有的还是普通卡片。
+   */
+  const renderHighlightCard = (session: ForumHighlight, key: string): ReactNode => {
+    const isFeatured = Boolean(session.featured);
+    const className = clsx(
+      styles.card,
+      isFeatured && styles.cardFeatured,
+      session.to && styles.cardLink,
+    );
+
+    const body = (
+      <>
+        <div className={clsx(styles.cardPhoto, isFeatured && styles.cardPhotoFeatured)}>
+          {session.image && (
+            <img
+              src={withBaseUrl(session.image)}
+              alt={getForumTextValue(session.title, isZh)}
+              className={styles.cardPhotoImg}
+              loading="lazy"
+            />
+          )}
+          <div className={styles.cardPhotoLabel}>
+            {renderForumText(session.theme ?? session.title, isZh)}
+          </div>
+        </div>
+        <div className={styles.cardText}>
+          <div className={styles.cardMetaRow}>
+            <span className={styles.pill}>{renderForumText(session.date, isZh)}</span>
+            {isFeatured && (
+              <span className={styles.pillLatest}>
+                {isZh ? "上一届" : "Previous edition"}
+              </span>
+            )}
+          </div>
+          <div className={clsx(styles.cardTitle, isFeatured && styles.cardTitleFeatured)}>
+            {renderForumText(session.title, isZh)}
+          </div>
+          <div className={styles.cardMeta}>{renderForumText(session.focus, isZh)}</div>
+          {session.tags && (
+            <div className={styles.badgeRow}>
+              {session.tags.map((tag, tagIndex) => (
+                <span key={tagIndex} className={styles.badge}>
+                  {renderForumText(tag, isZh)}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      </>
+    );
+
+    return session.to ? (
+      <Link key={key} to={session.to} className={className}>
+        {body}
+      </Link>
+    ) : (
+      <div key={key} className={className}>
+        {body}
+      </div>
+    );
+  };
+
+  /**
+   * 筹备期说明（会期、地点、定位）。只在会议尚未结束时出现，内容为空则整段不渲染。
    * 会议信息一旦定稿，把 `planning` 去掉即可，不用改渲染逻辑。
    */
   const renderPlanningBlock = (): ReactNode => {
@@ -682,8 +751,7 @@ export default function ForumEditionPage({
     }
 
     const facts = planning.facts ?? [];
-    const pillars = planning.pillars ?? [];
-    if (!planning.intro && facts.length === 0 && pillars.length === 0) {
+    if (!planning.intro && facts.length === 0) {
       return null;
     }
 
@@ -714,80 +782,112 @@ export default function ForumEditionPage({
                   </dt>
                   <dd className={styles.planningFactValue}>
                     {renderForumText(item.value, isZh)}
-                    {item.note && (
-                      <span className={styles.planningFactNote}>
-                        {renderForumText(item.note, isZh)}
-                      </span>
-                    )}
                   </dd>
                 </div>
               ))}
             </dl>
-          )}
-
-          {pillars.length > 0 && (
-            <div className={styles.planningPillarGrid}>
-              {pillars.map((item, index) => (
-                <div key={index} className={styles.planningPillar}>
-                  <span className={styles.pill}>
-                    {renderForumText(item.label, isZh)}
-                  </span>
-                  <div className={styles.cardMeta}>
-                    {renderForumText(item.value, isZh)}
-                  </div>
-                </div>
-              ))}
-            </div>
           )}
         </div>
       </section>
     );
   };
 
-  /** 存档页顶部的说明与其它届次入口。 */
-  const renderEditionNotice = (): ReactNode => {
-    const otherEditions = getOtherForumEditions(edition.year);
-    if (!isArchived && otherEditions.length === 0) {
+  /**
+   * 年度框架（BUILD — SHAPE — ACT）。按顺序取三种强调色，
+   * 三项各占一卡、标签大字排在最前，是本届页面的视觉重心。
+   */
+  const renderFrameworkBlock = (): ReactNode => {
+    if (!framework || isArchived || framework.items.length === 0) {
       return null;
     }
+
+    return (
+      <section id="framework" className={styles.section}>
+        <div className="container">
+          <div className={styles.sectionHeader}>
+            <p className={styles.sectionTitle}>
+              {isZh ? "2027 年度框架" : "The 2027 framework"}
+            </p>
+            {framework.intro && (
+              <p className={styles.sectionHint}>
+                {renderForumText(framework.intro, isZh)}
+              </p>
+            )}
+          </div>
+          <div className={styles.frameworkGrid}>
+            {framework.items.map((item, index) => (
+              <div
+                key={index}
+                className={clsx(
+                  styles.frameworkCard,
+                  styles[`frameworkTone${index % 3}`],
+                )}
+              >
+                <span className={styles.frameworkLabel}>
+                  {renderForumText(item.label, isZh)}
+                </span>
+                {item.stage && (
+                  <span className={styles.frameworkStage}>
+                    {renderForumText(item.stage, isZh)}
+                  </span>
+                )}
+                <p className={styles.frameworkValue}>
+                  {renderForumText(item.value, isZh)}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  };
+
+  /**
+   * 存档页顶部的说明与其它届次入口。
+   *
+   * 只在存档页出现：当前届次的历届入口由「往期精选」那组卡片承担，
+   * 一页不放两套届次入口。
+   */
+  const renderEditionNotice = (): ReactNode => {
+    if (!isArchived) {
+      return null;
+    }
+
+    const otherEditions = getOtherForumEditions(edition.year);
     return (
       <section className={clsx(styles.section, styles.lightSection)}>
         <div className="container">
           <div className={styles.sectionHeader}>
             <p className={styles.sectionTitle}>
-              {isArchived
-                ? isZh
-                  ? `天工论坛 ${edition.year} 已结束`
-                  : `TianGong Forum ${edition.year} has concluded`
-                : isZh
-                  ? "历届天工论坛"
-                  : "Forum editions"}
+              {isZh
+                ? `天工论坛 ${edition.year} 已结束`
+                : `TianGong Forum ${edition.year} has concluded`}
             </p>
-            {isArchived && (
-              <p className={styles.sectionHint}>
-                {isZh
-                  ? "本页是会议存档，内容保持会议当时的信息，不再更新。"
-                  : "This page is an archive. Its content is kept as it was during the event and is no longer updated."}
-              </p>
-            )}
+            <p className={styles.sectionHint}>
+              {isZh
+                ? "本页是会议存档，内容保持会议当时的信息，不再更新。"
+                : "This page is an archive. Its content is kept as it was during the event and is no longer updated."}
+            </p>
           </div>
-          {isArchived && edition.summary && (
+          {edition.summary && (
             <p className={styles.sectionLead}>{renderForumText(edition.summary, isZh)}</p>
           )}
-          <div className={styles.cardGrid}>
-            {otherEditions.map((item) => (
-              <Link
-                key={item.year}
-                to={item.to}
-                className={clsx(styles.card, styles.cardLink, styles.editionCard)}
-              >
-                <span className={styles.pill}>{item.year}</span>
-                <div className={styles.cardTitle}>
-                  {isZh ? `天工论坛 ${item.year}` : `TianGong Forum ${item.year}`}
-                </div>
-              </Link>
-            ))}
-          </div>
+          {otherEditions.length > 0 && (
+            <div className={styles.cardGrid}>
+              {otherEditions.map((item) => (
+                <Link
+                  key={item.year}
+                  to={item.to}
+                  className={clsx(styles.card, styles.cardLink, styles.editionCard)}
+                >
+                  <span className={styles.pill}>{item.year}</span>
+                  <div className={styles.cardTitle}>
+                    {isZh ? `天工论坛 ${item.year}` : `TianGong Forum ${item.year}`}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
     );
@@ -2798,9 +2898,10 @@ export default function ForumEditionPage({
         <main>
           {/* 筹备期先把「这是哪一届、什么时候、在哪」交代清楚，放在首屏之后。 */}
           {renderPlanningBlock()}
-          {/* 存档页把「已结束」说明与历届入口放在最上面；当前届次则放到页尾，
-              避免筹备期的页面开头就是历史内容。 */}
-          {isArchived && renderEditionNotice()}
+          {/* 紧接着是本届的年度框架，三个支柱是这一页的视觉重心。 */}
+          {renderFrameworkBlock()}
+          {/* 存档页把「已结束」说明与其它届次入口放在最上面。 */}
+          {renderEditionNotice()}
           {hasPartnerLogos && (
             <section className={clsx(styles.section, styles.lightSection)}>
               <div className="container">
@@ -3033,72 +3134,33 @@ export default function ForumEditionPage({
               <div className="container">
                 <div className={styles.sectionHeader}>
                   <p className={styles.sectionTitle}>
-                    <Translate id="forum.section.highlights">往期精选</Translate>
+                    <Translate id="forum.section.highlights">历届天工论坛</Translate>
                   </p>
                   <p className={styles.sectionHint}>
                     <Translate id="forum.section.highlights.desc">
-                      典型议题、成果发布与产业合作案例的快速回顾。
+                      历届论坛的主题、时间地点与主要成果，点击可查看对应存档。
                     </Translate>
                   </p>
                 </div>
-                <div className={styles.cardGrid}>
-                  {highlights.map((session, index) => {
-                    const cardBody = (
-                      <>
-                        <div className={styles.cardPhoto}>
-                          {session.image && (
-                            <img
-                              src={withBaseUrl(session.image)}
-                              alt={getForumTextValue(session.title, isZh)}
-                              className={styles.cardPhotoImg}
-                              loading="lazy"
-                            />
-                          )}
-                          <div className={styles.cardPhotoLabel}>
-                            {renderForumText(session.theme ?? session.title, isZh)}
-                          </div>
-                        </div>
-                        <span className={styles.pill}>
-                          {renderForumText(session.date, isZh)}
-                        </span>
-                        <div className={styles.cardTitle}>
-                          {renderForumText(session.title, isZh)}
-                        </div>
-                        <div className={styles.cardMeta}>
-                          {renderForumText(session.focus, isZh)}
-                        </div>
-                        {session.tags && (
-                          <div className={styles.badgeRow}>
-                            {session.tags.map((tag, tagIndex) => (
-                              <span key={tagIndex} className={styles.badge}>
-                                {renderForumText(tag, isZh)}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-                      </>
-                    );
-
-                    // 有存档页地址的卡片整块可点，没有的还是普通卡片。
-                    return session.to ? (
-                      <Link
-                        key={index}
-                        to={session.to}
-                        className={clsx(styles.card, styles.cardLink)}
-                      >
-                        {cardBody}
-                      </Link>
-                    ) : (
-                      <div key={index} className={styles.card}>
-                        {cardBody}
-                      </div>
-                    );
-                  })}
-                </div>
+                {/* 「上一届」整行呈现，其余届次平铺。两者不放同一个网格：
+                    跨列的卡片会让 auto-fit 在末尾留下空轨道。 */}
+                {featuredHighlights.length > 0 && (
+                  <div className={styles.featuredStack}>
+                    {featuredHighlights.map((session, index) =>
+                      renderHighlightCard(session, `featured-${index}`),
+                    )}
+                  </div>
+                )}
+                {restHighlights.length > 0 && (
+                  <div className={styles.cardGrid}>
+                    {restHighlights.map((session, index) =>
+                      renderHighlightCard(session, `highlight-${index}`),
+                    )}
+                  </div>
+                )}
               </div>
             </section>
           )}
-          {!isArchived && renderEditionNotice()}
         </main>
       </div>
     </Layout>

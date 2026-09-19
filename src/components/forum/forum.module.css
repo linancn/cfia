@@ -108,7 +108,7 @@
   line-height: 1.7;
 }
 
-/* 筹备期板块：会议信息还没公布时，用「标签 + 内容」的两列卡片交代已定事项。
+/* 筹备期板块：用「标签 + 内容」的卡片交代会期、地点这类已定事项。
    与 `renderPlanningBlock()` 对应；`planningFact` 是 <dl> 里的一行。 */
 .planningFacts {
   display: grid;
@@ -144,31 +144,117 @@
   line-height: 1.6;
 }
 
-/* 「拟定，待确认」这类补充说明，跟在内容后面，轻一档以示区分。 */
-.planningFactNote {
-  margin-left: 0.45rem;
-  color: #8a6d1f;
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
-.planningPillarGrid {
+/* 年度框架（BUILD — SHAPE — ACT）：本届页面的视觉重心，三个支柱各占一卡、
+   各取一种强调色，标签用大字排在卡片最前。 */
+.frameworkGrid {
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  max-width: 960px;
-  margin: 1.2rem auto 0;
+  gap: 1.2rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 1040px;
+  margin: 0 auto;
 }
 
-.planningPillar {
+.frameworkCard {
   display: grid;
   gap: 0.5rem;
-  justify-items: start;
-  padding: 1.1rem 1.2rem;
-  border: 1px solid #e6edf5;
-  border-radius: 12px;
+  align-content: start;
+  padding: 1.5rem 1.5rem 1.7rem;
+  border: 1px solid var(--framework-border);
+  border-top: 4px solid var(--framework-accent);
+  border-radius: 14px;
   background: #ffffff;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 14px 34px rgba(16, 36, 58, 0.07);
+}
+
+/* 顺序即 BUILD → SHAPE → ACT（渲染时按 index 取模取这一组），别单独调换。 */
+.frameworkTone0 {
+  --framework-accent: #106fca;
+  --framework-border: #bcd8f2;
+}
+
+.frameworkTone1 {
+  --framework-accent: #5c246a;
+  --framework-border: #d8c3de;
+}
+
+.frameworkTone2 {
+  --framework-accent: #a9761a;
+  --framework-border: #e7d3a5;
+}
+
+.frameworkLabel {
+  color: var(--framework-accent);
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1.1;
+}
+
+.frameworkStage {
+  color: var(--framework-accent);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+
+.frameworkValue {
+  margin: 0.15rem 0 0;
+  color: #3c4a5a;
+  line-height: 1.7;
+}
+
+/* 卡片里包住文字的一块。抽出来是为了让 `cardFeatured` 能图文分栏。 */
+.cardText {
+  display: grid;
+  gap: 0.4rem;
+  align-content: start;
+}
+
+/* 年份胶囊和「上一届」标记并排，避免胶囊被网格拉满整行。 */
+.cardMetaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* 「上一届」那张卡：整行宽、图文左右分栏，比同组其它届次明显重一档。
+   单独放在 `.cardGrid` 上方（`.featuredStack`），不进网格，
+   否则 auto-fit 会因为它跨列而在同行留下空轨道。 */
+.featuredStack {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cardFeatured {
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 1.6rem;
+  align-items: center;
+  border-color: #b9d4ef;
+  box-shadow: 0 18px 40px rgba(16, 112, 202, 0.14);
+}
+
+.cardPhotoFeatured {
+  height: 260px;
+}
+
+.cardTitleFeatured {
+  font-size: 1.35rem;
+  line-height: 1.4;
+}
+
+/* 「上一届」标记，比普通年份胶囊更醒目。 */
+.pillLatest {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  background: #106fca;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
 }
 
 .cardHeader {
@@ -3523,8 +3609,7 @@
   border-bottom-color: rgba(216, 227, 242, 0.08);
 }
 
-[data-theme='dark'] .planningFact,
-[data-theme='dark'] .planningPillar {
+[data-theme='dark'] .planningFact {
   background: var(--ifm-background-surface-color);
   border-color: rgba(216, 227, 242, 0.14);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
@@ -3538,8 +3623,36 @@
   color: #e8eef7;
 }
 
-[data-theme='dark'] .planningFactNote {
-  color: #d9c07a;
+/* 只改背景和阴影，边框颜色交给 --framework-border，
+   否则这里的 border-color 会把上面那条彩色顶边一起盖掉。 */
+[data-theme='dark'] .frameworkCard {
+  background: var(--ifm-background-surface-color);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+}
+
+/* 暗色下三种强调色要提亮，否则蓝和紫在深底上分不出来。 */
+[data-theme='dark'] .frameworkTone0 {
+  --framework-accent: #5aa9f0;
+  --framework-border: rgba(90, 169, 240, 0.34);
+}
+
+[data-theme='dark'] .frameworkTone1 {
+  --framework-accent: #c79ae0;
+  --framework-border: rgba(199, 154, 224, 0.34);
+}
+
+[data-theme='dark'] .frameworkTone2 {
+  --framework-accent: #e0b862;
+  --framework-border: rgba(224, 184, 98, 0.34);
+}
+
+[data-theme='dark'] .frameworkValue {
+  color: #c8d3e2;
+}
+
+[data-theme='dark'] .cardFeatured {
+  border-color: rgba(154, 197, 240, 0.42);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
 }
 
 [data-theme='dark'] .heroGlow {
@@ -4999,6 +5112,33 @@
 
   .cardGrid {
     gap: 0.9rem;
+  }
+
+  /* 三个支柱到窄屏改竖排，「上一届」卡片也不再分栏。 */
+  .frameworkGrid {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .frameworkCard {
+    padding: 1.2rem 1.2rem 1.4rem;
+  }
+
+  .frameworkLabel {
+    font-size: 1.5rem;
+  }
+
+  .cardFeatured {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .cardPhotoFeatured {
+    height: 200px;
+  }
+
+  .cardTitleFeatured {
+    font-size: 1.15rem;
   }
 
   .cardPhoto {

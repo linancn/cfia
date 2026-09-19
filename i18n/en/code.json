@@ -887,10 +887,10 @@
     "message": "TianGong LCA Platform"
   },
   "forum.section.highlights": {
-    "message": "Past Highlights"
+    "message": "Forum editions"
   },
   "forum.section.highlights.desc": {
-    "message": "A quick recap of featured topics, releases, and collaboration cases."
+    "message": "Theme, dates, venue and key outcomes of past editions. Open one to see its archive."
   },
   "forum.section.mainActivities": {
     "message": "Main Activities"
