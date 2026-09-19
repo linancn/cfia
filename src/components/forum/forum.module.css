@@ -155,10 +155,13 @@
 }
 
 /* 主办单位那一格装的是图形而不是文字，所以用不着 `planningFactValue`
-   的字色与行高，只需要把 <dd> 的缩进清掉。 */
+   的字色与行高，只需要把 <dd> 的缩进清掉。
+   `margin-top` 是标签和 logo 之间的呼吸空间——logo 有 72px 高，
+   几乎填满第二行，不加这条的话它会几乎贴住上面的「主办」标签
+   （实测只有 7px），而右边两格的正文离标签有 30px 上下。 */
 .planningFactLogoBox {
   align-self: center;
-  margin: 0;
+  margin: 1rem 0 0;
 }
 
 /* CFA logo 已把四周的透明留白裁掉（2026-09-19：700×284 → 538×166，

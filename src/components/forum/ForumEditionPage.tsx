@@ -767,8 +767,11 @@ export default function ForumEditionPage({
           <dl className={styles.planningFacts}>
             {hostLogo && (
               <div className={styles.planningFact}>
+                {/* 标签用短词「主办」，和「会期」「地点」一样是两字标签；
+                    不复用 `forum.section.organizers`（主办单位 / Organized by），
+                    那是 2026 存档页席位板块的标题，改它会牵连那边。 */}
                 <dt className={styles.planningFactLabel}>
-                  <Translate id="forum.section.organizers">主办单位</Translate>
+                  {renderForumText({ zh: "主办", en: "Host" }, isZh)}
                 </dt>
                 <dd className={styles.planningFactLogoBox}>
                   <img
