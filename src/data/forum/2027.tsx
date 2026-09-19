@@ -5,8 +5,8 @@ import type { ForumEdition } from "./types";
  *
  * 内容依据《2027·天工论坛 会议计划（唯一事实文档）》v0.1（编制日期 2026-09-16）。
  *
- * 现阶段只公布筹备初期适合给出的信息：主题框架 BUILD — SHAPE — ACT、
- * 会期与地点（hero 与筹备卡片各呈现一次），以及历届入口。
+ * 现阶段只公布筹备初期适合给出的信息：议程框架 BUILD — SHAPE — ACT、
+ * 会期与地点（hero 与筹备卡片各呈现一次）、主办单位，以及历届入口。
  * 以下内容一律不上站，等文档确认后再逐项补：议程草案细节、目标参会机构名单、
  * 赞助档位与目标金额、向北京市的支持诉求、组织分工、倒排计划、
  * 首轮任务清单、风险提示。
@@ -35,7 +35,7 @@ export const edition2027: ForumEdition = {
       en: "Product Carbon Footprint and Green Supply Chains: Capabilities, Rules and Action",
     },
     date: {
-      zh: "2027 年 3 月 24 - 26 日  北京",
+      zh: "2027 年 3 月 24 - 26 日  中国 · 北京",
       en: "March 24-26, 2027 · Beijing, China",
     },
     image: "img/tg-forum/kv.jpg",
@@ -46,22 +46,19 @@ export const edition2027: ForumEdition = {
     facts: [
       {
         label: { zh: "会期", en: "Dates" },
-        value: {
-          zh: "2027 年 3 月 24 - 26 日（周三至周五）",
-          en: "March 24-26, 2027 (Wednesday to Friday)",
-        },
+        value: { zh: "2027 年 3 月 24 - 26 日", en: "March 24-26, 2027" },
       },
       {
         label: { zh: "地点", en: "City" },
-        value: { zh: "北京", en: "Beijing, China" },
+        value: { zh: "中国 · 北京", en: "Beijing, China" },
       },
     ],
   },
 
   framework: {
     intro: {
-      zh: "打通「能力基础 — 规则协同 — 联合行动」的完整链条。",
-      en: "One chain, from capabilities to rules to joint action.",
+      zh: "贯通「能力基础 — 规则协同 — 联合行动」的完整链条。",
+      en: "One complete chain, from capabilities to rules to joint action.",
     },
     items: [
       {
@@ -136,6 +133,17 @@ export const edition2027: ForumEdition = {
       ],
       image: "img/tg-forum/past/tg-forum-1st.jpg",
       to: "/forum/2023",
+    },
+  ],
+
+  // 筹备期只公布主办单位（联盟自己）。联合主办、钻石赞助商、支持机构
+  // 都还没定，留空即可——渲染时缺的席位整张卡跳过，不会出现空壳。
+  // 下标含义见 types.ts 的 `organizerLogos`：`[0]` 就是主办单位。
+  organizerLogos: [
+    {
+      key: "cfa",
+      name: "CFA",
+      src: "img/tg-forum/orgnizations/events/cfa.png",
     },
   ],
 

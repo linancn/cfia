@@ -295,6 +295,11 @@ export type ForumEdition = {
   highlights?: ForumHighlight[];
   people?: ForumPerson[];
   devConfLogos?: ForumDevConfLogo[];
+  /**
+   * 主办一类的席位，**按固定下标**取用：`[0]` 主办单位、`[1]` 联合主办单位、
+   * `[2]` 钻石赞助商。缺的席位留空即可（渲染时会整张卡跳过，不会出现空壳），
+   * 所以筹备期的届次只填 `[0]` 是正常的。
+   */
   organizerLogos?: ForumOrganizerLogo[];
   supportInstitutionLogos?: ForumSupportLogo[];
   agendaGroups?: ForumAgendaGroup[];

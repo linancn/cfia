@@ -236,11 +236,20 @@
    所以网格里的图片宽 C - 2.6rem。本卡铺满整行 W，内容盒宽 P = W - 2.6rem，
    要放下的图片宽 = C - 2.6rem = P/2 - 1.8rem，即 50% - 1.8rem。
    图片左边缘两边都是「容器左边 + 1.3rem」，天然对齐。
-   列间距取 2.6rem，正好让文字从上面那张卡片的右边缘再退 1.3rem 起排。
-   图片本身不另设高度，与网格里的卡片同尺寸——高度上也不做出入。 */
-.cardFeatured {
+   图片本身不另设高度，与网格里的卡片同尺寸——高度上也不做出入。
+
+   列间距 3.6rem 同样是推的：右边那列卡片的内容（年份胶囊、标题）起点是
+   「容器左边 + C + 1rem + 1.3rem」。要让它和本卡的文字左边缘落在同一条
+   竖线上，间距就得是 3.6rem。顺带把图文之间的留白拉到 57.6px，
+   比紧贴图片好看得多。改这个数之前先回去看 `.highlightGrid` 的列数和卡片内边距。
+
+   选择器必须写成 `.card.cardFeatured`（两个类），**不能只写 `.cardFeatured`**：
+   `.card` 里也有 `gap` / `border-color` / `box-shadow`，只写一个类的话权重相同，
+   按源码顺序靠后的 `.card` 会把这里的值全盖掉——列间距、强调边框、投影都会失效，
+   而且看代码完全看不出来。两个类权重更高，与谁先谁后无关。 */
+.card.cardFeatured {
   grid-template-columns: calc(50% - 1.8rem) minmax(0, 1fr);
-  column-gap: 2.6rem;
+  column-gap: 3.6rem;
   row-gap: 1rem;
   align-items: center;
   border-color: #b9d4ef;
@@ -3118,12 +3127,6 @@
   white-space: pre-line;
 }
 
-.cardGrid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-}
-
 /* 历届列表固定两列，不用 auto-fit：上面那张重点卡的图片列宽是按两列
    算出来的（见 `.cardFeatured`），列数一变就对不齐了。 */
 .highlightGrid {
@@ -3147,12 +3150,6 @@
   color: inherit;
   text-decoration: none;
   transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-}
-
-/* 历届入口卡片里只有年份胶囊和标题。`.card` 是 grid，默认会让胶囊拉满整行，
-   所以这里把子项按内容宽度左对齐。 */
-.editionCard {
-  justify-items: start;
 }
 
 .cardLink:hover,
@@ -3335,6 +3332,14 @@
   gap: 1rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: stretch;
+}
+
+/* 只有「主办单位」一个席位时（筹备期的届次就是这样），
+   不要把卡片拉满整行：收成三列布局里一列的宽度，居中摆。 */
+.partnerGroupGridSingle {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 360px;
+  margin: 0 auto;
 }
 
 .partnerGroupCard {
@@ -3648,7 +3653,7 @@
   color: #c8d3e2;
 }
 
-[data-theme='dark'] .cardFeatured {
+[data-theme='dark'] .card.cardFeatured {
   border-color: rgba(154, 197, 240, 0.42);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
 }
@@ -5108,12 +5113,12 @@
     line-height: 1.4;
   }
 
-  .cardGrid,
   .highlightGrid {
     gap: 0.9rem;
   }
 
-  /* 三个支柱到窄屏改竖排，重点卡片也不再分栏。 */
+  /* 三个支柱到窄屏改竖排，重点卡片也不再分栏。权重要和基础规则一致，
+     否则压不过 `.card.cardFeatured`。 */
   .frameworkGrid {
     grid-template-columns: 1fr;
     gap: 0.9rem;
@@ -5127,7 +5132,7 @@
     font-size: 1.5rem;
   }
 
-  .cardFeatured {
+  .card.cardFeatured {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
@@ -5737,7 +5742,6 @@
     line-height: 1.35;
   }
 
-  .cardGrid,
   .highlightGrid {
     gap: 0.75rem;
     grid-template-columns: 1fr;

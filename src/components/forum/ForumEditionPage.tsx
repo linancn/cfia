@@ -9,7 +9,6 @@ import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 
 import {
   editionPath,
   findEditionYearByActivityKey,
-  getOtherForumEditions,
 } from "../../data/forum";
 import {
   agendaTrackOrder,
@@ -658,10 +657,14 @@ export default function ForumEditionPage({
   const devConfLogoByKey = new Map(devConfLogos.map((logo) => [logo.key, logo]));
   const isArchived = edition.phase === "closed";
   const hasAgenda = masterAgendaSlots.length > 0;
-  const hasPartnerLogos =
-    organizerLogos.length > 0 ||
-    supportInstitutionLogos.length > 0 ||
-    devConfLogos.length > 0;
+  // 这一块只渲染主办席位与支持机构，判断条件要和它渲染的内容一致。
+  // （`devConfLogos` 是在议程板块里用的，不算在内，否则会渲染出一个空板块。）
+  const hasPartnerLogos = organizerLogos.length > 0 || supportInstitutionLogos.length > 0;
+  // 主办一类的席位。三个席位按数据约定各占固定下标（见 types.ts 的
+  // `organizerLogos`），缺的就不渲染，而不是留一张空卡。
+  const partnerSlotCount = [organizerLogos[0], organizerLogos[1], organizerLogos[2]].filter(
+    Boolean,
+  ).length;
   const hasPeople = people.length > 0;
   const hasHighlights = highlights.length > 0;
   // 标了 featured 的整行呈现（「上一届」），其余按网格平铺。
@@ -770,7 +773,7 @@ export default function ForumEditionPage({
   };
 
   /**
-   * 本届主题（BUILD — SHAPE — ACT）。按顺序取三种强调色，
+   * 本届议程框架（BUILD — SHAPE — ACT）。按顺序取三种强调色，
    * 三项各占一卡、标签大字排在最前，是本届页面的视觉重心。
    */
   const renderFrameworkBlock = (): ReactNode => {
@@ -783,9 +786,7 @@ export default function ForumEditionPage({
         <div className="container">
           <div className={styles.sectionHeader}>
             <p className={styles.sectionTitle}>
-              {isZh
-                ? `天工论坛 · ${edition.year} 主题`
-                : `TianGong Forum ${edition.year} · Theme`}
+              {isZh ? "议程框架" : "Agenda framework"}
             </p>
             {framework.intro && (
               <p className={styles.sectionHint}>
@@ -822,51 +823,22 @@ export default function ForumEditionPage({
   };
 
   /**
-   * 存档页顶部的说明与其它届次入口。
+   * 存档页的回顾段落，紧贴 hero 下方。
    *
-   * 只在存档页出现：当前届次的历届入口由「往期精选」那组卡片承担，
-   * 一页不放两套届次入口。
+   * 这一块原来还带着「天工论坛 YYYY 已结束」标题、存档说明和三个届次入口卡片。
+   * 届次入口与底部的「历届天工论坛」重复，2026-09-19 按剑川意见把标题、说明、
+   * 入口卡片一并删除，只留下 `summary` 这段正文（没有填 summary 的届次整块不渲染，
+   * 例如 2026）。hero 上的「会议已结束」胶囊继续承担存档提示。
    */
-  const renderEditionNotice = (): ReactNode => {
-    if (!isArchived) {
+  const renderArchiveSummary = (): ReactNode => {
+    if (!isArchived || !edition.summary) {
       return null;
     }
 
-    const otherEditions = getOtherForumEditions(edition.year);
     return (
       <section className={clsx(styles.section, styles.lightSection)}>
         <div className="container">
-          <div className={styles.sectionHeader}>
-            <p className={styles.sectionTitle}>
-              {isZh
-                ? `天工论坛 ${edition.year} 已结束`
-                : `TianGong Forum ${edition.year} has concluded`}
-            </p>
-            <p className={styles.sectionHint}>
-              {isZh
-                ? "本页是会议存档，内容保持会议当时的信息，不再更新。"
-                : "This page is an archive. Its content is kept as it was during the event and is no longer updated."}
-            </p>
-          </div>
-          {edition.summary && (
-            <p className={styles.sectionLead}>{renderForumText(edition.summary, isZh)}</p>
-          )}
-          {otherEditions.length > 0 && (
-            <div className={styles.cardGrid}>
-              {otherEditions.map((item) => (
-                <Link
-                  key={item.year}
-                  to={item.to}
-                  className={clsx(styles.card, styles.cardLink, styles.editionCard)}
-                >
-                  <span className={styles.pill}>{item.year}</span>
-                  <div className={styles.cardTitle}>
-                    {isZh ? `天工论坛 ${item.year}` : `TianGong Forum ${item.year}`}
-                  </div>
-                </Link>
-              ))}
-            </div>
-          )}
+          <p className={styles.sectionLead}>{renderForumText(edition.summary, isZh)}</p>
         </div>
       </section>
     );
@@ -2875,16 +2847,22 @@ export default function ForumEditionPage({
         </div>
 
         <main>
+          {/* 存档页先交代这一段回顾，没有 summary 的届次这里什么都不渲染。 */}
+          {renderArchiveSummary()}
           {/* 筹备期先把「这是哪一届、什么时候、在哪」交代清楚，放在首屏之后。 */}
           {renderPlanningBlock()}
-          {/* 紧接着是本届的年度框架，三个支柱是这一页的视觉重心。 */}
+          {/* 紧接着是本届的议程框架，三个支柱是这一页的视觉重心。 */}
           {renderFrameworkBlock()}
-          {/* 存档页把「已结束」说明与其它届次入口放在最上面。 */}
-          {renderEditionNotice()}
           {hasPartnerLogos && (
             <section className={clsx(styles.section, styles.lightSection)}>
               <div className="container">
-                <div className={styles.partnerGroupGrid}>
+                <div
+                className={clsx(
+                  styles.partnerGroupGrid,
+                  partnerSlotCount === 1 && styles.partnerGroupGridSingle,
+                )}
+              >
+                {organizerLogos[1] && (
                   <div
                     className={clsx(
                       styles.card,
@@ -2905,6 +2883,8 @@ export default function ForumEditionPage({
                       </div>
                     </div>
                   </div>
+                )}
+                {organizerLogos[0] && (
                   <div
                     className={clsx(
                       styles.card,
@@ -2925,6 +2905,8 @@ export default function ForumEditionPage({
                       </div>
                     </div>
                   </div>
+                )}
+                {organizerLogos[2] && (
                   <div
                     className={clsx(
                       styles.card,
@@ -2945,6 +2927,10 @@ export default function ForumEditionPage({
                       </div>
                     </div>
                   </div>
+                )}
+                {/* 支持机构一个都还没有时（筹备期的届次就是），
+                    整张卡不渲染——留着只会是一张空壳加一个「持续更新中」。 */}
+                {supportInstitutionLogos.length > 0 && (
                   <div
                     className={clsx(
                       styles.card,
@@ -3000,6 +2986,7 @@ export default function ForumEditionPage({
                       )}
                     </div>
                   </div>
+                )}
                 </div>
               </div>
             </section>
