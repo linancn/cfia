@@ -41,10 +41,8 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
-          // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          editUrl: "https://github.com/linancn/cfia/tree/main/",
           remarkPlugins: [require("remark-math")],
           rehypePlugins: [require("rehype-mathjax")],
         },
@@ -54,10 +52,8 @@ const config: Config = {
             type: ["rss", "atom"],
             xslt: true,
           },
-          // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          editUrl: "https://github.com/linancn/cfia/tree/main/",
           // Useful options to enforce blogging best practices
           onInlineTags: "warn",
           onInlineAuthors: "warn",
@@ -68,15 +64,6 @@ const config: Config = {
         },
       } satisfies Preset.Options,
     ],
-  ],
-  stylesheets: [
-    {
-      href: "https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css",
-      type: "text/css",
-      integrity:
-        "sha384-vZTG03m+PBjY6Pz5E6Q8b4yR9Gt6EZU6AWKc6Yg1EMw8sI/4l+f9ZO4ZXcCb2G0",
-      crossorigin: "anonymous",
-    },
   ],
   themeConfig: {
     // Replace with your project's social card
