@@ -31,6 +31,9 @@
   border-radius: 999px;
   opacity: 0.35;
   filter: blur(0);
+  /* 绝对定位的装饰层会盖在正文之上，不加这句会把首屏两个按钮的点击吞掉
+     （实测 ::after 那块 520×520 的圆正好压住主按钮）。 */
+  pointer-events: none;
 }
 
 .hero::before {

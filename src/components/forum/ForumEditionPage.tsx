@@ -637,6 +637,7 @@ export default function ForumEditionPage({
     hero,
     venue,
     registration,
+    planning,
     highlights = [],
     people = [],
     devConfLogos = [],
@@ -670,6 +671,78 @@ export default function ForumEditionPage({
   const isZh = i18n.currentLocale.startsWith("zh");
   const heroImage = withBaseUrl(hero.image);
   const venueImage = withBaseUrl(venue?.image ?? "");
+
+  /**
+   * 筹备期说明。只在会议尚未结束时出现，内容为空则整段不渲染。
+   * 会议信息一旦定稿，把 `planning` 去掉即可，不用改渲染逻辑。
+   */
+  const renderPlanningBlock = (): ReactNode => {
+    if (!planning || isArchived) {
+      return null;
+    }
+
+    const facts = planning.facts ?? [];
+    const pillars = planning.pillars ?? [];
+    if (!planning.intro && facts.length === 0 && pillars.length === 0) {
+      return null;
+    }
+
+    return (
+      <section id="planning" className={clsx(styles.section, styles.lightSection)}>
+        <div className="container">
+          <div className={styles.sectionHeader}>
+            <p className={styles.sectionTitle}>
+              {isZh ? "论坛筹备" : "Planning"}
+            </p>
+            <p className={styles.sectionHint}>
+              {isZh
+                ? "会议方案仍在完善，以下为现阶段已确定的基本安排，其余信息确认后陆续公布。"
+                : "The programme is still being finalised. Below is what is settled so far; the rest will be published as it is confirmed."}
+            </p>
+          </div>
+
+          {planning.intro && (
+            <p className={styles.sectionLead}>{renderForumText(planning.intro, isZh)}</p>
+          )}
+
+          {facts.length > 0 && (
+            <dl className={styles.planningFacts}>
+              {facts.map((item, index) => (
+                <div key={index} className={styles.planningFact}>
+                  <dt className={styles.planningFactLabel}>
+                    {renderForumText(item.label, isZh)}
+                  </dt>
+                  <dd className={styles.planningFactValue}>
+                    {renderForumText(item.value, isZh)}
+                    {item.note && (
+                      <span className={styles.planningFactNote}>
+                        {renderForumText(item.note, isZh)}
+                      </span>
+                    )}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          )}
+
+          {pillars.length > 0 && (
+            <div className={styles.planningPillarGrid}>
+              {pillars.map((item, index) => (
+                <div key={index} className={styles.planningPillar}>
+                  <span className={styles.pill}>
+                    {renderForumText(item.label, isZh)}
+                  </span>
+                  <div className={styles.cardMeta}>
+                    {renderForumText(item.value, isZh)}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+    );
+  };
 
   /** 存档页顶部的说明与其它届次入口。 */
   const renderEditionNotice = (): ReactNode => {
@@ -706,7 +779,7 @@ export default function ForumEditionPage({
               <Link
                 key={item.year}
                 to={item.to}
-                className={clsx(styles.card, styles.cardLink)}
+                className={clsx(styles.card, styles.cardLink, styles.editionCard)}
               >
                 <span className={styles.pill}>{item.year}</span>
                 <div className={styles.cardTitle}>
@@ -2723,6 +2796,8 @@ export default function ForumEditionPage({
         </div>
 
         <main>
+          {/* 筹备期先把「这是哪一届、什么时候、在哪」交代清楚，放在首屏之后。 */}
+          {renderPlanningBlock()}
           {/* 存档页把「已结束」说明与历届入口放在最上面；当前届次则放到页尾，
               避免筹备期的页面开头就是历史内容。 */}
           {isArchived && renderEditionNotice()}

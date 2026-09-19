@@ -108,6 +108,69 @@
   line-height: 1.7;
 }
 
+/* 筹备期板块：会议信息还没公布时，用「标签 + 内容」的两列卡片交代已定事项。
+   与 `renderPlanningBlock()` 对应；`planningFact` 是 <dl> 里的一行。 */
+.planningFacts {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.planningFact {
+  display: grid;
+  gap: 0.3rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid #e6edf5;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+}
+
+.planningFactLabel {
+  color: #6b7887;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+.planningFactValue {
+  /* <dd> 默认有 40px 缩进，这里要清掉。 */
+  margin: 0;
+  color: #10243a;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+/* 「拟定，待确认」这类补充说明，跟在内容后面，轻一档以示区分。 */
+.planningFactNote {
+  margin-left: 0.45rem;
+  color: #8a6d1f;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.planningPillarGrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  max-width: 960px;
+  margin: 1.2rem auto 0;
+}
+
+.planningPillar {
+  display: grid;
+  gap: 0.5rem;
+  justify-items: start;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid #e6edf5;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+}
+
 .cardHeader {
   display: flex;
   align-items: center;
@@ -2997,6 +3060,12 @@
   transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
+/* 历届入口卡片里只有年份胶囊和标题。`.card` 是 grid，默认会让胶囊拉满整行，
+   所以这里把子项按内容宽度左对齐。 */
+.editionCard {
+  justify-items: start;
+}
+
 .cardLink:hover,
 .cardLink:focus-visible {
   color: inherit;
@@ -3452,6 +3521,25 @@
   background: rgba(27, 21, 46, 0.78);
   border-top-color: rgba(216, 227, 242, 0.08);
   border-bottom-color: rgba(216, 227, 242, 0.08);
+}
+
+[data-theme='dark'] .planningFact,
+[data-theme='dark'] .planningPillar {
+  background: var(--ifm-background-surface-color);
+  border-color: rgba(216, 227, 242, 0.14);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme='dark'] .planningFactLabel {
+  color: #a7b4c6;
+}
+
+[data-theme='dark'] .planningFactValue {
+  color: #e8eef7;
+}
+
+[data-theme='dark'] .planningFactNote {
+  color: #d9c07a;
 }
 
 [data-theme='dark'] .heroGlow {

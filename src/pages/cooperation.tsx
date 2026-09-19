@@ -279,9 +279,12 @@ export default function Cooperation(): ReactNode {
           </div>
         </section>
 
-        <section id="projects" className={clsx(styles.section, styles.sectionAlt)}>
+        <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className="container">
-            <Heading as="h2" className={styles.sectionTitle}>
+            {/* 手写在 <section> 上的 id 不会进 Docusaurus 的锚点登记表，
+                首屏按钮的 to="#projects" 会被判成失效链接。id 挂在 <Heading>
+                上才是官方登记路径，顺带拿到吸顶导航所需的 scroll-margin。 */}
+            <Heading as="h2" id="projects" className={styles.sectionTitle}>
               {translate({
                 id: "cooperation.section.projects.title",
                 message: "",

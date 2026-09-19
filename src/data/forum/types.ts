@@ -223,6 +223,29 @@ export type ForumEditionLink = {
   label: string;
 };
 
+/** 筹备要点的一行：左标签、右内容。 */
+export type ForumPlanningItem = {
+  label: ForumText;
+  value: ForumText;
+  /** 附加说明，例如「拟定，待确认」。 */
+  note?: ForumText;
+};
+
+/**
+ * 筹备期说明。
+ *
+ * 会议方案尚未定稿、议程与报名都没开放时，页面靠这一段对外交代已经
+ * 确定的基本安排。没有内容就不填，整段不渲染；会议结束后自动让位给存档提示。
+ */
+export type ForumPlanning = {
+  /** 导语，通常是一段定位说明。 */
+  intro?: ForumText;
+  /** 基本安排（会期、地点、规模、办会模式等）。 */
+  facts?: ForumPlanningItem[];
+  /** 年度框架或主线，例如 BUILD / SHAPE / ACT。 */
+  pillars?: ForumPlanningItem[];
+};
+
 export type ForumEdition = {
   year: number;
   phase: ForumPhase;
@@ -238,6 +261,9 @@ export type ForumEdition = {
 
   /** 存档页的一段回顾说明，写在「会议已结束」提示下面。 */
   summary?: ForumText;
+
+  /** 筹备期说明：会期、地点、定位与年度框架。定稿页可以不填。 */
+  planning?: ForumPlanning;
 
   /**
    * 首屏以外的届次内容。以下字段名与渲染逻辑一致，便于整体传入。
