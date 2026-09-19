@@ -147,6 +147,7 @@
 
 .planningFactValue {
   align-self: center;
+  text-align: center;
   /* <dd> 默认有 40px 缩进，这里要清掉。 */
   margin: 0;
   color: #10243a;
@@ -154,14 +155,16 @@
   line-height: 1.6;
 }
 
-/* 主办单位那一格装的是图形而不是文字，所以用不着 `planningFactValue`
+/* 主办那一格装的是图形而不是文字，所以用不着 `planningFactValue`
    的字色与行高，只需要把 <dd> 的缩进清掉。
-   `margin-top` 是标签和 logo 之间的呼吸空间——logo 有 72px 高，
-   几乎填满第二行，不加这条的话它会几乎贴住上面的「主办」标签
-   （实测只有 7px），而右边两格的正文离标签有 30px 上下。 */
+   - `justify-self: center`：logo 水平居中，与右侧居中的正文同一套版式；
+   - `align-self: start` + `margin`：logo 贴在标签下面，空都留给底部，
+     而不是垂直居中把上下填满——剑川 9-20 要「下面留空适当大一点」。
+     1rem 是与标签的间距，1.5rem 是底部留白。 */
 .planningFactLogoBox {
-  align-self: center;
-  margin: 1rem 0 0;
+  align-self: start;
+  justify-self: center;
+  margin: 1rem 0 1.5rem;
 }
 
 /* CFA logo 已把四周的透明留白裁掉（2026-09-19：700×284 → 538×166，
@@ -169,16 +172,15 @@
    max-width 就是 artwork 的真实宽度，不用再留白边的余量。
    宽高都留 auto、只给两个 max，浏览器才会按原比例缩放，任何一格宽度
    下都不会被压扁。
-   尺寸跟着右边两格的正文走：logo 里的中文名在这档高度下约 17px，
-   与 16px 的会期、地点文字同档，整行才像一套东西——再大（91px 时
-   名字 22px）就压过正文了。桌面端渲染 233×72；格子更窄按宽度缩
-   （769px 三列约 194×60），铺满整行时也封顶在 233×72。 */
+   高度由 72px 收到 64px：logo 里的中文名渲染约 15px，比 16px 的正文
+   略小一档——图形让位给文字，是这一行想要的秩序。桌面端渲染 207×64，
+   几乎所有断点恒定（只在 769px 三列最窄时按格宽缩到 194×60）。 */
 .planningFactLogo {
   display: block;
   width: auto;
   height: auto;
   max-width: min(100%, 256px);
-  max-height: 72px;
+  max-height: 64px;
 }
 
 /* 断点取 768，和 `.frameworkGrid` 完全一致：**两行在任何宽度下都保持
@@ -188,12 +190,6 @@
 @media (max-width: 768px) {
   .planningFacts {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  /* 竖排时卡片是整行宽，logo 仍贴左会空出一大块；
-     居中摆更像一块「铭牌」，和下面会期、地点的左对齐文字不冲突。 */
-  .planningFactLogoBox {
-    justify-self: center;
   }
 }
 
