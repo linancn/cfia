@@ -5,8 +5,8 @@ import type { ForumEdition } from "./types";
  *
  * 内容依据《2027·天工论坛 会议计划（唯一事实文档）》v0.1（编制日期 2026-09-16）。
  *
- * 现阶段只公布筹备初期适合给出的信息：主题、会期、地点、论坛定位、
- * 年度框架 BUILD — SHAPE — ACT，以及历届入口。
+ * 现阶段只公布筹备初期适合给出的信息：主题框架 BUILD — SHAPE — ACT、
+ * 会期与地点（hero 与筹备卡片各呈现一次），以及历届入口。
  * 以下内容一律不上站，等文档确认后再逐项补：议程草案细节、目标参会机构名单、
  * 赞助档位与目标金额、向北京市的支持诉求、组织分工、倒排计划、
  * 首轮任务清单、风险提示。
@@ -41,11 +41,8 @@ export const edition2027: ForumEdition = {
     image: "img/tg-forum/kv.jpg",
   },
 
+  // 只留会期和地点。板块标题、说明与定位段按剑川 9-19 的意见删除。
   planning: {
-    intro: {
-      zh: "围绕生命周期评价（LCA）和产品碳足迹，聚焦数据与技术的开放创新，连接国内外政策规则和前沿产业实践，服务我国和全球绿色低碳转型的国际交流合作平台。",
-      en: "A platform for international exchange and cooperation on life cycle assessment (LCA) and product carbon footprint — centred on open innovation in data and technology, connecting policy rules and frontier industry practice at home and abroad, and serving China's and the world's green and low-carbon transition.",
-    },
     facts: [
       {
         label: { zh: "会期", en: "Dates" },
@@ -63,8 +60,8 @@ export const edition2027: ForumEdition = {
 
   framework: {
     intro: {
-      zh: "打通「能力基础 — 规则协同 — 产业行动」的完整链条。",
-      en: "One chain, from capabilities to rules to industry action.",
+      zh: "打通「能力基础 — 规则协同 — 联合行动」的完整链条。",
+      en: "One chain, from capabilities to rules to joint action.",
     },
     items: [
       {
@@ -85,7 +82,7 @@ export const edition2027: ForumEdition = {
       },
       {
         label: { zh: "ACT", en: "ACT" },
-        stage: { zh: "产业行动", en: "Action" },
+        stage: { zh: "联合行动", en: "Joint action" },
         value: {
           zh: "推动产品碳足迹和企业碳管理进入采购、贸易与供应链减排实践。",
           en: "Move product carbon footprints and corporate carbon management into procurement, trade and supply-chain decarbonisation practice.",
@@ -100,8 +97,8 @@ export const edition2027: ForumEdition = {
       featured: true,
       date: { zh: "2026", en: "2026" },
       title: {
-        zh: "形成国际化品牌会议",
-        en: "Established as the forum's international flagship",
+        zh: "凝聚全球力量，共建创新生态",
+        en: "Bringing global forces together to build an innovation ecosystem",
       },
       focus: { zh: "2026 年 3 月 · 江苏南京", en: "March 2026 · Nanjing, Jiangsu, China" },
       tags: [
@@ -109,10 +106,6 @@ export const edition2027: ForumEdition = {
         { zh: "参会代表 500+", en: "500+ delegates" },
         { zh: "国际嘉宾来自 10+ 个国家", en: "Guests from 10+ countries" },
       ],
-      theme: {
-        zh: "全球互联、互通、互信的 LCA 与碳足迹体系",
-        en: "Global Interconnection, Interoperability, and Mutual Trust for LCA and Carbon Footprint Systems",
-      },
       image: "img/tg-forum/kv.jpg",
       to: "/forum/2026",
     },
@@ -127,10 +120,6 @@ export const edition2027: ForumEdition = {
         { zh: "联盟发布", en: "Alliance Launch" },
         { zh: "产业共建", en: "Industry Collaboration" },
       ],
-      theme: {
-        zh: "政产学研全面协同，共建产品碳足迹管理体系",
-        en: "Cross-sector collaboration to build a product carbon footprint management system",
-      },
       image: "img/tg-forum/past/tg-forum-2nd.jpg",
       to: "/forum/2025",
     },
@@ -145,10 +134,6 @@ export const edition2027: ForumEdition = {
         { zh: "数据库", en: "Database" },
         { zh: "开放透明", en: "Open & Transparent" },
       ],
-      theme: {
-        zh: "发起 LCA 数据开放共享与协同治理联合研究计划",
-        en: "Launched a joint research initiative on open sharing and collaborative governance of LCA data.",
-      },
       image: "img/tg-forum/past/tg-forum-1st.jpg",
       to: "/forum/2023",
     },

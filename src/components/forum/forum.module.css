@@ -108,7 +108,7 @@
   line-height: 1.7;
 }
 
-/* 筹备期板块：用「标签 + 内容」的卡片交代会期、地点这类已定事项。
+/* 筹备期的硬信息卡片（会期、地点）。这一块没有板块标题，
    与 `renderPlanningBlock()` 对应；`planningFact` 是 <dl> 里的一行。 */
 .planningFacts {
   display: grid;
@@ -211,7 +211,7 @@
   align-content: start;
 }
 
-/* 年份胶囊和「上一届」标记并排，避免胶囊被网格拉满整行。 */
+/* 年份胶囊单独成行。卡片是 grid，直接放胶囊会被拉满整张卡宽。 */
 .cardMetaRow {
   display: flex;
   flex-wrap: wrap;
@@ -219,42 +219,37 @@
   gap: 0.5rem;
 }
 
-/* 「上一届」那张卡：整行宽、图文左右分栏，比同组其它届次明显重一档。
-   单独放在 `.cardGrid` 上方（`.featuredStack`），不进网格，
-   否则 auto-fit 会因为它跨列而在同行留下空轨道。 */
+/* 重点卡片单独占一层，与下面的两列网格拉开距离。 */
 .featuredStack {
   display: grid;
   gap: 1rem;
   margin-bottom: 1rem;
 }
 
+/* 历届列表里重点呈现的那张卡：整行宽、图文左右分栏。
+   单独放在 `.highlightGrid` 上方（`.featuredStack`），不进网格，
+   否则跨列的卡片会在网格末尾留下空轨道。
+
+   第一列的宽度是**推出来**的，不是拍出来的：它的图片必须和下面
+   `.highlightGrid`（两列、gap 1rem）里卡片的图片严格同宽同左。
+   设容器宽为 W，一列的卡片宽 C = (W - 1rem) / 2，卡片左右内边距 1.3rem，
+   所以网格里的图片宽 C - 2.6rem。本卡铺满整行 W，内容盒宽 P = W - 2.6rem，
+   要放下的图片宽 = C - 2.6rem = P/2 - 1.8rem，即 50% - 1.8rem。
+   图片左边缘两边都是「容器左边 + 1.3rem」，天然对齐。
+   列间距取 2.6rem，正好让文字从上面那张卡片的右边缘再退 1.3rem 起排。
+   图片本身不另设高度，与网格里的卡片同尺寸——高度上也不做出入。 */
 .cardFeatured {
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  gap: 1.6rem;
+  grid-template-columns: calc(50% - 1.8rem) minmax(0, 1fr);
+  column-gap: 2.6rem;
+  row-gap: 1rem;
   align-items: center;
   border-color: #b9d4ef;
   box-shadow: 0 18px 40px rgba(16, 112, 202, 0.14);
 }
 
-.cardPhotoFeatured {
-  height: 260px;
-}
-
 .cardTitleFeatured {
   font-size: 1.35rem;
   line-height: 1.4;
-}
-
-/* 「上一届」标记，比普通年份胶囊更醒目。 */
-.pillLatest {
-  display: inline-flex;
-  align-items: center;
-  border-radius: 999px;
-  padding: 0.2rem 0.7rem;
-  background: #106fca;
-  color: #ffffff;
-  font-size: 0.8rem;
-  font-weight: 700;
 }
 
 .cardHeader {
@@ -3129,6 +3124,14 @@
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
+/* 历届列表固定两列，不用 auto-fit：上面那张重点卡的图片列宽是按两列
+   算出来的（见 `.cardFeatured`），列数一变就对不齐了。 */
+.highlightGrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .card {
   background: #ffffff;
   border-radius: 12px;
@@ -3161,11 +3164,12 @@
   box-shadow: 0 18px 38px rgba(16, 112, 202, 0.16);
 }
 
+/* 图片位。没有配图时这块的渐变会留在原位，所以背景色不能省。
+   `overflow: hidden` 是给图片切圆角用的。 */
 .cardPhoto {
   height: 200px;
   border-radius: 12px;
   background: linear-gradient(135deg, #0f4c75, #3282b8);
-  position: relative;
   overflow: hidden;
   background-size: cover;
   background-position: center;
@@ -3177,21 +3181,6 @@
   height: 100%;
   object-fit: cover;
   display: block;
-}
-
-.cardPhoto::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0));
-}
-
-.cardPhotoLabel {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  color: #ffffff;
-  font-weight: 700;
 }
 
 .pill {
@@ -3231,10 +3220,19 @@
   font-size: 0.85rem;
 }
 
+/* 只有 4 列和 2 列两种形态，不会出现 3 列。
+   不用 auto-fit —— 它在中间宽度会挤出 3 列，四张卡排成 3 + 1。
+   容器够宽（≥1024px）时铺成一行的四张，否则两行两列。 */
 .coopGrid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 1024px) {
+  .coopGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 .coopCard {
@@ -5078,9 +5076,9 @@
     line-height: 1.25;
   }
 
+  /* 列数由基础规则定（2 列或 4 列），这里只收紧间距。 */
   .coopGrid {
     gap: 0.8rem;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .coopCard {
@@ -5110,11 +5108,12 @@
     line-height: 1.4;
   }
 
-  .cardGrid {
+  .cardGrid,
+  .highlightGrid {
     gap: 0.9rem;
   }
 
-  /* 三个支柱到窄屏改竖排，「上一届」卡片也不再分栏。 */
+  /* 三个支柱到窄屏改竖排，重点卡片也不再分栏。 */
   .frameworkGrid {
     grid-template-columns: 1fr;
     gap: 0.9rem;
@@ -5133,20 +5132,12 @@
     gap: 1rem;
   }
 
-  .cardPhotoFeatured {
-    height: 200px;
-  }
-
   .cardTitleFeatured {
     font-size: 1.15rem;
   }
 
   .cardPhoto {
     height: 170px;
-  }
-
-  .cardPhotoLabel {
-    font-size: 0.86rem;
   }
 
   .pill {
@@ -5713,9 +5704,10 @@
   }
 
   /* Bottom sections: compact but stable */
+  /* 四张卡到手机上仍是两列两行，不落成单列。 */
   .coopGrid {
     gap: 0.65rem;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .coopCard {
@@ -5745,7 +5737,8 @@
     line-height: 1.35;
   }
 
-  .cardGrid {
+  .cardGrid,
+  .highlightGrid {
     gap: 0.75rem;
     grid-template-columns: 1fr;
   }
@@ -5753,12 +5746,6 @@
   .cardPhoto {
     height: 150px;
     border-radius: 10px;
-  }
-
-  .cardPhotoLabel {
-    left: 8px;
-    bottom: 8px;
-    font-size: 0.78rem;
   }
 
   .pill {

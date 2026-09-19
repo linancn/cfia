@@ -678,7 +678,8 @@ export default function ForumEditionPage({
   const venueImage = withBaseUrl(venue?.image ?? "");
 
   /**
-   * 历届论坛的一张卡片。标了 `featured` 的那张走整行图文分栏，并带「上一届」标记。
+   * 历届论坛的一张卡片。标了 `featured` 的那张走整行图文分栏，
+   * 它的图片列宽与下方两列网格里的图片严格同宽同左（见 `.cardFeatured`）。
    * 有存档页地址的整块可点，没有的还是普通卡片。
    */
   const renderHighlightCard = (session: ForumHighlight, key: string): ReactNode => {
@@ -691,7 +692,7 @@ export default function ForumEditionPage({
 
     const body = (
       <>
-        <div className={clsx(styles.cardPhoto, isFeatured && styles.cardPhotoFeatured)}>
+        <div className={styles.cardPhoto}>
           {session.image && (
             <img
               src={withBaseUrl(session.image)}
@@ -700,18 +701,10 @@ export default function ForumEditionPage({
               loading="lazy"
             />
           )}
-          <div className={styles.cardPhotoLabel}>
-            {renderForumText(session.theme ?? session.title, isZh)}
-          </div>
         </div>
         <div className={styles.cardText}>
           <div className={styles.cardMetaRow}>
             <span className={styles.pill}>{renderForumText(session.date, isZh)}</span>
-            {isFeatured && (
-              <span className={styles.pillLatest}>
-                {isZh ? "上一届" : "Previous edition"}
-              </span>
-            )}
           </div>
           <div className={clsx(styles.cardTitle, isFeatured && styles.cardTitleFeatured)}>
             {renderForumText(session.title, isZh)}
@@ -742,8 +735,9 @@ export default function ForumEditionPage({
   };
 
   /**
-   * 筹备期说明（会期、地点、定位）。只在会议尚未结束时出现，内容为空则整段不渲染。
-   * 会议信息一旦定稿，把 `planning` 去掉即可，不用改渲染逻辑。
+   * 筹备期的硬信息（会期、地点）。只放卡片，不带板块标题与说明——
+   * 这两项信息 hero 上已经出现过一次，这里只是把它们摆成可扫读的一行。
+   * 内容为空则整段不渲染；会议信息定稿后把 `planning` 去掉即可。
    */
   const renderPlanningBlock = (): ReactNode => {
     if (!planning || isArchived) {
@@ -751,49 +745,32 @@ export default function ForumEditionPage({
     }
 
     const facts = planning.facts ?? [];
-    if (!planning.intro && facts.length === 0) {
+    if (facts.length === 0) {
       return null;
     }
 
     return (
       <section id="planning" className={clsx(styles.section, styles.lightSection)}>
         <div className="container">
-          <div className={styles.sectionHeader}>
-            <p className={styles.sectionTitle}>
-              {isZh ? "论坛筹备" : "Planning"}
-            </p>
-            <p className={styles.sectionHint}>
-              {isZh
-                ? "会议方案仍在完善，以下为现阶段已确定的基本安排，其余信息确认后陆续公布。"
-                : "The programme is still being finalised. Below is what is settled so far; the rest will be published as it is confirmed."}
-            </p>
-          </div>
-
-          {planning.intro && (
-            <p className={styles.sectionLead}>{renderForumText(planning.intro, isZh)}</p>
-          )}
-
-          {facts.length > 0 && (
-            <dl className={styles.planningFacts}>
-              {facts.map((item, index) => (
-                <div key={index} className={styles.planningFact}>
-                  <dt className={styles.planningFactLabel}>
-                    {renderForumText(item.label, isZh)}
-                  </dt>
-                  <dd className={styles.planningFactValue}>
-                    {renderForumText(item.value, isZh)}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          )}
+          <dl className={styles.planningFacts}>
+            {facts.map((item, index) => (
+              <div key={index} className={styles.planningFact}>
+                <dt className={styles.planningFactLabel}>
+                  {renderForumText(item.label, isZh)}
+                </dt>
+                <dd className={styles.planningFactValue}>
+                  {renderForumText(item.value, isZh)}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
     );
   };
 
   /**
-   * 年度框架（BUILD — SHAPE — ACT）。按顺序取三种强调色，
+   * 本届主题（BUILD — SHAPE — ACT）。按顺序取三种强调色，
    * 三项各占一卡、标签大字排在最前，是本届页面的视觉重心。
    */
   const renderFrameworkBlock = (): ReactNode => {
@@ -806,7 +783,9 @@ export default function ForumEditionPage({
         <div className="container">
           <div className={styles.sectionHeader}>
             <p className={styles.sectionTitle}>
-              {isZh ? "2027 年度框架" : "The 2027 framework"}
+              {isZh
+                ? `天工论坛 · ${edition.year} 主题`
+                : `TianGong Forum ${edition.year} · Theme`}
             </p>
             {framework.intro && (
               <p className={styles.sectionHint}>
@@ -3142,8 +3121,9 @@ export default function ForumEditionPage({
                     </Translate>
                   </p>
                 </div>
-                {/* 「上一届」整行呈现，其余届次平铺。两者不放同一个网格：
-                    跨列的卡片会让 auto-fit 在末尾留下空轨道。 */}
+                {/* 重点那张整行呈现，其余届次两列平铺。两者不放同一个网格：
+                    跨列的卡片会让网格在末尾留下空轨道。
+                    下面固定两列，因为重点卡的图片列宽就是按两列算出来的。 */}
                 {featuredHighlights.length > 0 && (
                   <div className={styles.featuredStack}>
                     {featuredHighlights.map((session, index) =>
@@ -3152,7 +3132,7 @@ export default function ForumEditionPage({
                   </div>
                 )}
                 {restHighlights.length > 0 && (
-                  <div className={styles.cardGrid}>
+                  <div className={styles.highlightGrid}>
                     {restHighlights.map((session, index) =>
                       renderHighlightCard(session, `highlight-${index}`),
                     )}

@@ -110,19 +110,21 @@ export type ForumIconKey =
   | "media"
   | "sponsor";
 
-/** 往期精选卡片。 */
+/** 历届论坛的一张卡片。 */
 export type ForumHighlight = {
   date: ForumText;
   title: ForumText;
   focus: ForumText;
   tags?: ForumText[];
-  theme?: ForumText;
   image?: string;
   /** 该届的存档页地址；填了卡片就会变成可点击的链接。 */
   to?: string;
   /**
-   * 作为「上一届」重点呈现：卡片占满整行、图文左右分栏，并带强调标签。
+   * 重点呈现（用来把「上一届」垫高一档）：卡片占满整行、图文左右分栏。
    * 一届最多标一张，标多了版式会乱。
+   *
+   * 注意它的图片列宽是按下面网格的**两列**算出来的（见 `.cardFeatured`），
+   * 所以历届列表固定两列，别改成别的列数。
    */
   featured?: boolean;
 };
@@ -235,15 +237,10 @@ export type ForumPlanningItem = {
 };
 
 /**
- * 筹备期说明。
- *
- * 会期、地点、定位这类「会议是什么、什么时候、在哪」的基本信息。
- * 没有内容就不填，整段不渲染；会议结束后自动让位给存档提示。
+ * 筹备期说明：会期、地点这类「什么时候、在哪」的硬信息，以「标签 + 内容」
+ * 的卡片呈现。没有内容就不填，整段不渲染；会议结束后自动让位给存档提示。
  */
 export type ForumPlanning = {
-  /** 导语，通常是一段定位说明。 */
-  intro?: ForumText;
-  /** 基本安排（会期、地点等）。 */
   facts?: ForumPlanningItem[];
 };
 
@@ -285,10 +282,10 @@ export type ForumEdition = {
   /** 存档页的一段回顾说明，写在「会议已结束」提示下面。 */
   summary?: ForumText;
 
-  /** 筹备期说明：会期、地点与定位。定稿页可以不填。 */
+  /** 筹备期的硬信息：会期、地点。定稿页可以不填。 */
   planning?: ForumPlanning;
 
-  /** 年度框架，例如 BUILD — SHAPE — ACT。 */
+  /** 本届的主题框架，例如 BUILD — SHAPE — ACT。 */
   framework?: ForumFramework;
 
   /**

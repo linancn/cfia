@@ -33,10 +33,6 @@ const highlights: ForumHighlight[] = [
       { zh: "联盟发布", en: "Alliance Launch" },
       { zh: "产业共建", en: "Industry Collaboration" },
     ],
-    theme: {
-      zh: "政产学研全面协同，共建产品碳足迹管理体系",
-      en: "Cross-sector collaboration to build a product carbon footprint management system",
-    },
     image: "img/tg-forum/past/tg-forum-2nd.jpg",
     to: "/forum/2025",
   },
@@ -51,10 +47,6 @@ const highlights: ForumHighlight[] = [
       { zh: "数据库", en: "Database" },
       { zh: "开放透明", en: "Open & Transparent" },
     ],
-    theme: {
-      zh: "发起 LCA 数据开放共享与协同治理联合研究计划",
-      en: "Launched a joint research initiative on open sharing and collaborative governance of LCA data.",
-    },
     image: "img/tg-forum/past/tg-forum-1st.jpg",
     to: "/forum/2023",
   },
