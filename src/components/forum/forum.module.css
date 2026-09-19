@@ -125,10 +125,11 @@
 
 .planningFact {
   display: grid;
+  /* 第一行固定放标签、第二行吃掉剩余高度：三张卡不管各自内容多高，
+     标签都落在同一条线上；内容再在这一行里垂直居中，多余空白对半分，
+     不会全堆在底部。等高的是被拉齐的三张卡，驱动高度的是 logo 那格。 */
+  grid-template-rows: auto minmax(0, 1fr);
   gap: 0.3rem;
-  /* 三格会被拉到同一高度（等高的那格通常是 logo），
-     不居中的话文字后面会吊着一大块空白。 */
-  align-content: center;
   padding: 1rem 1.2rem;
   border: 1px solid #e6edf5;
   border-radius: 12px;
@@ -137,6 +138,7 @@
 }
 
 .planningFactLabel {
+  align-self: start;
   color: #6b7887;
   font-size: 0.85rem;
   font-weight: 600;
@@ -144,6 +146,7 @@
 }
 
 .planningFactValue {
+  align-self: center;
   /* <dd> 默认有 40px 缩进，这里要清掉。 */
   margin: 0;
   color: #10243a;
@@ -154,13 +157,16 @@
 /* 主办单位那一格装的是图形而不是文字，所以用不着 `planningFactValue`
    的字色与行高，只需要把 <dd> 的缩进清掉。 */
 .planningFactLogoBox {
+  align-self: center;
   margin: 0;
 }
 
-/* CFA logo 原图 700×284，四周带透明留白。
-   这里靠两个 max 把它收在一个区间里，而不是写死 width/height——
-   宽高都留 auto，浏览器才会按原比例缩放，任何一格宽度下都不会被压扁：
-   桌面端整格约 295px 宽 → 约 295×120；窄屏铺满整行时也不会超过 320×120。 */
+/* CFA logo 已把四周的透明留白裁掉（2026-09-19：700×284 → 538×166，
+   artwork 占满整个画布，`magick -trim` 逐像素校验过），所以这里的
+   max-width 就是 artwork 的真实宽度，不用再留白边的余量。
+   宽高都留 auto、只给两个 max，浏览器才会按原比例缩放，任何一格宽度
+   下都不会被压扁：桌面端整格约 295px 宽 → 约 295×91；
+   窄屏铺满整行时也不超过 320×99。 */
 .planningFactLogo {
   display: block;
   width: auto;
@@ -169,13 +175,19 @@
   max-height: 120px;
 }
 
-/* 这一行是三格等宽的固定列，窄下来每格只剩两百多像素，logo 会糊、
-   「2027 年 3 月 24 - 26 日」也会折行，所以到 960px 就改成一列竖排，
-   并把卡片收窄，免得被拉成一条。断点与文件里其余几处保持一致。 */
-@media (max-width: 960px) {
+/* 断点取 768，和 `.frameworkGrid` 完全一致：**两行在任何宽度下都保持
+   同列数、同列宽**——769 以上都是三列（筹备行三格与 BUILD / SHAPE / ACT
+   逐格同宽同左），768 以下各自一列、都铺满容器。取 960 之类的中间值，
+   或是竖排时另设 max-width，都会让某一段宽度上两边对不上。 */
+@media (max-width: 768px) {
   .planningFacts {
     grid-template-columns: minmax(0, 1fr);
-    max-width: 520px;
+  }
+
+  /* 竖排时卡片是整行宽，logo 仍贴左会空出一大块；
+     居中摆更像一块「铭牌」，和下面会期、地点的左对齐文字不冲突。 */
+  .planningFactLogoBox {
+    justify-self: center;
   }
 }
 
