@@ -165,14 +165,17 @@
    artwork 占满整个画布，`magick -trim` 逐像素校验过），所以这里的
    max-width 就是 artwork 的真实宽度，不用再留白边的余量。
    宽高都留 auto、只给两个 max，浏览器才会按原比例缩放，任何一格宽度
-   下都不会被压扁：桌面端整格约 295px 宽 → 约 295×91；
-   窄屏铺满整行时也不超过 320×99。 */
+   下都不会被压扁。
+   尺寸跟着右边两格的正文走：logo 里的中文名在这档高度下约 17px，
+   与 16px 的会期、地点文字同档，整行才像一套东西——再大（91px 时
+   名字 22px）就压过正文了。桌面端渲染 233×72；格子更窄按宽度缩
+   （769px 三列约 194×60），铺满整行时也封顶在 233×72。 */
 .planningFactLogo {
   display: block;
   width: auto;
   height: auto;
-  max-width: min(100%, 320px);
-  max-height: 120px;
+  max-width: min(100%, 256px);
+  max-height: 72px;
 }
 
 /* 断点取 768，和 `.frameworkGrid` 完全一致：**两行在任何宽度下都保持
