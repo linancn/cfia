@@ -886,56 +886,11 @@
   "homepage.button3": {
     "message": "TianGong LCA Platform"
   },
-  "forum.cta.upcoming": {
-    "message": "This Year's Agenda"
-  },
-  "forum.cta.highlights": {
-    "message": "Past Highlights"
-  },
   "forum.section.highlights": {
     "message": "Past Highlights"
   },
   "forum.section.highlights.desc": {
     "message": "A quick recap of featured topics, releases, and collaboration cases."
-  },
-  "forum.page.title": {
-    "message": "TianGong Forum"
-  },
-  "forum.page.description": {
-    "message": "TianGong Forum: page for the Alliance's flagship international conference"
-  },
-  "forum.currentEdition.title": {
-    "message": "2026 · TianGong Forum"
-  },
-  "forum.currentEdition.theme": {
-    "message": "Global Interconnection, Interoperability, and Mutual Trust for LCA and Carbon Footprint Systems"
-  },
-  "forum.currentEdition.date": {
-    "message": "March 24-26, 2026 · Nanjing, Jiangsu, China"
-  },
-  "forum.modules.generalAssembly.title": {
-    "message": "CFA Assembly"
-  },
-  "forum.modules.generalAssembly.note": {
-    "message": "Review annual work and set plans."
-  },
-  "forum.modules.developerConference.title": {
-    "message": "LCA Developer Conference"
-  },
-  "forum.modules.developerConference.note": {
-    "message": "Cutting-edge LCA toolchains and data ecosystems."
-  },
-  "forum.modules.subForums.title": {
-    "message": "Parallel Forums"
-  },
-  "forum.modules.subForums.note": {
-    "message": "Forums on specialized topics."
-  },
-  "forum.modules.specialEvents.title": {
-    "message": "Special Events"
-  },
-  "forum.modules.specialEvents.note": {
-    "message": "Open and closed-door roundtables, workshops, and special events."
   },
   "forum.section.mainActivities": {
     "message": "Main Activities"
@@ -967,12 +922,6 @@
   "forum.venue.tag": {
     "message": "Venue"
   },
-  "forum.venue.name": {
-    "message": "The Purple Palace"
-  },
-  "forum.venue.address": {
-    "message": "No. 18 Huanling Road, Nanjing, Jiangsu, China"
-  },
   "forum.venue.googleMaps": {
     "message": "Google Maps"
   },
@@ -990,15 +939,6 @@
   },
   "forum.ticket.unit": {
     "message": "/ person"
-  },
-  "forum.ticket.member": {
-    "message": "Each alliance member organization is entitled to one complimentary conference seat."
-  },
-  "forum.ticket.usage": {
-    "message": "Registration fees are used only for venue rental, event operations, material production, and related logistical support."
-  },
-  "forum.ticket.channel": {
-    "message": "Please refer to the conference notice for registration channels and payment methods."
   },
   "forum.section.people": {
     "message": "Featured Guests"
@@ -1102,29 +1042,8 @@
   "forum.agenda.special.chinaLca.lead": {
     "message": "Focus on methodological frameworks, database development, and application practices for LCA in China."
   },
-  "forum.agenda.special.climate": {
-    "message": "International Cooperation on Climate Change and Carbon Neutrality"
-  },
-  "forum.agenda.special.climate.lead": {
-    "message": "Program and agenda to be confirmed."
-  },
   "forum.agenda.partners": {
     "message": "Developer Lineup"
-  },
-  "forum.agenda.partners.note": {
-    "message": "Logos to be updated."
-  },
-  "forum.eventHost.label": {
-    "message": "Organizer"
-  },
-  "forum.eventHost.cfa": {
-    "message": "Carbon Footprint Alliance (CFA)"
-  },
-  "forum.eventHost.unep": {
-    "message": "UNEP Life Cycle Initiative"
-  },
-  "forum.eventHost.ijmcccn": {
-    "message": "IJMCCCN"
   },
   "forum.section.coCreation": {
     "message": "Topic Co-creation"
@@ -1155,60 +1074,6 @@
   },
   "forum.coop.media.desc": {
     "message": "Build the outreach network together and share channels and resources."
-  },
-  "forum.section.sponsors": {
-    "message": "Sponsors"
-  },
-  "forum.section.sponsors.desc": {
-    "message": "Contact the secretariat for partnership and sponsorship opportunities."
-  },
-  "forum.sponsor.cnest": {
-    "message": "CNEST"
-  },
-  "forum.sponsor.dcv": {
-    "message": "International Digital Carbon Valley"
-  },
-  "forum.sponsor.efChina": {
-    "message": "Energy Foundation China"
-  },
-  "forum.sponsor.ijmcccn": {
-    "message": "IJMCCCN"
-  },
-  "forum.highlights.2025.date": {
-    "message": "2025 · 2nd Edition"
-  },
-  "forum.highlights.2025.title": {
-    "message": "Initiated the Carbon Footprint Industry Technology Innovation Alliance"
-  },
-  "forum.highlights.2025.focus": {
-    "message": "January 2025 · Beijing"
-  },
-  "forum.highlights.2025.tag.allianceLaunch": {
-    "message": "Alliance Launch"
-  },
-  "forum.highlights.2025.tag.industryCoBuild": {
-    "message": "Industry Collaboration"
-  },
-  "forum.highlights.2025.theme": {
-    "message": "Cross-sector collaboration to build a product carbon footprint management system"
-  },
-  "forum.highlights.2023.date": {
-    "message": "2023 · 1st Edition"
-  },
-  "forum.highlights.2023.title": {
-    "message": "Released the open and transparent TianGong Database"
-  },
-  "forum.highlights.2023.focus": {
-    "message": "November 2023 · Beijing"
-  },
-  "forum.highlights.2023.tag.database": {
-    "message": "Database"
-  },
-  "forum.highlights.2023.tag.openTransparent": {
-    "message": "Open & Transparent"
-  },
-  "forum.highlights.2023.theme": {
-    "message": "Launched a joint research initiative on open sharing and collaborative governance of LCA data."
   },
   "cooperation.page.title": {
     "message": "Open Projects"
