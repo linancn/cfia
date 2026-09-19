@@ -41,8 +41,12 @@ export const edition2027: ForumEdition = {
     image: "img/tg-forum/kv.jpg",
   },
 
-  // 只留会期和地点。板块标题、说明与定位段按剑川 9-19 的意见删除。
+  // 一行三格：主办单位 / 会期 / 地点，读作「联盟主办、什么时候、在哪里」。
+  // 主办单位的 logo 不在这里写，`withHost` 会让渲染时去取 `organizerLogos[0]`，
+  // 这样底部的席位板块也不会再把同一张卡渲染一遍。
+  // 板块标题、说明与定位段按剑川 9-19 的意见删除。
   planning: {
+    withHost: true,
     facts: [
       {
         label: { zh: "会期", en: "Dates" },

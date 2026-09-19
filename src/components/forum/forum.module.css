@@ -108,13 +108,17 @@
   line-height: 1.7;
 }
 
-/* 筹备期的硬信息卡片（会期、地点）。这一块没有板块标题，
-   与 `renderPlanningBlock()` 对应；`planningFact` 是 <dl> 里的一行。 */
+/* 筹备期的硬信息行（主办单位 / 会期 / 地点）。
+   与 `renderPlanningBlock()` 对应；`planningFact` 是 <dl> 里的一行。
+
+   三格**严格等宽**，所以只能用固定列数，不能用 auto-fit；
+   列数与宽度都跟下面的 `.frameworkGrid` 对齐，三格正好压在 BUILD /
+   SHAPE / ACT 三张卡上，整页读下来是一个 1040px 的内容列。 */
 .planningFacts {
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  max-width: 960px;
+  gap: 1.2rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 1040px;
   margin: 0 auto;
   padding: 0;
 }
@@ -122,6 +126,9 @@
 .planningFact {
   display: grid;
   gap: 0.3rem;
+  /* 三格会被拉到同一高度（等高的那格通常是 logo），
+     不居中的话文字后面会吊着一大块空白。 */
+  align-content: center;
   padding: 1rem 1.2rem;
   border: 1px solid #e6edf5;
   border-radius: 12px;
@@ -142,6 +149,34 @@
   color: #10243a;
   font-weight: 700;
   line-height: 1.6;
+}
+
+/* 主办单位那一格装的是图形而不是文字，所以用不着 `planningFactValue`
+   的字色与行高，只需要把 <dd> 的缩进清掉。 */
+.planningFactLogoBox {
+  margin: 0;
+}
+
+/* CFA logo 原图 700×284，四周带透明留白。
+   这里靠两个 max 把它收在一个区间里，而不是写死 width/height——
+   宽高都留 auto，浏览器才会按原比例缩放，任何一格宽度下都不会被压扁：
+   桌面端整格约 295px 宽 → 约 295×120；窄屏铺满整行时也不会超过 320×120。 */
+.planningFactLogo {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(100%, 320px);
+  max-height: 120px;
+}
+
+/* 这一行是三格等宽的固定列，窄下来每格只剩两百多像素，logo 会糊、
+   「2027 年 3 月 24 - 26 日」也会折行，所以到 960px 就改成一列竖排，
+   并把卡片收窄，免得被拉成一条。断点与文件里其余几处保持一致。 */
+@media (max-width: 960px) {
+  .planningFacts {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 520px;
+  }
 }
 
 /* 年度框架（BUILD — SHAPE — ACT）：本届页面的视觉重心，三个支柱各占一卡、
@@ -3624,6 +3659,15 @@
 
 [data-theme='dark'] .planningFactValue {
   color: #e8eef7;
+}
+
+/* CFA logo 是深色字配透明底，压在这张暗色卡上会看不见字，
+   所以给图片本身垫一块白板——图片边界即 logo 的透明边界，
+   视觉上等于一块留了白边的底板，和底部席位板块的处理一致。
+   注意这里只改背景，不动尺寸，明暗两套主题下 logo 大小一样。 */
+[data-theme='dark'] .planningFactLogo {
+  background: #ffffff;
+  border-radius: 8px;
 }
 
 /* 只改背景和阴影，边框颜色交给 --framework-border，

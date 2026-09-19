@@ -659,12 +659,17 @@ export default function ForumEditionPage({
   const hasAgenda = masterAgendaSlots.length > 0;
   // 这一块只渲染主办席位与支持机构，判断条件要和它渲染的内容一致。
   // （`devConfLogos` 是在议程板块里用的，不算在内，否则会渲染出一个空板块。）
-  const hasPartnerLogos = organizerLogos.length > 0 || supportInstitutionLogos.length > 0;
+  // 主办单位被提到筹备行里时（见 `ForumPlanning.withHost`），这一块里就不算它了，
+  // 否则同一个 logo 会在页面上出现两次。
+  const hostInPlanningRow = Boolean(planning?.withHost && organizerLogos[0]);
   // 主办一类的席位。三个席位按数据约定各占固定下标（见 types.ts 的
   // `organizerLogos`），缺的就不渲染，而不是留一张空卡。
-  const partnerSlotCount = [organizerLogos[0], organizerLogos[1], organizerLogos[2]].filter(
-    Boolean,
-  ).length;
+  const partnerSlotCount = [
+    hostInPlanningRow ? undefined : organizerLogos[0],
+    organizerLogos[1],
+    organizerLogos[2],
+  ].filter(Boolean).length;
+  const hasPartnerLogos = partnerSlotCount > 0 || supportInstitutionLogos.length > 0;
   const hasPeople = people.length > 0;
   const hasHighlights = highlights.length > 0;
   // 标了 featured 的整行呈现（「上一届」），其余按网格平铺。
@@ -738,8 +743,11 @@ export default function ForumEditionPage({
   };
 
   /**
-   * 筹备期的硬信息（会期、地点）。只放卡片，不带板块标题与说明——
-   * 这两项信息 hero 上已经出现过一次，这里只是把它们摆成可扫读的一行。
+   * 筹备期的硬信息。只放卡片，不带板块标题与说明——这几项 hero 上大致都出现过，
+   * 这里只是把它们摆成可扫读的一行。
+   *
+   * `planning.withHost` 打开时，主办单位作为**第一格**插在最左边，三格等宽，
+   * 整行读作「谁办的 — 什么时候 — 在哪里」。logo 取 `organizerLogos[0]`。
    * 内容为空则整段不渲染；会议信息定稿后把 `planning` 去掉即可。
    */
   const renderPlanningBlock = (): ReactNode => {
@@ -748,7 +756,8 @@ export default function ForumEditionPage({
     }
 
     const facts = planning.facts ?? [];
-    if (facts.length === 0) {
+    const hostLogo = hostInPlanningRow ? organizerLogos[0] : undefined;
+    if (!hostLogo && facts.length === 0) {
       return null;
     }
 
@@ -756,6 +765,20 @@ export default function ForumEditionPage({
       <section id="planning" className={clsx(styles.section, styles.lightSection)}>
         <div className="container">
           <dl className={styles.planningFacts}>
+            {hostLogo && (
+              <div className={styles.planningFact}>
+                <dt className={styles.planningFactLabel}>
+                  <Translate id="forum.section.organizers">主办单位</Translate>
+                </dt>
+                <dd className={styles.planningFactLogoBox}>
+                  <img
+                    className={styles.planningFactLogo}
+                    src={withBaseUrl(hostLogo.src)}
+                    alt={hostLogo.name}
+                  />
+                </dd>
+              </div>
+            )}
             {facts.map((item, index) => (
               <div key={index} className={styles.planningFact}>
                 <dt className={styles.planningFactLabel}>
@@ -2884,7 +2907,9 @@ export default function ForumEditionPage({
                     </div>
                   </div>
                 )}
-                {organizerLogos[0] && (
+                {/* 主办单位已经提到筹备行里时，这里跳过，避免同一个 logo 出现两次。
+                    判断用的 `hostInPlanningRow` 和 `partnerSlotCount` 是同一个来源。 */}
+                {!hostInPlanningRow && organizerLogos[0] && (
                   <div
                     className={clsx(
                       styles.card,
