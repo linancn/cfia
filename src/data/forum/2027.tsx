@@ -107,7 +107,9 @@ export const edition2027: ForumEdition = {
         { zh: "参会代表 500+", en: "500+ delegates" },
         { zh: "国际嘉宾来自 10+ 个国家", en: "Guests from 10+ countries" },
       ],
-      image: "img/tg-forum/kv.jpg",
+      // 第三届（2026）官方主视觉，从《主论坛-流程画面.pdf》转出（4608×1280 → 1600×444）。
+      // 海报自带标题与主办单位信息，是历届卡片里唯一带字的图。
+      image: "img/tg-forum/past/tg-forum-2026.jpg",
       to: "/forum/2026",
     },
     {

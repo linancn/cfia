@@ -3229,6 +3229,14 @@
   display: block;
 }
 
+/* 重点卡目前放的是 2026 届官方主视觉：4608×1280 的超宽海报（3.6:1），
+   标题「2026 天工论坛」和主办单位信息都在最左侧。图框是 503×200（2.5:1），
+   `object-fit: cover` 默认居中裁切会把左侧标题切掉一大半，所以统一左对齐，
+   只裁右侧的地球装饰，海报文字完整保留。窄屏图框接近海报比例，几乎不裁。 */
+.cardFeatured .cardPhotoImg {
+  object-position: left center;
+}
+
 .pill {
   display: inline-flex;
   align-items: center;
