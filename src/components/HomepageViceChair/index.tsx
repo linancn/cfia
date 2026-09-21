@@ -117,6 +117,12 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
+    title: <Translate id="vice-chair.zxc">张秀春</Translate>,
+    description: (
+      <Translate id="vice-chair.zxc-desc">中国标准化协会秘书长</Translate>
+    ),
+  },
+  {
     title: <Translate id="vice-chair.zmh">张孟衡</Translate>,
     description: (
       <Translate id="vice-chair.zmh-desc">中国环境科学研究院总工程师</Translate>

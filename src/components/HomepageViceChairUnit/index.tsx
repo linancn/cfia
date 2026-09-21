@@ -167,6 +167,11 @@ const FeatureList: FeatureItem[] = [
     width: "170px",
   },
   {
+    img: require("@site/static/img/homepage/logo-31-csa.png").default,
+    height: "75px",
+    width: "75px",
+  },
+  {
     img: require("@site/static/img/homepage/logo-32-caep.png").default,
     height: "70px",
     width: "90px",
@@ -263,6 +268,11 @@ const FeatureList: FeatureItem[] = [
   },
   {
     img: require("@site/static/img/homepage/logo-51-ncu.png").default,
+    height: "75px",
+    width: "75px",
+  },
+  {
+    img: require("@site/static/img/homepage/logo-51-buct.png").default,
     height: "75px",
     width: "75px",
   },
